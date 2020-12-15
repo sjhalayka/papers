@@ -124,12 +124,12 @@ Otherwise, for non-black holes, it's assumed that the entropy can never reach $S
 When we say focused, we mean alignment of the oscillations into one direction -- to be \textit{anisotropic}.
 Where $n$ is the number of asymmetric oscillators comprising the non-black hole, the total dot product $y$ is:
 \begin{equation}
-y = \sum_{i = 1}^{n}  \sum_{j = i + 1}^{n} {\vec{A}}_i  \cdot {\vec{A}}_j.
+y = \sum_{i = 1}^{n - 1}  \sum_{j = i + 1}^{n} {\vec{A}}_i  \cdot {\vec{A}}_j.
 \end{equation}
 The 3D vectors ${\vec{A}}_i$ and ${\vec{A}}_j$ both have a length $\ell \in (0, 1]$, which represents the oscillator's degree of asymmetry.
 The total number of dot product comparisons $z$ is:
 \begin{equation}
-z = \frac{n(n - 1)}{2}.
+z = \frac{(n - 1)n}{2}.
 \end{equation}
 The focus $w$ (anisotropy) is the normalized average dot product:
 \begin{equation}
