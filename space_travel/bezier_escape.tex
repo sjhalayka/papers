@@ -126,15 +126,16 @@ Where $n$ is the number of asymmetric oscillators comprising the body, the total
 \begin{equation}
 y = \sum_{i = 1}^{n}  \sum_{j = i + 1}^{n} {\vec{A}}_i  \cdot {\vec{A}}_j.
 \end{equation}
-Here, the 3D vectors ${\vec{A}}_i$ and ${\vec{A}}_j$ both have a length $\ell \in (0, 1]$, which represents the oscillator's degree of asymmetry.
+The 3D vectors ${\vec{A}}_i$ and ${\vec{A}}_j$ both have a length $\ell \in (0, 1]$, which represents the oscillator's degree of asymmetry.
 The total number of dot product comparisons $z$ is:
 \begin{equation}
 z = \frac{n(n - 1)}{2}.
 \end{equation}
-The focus $f$ (anisotropy) and entropy are:
+The focus $f$ (anisotropy) is the normalized average dot product:
 \begin{equation}
 f = \frac{1 + {y}/{z}}{2} \in [0, 1),
 \end{equation}
+The entropy is:
 \begin{equation}
 S = S_{BH} f \in [0, S_{BH}).
 \end{equation}
