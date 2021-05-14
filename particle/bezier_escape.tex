@@ -40,15 +40,15 @@ Also, consider a sphere-shaped photon absorber at position $(0, 100, 0)$, with a
 Numerically, it is found that the inverse normalized interaction strength is $41152.3$.
 That is, when the photon emission goes from spherical (e.g. perfectly isotropic) to beam-like (e.g. perfectly anisotropic), the interaction strength increases by a factor of $41152.3$.
 See Fig 1.
-Note that the interaction strength is isotropic, and that the emitter is spherical in shape.
+Note that the interaction strength is isotropic, and that the emitter is spherical (3D) in shape.
 
 Similarly, when the photon emission is circular, the inverse normalized interaction strength is $315.259$.
 See Fig 2.
-Note that the interaction strength orthogonal to the circle's plane reduces as the photon emitter goes from spherical to circular, and that the emitter is circular in shape.
+Note that the interaction strength orthogonal to the circle's plane reduces as the photon emitter goes from spherical to circular, and that the emitter is circular (2D) in shape.
 
 Finally, when the photon emission is beam-like, the inverse normalized interaction strength is $1$ (by definition).
 See Fig 3.
-Note that the interaction strength for all angles other than head-on reduces as the photon emitter goes from spherical to beam-like, and that the emitter is beam-like in shape -- that is, to emit photons in a beam-like way, the emitter must be beam-like in shape.
+Note that the interaction strength for all angles other than head-on reduces as the photon emitter goes from spherical to beam-like, and that the emitter is beam-like (1D) in shape.
 
 Altogether, these results are not surprising; it is all about the simple counting of the ray-sphere (e.g. photon-absorber) intersections.
 The only assumption is that the temperature and the number of degrees of freedom are at least conserved, if not then increased, as the photon emitter goes from spherical, to circular, to beam-like.
@@ -94,6 +94,7 @@ Blue spherical emitter at $(0, 0, 0)$.
 Green absorber at $(0, 4, 0)$. 
 Ray-sphere intersection locations are coloured in red.
 A relatively low number of the photons emitted are absorbed.
+Note that to emit photons in a spherical way, the emitter must first be spherical (3D) in shape.
 }
 \end{figure}
 
@@ -106,17 +107,20 @@ Blue circular emitter at $(0, 0, 0)$.
 Green absorber at $(0, 4, 0)$. 
 Ray-sphere intersection locations are coloured in red.
 A relatively high number of the photons emitted are absorbed.
+Note that to emit photons in a circular way, the emitter must first be circular (2D) in shape.
 }
+
 \end{figure}
 
 \begin{figure} 
 \centering
 \frame{\includegraphics[width = 1.0 in]{beam_emitter.png}}
   \caption{
-Blue beam (``cigar''-shaped) emitter at $(0, 0, 0)$. 
+Blue beam-like emitter at $(0, 0, 0)$. 
 Green absorber at $(0, 4, 0)$. 
 Ray-sphere intersection location is coloured in red.
 $100\%$ of the photons emitted are absorbed.
+Note that to emit photons in a beam-ike way, the emitter must first be beam-like (1D) in shape.
 }
 \end{figure}
 
