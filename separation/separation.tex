@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{An visual method for generating the nonlinear separating isosurface of two classes of objects in two-dimensions using Marching Squares}
+\title{A visual method for generating the separating isosurface of two classes of objects in two-dimensional space using Marching Squares}
 \author{
 Shawn Halayka\footnote{Independent -- sjhalayka@gmail.com}
 }
@@ -32,7 +32,7 @@ Shawn Halayka\footnote{Independent -- sjhalayka@gmail.com}
 \maketitle
 
 \begin{abstract}
-
+With regard to the separating isosurface of two classes of objects in two-dimensional space, the transition from nonlinear to linear is documented.
 \end{abstract}
 
 
@@ -40,9 +40,8 @@ Shawn Halayka\footnote{Independent -- sjhalayka@gmail.com}
 
 \section{Introduction}
 
-Iron out the wrinkles using blur.
-Ameliorate
-
+Iron out the wrinkles by downsizing.
+Can also convolve the images, like blurring, which can be used to melt away higher-frequency detail.
 
 \pagebreak
 
@@ -70,21 +69,22 @@ Ameliorate
 \begin{figure} 
 \centering
   \includegraphics[width = 3 in]{64_res.png}
-  \caption{Nonlinear separation.
+  \caption{Nonlinear, radial, separation. Grid resolution is 64.
 }
 \end{figure}
 
 \begin{figure} 
 \centering
   \includegraphics[width = 3 in]{64_res_image.png}
-  \caption{Bitmap image used as input to the Marching Squares algorithm.
+  \caption{Bitmap image used as input to the Marching Squares algorithm. 
+Image size is 64x64.
 }
 \end{figure}
 
 \begin{figure} 
 \centering
   \includegraphics[width = 3 in]{16_res.png}
-  \caption{Nonlinear separation.
+  \caption{Nonlinear, radial, separation. Grid resolution is 16.
 }
 \end{figure}
 
@@ -92,6 +92,7 @@ Ameliorate
 \centering
   \includegraphics[width = 3 in]{16_res_image.png}
   \caption{Bitmap image used as input to the Marching Squares algorithm.
+Image size is 16x16.
 }
 \end{figure}
 
@@ -99,7 +100,7 @@ Ameliorate
 \begin{figure} 
 \centering
   \includegraphics[width = 3 in]{2_res.png}
-  \caption{Nonlinear separation.
+  \caption{Linear separation. Grid resolution is 2.
 }
 \end{figure}
 
@@ -107,8 +108,50 @@ Ameliorate
 \centering
   \includegraphics[width = 3 in]{2_res_image.png}
   \caption{Bitmap image used as input to the Marching Squares algorithm.
+Image size is 2x2.
 }
 \end{figure}
+
+
+
+
+
+
+
+
+\begin{figure} 
+\centering
+  \includegraphics[width = 3 in]{cat_image.png}
+  \caption{Bitmap image used as input to the Marching Squares algorithm.
+}
+\end{figure}
+
+
+\begin{figure} 
+\centering
+  \includegraphics[width = 3 in]{cat_isosurface.png}
+  \caption{Nonlinear, radial, separation.
+}
+\end{figure}
+
+
+\begin{figure} 
+\centering
+  \includegraphics[width = 3 in]{cat_blurred_image.png}
+  \caption{Blurred bitmap image used as input to the Marching Squares algorithm.
+}
+\end{figure}
+
+
+\begin{figure} 
+\centering
+  \includegraphics[width = 3 in]{cat_blurred_isosurface.png}
+  \caption{Nonlinear, radial, separation.
+Note that the blurring of the bitmap image melts away the higher-resolution detail.
+}
+\end{figure}
+
+
 
 
 \end{document}
