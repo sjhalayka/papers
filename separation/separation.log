@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  19 APR 2022 09:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  21 APR 2022 20:31
 entering extended mode
 **./separation.tex
 (separation.tex
@@ -379,53 +379,59 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/cowco/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2]
-<linear_separation.png, id=15, 761.84625pt x 761.09344pt>
-File: linear_separation.png Graphic file (type png)
-<use linear_separation.png>
-Package pdftex.def Info: linear_separation.png  used on input line 71.
-(pdftex.def)             Requested size: 433.62pt x 433.18904pt.
-<nonlinear_image.png, id=16, 48.18pt x 48.18pt>
-File: nonlinear_image.png Graphic file (type png)
-<use nonlinear_image.png>
-Package pdftex.def Info: nonlinear_image.png  used on input line 78.
-(pdftex.def)             Requested size: 216.81pt x 216.84537pt.
-<nonlinear.png, id=17, 761.84625pt x 760.34062pt>
-File: nonlinear.png Graphic file (type png)
-<use nonlinear.png>
-Package pdftex.def Info: nonlinear.png  used on input line 85.
-(pdftex.def)             Requested size: 216.81pt x 216.37447pt.
-<nonlinear_blurred_image.png, id=18, 48.18pt x 48.18pt>
-File: nonlinear_blurred_image.png Graphic file (type png)
-<use nonlinear_blurred_image.png>
-Package pdftex.def Info: nonlinear_blurred_image.png  used on input line 92.
-(pdftex.def)             Requested size: 216.81pt x 216.84537pt.
-<nonlinear_blurred.png, id=19, 761.09344pt x 761.09344pt>
-File: nonlinear_blurred.png Graphic file (type png)
-<use nonlinear_blurred.png>
-Package pdftex.def Info: nonlinear_blurred.png  used on input line 99.
-(pdftex.def)             Requested size: 216.81pt x 216.80937pt.
- [3 <./linear_separation.png>] [4 <./nonlinear_image.png> <./nonlinear.png>] [5
- <./nonlinear_blurred_image.png> <./nonlinear_blurred.png>] (separation.aux) ) 
+<64_res.png, id=15, 761.84625pt x 763.35187pt>
+File: 64_res.png Graphic file (type png)
+<use 64_res.png>
+Package pdftex.def Info: 64_res.png  used on input line 72.
+(pdftex.def)             Requested size: 433.62pt x 434.47446pt.
+<64_res_image.png, id=16, 48.18pt x 48.18pt>
+File: 64_res_image.png Graphic file (type png)
+<use 64_res_image.png>
+Package pdftex.def Info: 64_res_image.png  used on input line 79.
+(pdftex.def)             Requested size: 433.62pt x 433.8319pt.
+<16_res.png, id=17, 761.84625pt x 763.35187pt>
+File: 16_res.png Graphic file (type png)
+<use 16_res.png>
+Package pdftex.def Info: 16_res.png  used on input line 86.
+(pdftex.def)             Requested size: 433.62pt x 434.47446pt.
+<16_res_image.png, id=18, 12.045pt x 12.045pt>
+File: 16_res_image.png Graphic file (type png)
+<use 16_res_image.png>
+Package pdftex.def Info: 16_res_image.png  used on input line 93.
+(pdftex.def)             Requested size: 433.62pt x 434.11378pt.
+<2_res.png, id=19, 761.84625pt x 763.35187pt>
+File: 2_res.png Graphic file (type png)
+<use 2_res.png>
+Package pdftex.def Info: 2_res.png  used on input line 101.
+(pdftex.def)             Requested size: 433.62pt x 434.47446pt.
+<2_res_image.png, id=20, 1.50563pt x 1.50563pt>
+File: 2_res_image.png Graphic file (type png)
+<use 2_res_image.png>
+Package pdftex.def Info: 2_res_image.png  used on input line 108.
+(pdftex.def)             Requested size: 433.62pt x 435.24323pt.
+ [3 <./64_res.png>] [4 <./64_res_image.png>] [5 <./16_res.png>] [6 <./16_res_im
+age.png>]
+[7 <./2_res.png>] [8 <./2_res_image.png>] (separation.aux) ) 
 Here is how much of TeX's memory you used:
- 7100 strings out of 478927
- 108397 string characters out of 2852535
- 430427 words of memory out of 3000000
- 24874 multiletter control sequences out of 15000+600000
+ 7107 strings out of 478927
+ 108253 string characters out of 2852535
+ 430426 words of memory out of 3000000
+ 24880 multiletter control sequences out of 15000+600000
  409159 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,11n,117p,1016b,333s stack positions out of 5000i,500n,10000p,200000b,80000s
- 
-<C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm070
-0.pk> <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\t
-crm1000.pk><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmbx10.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmbx12.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/cowco/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/cowco/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on separation.pdf (5 pages, 122644 bytes).
+ <C:\Users\cowco\Ap
+pData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0700.pk> <C:\Users\co
+wco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Use
+rs/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pf
+b><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmbx12.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmr10.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmr17.pfb>
+Output written on separation.pdf (8 pages, 281375 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
+ 71 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
