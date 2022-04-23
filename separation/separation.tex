@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{A visual method for generating the separating isosurface of two classes of objects in two-dimensional space using Marching Squares and OpenCV}
+\title{A visual method for generating the separating isosurface of two classes of objects in two-dimensional space}
 \author{
 Shawn Halayka\footnote{Independent -- sjhalayka@gmail.com}
 }
@@ -43,7 +43,6 @@ With regard to the separating isosurface of two classes of objects in two-dimens
 Iron out the wrinkles by downsizing.
 Can also convolve the images, like blurring, which can be used to melt away higher-frequency detail.
 
-\pagebreak
 
 
 
@@ -59,68 +58,13 @@ Can also convolve the images, like blurring, which can be used to melt away high
 
 
 
-\pagebreak
-
 
 \begin{figure} 
 \centering
-  \includegraphics[width = 7 in]{downsize_code.png}
+  \includegraphics[width = 4 in]{downsize_code.png}
   \caption{Code to downsize an image, using OpenCV.
 }
 \end{figure}
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 7 in]{blur_code.png}
-  \caption{Code to blur an image, using OpenCV.
-}
-\end{figure}
-
-
-
-
-
-
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 3 in]{cat_image.png}
-  \caption{Bitmap image used as input to the Marching Squares algorithm.
-Image size is 746x746.
-}
-\end{figure}
-
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 3 in]{cat_isosurface.png}
-  \caption{Nonlinear, radial, separation.
-Grid resolution is 746.
-}
-\end{figure}
-
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 3 in]{cat_blurred_image.png}
-  \caption{Blurred bitmap image used as input to the Marching Squares algorithm.
-Image size is 746x746.
-}
-\end{figure}
-
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 3 in]{cat_blurred_isosurface.png}
-  \caption{Nonlinear, radial, separation.
-Note that the blurring of the bitmap image melts away the higher-resolution detail.
-Grid resolution is 746.
-}
-\end{figure}
-
-
-
-
 
 
 
@@ -131,13 +75,14 @@ Grid resolution is 746.
   \includegraphics[width = 3 in]{64_res_image.png}
   \caption{Bitmap image used as input to the Marching Squares algorithm. 
 Image size is 64x64.
+Colour falls of with distance.
 }
 \end{figure}
 
 \begin{figure} 
 \centering
   \includegraphics[width = 3 in]{64_res.png}
-  \caption{Nonlinear, radial, separation. Grid resolution is 64.
+  \caption{Nonlinear, radial, separation. Grid resolution is 64x64.
 }
 \end{figure}
 
@@ -154,7 +99,7 @@ Image size is 16x16.
 \begin{figure} 
 \centering
   \includegraphics[width = 3 in]{16_res.png}
-  \caption{Nonlinear, radial, separation. Grid resolution is 16.
+  \caption{Nonlinear, radial, separation. Grid resolution is 16x16.
 }
 \end{figure}
 
@@ -170,7 +115,7 @@ Image size is 2x2.
 \begin{figure} 
 \centering
   \includegraphics[width = 3 in]{2_res.png}
-  \caption{Linear separation. Grid resolution is 2.
+  \caption{Linear separation. Grid resolution is 2x2.
 }
 \end{figure}
 
