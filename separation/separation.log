@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  22 APR 2022 12:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  22 APR 2022 17:59
 entering extended mode
 **./separation.tex
 (separation.tex
@@ -379,80 +379,100 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/cowco/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2]
-<64_res.png, id=15, 761.84625pt x 763.35187pt>
+<downsize_code.png, id=15, 895.84688pt x 317.68687pt>
+File: downsize_code.png Graphic file (type png)
+<use downsize_code.png>
+Package pdftex.def Info: downsize_code.png  used on input line 67.
+(pdftex.def)             Requested size: 505.89pt x 179.39645pt.
+
+Overfull \hbox (36.13498pt too wide) in paragraph at lines 67--69
+ [][] 
+ []
+
+<blur_code.png, id=16, 863.47594pt x 309.40594pt>
+File: blur_code.png Graphic file (type png)
+<use blur_code.png>
+Package pdftex.def Info: blur_code.png  used on input line 74.
+(pdftex.def)             Requested size: 505.89pt x 181.27321pt.
+
+Overfull \hbox (36.13498pt too wide) in paragraph at lines 74--76
+ [][] 
+ []
+
+<64_res.png, id=17, 761.84625pt x 763.35187pt>
 File: 64_res.png Graphic file (type png)
 <use 64_res.png>
-Package pdftex.def Info: 64_res.png  used on input line 71.
+Package pdftex.def Info: 64_res.png  used on input line 85.
 (pdftex.def)             Requested size: 216.81pt x 217.2314pt.
-<64_res_image.png, id=16, 48.18pt x 48.18pt>
+<64_res_image.png, id=18, 48.18pt x 48.18pt>
 File: 64_res_image.png Graphic file (type png)
 <use 64_res_image.png>
-Package pdftex.def Info: 64_res_image.png  used on input line 78.
+Package pdftex.def Info: 64_res_image.png  used on input line 92.
 (pdftex.def)             Requested size: 216.81pt x 216.84537pt.
-<16_res.png, id=17, 761.84625pt x 763.35187pt>
+<16_res.png, id=19, 761.84625pt x 763.35187pt>
 File: 16_res.png Graphic file (type png)
 <use 16_res.png>
-Package pdftex.def Info: 16_res.png  used on input line 86.
+Package pdftex.def Info: 16_res.png  used on input line 100.
 (pdftex.def)             Requested size: 216.81pt x 217.2314pt.
-<16_res_image.png, id=18, 12.045pt x 12.045pt>
+<16_res_image.png, id=20, 12.045pt x 12.045pt>
 File: 16_res_image.png Graphic file (type png)
 <use 16_res_image.png>
-Package pdftex.def Info: 16_res_image.png  used on input line 93.
+Package pdftex.def Info: 16_res_image.png  used on input line 107.
 (pdftex.def)             Requested size: 216.81pt x 217.05688pt.
-<2_res.png, id=19, 761.84625pt x 763.35187pt>
+<2_res.png, id=21, 761.84625pt x 763.35187pt>
 File: 2_res.png Graphic file (type png)
 <use 2_res.png>
-Package pdftex.def Info: 2_res.png  used on input line 102.
+Package pdftex.def Info: 2_res.png  used on input line 116.
 (pdftex.def)             Requested size: 216.81pt x 217.2314pt.
-<2_res_image.png, id=20, 1.50563pt x 1.50563pt>
+<2_res_image.png, id=22, 1.50563pt x 1.50563pt>
 File: 2_res_image.png Graphic file (type png)
 <use 2_res_image.png>
-Package pdftex.def Info: 2_res_image.png  used on input line 109.
+Package pdftex.def Info: 2_res_image.png  used on input line 123.
 (pdftex.def)             Requested size: 216.81pt x 217.62161pt.
-<cat_image.png, id=21, 561.59813pt x 561.59813pt>
+<cat_image.png, id=23, 561.59813pt x 561.59813pt>
 File: cat_image.png Graphic file (type png)
 <use cat_image.png>
-Package pdftex.def Info: cat_image.png  used on input line 124.
+Package pdftex.def Info: cat_image.png  used on input line 138.
 (pdftex.def)             Requested size: 216.81pt x 216.80293pt.
-<cat_isosurface.png, id=22, 760.34062pt x 758.835pt>
+<cat_isosurface.png, id=24, 760.34062pt x 758.835pt>
 File: cat_isosurface.png Graphic file (type png)
 <use cat_isosurface.png>
-Package pdftex.def Info: cat_isosurface.png  used on input line 132.
+Package pdftex.def Info: cat_isosurface.png  used on input line 146.
 (pdftex.def)             Requested size: 216.81pt x 216.37444pt.
-<cat_blurred_image.png, id=23, 561.59813pt x 561.59813pt>
+<cat_blurred_image.png, id=25, 561.59813pt x 561.59813pt>
 File: cat_blurred_image.png Graphic file (type png)
 <use cat_blurred_image.png>
-Package pdftex.def Info: cat_blurred_image.png  used on input line 140.
+Package pdftex.def Info: cat_blurred_image.png  used on input line 154.
 (pdftex.def)             Requested size: 216.81pt x 216.80293pt.
-<cat_blurred_isosurface.png, id=24, 760.34062pt x 758.835pt>
+<cat_blurred_isosurface.png, id=26, 760.34062pt x 758.835pt>
 File: cat_blurred_isosurface.png Graphic file (type png)
 <use cat_blurred_isosurface.png>
-Package pdftex.def Info: cat_blurred_isosurface.png  used on input line 148.
+Package pdftex.def Info: cat_blurred_isosurface.png  used on input line 162.
 (pdftex.def)             Requested size: 216.81pt x 216.37444pt.
- [3 <./64_res.png> <./64_res_image.png>] [4 <./16_res.png> <./16_res_image.png>
-] [5 <./2_res.png> <./2_res_image.png>] [6 <./cat_image.png> <./cat_isosurface.
-png>]
-[7 <./cat_blurred_image.png> <./cat_blurred_isosurface.png>] (separation.aux) )
- 
+[3 <./downsize_code.png> <./blur_code.png>] [4 <./64_res.png> <./64_res_image.p
+ng>] [5 <./16_res.png> <./16_res_image.png>] [6 <./2_res.png> <./2_res_image.pn
+g>] [7 <./cat_image.png> <./cat_isosurface.png>] [8 <./cat_blurred_image.png> <
+./cat_blurred_isosurface.png>] (separation.aux) ) 
 Here is how much of TeX's memory you used:
- 7135 strings out of 478927
- 108923 string characters out of 2852535
- 432422 words of memory out of 3000000
- 24904 multiletter control sequences out of 15000+600000
+ 7149 strings out of 478927
+ 109195 string characters out of 2852535
+ 433433 words of memory out of 3000000
+ 24916 multiletter control sequences out of 15000+600000
  409159 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,11n,117p,1016b,333s stack positions out of 5000i,500n,10000p,200000b,80000s
- <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm07
-00.pk> <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
-tcrm1000.pk><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmbx10.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmbx12.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/cowco/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/cowco/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on separation.pdf (7 pages, 1040694 bytes).
+ <C:\Users\cowco\AppData\Local
+\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0700.pk> <C:\Users\cowco\AppData
+\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/cowco/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users
+/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+<C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+r10.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmr17.pfb>
+Output written on separation.pdf (8 pages, 1159761 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
+ 81 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
