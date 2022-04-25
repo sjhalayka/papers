@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  24 APR 2022 10:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  24 APR 2022 21:47
 entering extended mode
 **./separation.tex
 (separation.tex
@@ -379,32 +379,32 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <64_res_image.png, id=1, 48.18pt x 48.18pt>
 File: 64_res_image.png Graphic file (type png)
 <use 64_res_image.png>
-Package pdftex.def Info: 64_res_image.png  used on input line 74.
+Package pdftex.def Info: 64_res_image.png  used on input line 75.
 (pdftex.def)             Requested size: 216.81pt x 216.84537pt.
 <64_res.png, id=2, 761.84625pt x 763.35187pt>
 File: 64_res.png Graphic file (type png)
 <use 64_res.png>
-Package pdftex.def Info: 64_res.png  used on input line 83.
+Package pdftex.def Info: 64_res.png  used on input line 84.
 (pdftex.def)             Requested size: 216.81pt x 217.2314pt.
 <16_res_image.png, id=3, 12.045pt x 12.045pt>
 File: 16_res_image.png Graphic file (type png)
 <use 16_res_image.png>
-Package pdftex.def Info: 16_res_image.png  used on input line 91.
+Package pdftex.def Info: 16_res_image.png  used on input line 92.
 (pdftex.def)             Requested size: 216.81pt x 217.05688pt.
 <16_res.png, id=4, 761.84625pt x 763.35187pt>
 File: 16_res.png Graphic file (type png)
 <use 16_res.png>
-Package pdftex.def Info: 16_res.png  used on input line 100.
+Package pdftex.def Info: 16_res.png  used on input line 101.
 (pdftex.def)             Requested size: 216.81pt x 217.2314pt.
 <2_res_image.png, id=5, 1.50563pt x 1.50563pt>
 File: 2_res_image.png Graphic file (type png)
 <use 2_res_image.png>
-Package pdftex.def Info: 2_res_image.png  used on input line 107.
+Package pdftex.def Info: 2_res_image.png  used on input line 108.
 (pdftex.def)             Requested size: 216.81pt x 217.62161pt.
 <2_res.png, id=6, 761.84625pt x 763.35187pt>
 File: 2_res.png Graphic file (type png)
 <use 2_res.png>
-Package pdftex.def Info: 2_res.png  used on input line 116.
+Package pdftex.def Info: 2_res.png  used on input line 117.
 (pdftex.def)             Requested size: 216.81pt x 217.2314pt.
 
 [1
@@ -429,9 +429,9 @@ rs/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb
 ><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
 mr12.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmr17.pfb>
-Output written on separation.pdf (4 pages, 210800 bytes).
+Output written on separation.pdf (4 pages, 272837 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
+ 57 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
