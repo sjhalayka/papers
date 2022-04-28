@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{A visual method for generating the separating isosurface of two classes of objects in two-dimensional space}
+\title{An easy-to-implement numerical, visual method for generating the (non-)linear separating isosurface of two classes of objects in two-dimensional space using Marching Squares and OpenCV}
 \author{
 Shawn Halayka\footnote{Independent -- sjhalayka@gmail.com}
 }
@@ -100,6 +100,7 @@ Image size is 2x2.
   \includegraphics[width = 3 in]{16_res_image.png}
   \caption{Bitmap image used as input to the Marching Squares algorithm.
 Image size is 16x16.
+Colour falls off with distance.
 }
 \end{figure}
 
@@ -118,7 +119,6 @@ Image size is 16x16.
   \includegraphics[width = 3 in]{64_res_image.png}
   \caption{Bitmap image used as input to the Marching Squares algorithm. 
 Image size is 64x64.
-Colour falls off with distance.
 }
 \end{figure}
 
@@ -129,6 +129,28 @@ Colour falls off with distance.
 }
 \end{figure}
 
+
+
+
+
+
+
+\begin{figure} 
+\centering
+  \includegraphics[width = 3 in]{image_avg_rectilinear.png}
+  \caption{Bitmap image used as input to the Marching Squares algorithm.
+Image size is 2x2.
+}
+\end{figure}
+
+\begin{figure} 
+\centering
+  \includegraphics[width = 3 in]{rectilinear.png}
+  \caption{The output of the Marching Squares algorithm: rectilinear separation. 
+Grid resolution is 2x2.
+All 50 contour sets have been drawn in transparent grey, with the exception of the average contour set, which is drawn in pure black.
+}
+\end{figure}
 
 
 
@@ -145,7 +167,7 @@ Image size is 64x64.
   \includegraphics[width = 3 in]{no_blur.png}
   \caption{The output of the Marching Squares algorithm: curvilinear, radial separation. 
 Grid resolution is 64x64.
-All contours have been drawn in transparent grey, with the exception of the average contour, which is drawn in pure black.
+All 50 contour sets have been drawn in transparent grey, with the exception of the average contour set, which is drawn in pure black.
 }
 \end{figure}
 
@@ -168,9 +190,12 @@ One iteration of Gaussian blur has been used.
   \includegraphics[width = 3 in]{1blur.png}
   \caption{The output of the Marching Squares algorithm: curvilinear, radial separation. 
 Grid resolution is 64x64.
-All contours have been drawn in transparent grey, with the exception of the average contour, which is drawn in pure black.
+All 50 contour sets have been drawn in transparent grey, with the exception of the average contour set, which is drawn in pure black.
 }
 \end{figure}
+
+
+
 
 
 
@@ -189,7 +214,7 @@ Ten iterations of Gaussian blur have been used.
   \includegraphics[width = 3 in]{10blur.png}
   \caption{The output of the Marching Squares algorithm: curvilinear, radial separation. 
 Grid resolution is 64x64.
-All contours have been drawn in transparent grey, with the exception of the average contour, which is drawn in pure black.
+All 50 contour sets have been drawn in transparent grey, with the exception of the average contour set, which is drawn in pure black.
 }
 \end{figure}
 

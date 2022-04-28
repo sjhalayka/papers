@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  27 APR 2022 15:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  27 APR 2022 22:14
 entering extended mode
 **./separation.tex
 (separation.tex
@@ -397,72 +397,82 @@ Package pdftex.def Info: 16_res_image.png  used on input line 100.
 <16_res.png, id=18, 761.84625pt x 763.35187pt>
 File: 16_res.png Graphic file (type png)
 <use 16_res.png>
-Package pdftex.def Info: 16_res.png  used on input line 109.
+Package pdftex.def Info: 16_res.png  used on input line 110.
 (pdftex.def)             Requested size: 216.81pt x 217.2314pt.
 <64_res_image.png, id=19, 48.18pt x 48.18pt>
 File: 64_res_image.png Graphic file (type png)
 <use 64_res_image.png>
-Package pdftex.def Info: 64_res_image.png  used on input line 118.
+Package pdftex.def Info: 64_res_image.png  used on input line 119.
 (pdftex.def)             Requested size: 216.81pt x 216.84537pt.
 <64_res.png, id=20, 761.84625pt x 763.35187pt>
 File: 64_res.png Graphic file (type png)
 <use 64_res.png>
 Package pdftex.def Info: 64_res.png  used on input line 127.
 (pdftex.def)             Requested size: 216.81pt x 217.2314pt.
-<image_avg_no_blur.png, id=21, 48.18pt x 48.18pt>
+<image_avg_rectilinear.png, id=21, 1.50563pt x 1.50563pt>
+File: image_avg_rectilinear.png Graphic file (type png)
+<use image_avg_rectilinear.png>
+Package pdftex.def Info: image_avg_rectilinear.png  used on input line 140.
+(pdftex.def)             Requested size: 216.81pt x 217.62161pt.
+<rectilinear.png, id=22, 761.84625pt x 761.84625pt>
+File: rectilinear.png Graphic file (type png)
+<use rectilinear.png>
+Package pdftex.def Info: rectilinear.png  used on input line 148.
+(pdftex.def)             Requested size: 216.81pt x 216.80293pt.
+<image_avg_no_blur.png, id=23, 48.18pt x 48.18pt>
 File: image_avg_no_blur.png Graphic file (type png)
 <use image_avg_no_blur.png>
-Package pdftex.def Info: image_avg_no_blur.png  used on input line 137.
+Package pdftex.def Info: image_avg_no_blur.png  used on input line 159.
 (pdftex.def)             Requested size: 216.81pt x 216.84537pt.
-<no_blur.png, id=22, 761.84625pt x 761.84625pt>
+<no_blur.png, id=24, 761.84625pt x 761.84625pt>
 File: no_blur.png Graphic file (type png)
 <use no_blur.png>
-Package pdftex.def Info: no_blur.png  used on input line 145.
+Package pdftex.def Info: no_blur.png  used on input line 167.
 (pdftex.def)             Requested size: 216.81pt x 216.80293pt.
-<image_avg_1blur.png, id=23, 48.18pt x 48.18pt>
+<image_avg_1blur.png, id=25, 48.18pt x 48.18pt>
 File: image_avg_1blur.png Graphic file (type png)
 <use image_avg_1blur.png>
-Package pdftex.def Info: image_avg_1blur.png  used on input line 158.
+Package pdftex.def Info: image_avg_1blur.png  used on input line 180.
 (pdftex.def)             Requested size: 216.81pt x 216.84537pt.
-<1blur.png, id=24, 761.84625pt x 761.84625pt>
+<1blur.png, id=26, 761.84625pt x 761.84625pt>
 File: 1blur.png Graphic file (type png)
 <use 1blur.png>
-Package pdftex.def Info: 1blur.png  used on input line 168.
+Package pdftex.def Info: 1blur.png  used on input line 190.
 (pdftex.def)             Requested size: 216.81pt x 216.80293pt.
-<image_avg_10blur.png, id=25, 48.18pt x 48.18pt>
+<image_avg_10blur.png, id=27, 48.18pt x 48.18pt>
 File: image_avg_10blur.png Graphic file (type png)
 <use image_avg_10blur.png>
-Package pdftex.def Info: image_avg_10blur.png  used on input line 180.
+Package pdftex.def Info: image_avg_10blur.png  used on input line 205.
 (pdftex.def)             Requested size: 216.81pt x 216.84537pt.
-<10blur.png, id=26, 761.84625pt x 761.84625pt>
+<10blur.png, id=28, 761.84625pt x 761.84625pt>
 File: 10blur.png Graphic file (type png)
 <use 10blur.png>
-Package pdftex.def Info: 10blur.png  used on input line 189.
+Package pdftex.def Info: 10blur.png  used on input line 214.
 (pdftex.def)             Requested size: 216.81pt x 216.80293pt.
  [3 <./2_res_image.png> <./2_res.png>] [4 <./16_res_image.png> <./16_res.png>] 
-[5 <./64_res_image.png> <./64_res.png>] [6 <./image_avg_no_blur.png> <./no_blur
-.png>]
-[7 <./image_avg_1blur.png> <./1blur.png>] [8 <./image_avg_10blur.png> <./10blur
-.png>] (separation.aux) ) 
+[5 <./64_res_image.png> <./64_res.png>] [6 <./image_avg_rectilinear.png> <./rec
+tilinear.png>] [7 <./image_avg_no_blur.png> <./no_blur.png>] [8 <./image_avg_1b
+lur.png> <./1blur.png>] [9 <./image_avg_10blur.png> <./10blur.png>] (separation
+.aux) ) 
 Here is how much of TeX's memory you used:
- 7149 strings out of 478927
- 109072 string characters out of 2852535
- 434399 words of memory out of 3000000
- 24916 multiletter control sequences out of 15000+600000
+ 7163 strings out of 478927
+ 109414 string characters out of 2852535
+ 435476 words of memory out of 3000000
+ 24928 multiletter control sequences out of 15000+600000
  409159 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,11n,117p,1016b,333s stack positions out of 5000i,500n,10000p,200000b,80000s
- <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/
-jknappen/ec/dpi600\tcrm0700.pk> <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/l
-jfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/cowco/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/cowco/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/cowco/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/cowco/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/User
-s/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on separation.pdf (8 pages, 1098017 bytes).
+ <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
+\tcrm0700.pk> <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
+dpi600\tcrm1000.pk><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmbx10.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/cowco/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/cowco/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/cowco/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on separation.pdf (9 pages, 1250744 bytes).
 PDF statistics:
- 81 PDF objects out of 1000 (max. 8388607)
+ 86 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
