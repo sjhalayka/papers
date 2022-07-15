@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  14 JUL 2022 20:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  14 JUL 2022 21:52
 entering extended mode
 **./bezier_escape.tex
 (bezier_escape.tex
@@ -276,7 +276,7 @@ Here is how much of TeX's memory you used:
  22280 multiletter control sequences out of 15000+600000
  410965 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,11n,66p,283b,295s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,11n,66p,354b,295s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jkna
 ppen/ec/dpi600\tcrm0700.pk> <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfou
 r/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/cowco/AppData/Local/Programs/MiKTeX/
@@ -291,7 +291,7 @@ cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C
 amsfonts/cm/cmr17.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmr8.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/font
 s/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on bezier_escape.pdf (3 pages, 129244 bytes).
+Output written on bezier_escape.pdf (3 pages, 129217 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
