@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  29 JUL 2022 20:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.10)  29 JUL 2022 21:57
 entering extended mode
 **./bezier_escape.tex
 (bezier_escape.tex
@@ -306,15 +306,15 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
-* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* h-part:(L,W,R)=(54.2025pt, 505.89pt, 54.2025pt)
+* v-part:(T,H,B)=(54.2025pt, 686.56499pt, 54.2025pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=469.75502pt
-* \textheight=650.43001pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
-* \topmargin=-37.0pt
+* \textwidth=505.89pt
+* \textheight=686.56499pt
+* \oddsidemargin=-18.06749pt
+* \evensidemargin=-18.06749pt
+* \topmargin=-55.06749pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=12.0pt
@@ -343,7 +343,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 Here is how much of TeX's memory you used:
  5704 strings out of 478927
  81323 string characters out of 2852535
- 414426 words of memory out of 3000000
+ 416444 words of memory out of 3000000
  23500 multiletter control sequences out of 15000+600000
  410965 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -364,7 +364,7 @@ ic/amsfonts/cm/cmr17.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/cowco/AppData/Local/Programs
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on bezier_escape.pdf (4 pages, 161950 bytes).
+Output written on bezier_escape.pdf (4 pages, 161919 bytes).
 PDF statistics:
  85 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
