@@ -1,0 +1,8 @@
+Highlights for 'A note on anisotropic quantum gravity':
+
+- An introduction to gravitation is given
+- The untenability of anti-gravitation is discussed
+- An introduction to the holographic principle is given
+- Connectionless versus connected interaction is discussed
+- The fractal dimension of the gravitational field is given
+- Newton-Einstein gravitation is still good for AU-scale systems (e.g. the Solar system)
