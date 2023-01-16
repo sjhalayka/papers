@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.11)  15 JAN 2023 17:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.11)  15 JAN 2023 18:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -349,13 +349,13 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 [3] [4] (bezier_escape.aux) )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 71 ({)
+### simple group (level 1) entered at line 72 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 6038 strings out of 476406
- 92514 string characters out of 2789567
- 1857787 words of memory out of 3000000
- 26331 multiletter control sequences out of 15000+600000
+ 6037 strings out of 476406
+ 92508 string characters out of 2789567
+ 1858787 words of memory out of 3000000
+ 26330 multiletter control sequences out of 15000+600000
  519822 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  70i,11n,80p,1018b,301s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -376,7 +376,7 @@ pe1/public/amsfonts/cm/cmr6.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/cowco/AppData/Local/Programs/M
 iKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/cowco/AppData/Local/P
 rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on bezier_escape.pdf (4 pages, 172319 bytes).
+Output written on bezier_escape.pdf (4 pages, 172326 bytes).
 PDF statistics:
  90 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
