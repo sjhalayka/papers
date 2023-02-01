@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.11)  1 FEB 2023 15:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.11)  1 FEB 2023 15:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -232,34 +232,10 @@ LaTeX Info: Redefining \] on input line 2954.
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
-Package: geometry 2020/01/02 v5.9 Page Geometry
-
-(C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
-Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-
-(C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
-))
-\Gm@cnth=\count306
-\Gm@cntv=\count307
-\c@Gm@tempcnt=\count308
-\Gm@bindingoffset=\dimen156
-\Gm@wd@mp=\dimen157
-\Gm@odd@mp=\dimen158
-\Gm@even@mp=\dimen159
-\Gm@layoutwidth=\dimen160
-\Gm@layoutheight=\dimen161
-\Gm@layouthoffset=\dimen162
-\Gm@layoutvoffset=\dimen163
-\Gm@dimlist=\toks26
-
-(C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
-
 (C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count309
+\l__color_backend_stack_int=\count306
 \l__pdf_internal_box=\box55
 ) (bezier_escape.aux)
 \openout1 = `bezier_escape.aux'.
@@ -282,22 +258,22 @@ LaTeX Font Info:    ... okay on input line 20.
 (C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fc-english.def
 File: fc-english.def 2016/01/12
 )
-\c@lstlisting=\count310
+\c@lstlisting=\count307
 
 (C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count311
-\scratchdimen=\dimen164
+\scratchcounter=\count308
+\scratchdimen=\dimen156
 \scratchbox=\box56
-\nofMPsegments=\count312
-\nofMParguments=\count313
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count314
-\MPscratchDim=\dimen165
-\MPnumerator=\count315
-\makeMPintoPDFobject=\count316
-\everyMPtoPDFconversion=\toks28
+\nofMPsegments=\count309
+\nofMParguments=\count310
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count311
+\MPscratchDim=\dimen157
+\MPnumerator=\count312
+\makeMPintoPDFobject=\count313
+\everyMPtoPDFconversion=\toks27
 )
 (C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -308,57 +284,27 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-))
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-*geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
-* paper: <default>
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
-* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
-* \paperwidth=614.295pt
-* \paperheight=794.96999pt
-* \textwidth=469.75502pt
-* \textheight=650.43001pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
-* \topmargin=-37.0pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=12.0pt
-* \footskip=30.0pt
-* \marginparwidth=44.0pt
-* \marginparsep=10.0pt
-* \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+)) [1
 
-[1
+{C:/Users/cowco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+[2] [3]
+Overfull \hbox (10.48775pt too wide) in paragraph at lines 186--186
+[]\OT1/cmr/bx/n/17.28 On the mech-a-nism be-hind grav-i-ta-tional time
+ []
 
-{C:/Users/cowco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
-[3] [4] [5] [6] (bezier_escape.aux) )
+[4] [5] [6] [7] (bezier_escape.aux) )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 105 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 6036 strings out of 476406
- 92517 string characters out of 2789567
- 1858787 words of memory out of 3000000
- 26327 multiletter control sequences out of 15000+600000
+ 5463 strings out of 476406
+ 83350 string characters out of 2789567
+ 1856787 words of memory out of 3000000
+ 25767 multiletter control sequences out of 15000+600000
  520505 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,11n,80p,1018b,301s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 70i,11n,76p,1018b,301s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
 ec/dpi600\tcrm0700.pk> <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jkn
 appen/ec/dpi600\tcrm1200.pk> <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfo
@@ -380,9 +326,9 @@ ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/cowco/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/User
 s/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb
 >
-Output written on bezier_escape.pdf (6 pages, 198244 bytes).
+Output written on bezier_escape.pdf (7 pages, 199655 bytes).
 PDF statistics:
- 111 PDF objects out of 1000 (max. 8388607)
+ 116 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
