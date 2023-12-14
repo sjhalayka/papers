@@ -215,15 +215,29 @@ For a perfect disk, the interaction strength increases by a factor of $c$ with a
 For these perfect shapes, the spatial dimension of the gravitational field goes from being $D = 3$ down to $D = 2$ or $D = 1$.
 
 As for a practical application, it is found that at a distance of roughly $10$ kiloparsecs from the centre of the Milky Way, the spatial dimension of the gravitational field is roughly at least $D = 2.97$.
-The equation used to obtain this measure is likely familiar to researchers of the fractal geometry of nature \cite{mandelbrot}:
+The equations used to obtain this measure are likely familiar to researchers of the fractal geometry of nature \cite{mandelbrot}:
 \begin{equation}
-D = \frac{ \log\left(\frac{c^3 G M}{ v^2 r } \right)} { \log(c) },
+v_n = \sqrt{\frac{GM}{r}},
 \end{equation}
-where $M = 1 \times 10^{41}$ is the mass of the Milky Way's core, $v = 200000$ is the desired circular orbit speed, and the orbit radius is $r = 3 \times 10^{20}$ metres (e.g. roughly $10$ kiloparsecs).
+\begin{equation}
+D = \frac{\log ( c^3 \frac{v_n}{v} ) } { \log(c) },
+\end{equation}
+\begin{equation}
+v = v_n c^{3 - D},
+\end{equation}
+where $M = 1 \times 10^{41}$ is the mass of the Milky Way's core, $v = 220000$ is the desired circular orbit speed, and the orbit radius is $r = 3 \times 10^{20}$ metres (e.g. roughly $10$ kiloparsecs).
 In general, where $ 2 < D < 3$, the value of the dimension will actually be a little bit greater than that given by Eq. 9, since the falloff exponent $x$ is $1 < x < 2$.
 As such, $D$ is the minimum required value (e.g. the lower bound).
 
-To compare, where $v = \sqrt{GM/r} = 149108$, it is found that $D = 3$ exactly (e.g. where Newton's isotropic theory of gravitation still closely applies).
+To compare against the past literature, where $v = \sqrt{GM/r} = 149108$, it is found that $D = 3$ exactly (e.g. where Newton's isotropic theory of gravitation still closely applies).
+
+Also to compare against the past literature, if $D = 3$ is held constant, then the total mass required for a constant orbit speed is increased, including the so-called dark matter:
+\begin{equation}
+M_{total} = \frac{r v^2 c^{2D - 6}}{G} = \frac{r v^2}{G},
+\end{equation}
+\begin{equation}
+M_{dark} = M_{total} - M.
+\end{equation}
 
 Here we have defined a unique view of dark matter, which forms due to anisotropic gravitation in gravitationally bound processes.
 Of greatest importance is the fact that there is a finite number of gravitational degrees of freedom $n$ for a process of mass $M$, and that when aligned, these gravitational degrees of freedom form gravitational bonds that are stronger than those predicted by Newton's isotropic theory of gravitation.
@@ -298,7 +312,7 @@ This many dimensions are needed in order to support a communication spatial dime
 
 
 
-%\pagebreak
+\pagebreak
 
 
 
@@ -308,27 +322,21 @@ This many dimensions are needed in order to support a communication spatial dime
 \begin{thebibliography}{9}
 
 \bibitem{wray} Wray. An Introduction to String Theory. (2011)
-
-
 \bibitem{misner} Misner et al. Gravitation. (1970)
 \bibitem{zuse} Zuse. Calculating Space. (1969)
 \bibitem{wolfram} Wolfram. A New Kind of Science. (2002)
 \bibitem{abrash} Abrash. Michael Abrash's Graphics Programming Black Book. (1997)
-
 \bibitem{wainner} Wainner et al. The Book of Overclocking: Tweak Your PC to Unleash Its Power. (2003)
 \bibitem{mcconnell} McConnell. Code Complete. 2E. (2004)
 \bibitem{pikus} Pikus. The Art of Writing Efficient Programs: An advanced programmer's guide to efficient hardware utilization and compiler optimizations using C++ examples. (2021)
-
-
 \bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
 \bibitem{susskind} Susskind. The World as a Hologram. (1994)
 \bibitem{bousso} Bousso. The holographic principle. (2002)
-
-%\bibitem{stevens} Stevens et al. Unix Network Programming, Volume 1: The Sockets Networking API. (2003)
-
 \bibitem{binney} Binney et al. Galactic Dynamics. Second Edition. (2008)
-
 \bibitem{mandelbrot} Mandelbrot. The Fractal Geometry of Nature. (1982)
+
+
+
 
 
 %\bibitem{berger} Berger et al. Snowmass 2021 White Paper: Cosmogenic Dark Matter and Exotic Particle Searches in Neutrino Experiments. (2022)
