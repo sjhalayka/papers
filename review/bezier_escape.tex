@@ -186,10 +186,13 @@ A copy of the C++ code for Figs. 3 through 9 can be obtained from:
 \url{https://github.com/sjhalayka/ellipsoid_emitter}
 
 This C++ code calculates an anisotropic gravitational field, and allows the coder to view the results using OpenGL or gnuplot.
-For instance, Fig. 3 shows the intersection count (e.g. field strength) as the dimension of the gravitational field goes from $D = 2.001$ to $D = 3$. 
+For instance, Fig. 3 shows the intersection count (e.g. field strength) as the dimension of the gravitational field goes from $D = 2.001$ to $D = 3.0$. 
 Figs. 4 through 6 show an example gravitational field that goes from $D = 3.0$ to $D = 2.5$ to $D = 2.001$.
-Finally, Figs. 7 through 9 show that there are fractal patterns to be found when analyzing the data.
-
+Finally, Figs. 7 through 9 show that there are fractal patterns to be found when analyzing the data -- here we define the fractionality of $D$ as it goes from $D = 3.0$ to $D = 2.001$ as
+\begin{equation}
+\alpha = 1 - 2 \left(\frac{1}{2} - (D\;\textrm{fmod}\;1.0)\right),
+\end{equation}
+where $\textrm{fmod}$ is the floating-point (e.g. real) modulo operator.
 
 
 \begin{thebibliography}{9}
@@ -232,7 +235,7 @@ Note that $D = 2.96$ at $r = 3 \times 10^{20}$ metres from the Galactic centre (
   \caption{
 Here the $x$ axis is dimension $D$, and the $y$ axis is intersection count (e.g. field strength).
 It forms a nice sigmoid curve.
-Although not shown here, it is important to also note that falloff decreases from $1/r^2$ to $1/r$ as $D$ reduces from $3$ to $2$ -- see Figs. 4 through 6.
+Although not shown here, it is important to also note that falloff decreases from $1/r^2$ to $1/r^1$ as $D$ reduces from $3$ to $2$ -- see Figs. 4 through 6.
 }
 \end{figure}
 
@@ -248,7 +251,7 @@ Although not shown here, it is important to also note that falloff decreases fro
   \includegraphics[width = 5 in]{3.png}
   \caption{
 Example of an isotropic emitter.
-Here $D = 3$. 
+Here $D = 3.0$. 
 The emitter is spherical.
 The positions are placed pseudorandomly on a 2-sphere, and the normals are calculated using the same sphere.
 The strength of the gravitational field is $G$, and the falloff is related to $1/r^2$ -- in other words, standard Newtonian gravitation.
@@ -289,7 +292,8 @@ The strength of the gravitational field is like $Gc$, and the falloff is related
   \includegraphics[width = 4 in]{2.001_pow.png}
   \caption{
 Here $D = 2.001$.
-The $x$ axis is distance $r$, and the $y$ axis is intersection count times inverse falloff $f_i = r^1$.
+Fractionality is $\alpha \sim 0$.
+The $x$ axis is distance $r$, and the $y$ axis is intersection count times inverse falloff $r^1$.
 Note that the output appears to be fractal in nature -- non-differentiable anyway.
 }
 \end{figure}
@@ -299,7 +303,8 @@ Note that the output appears to be fractal in nature -- non-differentiable anywa
   \includegraphics[width = 4 in]{2.5_pow.png}
   \caption{
 Here $D = 2.5$.
-The $x$ axis is distance $r$, and the $y$ axis is intersection count times inverse falloff $f_i = r^{1.5}$.
+Fractionality is $\alpha \sim 1$.
+The $x$ axis is distance $r$, and the $y$ axis is intersection count times inverse falloff $r^{1.5}$.
 Note that the output appears to be differentiable.
 }
 \end{figure}
@@ -308,11 +313,11 @@ Note that the output appears to be differentiable.
 \centering
   \includegraphics[width = 4 in]{3.0_pow.png}
   \caption{
-Here $D = 3$.
-The $x$ axis is distance $r$, and the $y$ axis is intersection count times inverse falloff $f_i = r^2$.
+Here $D = 3.0$.
+Fractionality is $\alpha \sim 0$.
+The $x$ axis is distance $r$, and the $y$ axis is intersection count times inverse falloff $r^2$.
 Note that the output appears to be fractal in nature -- non-differentiable anyway.
-And so, it appears that the more fractional the dimension, the more differentiable the result.
-Here we define this fractionality as $\alpha = 1 - 2 (1/2 - (D\;\textrm{fmod}\;1.0))$, where $\textrm{fmod}$ is the floating-point (e.g. real) modulo operator.
+And so, it appears that the greater the fractionality, the more differentiable the result.
 }
 \end{figure}
 
