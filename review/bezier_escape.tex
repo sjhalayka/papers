@@ -133,7 +133,7 @@ Note that, unlike with the many Wilson lines per process, there is only one Wils
 This means that gravitational interactions are {\textit{connectionless}} -- isotropic gravitation is {\textit{broadcast}}; there is no specific recipient (e.g. everyone is a target).
 On the other hand, the strong interactions are more directed, and {\textit{connected}} -- strong interaction is {\textit{unicast}} or {\textit{multicast}}; there is a specific recipient (e.g. not everyone is a target).
 For instance, the transition from broadcast transmission to directed transmission occurs as dark matter is factored in (e.g. where $D < 3$).
-See Figs. 1 and 2 for an analytical solution for anisotropic gravitation.
+See Figs. 1 and 2 for a simplified analytical solution for anisotropic gravitation, which does not take the change in gravitational falloff into account.
 Connectedness is an attribute of the non-gravitational interactions (e.g. weak, electromagnetic, strong, and 5th interaction).
 
 
@@ -214,6 +214,7 @@ where $\textrm{fmod}$ is the floating-point (e.g. real) modulo operator.
   \caption{ C++ code for Galactic orbit. 
 Here $D$ represents dimension.
 Note that where $D < 3$ that $D$ is the lower bound, and that the value of $D$ will actually be a little bit higher since the strength of the gravitation field increases {\textit{and}} falloff decreases as $D$ reduces.
+In other words, the code does not take this small change in falloff into account.
 }
 \end{figure}
 
