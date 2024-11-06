@@ -210,11 +210,11 @@ where $\textrm{fmod}$ is the floating-point (e.g. real) modulo operator.
 
 \begin{figure} 
 \centering
-  \includegraphics[width = 6 in]{code.png}
+  \includegraphics[width = 5 in]{code.png}
   \caption{ C++ code for Galactic orbit. 
 Here $D$ represents dimension.
 Note that where $D < 3$ that $D$ is the lower bound, and that the value of $D$ will actually be a little bit higher since the strength of the gravitation field increases {\textit{and}} falloff decreases as $D$ reduces.
-In other words, the code does not take this small change in falloff into account.
+In other words, the code does not take this small change in falloff into account, in order to keep things as simple as possible while still highlighting the role of fractional dimension.
 }
 \end{figure}
 
@@ -223,8 +223,8 @@ In other words, the code does not take this small change in falloff into account
 \centering
   \includegraphics[width = 5 in]{dimension_graph.png}
   \caption{ Output from the C++ code in Fig 1.
-Here the $x$ axis is the distance from the Galactic centre $r$, and the $y$ axis is dimension $D$ lower bound.
-Note that $D = 2.96$ at $r = 3 \times 10^{20}$ metres from the Galactic centre (e.g. the solar orbit radius).
+Here the $x$ axis is the distance from the Galactic centre $r$, and the $y$ axis is dimension $D$.
+Note that the lower bound is $D = 2.96$ at $r = 3 \times 10^{20}$ metres from the Galactic centre (e.g. the Solar orbit radius).
 }
 \end{figure}
 
