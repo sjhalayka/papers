@@ -189,7 +189,7 @@ A copy of the C++ code for Figs. 3 through 7 can be obtained from:
 This C++ code calculates an anisotropic gravitational field, and allows the coder to view the results using OpenGL or gnuplot.
 For instance, Fig. 3 shows the intersection count (e.g. field strength) as the dimension of the gravitational field reduces from $D = 3.0$ to $D = 2.001$. 
 Figs. 4 through 6 show an example gravitational field that goes from $D = 3.0$ to $D = 2.5$ to $D = 2.001$.
-Fig 7. shows an analysis of the data.
+Fig 7. shows an analysis of the data -- the result is that $GM$ is a constant.
 
 
 
@@ -243,13 +243,20 @@ Note that the lower bound is $D = 2.96$ at $r = 3 \times 10^{20}$ metres from th
 
 
 
+
+
+
+
+
+
+
 \begin{figure} 
 \centering
   \includegraphics[width = 5 in]{transition.png}
   \caption{
 Here the $x$ axis is dimension $D$, and the $y$ axis is intersection count (e.g. field strength).
 It forms a nice sigmoid curve.
-Although not shown here, it is important to also note that falloff decreases from $1/r^2$ to $1/r^1$ as $D$ reduces from $3$ to $2$ -- see Figs. 4 through 6.
+%Although not shown here, it is important to also note that falloff decreases from $1/r^2$ to $1/r^1$ as $D$ reduces from $3$ to $2$ -- see Figs. 4 through 6.
 }
 \end{figure}
 
@@ -268,7 +275,7 @@ Example of an isotropic emitter.
 Here $D = 3.0$. 
 The emitter is spherical.
 The positions are placed pseudorandomly on a 2-sphere, and the normals are calculated using the same sphere.
-The strength of the gravitational field is $G$, and the falloff is related to $1/r^2$ -- in other words, standard Newtonian gravitation.
+The strength of the gravitational field is $G$, and the intersection count gradient falloff is related to $1/r^3$ -- in other words, standard Newtonian gravitation.
 }
 \end{figure}
 
@@ -281,7 +288,7 @@ Example of an anisotropic emitter.
 Here $D = 2.5$. 
 The emitter is ellipsoidal.
 The positions are placed on an oblate (e.g. flattened) ellipsoid, and the normals are calculated by using the dual prolate (e.g. tall) ellipsoid.
-The strength of the gravitational field is like $G c^{0.5}$, and the falloff is related to $1/r^{1.5}$.
+The strength of the gravitational field is like $G c^{0.5}$, and the intersection count gradient falloff is related to $1/r^{2.5}$.
 }
 \end{figure}
 
@@ -294,7 +301,7 @@ Example of an anisotropic emitter.
 Here $D = 2.001$. 
 The emitter is practically circular. 
 This figure shows the circle edge-on, which is why it looks like a straight line.
-The strength of the gravitational field is like $Gc$, and the falloff is related to $1/r^1$.
+The strength of the gravitational field is like $Gc$, and the intersection count gradient falloff is related to $1/r^2$.
 }
 \end{figure}
 
