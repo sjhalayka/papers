@@ -189,7 +189,7 @@ A copy of the C++ code for Figs. 3 through 7 can be obtained from:
 This C++ code calculates an anisotropic gravitational field, and allows the coder to view the results using OpenGL or gnuplot.
 For instance, Fig. 3 shows the intersection count (e.g. field strength) as the dimension of the gravitational field reduces from $D = 3.0$ to $D = 2.001$. 
 Figs. 4 through 6 show an example gravitational field that goes from $D = 3.0$ to $D = 2.5$ to $D = 2.001$.
-Fig 7. shows an analysis of the data -- the result is that $GM$ is a constant.
+Fig 7. shows an analysis of the data -- the result is that $GM c^{3 - D}$ is a constant.
 
 
 
@@ -365,7 +365,7 @@ And so, it appears that the greater the fractionality, the more differentiable t
 \centering
   \includegraphics[width = 7 in]{multi_plot.png}
   \caption{
-The $x$ axis is distance $r$, and the $y$ axis (log scaled) are the intersection count gradient times the inverse falloffs $r^2$, $r^{2.5}$, and $r^3$.
+The $x$ axis is distance $r$, and the $y$ axis (log scaled) are the intersection count gradient times the inverse falloffs $GM c^{1} r^2$, $GM c^{0.5} r^{2.5}$, and $GM c^0 r^3$.
 }
 \end{figure}
 
