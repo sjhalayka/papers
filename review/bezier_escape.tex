@@ -13,7 +13,7 @@
 \usepackage{amsmath}
 \usepackage{url}
 \usepackage[margin=0.8in]{geometry}
-\usepackage{comment}
+%\usepackage{comment}
 %\doublespace
 
 \usepackage{xcolor,colortbl}
@@ -194,19 +194,6 @@ Fig 7. shows an analysis of the data -- the result is that $GM c^{3 - D}$ is a c
 
 
 
-\begin{comment}
-
-
-
-Finally, Figs. 7 through 9 show that there are fractal-like patterns to be found when analyzing the data -- here we define the fractionality of $D$ as it goes from $D = 3.0$ to $D = 2.001$ as
-\begin{equation}
-\alpha = 1 - 2 \left(\frac{1}{2} - (D\;\textrm{fmod}\;1.0)\right),
-\end{equation}
-where $\textrm{fmod}$ is the floating-point (e.g. real) modulo operator.
-
-
-\end{comment}
-
 
 \begin{thebibliography}{9}
 
@@ -312,50 +299,6 @@ The strength of the gravitational field is like $Gc$, and the intersection count
 
 
 
-\begin{comment}
-
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 4 in]{3.0_pow.png}
-  \caption{
-Here $D = 3.0$.
-Fractionality is $\alpha \sim 0$.
-The $x$ axis is distance $r$, and the $y$ axis is intersection count times inverse falloff $r^2$.
-Note that the output appears to be non-differentiable, but non-fractal.
-}
-\end{figure}
-
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 4 in]{2.5_pow.png}
-  \caption{
-Here $D = 2.5$.
-Fractionality is $\alpha \sim 1$.
-The $x$ axis is distance $r$, and the $y$ axis is intersection count times inverse falloff $r^{1.5}$.
-Note that the output appears to be differentiable, but non-fractal.
-}
-\end{figure}
-
-
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 4 in]{2.001_pow.png}
-  \caption{
-Here $D = 2.001$.
-Fractionality is $\alpha \sim 0$.
-The $x$ axis is distance $r$, and the $y$ axis is intersection count times inverse falloff $r^1$.
-Note that the output appears to be non-differentiable, but non-fractal.
-And so, it appears that the greater the fractionality, the more differentiable the result.
-}
-\end{figure}
-
-
-\end{comment}
-
-
 
 
 
@@ -363,13 +306,35 @@ And so, it appears that the greater the fractionality, the more differentiable t
 
 \begin{figure} 
 \centering
-  \includegraphics[width = 7 in]{multi_plot.png}
+  \includegraphics[width = 6 in]{multi_plot.png}
   \caption{
 The $x$ axis is distance $r$, and the $y$ axis (log scaled) are the intersection count gradient times the inverse falloffs $GM c^{1} r^2$, $GM c^{0.5} r^{2.5}$, and $GM c^0 r^3$.
 The banding (especially noticeable at large distance, especially where $D = 3.0$) occurs due to a relatively small oscillator count $n$ (e.g. $1 \times 10^{10}$).
 }
 \end{figure}
 
+
+\pagebreak
+
+
+
+\begin{figure} 
+\centering
+  \includegraphics[width = 6 in]{10000000.png}
+  \caption{
+The $x$ axis is distance $r$, and the $y$ axis is the intersection count gradient, where $D =3.0$. $n = 10,000,000$.
+}
+\end{figure}
+
+
+\begin{figure} 
+\centering
+  \includegraphics[width = 6 in]{100000000.png}
+  \caption{
+The $x$ axis is distance $r$, and the $y$ axis is the intersection count gradient, where $D =3.0$. $n = 100,000,000$.
+The greater the number of oscillators $n$, the greater the number of bands.
+}
+\end{figure}
 
 
 
