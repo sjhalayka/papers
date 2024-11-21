@@ -261,7 +261,7 @@ It forms a nice sigmoid curve.
 Example of an isotropic emitter.
 Here $D = 3.0$. 
 The emitter is spherical.
-The positions are placed pseudorandomly on a 2-sphere, and the normals are calculated using the same sphere.
+The oscillators are placed pseudorandomly on a 2-sphere, and the normals are calculated using the same sphere.
 The strength of the gravitational field is $G$, and the intersection count gradient falloff is related to $1/r^3$ -- in other words, standard Newtonian gravitation.
 }
 \end{figure}
@@ -274,7 +274,7 @@ The strength of the gravitational field is $G$, and the intersection count gradi
 Example of an anisotropic emitter.
 Here $D = 2.5$. 
 The emitter is ellipsoidal.
-The positions are placed on an oblate (e.g. flattened) ellipsoid, and the normals are calculated by using the dual prolate (e.g. tall) ellipsoid.
+The oscillators are placed on an oblate (e.g. flattened) ellipsoid, and the normals are calculated by using the dual prolate (e.g. tall) ellipsoid.
 The strength of the gravitational field is like $G c^{0.5}$, and the intersection count gradient falloff is related to $1/r^{2.5}$.
 }
 \end{figure}
@@ -334,8 +334,9 @@ The banding (especially noticeable at large distance, especially where $D = 3.0$
   \includegraphics[width = 6 in]{100000000.png}
   \caption{
 Demonstration of banding.
-The $x$ axis is distance $r$, and the $y$ axis (not log scaled) is the intersection count gradient times $GM c^0 r^3$, where $D = 3.0$. $n = 100,000,000$.
 The greater the number of oscillators $n$, the greater the number of bands.
+The $x$ axis is distance $r$, and the $y$ axis (not log scaled) is the intersection count gradient times $GM c^0 r^3$, where $D = 3.0$.
+$n = 100,000,000$.
 The bands form an attractor.
 }
 \end{figure}
