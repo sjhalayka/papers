@@ -15,6 +15,7 @@
 \usepackage[margin=1.0in]{geometry}
 \usepackage{listings}
 
+
 \usepackage{xcolor}
 \lstset { %
     language=C++,
@@ -41,7 +42,9 @@
 \end{abstract}
 
 
-\section{Integer line count}
+\section{Numerical: integer field line count}
+
+
 
 \begin{lstlisting}
 long long unsigned int get_intersecting_line_count(
@@ -70,7 +73,6 @@ long long unsigned int get_intersecting_line_count(
 
 
 \begin{lstlisting}
-
 int main(int argc, char** argv)
 {
 	// Field line count
@@ -149,14 +151,13 @@ int main(int argc, char** argv)
 
 	return 0;
 }
-
 \end{lstlisting}
 
 
 
 
 
-\section{Real line count}
+\section{Analytical: real field line count, where $n >> 1$}
 
 
 \begin{lstlisting}
@@ -176,12 +177,10 @@ real_type get_intersecting_line_count(
 	
 	return n * ratio;
 }
-
 \end{lstlisting}
 
 
 \begin{lstlisting}
-
 int main(int argc, char** argv)
 {
 	// Field line count
@@ -243,7 +242,6 @@ int main(int argc, char** argv)
 
 	return 0;
 }
-
 \end{lstlisting}
 
 
