@@ -21,6 +21,7 @@
     language=C++,
     backgroundcolor=\color{white}, % set backgroundcolor
     basicstyle=\footnotesize,% basic font setting
+    showstringspaces=false,
 }
 
 
@@ -104,9 +105,7 @@ int main(int argc, char** argv)
 		(end_distance - start_distance) 
 		/ (distance_res - 1);
 
-	for (size_t step_index = 0;
-		step_index < distance_res; 
-		step_index++)
+	for (size_t step_index = 0; step_index < distance_res; step_index++)
 	{
 		const real_type r = 
 			start_distance + 
