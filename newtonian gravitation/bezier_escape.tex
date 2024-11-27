@@ -19,7 +19,7 @@
 \usepackage{xcolor}
 \lstset { %
     language=C++,
-    backgroundcolor=\color{white}, % set backgroundcolor
+    backgroundcolor=\color{black!5}, % set backgroundcolor
     basicstyle=\footnotesize,% basic font setting
     showstringspaces=false,
 }
@@ -97,9 +97,9 @@ int main(int argc, char** argv)
 	ofstream out_file(filename.c_str());
 	out_file << setprecision(30);
 
-	const real_type start_distance = 10;
-	const real_type end_distance = 100;
-	const size_t distance_res = 1000;
+	const real_type start_distance = 10.0;
+	const real_type end_distance = 100.0;
+	const size_t distance_res = 1000.0;
 
 	const real_type distance_step_size = 
 		(end_distance - start_distance) 
@@ -112,9 +112,9 @@ int main(int argc, char** argv)
 			step_index * distance_step_size;
 
 		const vector_3 receiver_pos(r, 0, 0);
-		const real_type receiver_radius = 1;
+		const real_type receiver_radius = 1.0;
 
-		const real_type epsilon = 1;
+		const real_type epsilon = 1.0;
 
 		vector_3 receiver_pos_plus = receiver_pos;
 		receiver_pos_plus.x += epsilon;
@@ -138,7 +138,7 @@ int main(int argc, char** argv)
 		
 		const real_type gradient_strength = 
 			-gradient 
-			/ (4 * pi * receiver_radius * receiver_radius);
+			/ (receiver_radius * receiver_radius);
 
 		cout << "r: " << r << " gradient strength: " 
 		<< gradient_strength << endl;
@@ -156,7 +156,7 @@ int main(int argc, char** argv)
 
 
 
-\section{Analytical: real field line count, where $n >> 1$}
+\section{Analytical: real field line count}
 
 
 \begin{lstlisting}
@@ -180,59 +180,85 @@ real_type get_intersecting_line_count(
 
 
 \begin{lstlisting}
-int main(int argc, char** argv)
+int main(int argc, char** argv)int main(int argc, char** argv)
 {
-	// Field line count
-	const real_type n = 1e70;
+	const real_type emitter_radius = 1.0;
+	
+	const real_type emitter_area = 
+		4.0 * pi * emitter_radius * emitter_radius;
 
-	string filename = "newton.txt";
+	// Field line count
+	// re: holographic principle:
+	const real_type n = 
+		(c3 * emitter_area) 
+		/ (log(2.0) * 4.0 * G * hbar);
+	
+	const real_type emitter_mass = c2 * emitter_radius / (2.0 * G);
+
+	// 1.73502e+70 is the 't Hooft-Susskind constant:
+	// the number of field lines for a black hole of
+	// unit Schwarzschild radius
+	//
+	//const real_type G_ = 
+	//	(c3 * pi) 
+	//	/ (log(2.0) * hbar * 1.73502e+70);
+
+	const string filename = "newton.txt";
 	ofstream out_file(filename.c_str());
 	out_file << setprecision(30);
 
-	const real_type start_distance = 10;
-	const real_type end_distance = 100;
+	const real_type start_distance = 10.0;
+	const real_type end_distance = 100.0;
 	const size_t distance_res = 1000;
 
 	const real_type distance_step_size =
-		(end_distance - start_distance) 
+		(end_distance - start_distance)
 		/ (distance_res - 1);
 
 	for (size_t step_index = 0; step_index < distance_res; step_index++)
 	{
-		const real_type r = 
+		const real_type r =
 			start_distance + step_index * distance_step_size;
 
 		const vector_3 receiver_pos(r, 0, 0);
-		const real_type receiver_radius = 1;
+		const real_type receiver_radius = 1.0;
 
-		const real_type epsilon = 1;
+		const real_type epsilon = 1.0;
 
 		vector_3 receiver_pos_plus = receiver_pos;
 		receiver_pos_plus.x += epsilon;
 
 		// https://en.wikipedia.org/wiki/Directional_derivative
-		const real_type collision_count_plus = 
+		const real_type collision_count_plus =
 			get_intersecting_line_count(
-				n, 
-				receiver_pos_plus, 
+				n,
+				receiver_pos_plus,
 				receiver_radius);
-		
-		const real_type collision_count = 
+
+		const real_type collision_count =
 			get_intersecting_line_count(
-				n, 
-				receiver_pos, 
+				n,
+				receiver_pos,
 				receiver_radius);
-		
-		const real_type gradient = 
-			(collision_count_plus - collision_count) 
+
+		const real_type gradient =
+			(collision_count_plus - collision_count)
 			/ epsilon;
 
-		const real_type gradient_strength = 
-			-gradient 
-			/ (4 * pi * receiver_radius * receiver_radius);
+		real_type gradient_strength =
+			-gradient
+			/ (receiver_radius * receiver_radius);
 
-		cout << "r: " << r << " gradient strength: " 
-		<< gradient_strength << endl;
+		const real_type gradient_strength_ = 
+			n / (2.0 * pow(receiver_pos.x, 3.0));
+
+		const real_type newton_strength = 
+			n * c * hbar * log(2.0)
+			/ 
+			(pow(receiver_pos.x, 2.0) * emitter_mass * 4.0 * pi);
+
+		cout << "r: " << r << " gradient strength: "
+			<< gradient_strength << endl;
 
 		out_file << r << " " << gradient_strength << endl;
 	}
