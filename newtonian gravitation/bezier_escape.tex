@@ -43,9 +43,12 @@
 \end{abstract}
 
 
+
+
+
+
+
 \section{Numerical: integer field line count}
-
-
 
 \begin{lstlisting}
 long long unsigned int get_intersecting_line_count(
@@ -70,8 +73,6 @@ long long unsigned int get_intersecting_line_count(
 	return count;
 }
 \end{lstlisting}
-
-
 
 \begin{lstlisting}
 int main(int argc, char** argv)
@@ -99,7 +100,7 @@ int main(int argc, char** argv)
 
 	const real_type start_distance = 10.0;
 	const real_type end_distance = 100.0;
-	const size_t distance_res = 1000.0;
+	const size_t distance_res = 1000;
 
 	const real_type distance_step_size = 
 		(end_distance - start_distance) 
@@ -158,6 +159,47 @@ int main(int argc, char** argv)
 
 \section{Analytical: real field line count}
 
+\begin{equation}
+n = \frac{c^3 A}{ 4 G \hbar \log 2}
+\end{equation}
+
+
+
+\begin{equation}
+\alpha = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}
+\end{equation}
+
+\begin{equation}
+g = \frac{-\alpha}{r_r^2}
+\end{equation}
+
+\begin{equation}
+g = \frac{n}{2 R^3}
+\end{equation}
+
+\begin{equation}
+g_N = \frac{c^4 A}{16 \pi G M R^2}
+\end{equation}
+
+\begin{equation}
+g_N = \frac{G M}{R^2}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{lstlisting}
 real_type get_intersecting_line_count(
@@ -177,7 +219,6 @@ real_type get_intersecting_line_count(
 	return n * ratio;
 }
 \end{lstlisting}
-
 
 \begin{lstlisting}
 int main(int argc, char** argv)
