@@ -255,7 +255,18 @@ int main(int argc, char** argv)
 		const real_type newton_strength = 
 			n * c * hbar * log(2.0)
 			/ 
-			(pow(receiver_pos.x, 2.0) * emitter_mass * 4.0 * pi);
+			(pow(receiver_pos.x, 2.0) 
+				* emitter_mass * 4.0 * pi);
+
+		const real_type newton_strength_ =
+			c4 * emitter_area
+			/ (16.0 * pi * G 
+				* pow(receiver_pos.x, 2.0) * emitter_mass);
+
+		const real_type newton_strength__ =
+			G * emitter_mass / pow(receiver_pos.x, 2.0);
+
+		//cout << newton_strength__ / newton_strength << endl;
 
 		cout << "r: " << r << " gradient strength: "
 			<< gradient_strength << endl;
