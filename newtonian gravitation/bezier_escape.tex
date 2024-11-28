@@ -94,7 +94,7 @@ const real_type hbar = h / (2.0 * pi);
 
 
 
-\section{Integer field line count}
+\section{Brute force: integer field line count}
 
 Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
 \begin{equation}
@@ -230,8 +230,9 @@ The gradient strengths are:
 g = \frac{-\alpha}{r^2} \approx \frac{n}{2 R^3},
 \end{equation}
 \begin{equation}
-g_N = \frac{g R c \hbar \log 2}{2 \pi M} = \frac{n c \hbar \log 2}{4 \pi M R^2} = \frac{c^4 A}{16 \pi G M R^2} = \frac{G M}{R^2}.
+g_N = \frac{g R c \hbar \log 2}{2 \pi M} = \frac{n c \hbar \log 2}{4 \pi M R^2} = \frac{A c^4}{16 \pi G M R^2} = \frac{G M}{R^2}.
 \end{equation}
+
 
 
 \begin{lstlisting}
@@ -368,6 +369,13 @@ This method is meant to be a stepping stone for the next section.
 
 \section{Modeling Mercury's orbit via numerical integration}
 
+The initial conditions are:
+\begin{lstlisting}
+vector_3 Mercury_pos(0, 69817079000.0, 0);
+vector_3 Mercury_vel(-38860, 0, 0);
+\end{lstlisting}
+
+The orbit code is:
 \begin{lstlisting}
 vector_3 Newtonian_acceleration(
 	const real_type emitter_mass,
@@ -406,13 +414,13 @@ void proceed_Euler(
 \begin{lstlisting}
 void idle_func(void)
 {
-	proceed_Euler(receiver_pos, receiver_vel, G, dt);
+	proceed_Euler(Mercury_pos, Mercury_vel, G, dt);
 }
 \end{lstlisting}
 
 
 
-
+Rather than using Euler intrgration, the order-4 symplectic integration does a better job at conserving energy:
 \begin{lstlisting}
 void proceed_symplectic_order_4(
 	vector_3& pos, 
