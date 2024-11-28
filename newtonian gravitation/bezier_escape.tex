@@ -94,7 +94,7 @@ const real_type hbar = h / (2.0 * pi);
 
 
 
-\section{Numerical: integer field line count}
+\section{Integer field line count}
 
 Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
 \begin{equation}
@@ -208,11 +208,12 @@ int main(int argc, char** argv)
 }
 \end{lstlisting}
 
+While this method works, it is both memory and processor intensive.
+Thus, this method is meant to be a stepping stone for the next section.
 
 
 
-
-\section{Analytical: real field line count}
+\section{Real field line count}
 
 Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
 \begin{equation}
@@ -229,7 +230,7 @@ The gradient strengths are:
 g = \frac{-\alpha}{r^2} \approx \frac{n}{2 R^3},
 \end{equation}
 \begin{equation}
-g_N = \frac{n c \hbar \log 2}{4 \pi M R^2} = \frac{c^4 A}{16 \pi G M R^2} = \frac{G M}{R^2}.
+g_N = \frac{g R c \hbar \log 2}{2 \pi M} = \frac{n c \hbar \log 2}{4 \pi M R^2} = \frac{c^4 A}{16 \pi G M R^2} = \frac{G M}{R^2}.
 \end{equation}
 
 
@@ -341,7 +342,11 @@ int main(int argc, char** argv)
 		const real_type newton_strength__ =
 			G * emitter_mass / pow(receiver_pos.x, 2.0);
 
-		//cout << newton_strength__ / newton_strength << endl;
+		const real_type newton_strength___ =
+			gradient_strength_ * receiver_pos.x * c * hbar * log(2)
+			/ (2 * pi * emitter_mass);
+
+		//cout << newton_strength___ / newton_strength << endl;
 
 		cout << "r: " << r << " gradient strength: "
 			<< gradient_strength << endl;
@@ -354,6 +359,10 @@ int main(int argc, char** argv)
 	return 0;
 }
 \end{lstlisting}
+
+This method is faster and less memory intensive when compared to the integer field count method.
+This method is meant to be a stepping stone for the next section.
+
 
 
 
