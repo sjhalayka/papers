@@ -44,7 +44,7 @@
 
 
 
-\section{Constants}
+\section{Typedefs}
 
 \begin{lstlisting}
 typedef long double real_type;
@@ -69,17 +69,29 @@ typedef number<
 typedef cpp_bin_float_oct real_type;
 \end{lstlisting}
 
+
+
+
+
+\section{Constants}
+
 \begin{lstlisting}
+const real type dt = 10000; // 2.77777 hours
+
 const real_type pi = 4.0 * atan(1.0);
+
 const real_type G = 6.67430e-11;
 const real_type c = 299792458;
 const real_type c2 = c * c;
 const real_type c3 = c * c * c;
 const real_type c4 = c * c * c * c;
-
 const real_type h = 6.62607015e-34;
 const real_type hbar = h / (2.0 * pi);
 \end{lstlisting}
+
+
+
+
 
 
 \section{Numerical: integer field line count}
@@ -201,8 +213,6 @@ int main(int argc, char** argv)
 
 
 \section{Analytical: real field line count}
-
-
 
 Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
 \begin{equation}
@@ -347,7 +357,7 @@ int main(int argc, char** argv)
 
 
 
-\section{Newtonian gravitation via symplectic integration}
+\section{Modeling Mercury's orbit via numerical integration}
 
 \begin{lstlisting}
 vector_3 Newtonian_acceleration(
