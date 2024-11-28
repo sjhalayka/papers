@@ -44,8 +44,42 @@
 
 
 
+\section{Constants}
 
+\begin{lstlisting}
+typedef long double real_type;
+\end{lstlisting}
 
+or
+
+\begin{lstlisting}
+#include <boost/multiprecision/cpp_bin_float.hpp>
+using namespace boost::multiprecision;
+
+typedef number<
+	backends::cpp_bin_float<
+		237, 
+		backends::digit_base_2, 
+		void, 
+		std::int32_t, 
+		-262142, 
+		262143>, 
+	et_off> cpp_bin_float_oct;
+
+typedef cpp_bin_float_oct real_type;
+\end{lstlisting}
+
+\begin{lstlisting}
+const real_type pi = 4.0 * atan(1.0);
+const real_type G = 6.67430e-11;
+const real_type c = 299792458;
+const real_type c2 = c * c;
+const real_type c3 = c * c * c;
+const real_type c4 = c * c * c * c;
+
+const real_type h = 6.62607015e-34;
+const real_type hbar = h / (2.0 * pi);
+\end{lstlisting}
 
 
 \section{Numerical: integer field line count}
@@ -62,7 +96,7 @@ g = \frac{-\alpha}{r^2}.
 \begin{lstlisting}
 long long unsigned int get_intersecting_line_count(
 	const vector<vector_3>& unit_vectors,
-	const vector_3 sphere_location,
+	const vector_3& sphere_location,
 	const real_type sphere_radius)
 {
 	long long unsigned int count = 0;
@@ -192,7 +226,7 @@ g_N = \frac{n c \hbar \log 2}{4 \pi M R^2} = \frac{c^4 A}{16 \pi G M R^2} = \fra
 \begin{lstlisting}
 real_type get_intersecting_line_count(
 	const real_type n,
-	const vector_3 sphere_location,
+	const vector_3& sphere_location,
 	const real_type sphere_radius)
 {
 	const real_type big_area = 
