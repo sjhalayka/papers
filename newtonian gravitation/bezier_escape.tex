@@ -211,9 +211,17 @@ int main(int argc, char** argv)
 While this method works, it is both memory and processor intensive.
 Thus, this method is meant to be a stepping stone for the next section.
 
+\begin{figure} 
+\centering
+  \includegraphics[width = 5 in]{3.png}
+  \caption{
+Example of an isotropic emitter.
+The emitter is spherical.
+The field line starting locations are placed pseudorandomly on a 2-sphere, and the normals (e.g. field line directions) are calculated using the same sphere.
+}
+\end{figure}
 
-
-\section{Real field line count}
+\section{Heuristic: real field line count}
 
 Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
 \begin{equation}
@@ -222,7 +230,7 @@ Where $r$ is the receiver radius, $R$ is the distance from the centre of the emi
 
 Here we assume that the maximum number of field lines is given by the holographic principle:
 \begin{equation}
-n = \frac{c^3 A}{ 4 G \hbar \log 2}.
+n = \frac{A c^3}{ 4 G \hbar \log 2}.
 \end{equation}
 
 The gradient strengths are:
@@ -344,7 +352,8 @@ int main(int argc, char** argv)
 			G * emitter_mass / pow(receiver_pos.x, 2.0);
 
 		const real_type newton_strength___ =
-			gradient_strength_ * receiver_pos.x * c * hbar * log(2)
+			gradient_strength_ * receiver_pos.x 
+			* c * hbar * log(2)
 			/ (2 * pi * emitter_mass);
 
 		//cout << newton_strength___ / newton_strength << endl;
@@ -367,7 +376,7 @@ This method is meant to be a stepping stone for the next section.
 
 
 
-\section{Modeling Mercury's orbit via numerical integration}
+\section{Application: modeling Mercury's orbit using numerical integration}
 
 The initial conditions are:
 \begin{lstlisting}
@@ -392,6 +401,7 @@ vector_3 Newtonian_acceleration(
 }
 \end{lstlisting}
 
+Here we show the Euler integration, which is extremely simple:
 \begin{lstlisting}
 void proceed_Euler(
 	vector_3& pos, 
@@ -411,6 +421,7 @@ void proceed_Euler(
 
 \end{lstlisting}
 
+And so the passage of time is computed as:
 \begin{lstlisting}
 void idle_func(void)
 {
@@ -420,7 +431,7 @@ void idle_func(void)
 
 
 
-Rather than using Euler intrgration, the order-4 symplectic integration does a better job at conserving energy:
+On the other hand, rather than using Euler integration, the order-4 symplectic integration does a better job at conserving energy, but at a speed cost:
 \begin{lstlisting}
 void proceed_symplectic_order_4(
 	vector_3& pos, 
@@ -428,7 +439,7 @@ void proceed_symplectic_order_4(
 	real_type G, 
 	real_type dt)
 {
-	static real_type const cr2 = 
+	static const real_type cr2 = 
 		pow(2.0, 1.0 / 3.0);
 
 	static const real_type c[4] =
@@ -471,11 +482,25 @@ void proceed_symplectic_order_4(
 \end{lstlisting}
 
 
+
+
+
+
+
+
+\section{Final code}
+
 A final code, which models the orbit of Mercury, is at:
 
 \url{https://github.com/sjhalayka/mercury_orbit_glut}
 
-
+\begin{figure} 
+\centering
+  \includegraphics[width = 5 in]{mercury.png}
+  \caption{
+Mercury in orbit around the Sun.
+}
+\end{figure}
 
 
 
