@@ -50,6 +50,15 @@
 
 \section{Numerical: integer field line count}
 
+Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
+\begin{equation}
+\alpha = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
+\end{equation}
+The gradient strength is:
+\begin{equation}
+g = \frac{-\alpha}{r^2}.
+\end{equation}
+
 \begin{lstlisting}
 long long unsigned int get_intersecting_line_count(
 	const vector<vector_3>& unit_vectors,
@@ -159,35 +168,25 @@ int main(int argc, char** argv)
 
 \section{Analytical: real field line count}
 
+
+
+Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
+\begin{equation}
+\alpha = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
+\end{equation}
+
+Here we assume that the maximum number of field lines is given by the holographic principle:
 \begin{equation}
 n = \frac{c^3 A}{ 4 G \hbar \log 2}.
 \end{equation}
 
-Here $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, and $\beta$ is the collision count function:		
-\begin{equation}
-\alpha = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon},
-\end{equation}
+The gradient strengths are:
 \begin{equation}
 g = \frac{-\alpha}{r^2} \approx \frac{n}{2 R^3},
 \end{equation}
 \begin{equation}
 g_N = \frac{n c \hbar \log 2}{4 \pi M R^2} = \frac{c^4 A}{16 \pi G M R^2} = \frac{G M}{R^2}.
 \end{equation}
-
-			
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 \begin{lstlisting}
@@ -208,6 +207,8 @@ real_type get_intersecting_line_count(
 	return n * ratio;
 }
 \end{lstlisting}
+
+
 
 \begin{lstlisting}
 int main(int argc, char** argv)
@@ -309,6 +310,109 @@ int main(int argc, char** argv)
 	return 0;
 }
 \end{lstlisting}
+
+
+
+\section{Newtonian gravitational integration}
+
+\begin{lstlisting}
+vector_3 Newtonian_acceleration(
+	const real_type emitter_mass,
+	const vector_3& pos, // Receiver pos
+	const real_type G)
+{
+	vector_3 grav_dir = vector_3(0, 0, 0) - pos;
+	const real_type distance = grav_dir.length();
+	grav_dir.normalize();
+
+	vector_3 accel = grav_dir * G * emitter_mass / pow(distance, 2.0);
+
+	return accel;
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+void proceed_Euler(
+	vector_3& pos, 
+	vector_3& vel, 
+	const real_type G, 
+	const real_type dt)
+{
+	vector_3 accel = 
+		Newtonian_acceleration(
+			emitter_mass, 
+			pos, 
+			G);
+
+	vel += accel * dt;
+	pos += vel * dt;
+}
+
+\end{lstlisting}
+
+\begin{lstlisting}
+void idle_func(void)
+{
+	proceed_Euler(receiver_pos, receiver_vel, G, dt);
+}
+\end{lstlisting}
+
+
+
+
+\begin{lstlisting}
+void proceed_symplectic4(
+	vector_3& pos, 
+	vector_3& vel, 
+	real_type G, 
+	real_type dt)
+{
+	static real_type const cr2 = 
+		pow(2.0, 1.0 / 3.0);
+
+	static const real_type c[4] =
+	{
+		1.0 / (2.0 * (2.0 - cr2)),
+		(1.0 - cr2) / (2.0 * (2.0 - cr2)),
+		(1.0 - cr2) / (2.0 * (2.0 - cr2)),
+		1.0 / (2.0 * (2.0 - cr2))
+	};
+
+	static const real_type d[4] =
+	{
+		1.0 / (2.0 - cr2),
+		-cr2 / (2.0 - cr2),
+		1.0 / (2.0 - cr2),
+		0.0
+	};
+
+	pos += vel * c[0] * dt;
+	vel += Newtonian_acceleration(
+			emitter_mass, 
+			pos, 
+			G) * d[0] * dt;
+
+	pos += vel * c[1] * dt;
+	vel += Newtonian_acceleration(
+			emitter_mass, 
+			pos, 
+			G) * d[1] * dt;
+
+	pos += vel * c[2] * dt;
+	vel += Newtonian_acceleration(
+			emitter_mass, 
+			pos, 
+			G) * d[2] * dt;
+
+	pos += vel * c[3] * dt;
+	// last element d[3] is always 0
+}
+\end{lstlisting}
+
+
+
+
+
 
 
 
