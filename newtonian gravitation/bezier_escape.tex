@@ -87,9 +87,18 @@ const real_type hbar = h / (2.0 * pi);
 const real_type k = 1.380649e-23; // Boltzmann's constant
 \end{lstlisting}
 
+\section{Custom 3D vector class}
+\begin{lstlisting}
+class vector_3
+{
+public:
+	real_type x, y, z;
 
-
-
+	// Overloaded operators go here
+	// dot() and cross() products go here
+	// etc.
+};
+\end{lstlisting}
 
 
 \section{Brute force: integer field line count}
@@ -141,7 +150,7 @@ int main(int argc, char** argv)
 
 	for (size_t i = 0; i < n; i++)
 	{
-		unit_vectors[i] = RandomUnitVector();
+		unit_vectors[i] = pseudorandom_unit_vector();
 
 		static const size_t output_mod = 10000;
 
