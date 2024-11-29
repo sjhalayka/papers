@@ -46,27 +46,65 @@ The focus is on some C++ code.
 
 
 \section{Typedefs}
-In our code, we leave the real number type up to the coder.
-For instance, we can use long doubles:
+In this tutorial, we leave the real number type up to the coder.
+For instance, we can use quad-precision long doubles (e.g. 16-byte floating point variables on Ubuntu):
 \begin{lstlisting}
 typedef long double real_type;
 \end{lstlisting}
-Otherise, we can use the Boost multiprecision library just as easily:
+On the other hand, we can use the Boost multiprecision library just as easily.
+Here we can use oct-precision variables (e.g. 32-byte floating point variables on all platforms):
 \begin{lstlisting}
 #include <boost/multiprecision/cpp_bin_float.hpp>
 using namespace boost::multiprecision;
 
 typedef number<
 	backends::cpp_bin_float<
-		237, 
+		237,
 		backends::digit_base_2, 
 		void, 
 		std::int32_t, 
-		-262142, 
+		-262142, // 2^18 == 262144
 		262143>, 
 	et_off> cpp_bin_float_oct;
 
+	// 237 significand bits
+	// + 18 exponent bits 
+	// + 1 sign bit = 
+	// 256 bits (32 bytes)
+
 typedef cpp_bin_float_oct real_type;
+\end{lstlisting}
+
+
+
+
+
+
+\section{Custom 3D vector class}
+The tutorial also makes use of a 3D vector class:
+\begin{lstlisting}
+class vector_3
+{
+public:
+	real_type x, y, z;
+
+	// Overloaded operators go here
+
+	real_type vector_3::dot(const vector_3 &rhs) const
+	{
+		return x*rhs.x + y*rhs.y + z*rhs.z;
+	}
+
+	vector_3 vector_3::cross(const vector_3 &rhs) const
+	{
+		vector_3 cross;
+		cross.x = y*rhs.z - rhs.y*z;
+		cross.y = z*rhs.x - rhs.z*x;
+		cross.z = x*rhs.y - rhs.x*y;
+
+		return cross;
+	}
+};
 \end{lstlisting}
 
 
@@ -87,18 +125,6 @@ const real_type hbar = h / (2.0 * pi);
 const real_type k = 1.380649e-23; // Boltzmann's constant
 \end{lstlisting}
 
-\section{Custom 3D vector class}
-\begin{lstlisting}
-class vector_3
-{
-public:
-	real_type x, y, z;
-
-	// Overloaded operators go here
-	// dot() and cross() products go here
-	// etc.
-};
-\end{lstlisting}
 
 
 \section{Brute force: integer field line count}
@@ -227,7 +253,7 @@ See Fig 1.
 
 
 
-\section{Heuristic: real field line count, where $R \gg 1$}
+\section{Heuristic: real field line count}
 
 Rather than allocating gigabytes of RAM to store some unit vectors, we can instead use a heuristic approach to solve the problem from the previous section.
 This heuristic solution instead uses basic geometry to obtain the intersection count.
@@ -237,7 +263,7 @@ Where $r$ is the receiver radius, $R$ is the distance from the centre of the emi
 \alpha = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
 
-Here we assume that the maximum number of field lines is given by the holographic principle:
+Here we assume that the number of field lines is given by the holographic principle:
 \begin{equation}
 n = \frac{A k c^3}{ 4 G \hbar \log 2}.
 \end{equation}
