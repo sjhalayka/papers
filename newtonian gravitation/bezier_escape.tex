@@ -76,10 +76,7 @@ typedef cpp_bin_float_oct real_type;
 \section{Constants}
 
 \begin{lstlisting}
-const real type dt = 10000; // 2.77777 hours
-
 const real_type pi = 4.0 * atan(1.0);
-
 const real_type G = 6.67430e-11;
 const real_type c = 299792458;
 const real_type c2 = c * c;
@@ -209,7 +206,7 @@ int main(int argc, char** argv)
 \end{lstlisting}
 
 While this method works, it is both memory and processor intensive.
-Thus, this method is meant to be a stepping stone for the next section.
+This method is meant to be a stepping stone for the next section.
 See Fig 1.
 
 
@@ -236,10 +233,6 @@ g_N = \frac{g R c \hbar \log 2}{2 \pi M} = \frac{n c \hbar \log 2}{4 \pi M R^2} 
 
 We will use $g_N$ in the next section.
 
-
-
-
-
 \begin{lstlisting}
 real_type get_intersecting_line_count(
 	const real_type n,
@@ -258,8 +251,6 @@ real_type get_intersecting_line_count(
 	return n * ratio;
 }
 \end{lstlisting}
-
-
 
 \begin{lstlisting}
 int main(int argc, char** argv)
@@ -375,6 +366,17 @@ This method is meant to be a stepping stone for the next section.
 
 \section{Application: modeling Mercury's orbit using numerical integration}
 
+In essence, the numerical calculation of the Newtonian orbit of Mercury is as follows:
+\begin{itemize}
+\item Place Mercury at the aphelion to start
+\item Calculate the orbit path by repeatedly taking steps in time
+\end{itemize}
+
+The constant time slice is:
+\begin{lstlisting}
+const real type dt = 10000; // 2.77777 hours
+\end{lstlisting}
+
 The initial conditions are:
 \begin{lstlisting}
 vector_3 Mercury_pos(0, 69817079000.0, 0); // Aphelion location
@@ -400,7 +402,9 @@ vector_3 Newtonian_acceleration(
 }
 \end{lstlisting}
 
-Here we show the Euler integration, which is extremely simple:
+Here we show the Euler integration, which is extremely simple.
+The acceleration is calculated, then it is added (e.g. integrated) to the velocity.
+Once that's done, the velocity is added to the position.
 \begin{lstlisting}
 void proceed_Euler(
 	vector_3& pos, 
@@ -427,8 +431,6 @@ void idle_func(void)
 	proceed_Euler(Mercury_pos, Mercury_vel, G, dt);
 }
 \end{lstlisting}
-
-
 
 On the other hand, rather than using Euler integration, the order-4 symplectic integration does a better job at conserving energy, but at a speed cost:
 \begin{lstlisting}
