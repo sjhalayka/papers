@@ -78,12 +78,13 @@ typedef cpp_bin_float_oct real_type;
 \begin{lstlisting}
 const real_type pi = 4.0 * atan(1.0);
 const real_type G = 6.67430e-11;
-const real_type c = 299792458;
+const real_type c = 299792458; // Speed of light in vacuum
 const real_type c2 = c * c;
 const real_type c3 = c * c * c;
 const real_type c4 = c * c * c * c;
-const real_type h = 6.62607015e-34;
+const real_type h = 6.62607015e-34; // Planck's constant
 const real_type hbar = h / (2.0 * pi);
+const real_type k = 1.380649e-23; // Boltzmann constant
 \end{lstlisting}
 
 
@@ -219,7 +220,7 @@ Where $r$ is the receiver radius, $R$ is the distance from the centre of the emi
 
 Here we assume that the maximum number of field lines is given by the holographic principle:
 \begin{equation}
-n = \frac{A c^3}{ 4 G \hbar \log 2}.
+n = \frac{A k c^3}{ 4 G \hbar \log 2}.
 \end{equation}
 
 The gradient strengths are:
@@ -228,7 +229,7 @@ g = \frac{-\alpha}{r^2} \approx \frac{n}{2 R^3},
 \end{equation}
 \begin{equation}
 \label{g_N_equation}
-g_N = \frac{g R c \hbar \log 2}{2 \pi M} = \frac{n c \hbar \log 2}{4 \pi M R^2} = \frac{A c^4}{16 \pi G M R^2} = \frac{G M}{R^2}.
+g_N = \frac{g R c \hbar \log 2}{k 2 \pi M} = \frac{n c \hbar \log 2}{k 4 \pi M R^2} = \frac{A c^4}{16 \pi G M R^2} = \frac{G M}{R^2}.
 \end{equation}
 
 We will use $g_N$ in the next section.
@@ -263,18 +264,18 @@ int main(int argc, char** argv)
 	// Field line count
 	// re: holographic principle:
 	const real_type n = 
-		(c3 * emitter_area) 
+		(k * c3 * emitter_area) 
 		/ (log(2.0) * 4.0 * G * hbar);
-	
+
 	const real_type emitter_mass = c2 * emitter_radius / (2.0 * G);
 
-	// 1.73502e+70 is the 't Hooft-Susskind constant:
+	// 2.39545e47 is the 't Hooft-Susskind constant:
 	// the number of field lines for a black hole of
 	// unit Schwarzschild radius
 	//
 	//const real_type G_ = 
 	//	(c3 * pi) 
-	//	/ (log(2.0) * hbar * 1.73502e+70);
+	//	/ (log(2.0) * hbar * 2.39545e47);
 
 	const string filename = "newton.txt";
 	ofstream out_file(filename.c_str());
@@ -318,7 +319,7 @@ int main(int argc, char** argv)
 			(collision_count_plus - collision_count)
 			/ epsilon;
 
-		const real_type gradient_strength =
+		real_type gradient_strength =
 			-gradient
 			/ (receiver_radius * receiver_radius);
 
@@ -328,7 +329,7 @@ int main(int argc, char** argv)
 		const real_type newton_strength = 
 			n * c * hbar * log(2.0)
 			/ 
-			(pow(receiver_pos.x, 2.0) 
+			(k * pow(receiver_pos.x, 2.0) 
 				* emitter_mass * 4.0 * pi);
 
 		const real_type newton_strength_ =
@@ -337,14 +338,13 @@ int main(int argc, char** argv)
 				* pow(receiver_pos.x, 2.0) * emitter_mass);
 
 		const real_type newton_strength__ =
-			G * emitter_mass / pow(receiver_pos.x, 2.0);
+			gradient_strength_ * receiver_pos.x * c * hbar * log(2)
+			/ (k * 2 * pi * emitter_mass);
 
 		const real_type newton_strength___ =
-			gradient_strength_ * receiver_pos.x 
-			* c * hbar * log(2)
-			/ (2 * pi * emitter_mass);
+			G * emitter_mass / pow(receiver_pos.x, 2.0);
 
-		//cout << newton_strength___ / newton_strength << endl;
+		//cout << newton_strength___ / newton_strength__ << endl;
 
 		cout << "r: " << r << " gradient strength: "
 			<< gradient_strength << endl;
@@ -424,7 +424,7 @@ void proceed_Euler(
 
 \end{lstlisting}
 
-And so the passage of time is computed as:
+The passage of time is computed whenever the window manager (e.g. OpenGL/GLUT) is not busy drawing or processing input:
 \begin{lstlisting}
 void idle_func(void)
 {
