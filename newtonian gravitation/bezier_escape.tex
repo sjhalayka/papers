@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{Newtonian gravitation for C++ programmers}
+\title{Newtonian gravitation from scratch, for C++ programmers}
 \author{S. Halayka\footnote{sjhalayka@gmail.com}}
 \date{\today\;\currenttime}
 
@@ -45,13 +45,12 @@
 
 
 \section{Typedefs}
-
+In our code, we leave the type up to the coder.
+For instance, we can use long doubles:
 \begin{lstlisting}
 typedef long double real_type;
 \end{lstlisting}
-
-or
-
+Otherise, we can use the Boost multiprecision library just as easily:
 \begin{lstlisting}
 #include <boost/multiprecision/cpp_bin_float.hpp>
 using namespace boost::multiprecision;
@@ -72,9 +71,9 @@ typedef cpp_bin_float_oct real_type;
 
 
 
-
 \section{Constants}
 
+The following constants will be used in this tutorial:
 \begin{lstlisting}
 const real_type pi = 4.0 * atan(1.0);
 const real_type G = 6.67430e-11; // Newton's constant
@@ -93,6 +92,9 @@ const real_type k = 1.380649e-23; // Boltzmann's constant
 
 
 \section{Brute force: integer field line count}
+
+The main idea behind this tutorial is that there is a finite number of field lines extending out from the gravitating body. 
+We use the field line intersection count to signify field strength, from which we can obtain the gradient.
 
 Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
 \begin{equation}
@@ -211,7 +213,10 @@ This method is meant to be a stepping stone for the next section.
 See Fig 1.
 
 
-\section{Heuristic: real field line count}
+\section{Heuristic: real field line count, where $R \gg 1$}
+
+Rather than allocating gigabytes of RAM, we can use a heuristic approach to solve the same problem that was solved in the previous section.
+This heuristic solution instead uses basic geometry to obtain the intersection count.
 
 Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
 \begin{equation}
@@ -233,7 +238,7 @@ From this we can get the Newtonian gradient, in terms of either $g$, $n$, $A$, o
 g_N = \frac{g R c \hbar \log 2}{k 2 \pi M} = \frac{n c \hbar \log 2}{k 4 \pi M R^2} = \frac{A c^4}{16 \pi G M R^2} = \frac{G M}{R^2}.
 \end{equation}
 
-We will use $g_N$ in the next section.
+We will use $g_N = {G M}/{R^2}$ in the next section.
 
 \begin{lstlisting}
 real_type get_intersecting_line_count(
@@ -339,7 +344,8 @@ int main(int argc, char** argv)
 				* pow(receiver_pos.x, 2.0) * emitter_mass);
 
 		const real_type newton_strength__ =
-			gradient_strength_ * receiver_pos.x * c * hbar * log(2)
+			gradient_strength_ * receiver_pos.x 
+			* c * hbar * log(2)
 			/ (k * 2 * pi * emitter_mass);
 
 		const real_type newton_strength___ =
