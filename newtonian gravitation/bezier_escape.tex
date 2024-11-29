@@ -77,14 +77,14 @@ typedef cpp_bin_float_oct real_type;
 
 \begin{lstlisting}
 const real_type pi = 4.0 * atan(1.0);
-const real_type G = 6.67430e-11;
+const real_type G = 6.67430e-11; // Newton's constant
 const real_type c = 299792458; // Speed of light in vacuum
 const real_type c2 = c * c;
 const real_type c3 = c * c * c;
 const real_type c4 = c * c * c * c;
 const real_type h = 6.62607015e-34; // Planck's constant
 const real_type hbar = h / (2.0 * pi);
-const real_type k = 1.380649e-23; // Boltzmann constant
+const real_type k = 1.380649e-23; // Boltzmann's constant
 \end{lstlisting}
 
 
@@ -223,10 +223,11 @@ Here we assume that the maximum number of field lines is given by the holographi
 n = \frac{A k c^3}{ 4 G \hbar \log 2}.
 \end{equation}
 
-The gradient strengths are:
+The gradient strength is:
 \begin{equation}
-g = \frac{-\alpha}{r^2} \approx \frac{n}{2 R^3},
+g = \frac{-\alpha}{r^2} \approx \frac{n}{2 R^3}.
 \end{equation}
+From this we can get the Newtonian gradient, in terms of either $g$, $n$, $A$, or $G M$:
 \begin{equation}
 \label{g_N_equation}
 g_N = \frac{g R c \hbar \log 2}{k 2 \pi M} = \frac{n c \hbar \log 2}{k 4 \pi M R^2} = \frac{A c^4}{16 \pi G M R^2} = \frac{G M}{R^2}.
