@@ -230,8 +230,13 @@ The gradient strengths are:
 g = \frac{-\alpha}{r^2} \approx \frac{n}{2 R^3},
 \end{equation}
 \begin{equation}
+\label{g_N_equation}
 g_N = \frac{g R c \hbar \log 2}{2 \pi M} = \frac{n c \hbar \log 2}{4 \pi M R^2} = \frac{A c^4}{16 \pi G M R^2} = \frac{G M}{R^2}.
 \end{equation}
+
+We will use $g_N$ in the next section.
+
+
 
 
 
@@ -376,13 +381,15 @@ vector_3 Mercury_pos(0, 69817079000.0, 0); // Aphelion location
 vector_3 Mercury_vel(-38860, 0, 0); // Aphelion velocity
 \end{lstlisting}
 
-The orbit code is:
+The orbit code is as follows. 
+Here we use Eq. \ref{g_N_equation} (e.g. $g_N = {G M}/{R^2}$) to calculate the acceleration from Newtonian gravitation:
 \begin{lstlisting}
 vector_3 Newtonian_acceleration(
 	const real_type emitter_mass,
 	const vector_3& pos, // Receiver pos
 	const real_type G)
 {
+	// Sun's position is fixed at the origin
 	vector_3 grav_dir = vector_3(0, 0, 0) - pos;
 	const real_type distance = grav_dir.length();
 	grav_dir.normalize();
@@ -493,6 +500,9 @@ A final code, which models the orbit of Mercury, is at:
 
 \begin{thebibliography}{9}
 
+\bibitem{misner} Misner et al. Gravitation. (1970)
+\bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
+\bibitem{susskind} Susskind. The World as a Hologram. (1994)
 \bibitem{fiedler1} Fiedler. Fix Your Timestep! (2004)
 \bibitem{fiedler2} Fiedler. Integration Basics. (2004)
 
