@@ -413,26 +413,8 @@ int main(int argc, char** argv)
 		const real_type gradient_strength_ = 
 			n / (2.0 * pow(receiver_pos.x, 3.0));
 
-		const real_type newton_strength = 
-			n * c * hbar * log(2.0)
-			/ 
-			(k * pow(receiver_pos.x, 2.0) 
-				* emitter_mass * 4.0 * pi);
-
-		const real_type newton_strength_ =
-			c4 * emitter_area
-			/ (16.0 * pi * G 
-				* pow(receiver_pos.x, 2.0) * emitter_mass);
-
-		const real_type newton_strength__ =
-			gradient_strength_ * receiver_pos.x 
-			* c * hbar * log(2)
-			/ (k * 2 * pi * emitter_mass);
-
-		const real_type newton_strength___ =
+		const real_type newton_strength =
 			G * emitter_mass / pow(receiver_pos.x, 2.0);
-
-		//cout << newton_strength___ / newton_strength__ << endl;
 
 		cout << "r: " << r << " gradient strength: "
 			<< gradient_strength << endl;
@@ -610,6 +592,8 @@ A final code, which models the orbit of Mercury, is at:
 \bibitem{fiedler1} Fiedler. Fix Your Timestep! (2004)
 \bibitem{fiedler2} Fiedler. Integration Basics. (2004)
 \bibitem{nasa} Williams. NASA Mercury Fact Sheet. (2024)
+
+
 
 \end{thebibliography}
 
