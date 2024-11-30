@@ -131,6 +131,16 @@ public:
 
 		return *this;
 	}
+
+	real_type self_dot(void) const
+	{
+		return x*x + y*y + z*z;
+	}
+
+	real_type length(void) const
+	{
+		return sqrt(self_dot());
+	}
 };
 \end{lstlisting}
 
