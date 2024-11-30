@@ -133,7 +133,8 @@ const real_type k = 1.380649e-23; // Boltzmann's constant
 
 \section{Brute force: integer field line count}
 
-The main idea behind this tutorial is that there is a finite number of field lines extending out from a gravitating body. 
+The main idea behind this tutorial is that there is a finite number of field lines extending out from a gravitating body.
+See Fig. 1.
 We use the field line intersection count to signify field strength, from which we can obtain the gradient.
 
 Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
@@ -253,7 +254,7 @@ int main(int argc, char** argv)
 
 While this method works, it is both memory and processor intensive.
 This method is meant to be a stepping stone for the next section.
-See Fig 1.
+
 
 
 
@@ -465,6 +466,7 @@ vector_3 Newtonian_acceleration(
 Here we show the Euler integration, which is extremely simple.
 The acceleration is calculated, then it is added (e.g. integrated) to the velocity.
 Once that's done, the velocity is added to the position.
+See Figs. 2 and 3.
 \begin{lstlisting}
 void proceed_Euler(
 	vector_3& pos, 
@@ -542,7 +544,7 @@ void proceed_symplectic_order_4(
 }
 \end{lstlisting}
 
-See Fig. 2.
+See Fig. 4.
 
 
 
@@ -573,16 +575,6 @@ A final code, which models the orbit of Mercury, is at:
 
 
 \pagebreak
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 4 in]{mercury.png}
-  \caption{
-Mercury in orbit around the Sun.
-}
-\end{figure}
-
-
 \begin{figure} 
 \centering
   \includegraphics[width = 4 in]{3.png}
@@ -592,6 +584,11 @@ The emitter is spherical.
 The field line starting positions are placed pseudorandomly on a 2-sphere, and the normals (e.g. field line directions) are calculated using the same sphere.
 }
 \end{figure}
+
+
+
+
+
 
 
 \begin{figure} 
@@ -615,6 +612,15 @@ A diagram of the Euler integration of position.
 
 
 
+
+
+\begin{figure} 
+\centering
+  \includegraphics[width = 4 in]{mercury.png}
+  \caption{
+Mercury in orbit around the Sun.
+}
+\end{figure}
 
 
 \end{document}
