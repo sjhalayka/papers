@@ -90,19 +90,23 @@ public:
 
 	// Overloaded operators go here
 
-	real_type vector_3::dot(const vector_3 &rhs) const
+	real_type dot(const vector_3& rhs) const
 	{
 		return x*rhs.x + y*rhs.y + z*rhs.z;
 	}
 
-	vector_3 vector_3::cross(const vector_3 &rhs) const
+	vector_3& normalize(void)
 	{
-		vector_3 cross;
-		cross.x = y*rhs.z - rhs.y*z;
-		cross.y = z*rhs.x - rhs.z*x;
-		cross.z = x*rhs.y - rhs.x*y;
+		real_type len = length();
 
-		return cross;
+		if(len != 0)
+		{
+			x /= len;
+			y /= len;
+			z /= len;
+		}
+
+		return *this;
 	}
 };
 \end{lstlisting}
@@ -129,7 +133,7 @@ const real_type k = 1.380649e-23; // Boltzmann's constant
 
 \section{Brute force: integer field line count}
 
-The main idea behind this tutorial is that there is a finite number of field lines extending out from the gravitating body. 
+The main idea behind this tutorial is that there is a finite number of field lines extending out from a gravitating body. 
 We use the field line intersection count to signify field strength, from which we can obtain the gradient.
 
 Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
@@ -149,17 +153,20 @@ long long unsigned int get_intersecting_line_count(
 {
 	long long unsigned int count = 0;
 
+	// Get cross-section edge direction
 	vector_3 cross_section_edge_dir(sphere_location.x, sphere_radius, 0);
 	cross_section_edge_dir.normalize();
 
+	// Get receiver direction
 	vector_3 receiver_dir(sphere_location.x, 0, 0);
 	receiver_dir.normalize();
 
+	// The minimum threshold for intersection
 	const real_type min_dot = cross_section_edge_dir.dot(receiver_dir);
 
 	for (size_t i = 0; i < unit_vectors.size(); i++)
 		if (unit_vectors[i].dot(receiver_dir) >= min_dot)
-			count++;
+			count++; // Intersection occurred
 
 	return count;
 }
@@ -567,18 +574,6 @@ A final code, which models the orbit of Mercury, is at:
 
 \pagebreak
 
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 4 in]{3.png}
-  \caption{
-Example of an isotropic emitter.
-The emitter is spherical.
-The field line starting locations are placed pseudorandomly on a 2-sphere, and the normals (e.g. field line directions) are calculated using the same sphere.
-}
-\end{figure}
-
-
 \begin{figure} 
 \centering
   \includegraphics[width = 4 in]{mercury.png}
@@ -586,6 +581,40 @@ The field line starting locations are placed pseudorandomly on a 2-sphere, and t
 Mercury in orbit around the Sun.
 }
 \end{figure}
+
+
+\begin{figure} 
+\centering
+  \includegraphics[width = 4 in]{3.png}
+  \caption{
+Example of an isotropic emitter.
+The emitter is spherical.
+The field line starting positions are placed pseudorandomly on a 2-sphere, and the normals (e.g. field line directions) are calculated using the same sphere.
+}
+\end{figure}
+
+
+\begin{figure} 
+\centering
+\label{fig3}
+  \includegraphics[width = 6 in]{velocity.png}
+  \caption{
+A diagram of the Euler integration of velocity.
+}
+\end{figure}
+
+\begin{figure} 
+\centering
+\label{fig4}
+  \includegraphics[width = 6 in]{position.png}
+  \caption{
+A diagram of the Euler integration of position.
+}
+\end{figure}
+
+
+
+
 
 
 \end{document}
