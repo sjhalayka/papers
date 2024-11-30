@@ -118,6 +118,16 @@ public:
 		return x*rhs.x + y*rhs.y + z*rhs.z;
 	}
 
+	real_type self_dot(void) const
+	{
+		return x*x + y*y + z*z;
+	}
+
+	real_type length(void) const
+	{
+		return sqrt(self_dot());
+	}
+
 	vector_3& normalize(void)
 	{
 		const real_type len = length();
@@ -130,16 +140,6 @@ public:
 		}
 
 		return *this;
-	}
-
-	real_type self_dot(void) const
-	{
-		return x*x + y*y + z*z;
-	}
-
-	real_type length(void) const
-	{
-		return sqrt(self_dot());
 	}
 };
 \end{lstlisting}
@@ -170,7 +170,7 @@ The main idea behind this tutorial is that there is a finite number of field lin
 See Fig. 1.
 We use the field line intersection count to signify field strength, from which we can obtain the gradient.
 
-Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
+Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient (e.g. directional derivative) is:
 \begin{equation}
 \alpha = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
