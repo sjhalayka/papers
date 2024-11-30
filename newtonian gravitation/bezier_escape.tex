@@ -120,7 +120,7 @@ public:
 
 	vector_3& normalize(void)
 	{
-		real_type len = length();
+		const real_type len = length();
 
 		if(len != 0)
 		{
@@ -317,14 +317,14 @@ real_type get_intersecting_line_count(
 	const vector_3& sphere_location,
 	const real_type sphere_radius)
 {
-	const real_type big_area = 
+	const real_type sphere_area = 
 		4 * pi * sphere_location.x * sphere_location.x;
 
-	const real_type small_area = 
+	const real_type circle_area = 
 		pi * sphere_radius * sphere_radius;
 	
 	const real_type ratio = 
-		small_area / big_area;
+		circle_area / sphere_area;
 	
 	return n * ratio;
 }
@@ -351,7 +351,7 @@ int main(int argc, char** argv)
 	// unit Schwarzschild radius
 	//
 	//const real_type G_ = 
-	//	(c3 * pi) 
+	//	(k * c3 * pi) 
 	//	/ (log(2.0) * hbar * 2.39545e47);
 
 	const string filename = "newton.txt";
@@ -443,7 +443,7 @@ For reference, if you know $n$, and you wish to know the emitter radius from tha
 \begin{equation}
 r_{\textit{emitter}} = \sqrt{\frac{n G \hbar \log 2}{k c^3 \pi}}.
 \end{equation}
-Using this radius, one can ensure that the results from this section match the results of the previous section, where $n$ is relatively small anyway.
+Using this radius, one can ensure that the results from this section match the results of the previous section, where $n$ is relatively small anyway (e.g. $n = 10^8$).
 
 
 
@@ -614,7 +614,7 @@ A final code, which models the orbit of Mercury, is at:
   \includegraphics[width = 6 in]{3.png}
   \caption{
 The emitter is spherical.
-The field line starting positions are placed pseudorandomly on a 2-sphere, and the normals (e.g. field line directions) are calculated using the same sphere.
+The field line starting positions are placed pseudorandomly on a 2-sphere, and the normals (e.g. field line directions) are calculated using the same positions.
 }
 \end{figure}
 
