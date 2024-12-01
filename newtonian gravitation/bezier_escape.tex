@@ -389,7 +389,6 @@ int main(int argc, char** argv)
 		vector_3 receiver_pos_plus = receiver_pos;
 		receiver_pos_plus.x += epsilon;
 
-		// https://en.wikipedia.org/wiki/Directional_derivative
 		const real_type collision_count_plus =
 			get_intersecting_line_count(
 				n,
