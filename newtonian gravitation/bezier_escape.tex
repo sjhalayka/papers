@@ -313,10 +313,10 @@ The gradient strength is:
 \begin{equation}
 g = \frac{-\alpha}{r^2} \approx \frac{n}{2 R^3}.
 \end{equation}
-From this we can get the Newtonian gradient, in terms of either $g$, $n$, $A$, or $G M$:
+From this we can get the Newtonian gradient, in terms of either $n$, $g$, $A$, or $G M$:
 \begin{equation}
 \label{g_N_equation}
-g_N = \frac{g R c \hbar \log 2}{k 2 \pi M} = \frac{n c \hbar \log 2}{k 4 \pi M R^2} = \frac{A c^4}{16 \pi G M R^2} = \frac{G M}{R^2}.
+g_N = \frac{n c \hbar \log 2}{k 4 \pi M R^2} = \frac{g R c \hbar \log 2}{k 2 \pi M} = \frac{A c^4}{16 \pi G M R^2} = \frac{G M}{R^2}.
 \end{equation}
 
 We will use $g_N = {G M}/{R^2}$ in the next section.
@@ -413,7 +413,13 @@ int main(int argc, char** argv)
 		const real_type gradient_strength_ = 
 			n / (2.0 * pow(receiver_pos.x, 3.0));
 
-		const real_type newton_strength =
+		const real_type newton_strength = 
+			n * c * hbar * log(2.0)
+			/ 
+			(k * pow(receiver_pos.x, 2.0) 
+				* emitter_mass * 4.0 * pi);
+
+		const real_type newton_strength_ =
 			G * emitter_mass / pow(receiver_pos.x, 2.0);
 
 		cout << "r: " << r << " gradient strength: "
