@@ -48,8 +48,8 @@ The main focus is on some C++ code.
 
 \section{Introduction}
 
-In this paper, we cover the following subjects:
-\begin{itemize}
+In this paper, we cover the following six subjects:
+\begin{enumerate}
 \item Typedefs that can be used to specify the precision of the floating point variables.
 \item A custom 3D vector class that is used to encapsulate the data and member functions using object-oriented paradigms.
 \item Some constants that are used throughout the paper.
@@ -57,18 +57,20 @@ In this paper, we cover the following subjects:
 \item A heuristic real field line intersection count function.
 \item An application is demonstrated, where we model Mercury's orbit by using numerical integration.
 A final code is given.
-\end{itemize}
+\end{enumerate}
 
 The main goal is to acquaint the coder with the basic mathematics behind Mercury's orbit due to Newtonian gravitation.
 
-Like with the irradiance of light and the intensity of sound, we assume in this paper that the acceleration in Newton's gravity follows an inverse-square law:
+The following two assumptions are made:
+\begin{enumerate}
+\item Like with the irradiance of light and the intensity of sound, we assume in this paper that the acceleration in Newton's gravity follows an inverse-square law:
 \begin{equation}
 g_N \propto \frac{1}{R^2}.
 \end{equation}
 See Fig. 1.
 
-The other assumption that we make in this paper is that the gravitational field line count is given by the holographic principle, for lack of a better guess.
-
+\item The other assumption that we make in this paper is that the gravitational field line count is given by the holographic principle, for lack of a better method.
+\end{enumerate}
 
 
 
@@ -325,7 +327,7 @@ From this we can get the Newtonian gradient, in terms of either $n$, $g$, $A$, o
 g_N = \frac{n c \hbar \log 2}{k 4 \pi M R^2} = \frac{g R c \hbar \log 2}{k 2 \pi M} = \frac{A c^4}{16 \pi G M R^2} = \frac{G M}{R^2}.
 \end{equation}
 
-We will use $g_N = {G M}/{R^2}$ in the next section.
+We will use $g_N = {G M}/{R^2}$, the simplest version of $g_N$, in the next section.
 
 \begin{lstlisting}
 real_type get_intersecting_line_count(
@@ -454,10 +456,10 @@ Using this radius, one can ensure that the results from this section match the r
 \section{Application: modeling Mercury's orbit using numerical integration}
 
 In essence, the numerical calculation of the Newtonian orbit of Mercury is as follows:
-\begin{itemize}
+\begin{enumerate}
 \item Place Mercury at the aphelion to start
 \item Calculate the orbit path by repeatedly taking steps in time
-\end{itemize}
+\end{enumerate}
 
 The constant time slice is:
 \begin{lstlisting}
@@ -572,14 +574,6 @@ void proceed_symplectic_order_4(
 
 See Fig. 5.
 
-
-
-
-
-
-
-\section{Final code}
-
 A final code, which models the orbit of Mercury, is at:
 
 \url{https://github.com/sjhalayka/mercury_orbit_glut}
@@ -588,7 +582,6 @@ A final code, which models the orbit of Mercury, is at:
 
 
 
-\pagebreak
 
 
 
