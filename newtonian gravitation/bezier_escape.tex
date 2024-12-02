@@ -48,7 +48,7 @@ The main focus is on some C++ code.
 
 \section{Introduction}
 
-In this paper, we cover the following six subjects:
+In this paper, we cover the following seven subjects:
 \begin{enumerate}
 \item Typedefs that can be used to specify the precision of the floating point variables.
 \item A custom 3D vector class that is used to encapsulate the data and member functions using object-oriented paradigms.
@@ -56,14 +56,15 @@ In this paper, we cover the following six subjects:
 \item A brute force integer field line intersection count function.
 \item A heuristic real field line intersection count function.
 \item An application is demonstrated, where we model Mercury's orbit by using numerical integration.
-A final code is given.
+A full code is given.
+\item Conclusion: general relativity versus Newtonian gravitation.
 \end{enumerate}
 
 The main goal is to acquaint the coder with the basic mathematics behind Mercury's orbit due to Newtonian gravitation.
 
 The following two assumptions are made:
 \begin{enumerate}
-\item Like with the irradiance of light and the intensity of sound, we assume in this paper that the acceleration in Newton's gravity follows an inverse-square law:
+\item Like with the irradiance of light (e.g. WiFi strength) and the intensity of sound, we assume in this paper that the acceleration in Newton's gravity follows an inverse-square law:
 \begin{equation}
 g_N \propto \frac{1}{R^2}.
 \end{equation}
@@ -77,8 +78,7 @@ The gravitational acceleration is $g_N \propto 1/R^2$.
 }
 \end{figure}
 
-
-\item The other assumption that we make in this paper is that the gravitational field line count is given by the holographic principle, for lack of a better method.
+\item The other assumption that we make in this paper is that the gravitational field line count is given by the holographic principle \cite{hooft, susskind}, for lack of a better method.
 \end{enumerate}
 
 
@@ -466,7 +466,7 @@ For reference, if you know $n$, and you wish to know the emitter radius from tha
 r_{\textit{emitter}} = \sqrt{\frac{n G \hbar \log 2}{k c^3 \pi}}.
 \end{equation}
 Using this radius, one can ensure that the results from this section match the results of the previous section, where $n$ is relatively small anyway (e.g. $n = 10^7$).
-As for predictability, for instance where $n = 10^7$ (e.g. $r_{\textit{emitter}} = 6.46109 \times 10^{-21}$ metres), it is found that at a distance of $170.521$ metres that the gradient $\alpha = 0.999615$ dips below $1.0$.
+As for predictability, for instance where $n = 10^7$ (e.g. $r_{\textit{emitter}} = 6.46109 \times 10^{-21}$ metres), it is found that at a distance of $170.521$ metres that the gradient $-\alpha = 0.999615$ dips below $1.0$.
 This distance value depends entirely on our use of the holographic principle.
 
 
@@ -558,7 +558,7 @@ void idle_func(void)
 }
 \end{lstlisting}
 
-On the other hand, rather than using Euler integration, the order-4 symplectic integration does a better job at conserving energy, but at a speed cost:
+On the other hand, rather than using Euler integration, the 4th-order symplectic integration does a better job at conserving energy, but at a speed cost:
 \begin{lstlisting}
 void proceed_symplectic_order_4(
 	vector_3& pos, 
@@ -625,6 +625,18 @@ A final code, which models the orbit of Mercury, is at:
 
 
 
+\section{Conclusion: general relativity versus Newtonian gravitation}
+
+In Newtonian gravity, the isotropic emitter ensures that space is curved.
+This is not quite the same as what happens in general relativity \cite{misner}.
+In general relativity, time is also curved.
+In order to compensate for this, one can convert the field lines into field cylinders.
+The overlap of the cylinders only occurs if the cylinder radii are larger than the Planck scale.
+This overlap would have to be useful, somehow, for calculating the gravitational time dilation $d\tau/dt = \sqrt{1 - r_{\textit{emitter}}/R}$.
+
+
+
+
 
 
 
@@ -634,9 +646,10 @@ A final code, which models the orbit of Mercury, is at:
 
 \begin{thebibliography}{9}
 
-%\bibitem{misner} Misner et al. Gravitation. (1970)
 \bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
 \bibitem{susskind} Susskind. The World as a Hologram. (1994)
+\bibitem{misner} Misner et al. Gravitation. (1970)
+
 %\bibitem{fiedler1} Fiedler. Fix Your Timestep! (2004)
 %\bibitem{fiedler2} Fiedler. Integration Basics. (2004)
 %\bibitem{nasa} Williams. NASA Mercury Fact Sheet. (2024)
