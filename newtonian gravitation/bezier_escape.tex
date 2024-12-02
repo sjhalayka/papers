@@ -68,6 +68,15 @@ The following two assumptions are made:
 g_N \propto \frac{1}{R^2}.
 \end{equation}
 See Fig. 1.
+\begin{figure} 
+\centering
+  \includegraphics[width = 5 in]{inverse_square_law.png}
+  \caption{
+Inverse-square law visualized.
+The gravitational acceleration is $g_N \propto 1/R^2$.
+}
+\end{figure}
+
 
 \item The other assumption that we make in this paper is that the gravitational field line count is given by the holographic principle, for lack of a better method.
 \end{enumerate}
@@ -105,7 +114,6 @@ typedef number<
 
 typedef cpp_bin_float_oct real_type;
 \end{lstlisting}
-
 
 
 
@@ -176,6 +184,15 @@ const real_type k = 1.380649e-23; // Boltzmann's constant
 
 The main idea behind this tutorial is that there is a finite number of field lines extending out from a gravitating body.
 See Fig. 2.
+\begin{figure} 
+\centering
+  \includegraphics[width = 4 in]{3.png}
+  \caption{
+The emitter is spherical.
+The field line starting positions are placed pseudorandomly on a 2-sphere, and the normals (e.g. field line directions) are calculated using the same positions.
+}
+\end{figure}
+
 We use the field line intersection count to signify field strength, from which we can obtain the gradient.
 
 Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient (e.g. directional derivative) is:
@@ -495,6 +512,23 @@ Here we show the Euler integration, which is extremely simple.
 The acceleration is calculated, then it is added (e.g. integrated) to the velocity.
 Once that's done, the velocity is added to the position.
 See Figs. 3 and 4.
+\begin{figure} 
+\centering
+\label{fig3}
+  \includegraphics[width = 6 in]{velocity.png}
+  \caption{
+A diagram of the Euler integration of velocity.
+}
+\end{figure}
+\begin{figure} 
+\centering
+\label{fig4}
+  \includegraphics[width = 6 in]{position.png}
+  \caption{
+A diagram of the Euler integration of position.
+}
+\end{figure}
+
 \begin{lstlisting}
 void proceed_Euler(
 	vector_3& pos, 
@@ -573,6 +607,14 @@ void proceed_symplectic_order_4(
 \end{lstlisting}
 
 See Fig. 5.
+\begin{figure} 
+\centering
+  \includegraphics[width = 4 in]{mercury.png}
+  \caption{
+Mercury in orbit around the Sun.
+Note that the orbit path is slightly elliptical.
+}
+\end{figure}
 
 A final code, which models the orbit of Mercury, is at:
 
@@ -602,67 +644,16 @@ A final code, which models the orbit of Mercury, is at:
 \end{thebibliography}
 
 
-\pagebreak
-
-
-
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 4 in]{inverse_square_law.png}
-  \caption{
-Inverse-square law visualized.
-The gravitational acceleration is $g_N \propto 1/R^2$.
-}
-\end{figure}
-
-
-
-
-
-\begin{figure} 
-\centering
-  \includegraphics[width = 4 in]{3.png}
-  \caption{
-The emitter is spherical.
-The field line starting positions are placed pseudorandomly on a 2-sphere, and the normals (e.g. field line directions) are calculated using the same positions.
-}
-\end{figure}
-
-
-
-
-
-\begin{figure} 
-\centering
-\label{fig3}
-  \includegraphics[width = 6 in]{velocity.png}
-  \caption{
-A diagram of the Euler integration of velocity.
-}
-\end{figure}
-
-\begin{figure} 
-\centering
-\label{fig4}
-  \includegraphics[width = 6 in]{position.png}
-  \caption{
-A diagram of the Euler integration of position.
-}
-\end{figure}
 
 
 
 
 
 
-\begin{figure} 
-\centering
-  \includegraphics[width = 4 in]{mercury.png}
-  \caption{
-Mercury in orbit around the Sun.
-}
-\end{figure}
+
+
+
+
 
 
 \end{document}
