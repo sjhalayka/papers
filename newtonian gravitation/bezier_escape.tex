@@ -57,7 +57,7 @@ In this paper, we cover the following seven subjects:
 \item A heuristic real field line intersection count function.
 \item An application is demonstrated, where we model Mercury's orbit by using numerical integration.
 A full code is given.
-\item General relativity versus Newtonian gravitation.
+\item General relativity versus Newtonian gravitation \cite{misner}.
 \end{enumerate}
 
 The main goal is to acquaint the coder with the basic mathematics behind Mercury's orbit due to Newtonian gravitation.
@@ -480,7 +480,7 @@ In essence, the numerical calculation of the Newtonian orbit of Mercury is as fo
 \item Calculate the orbit path by repeatedly taking steps in time.
 \end{enumerate}
 
-The constant time step is:
+The constant time step \cite{fiedler1} is:
 \begin{lstlisting}
 const real type dt = 10000; // 2.77777 hours
 \end{lstlisting}
@@ -510,7 +510,7 @@ vector_3 Newtonian_acceleration(
 }
 \end{lstlisting}
 
-Here we show the Euler integration, which is extremely simple.
+Here we show the Euler integration \cite{fiedler2}, which is extremely simple.
 The acceleration is calculated, then it is added (e.g. integrated) to the velocity.
 Once that's done, the velocity is added to the position.
 See Figs. 3 and 4.
@@ -628,7 +628,7 @@ A full code, which models the orbit of Mercury, is at:
 \section{General relativity versus Newtonian gravitation}
 
 In Newtonian gravity, the isotropic emitter ensures that space is curved.
-This is not quite the same as what happens in general relativity \cite{misner}.
+This is not quite the same as what happens in general relativity.
 In general relativity, time is also curved.
 One way to try to model the curvature of time is to produce graviton overlap by using pseudorandom direction vectors.
 Preliminary results show that up close, gravitation becomes stronger than that predicted by Newtonian gravitation alone.
@@ -647,12 +647,18 @@ These matters will be the focus of a future tutorial.
 
 \begin{thebibliography}{9}
 
+\bibitem{misner} Misner et al. Gravitation. (1970)
+
 \bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
 \bibitem{susskind} Susskind. The World as a Hologram. (1994)
-\bibitem{misner} Misner et al. Gravitation. (1970)
+
 \bibitem{fiedler1} Fiedler. Fix Your Timestep! (2004)
 \bibitem{fiedler2} Fiedler. Integration Basics. (2004)
-\bibitem{nasa} Williams. NASA Mercury Fact Sheet. (2024)
+
+
+
+
+%\bibitem{nasa} Williams. NASA Mercury Fact Sheet. (2024)
 
 
 
