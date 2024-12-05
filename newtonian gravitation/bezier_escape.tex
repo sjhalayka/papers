@@ -49,7 +49,7 @@ The main focus is on some C++ code.
 \section{Introduction}
 
 In this paper, we focus on Newtonian gravitation \cite{misner}.
-We cover the following six subjects:
+We cover the following subjects:
 \begin{enumerate}
 \item Typedefs that can be used to specify the precision of the floating point variables.
 \item A custom 3D vector class that is used to encapsulate the data and member functions using object-oriented paradigms.
@@ -58,7 +58,7 @@ We cover the following six subjects:
 \item A heuristic real field line intersection count function.
 \item An application is demonstrated, where we model Mercury's orbit by using numerical integration.
 A full code is given.
-%\item General relativity versus Newtonian gravitation \cite{misner}.
+\item General relativity versus Newtonian gravitation.
 \end{enumerate}
 
 The main goal is to acquaint the coder with the basic mathematics behind Mercury's orbit due to Newtonian gravitation.
@@ -464,10 +464,10 @@ This method is meant to be a stepping stone for the next section.
 
 For reference, if you know $n$, and you wish to know the emitter radius from that, then the equation is:
 \begin{equation}
-r_{\textit{emitter}} = \sqrt{\frac{n G \hbar \log 2}{k c^3 \pi}}.
+r_{\textit{e}} = \sqrt{\frac{n G \hbar \log 2}{k c^3 \pi}}.
 \end{equation}
 Using this radius, one can ensure that the results from this section match the results of the previous section, where $n$ is relatively small anyway (e.g. $n = 10^7$).
-As for predictability, for instance where $n = 10^7$ (e.g. $r_{\textit{emitter}} = 6.46109 \times 10^{-21}$ metres), it is found that at a distance of $170.521$ metres that the gradient $-\alpha = 0.999615$ dips below $1.0$.
+As for predictability, for instance where $n = 10^7$ (e.g. $r_{\textit{e}} = 6.46109 \times 10^{-21}$ metres), it is found that at a distance of $170.521$ metres that the gradient $-\alpha = 0.999615$ dips below $1.0$.
 This distance value depends entirely on our use of the holographic principle.
 
 
@@ -518,7 +518,7 @@ See Figs. 3 and 4.
 \begin{figure} 
 \centering
 \label{fig3}
-  \includegraphics[width = 5 in]{velocity.png}
+  \includegraphics[width = 6 in]{velocity.png}
   \caption{
 A diagram of the Euler integration of velocity.
 }
@@ -526,7 +526,7 @@ A diagram of the Euler integration of velocity.
 \begin{figure} 
 \centering
 \label{fig4}
-  \includegraphics[width = 5 in]{position.png}
+  \includegraphics[width = 6 in]{position.png}
   \caption{
 A diagram of the Euler integration of position.
 }
@@ -626,14 +626,31 @@ A full code, which models the orbit of Mercury, is at:
 
 
 
-%\section{General relativity versus Newtonian gravitation}
+\section{General relativity versus Newtonian gravitation}
 
-%In Newtonian gravity, the isotropic emitter ensures that space is curved.
-%This is not quite the same as what happens in general relativity.
-%In general relativity, time is also curved.
-%One way to try to model the curvature of time is to produce graviton overlap by using pseudorandom direction vectors.
-%Preliminary results show that up close, gravitation becomes stronger than that predicted by Newtonian gravitation alone.
-%These matters will be the focus of a future tutorial.
+In Newtonian gravity, the isotropic emitter ensures that space is curved.
+This is not quite the same as what happens in general relativity.
+In general relativity, time is also curved.
+One way to try to model the curvature of time is to produce graviton overlap by using pseudorandom direction vectors.
+Preliminary results show that up close, gravitation becomes stronger than that predicted by Newtonian gravitation alone.
+
+It is important to note that the gravitational time dilation is like
+\begin{equation}
+\frac{d\tau}{dt} = \sqrt{1 - \frac{2GM}{c^2 R}},
+\end{equation}
+and that Einstein's partial derivative of gravitational time dilation with respect to distance $R$ is
+\begin{equation}
+\frac{\partial}{\partial R} \left(\sqrt{1 - \frac{2GM}{c^2 R}} \right) = \frac{GM}{c^2 R^2 \sqrt{1 - \frac{2GM}{c^2 R}}}.
+%  \frac{r_{\textit{e}}}{2 R^2 \sqrt{1 - {r_{\textit{e}}}/{R}}}.
+% - \frac{1}{R \sqrt{1 - {r_{\textit{e}}}/{R}}}.
+\end{equation}
+Here we derive Newton's partial derivative so that it is numerically and dimensionally correct:
+\begin{equation}
+\frac{\partial}{\partial R} \left( c^2 \sqrt{1 - \frac{2GM}{c^2 R}} \right)  = \frac{GM}{R^2 \sqrt{1 - \frac{2GM}{c^2 R}}}.
+\end{equation}
+These matters will be the focus of a future tutorial.
+
+
 
 
 
