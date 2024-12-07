@@ -58,7 +58,6 @@ We cover the following subjects:
 \item A heuristic real field line intersection count function.
 \item An application is demonstrated, where we model Mercury's orbit by using numerical integration.
 A full code is given.
-\item General relativity versus Newtonian gravitation.
 \end{enumerate}
 
 The main goal is to acquaint the coder with the basic mathematics behind Mercury's orbit due to Newtonian gravitation.
@@ -215,7 +214,7 @@ bool circle_intersect(
 	if (normal.dot(circle_location) <= 0)
 		return false;
 
-	vector_3 v = normal;
+	vector_3 v = location + normal;
 
 	const real_type ratio = v.x / circle_location;
 
@@ -260,99 +259,7 @@ long long signed int get_intersecting_line_count_integer(
 }
 \end{lstlisting}
 
-\begin{lstlisting}
-int main(int argc, char** argv)
-{
-	const real_type receiver_radius = 1.0;
-	real_type emitter_radius = 
-		sqrt((10000000 * G * hbar * log(2.0)) 
-			/ (k * c3 * pi));
-
-	const real_type emitter_area =
-		4.0 * pi * emitter_radius * emitter_radius;
-
-	// Field line count
-	// re: holographic principle:
-	const real_type n =
-		(k * c3 * emitter_area)
-		/ (log(2.0) * 4.0 * G * hbar);
-
-	const real_type emitter_mass = c2 * emitter_radius / (2.0 * G);
-
-	// 2.39545e47 is the 't Hooft-Susskind constant:
-	// the number of field lines for a black hole of
-	// unit Schwarzschild radius
-	//
-	//const real_type G_ = 
-	//	(k * c3 * pi) 
-	//	/ (log(2.0) * hbar * 2.39545e47);
-
-	const string filename = "newton.txt";
-	ofstream out_file(filename.c_str());
-	out_file << setprecision(30);
-
-	const real_type start_distance = (emitter_radius + receiver_radius);
-	const real_type end_distance = 100.0;
-	const size_t distance_res = 1000;
-		
-	const real_type distance_step_size =
-		(end_distance - start_distance)
-		/ (distance_res - 1);
-
-	for (size_t step_index = 0; step_index < distance_res; step_index++)
-	{
-		const real_type r =
-			start_distance + step_index * distance_step_size;
-
-		const vector_3 receiver_pos(r, 0, 0);
-
-		const real_type epsilon = 1.0;
-
-		vector_3 receiver_pos_plus = receiver_pos;
-		receiver_pos_plus.x += epsilon;
-
-		const real_type collision_count_plus =
-			get_intersecting_line_count_integer(
-				n,
-				receiver_pos_plus,
-				receiver_radius);
-
-		const real_type collision_count =
-			get_intersecting_line_count_integer(
-				n,
-				receiver_pos,
-				receiver_radius);
-
-		const real_type gradient =
-			(static_cast<real_type>(collision_count_plus) 
-			- static_cast<real_type>(collision_count))
-			/ epsilon;
-
-		const real_type gradient_strength =
-			-gradient
-			/ (receiver_radius * receiver_radius);
-
-		const real_type newton_strength =
-			G * emitter_mass / pow(receiver_pos.x, 2.0);
-
-		const real_type newton_strength_ =
-			gradient_strength * receiver_pos.x * c * hbar * log(2)
-			/ (k * 2 * pi * emitter_mass);
-
-		cout << "r: " << r << " newton ratio: "
-			<< newton_strength / newton_strength_ << endl;
-
-		out_file << r << " " 
-			<< newton_strength / newton_strength_ << endl;
-	}
-
-	out_file.close();
-
-	return 0;
-}
-\end{lstlisting}
-
-While this method works, it is both memory and processor intensive.
+While this method works, it is processor intensive.
 This method is meant to be a stepping stone for the next section.
 
 
@@ -363,7 +270,7 @@ This method is meant to be a stepping stone for the next section.
 
 \section{Heuristic: real field line count}
 
-Rather than allocating gigabytes of RAM to store some unit vectors, we can instead use a heuristic approach to solve the problem from the previous section.
+We can instead use a heuristic approach to solve the problem from the previous section.
 This heuristic solution instead uses basic geometry to obtain the intersection count, making it orders of magnitude faster than the solution from the previous section.
 
 Where $r$ is the receiver radius, $R$ is the distance from the centre of the emitter, $\beta$ is the get intersecting line count function, and $n$ is the field line count, the gradient is:
@@ -387,6 +294,12 @@ g_N = \frac{n c \hbar \log 2}{k 4 \pi M R^2} = \frac{g R c \hbar \log 2}{k 2 \pi
 \end{equation}
 
 We will use $g_N = {G M}/{R^2}$, the simplest version of $g_N$, in the next section.
+
+For reference, if you know $n$, and you wish to know the emitter radius from that, then the equation is:
+\begin{equation}
+r_{\textit{e}} = \sqrt{\frac{n G \hbar \log 2}{k c^3 \pi}}.
+\end{equation}
+Using this radius, one can ensure that the results from this section match the results of the previous section, where $n$ is relatively small anyway (e.g. $n = 10^7$).
 
 \begin{lstlisting}
 real_type get_intersecting_line_count_real(
@@ -414,6 +327,7 @@ real_type get_intersecting_line_count_real(
 int main(int argc, char** argv)
 {
 	const real_type receiver_radius = 1.0;
+
 	real_type emitter_radius = 
 		sqrt((10000000 * G * hbar * log(2.0)) 
 			/ (k * c3 * pi));
@@ -505,13 +419,8 @@ int main(int argc, char** argv)
 This method is faster and less memory intensive when compared to the integer field count method.
 This method is meant to be a stepping stone for the next section.
 
-For reference, if you know $n$, and you wish to know the emitter radius from that, then the equation is:
-\begin{equation}
-r_{\textit{e}} = \sqrt{\frac{n G \hbar \log 2}{k c^3 \pi}}.
-\end{equation}
-Using this radius, one can ensure that the results from this section match the results of the previous section, where $n$ is relatively small anyway (e.g. $n = 10^7$).
-As for predictability, for instance where $n = 10^7$ (e.g. $r_{\textit{e}} = 6.46109 \times 10^{-21}$ metres), it is found that at a distance of $170.521$ metres that the gradient $-\alpha = 0.999615$ dips below $1.0$.
-This distance value depends entirely on our use of the holographic principle.
+%As for predictability, for instance where $n = 10^7$ (e.g. $r_{\textit{e}} = 6.46109 \times 10^{-21}$ metres), it is found that at a distance of $170.521$ metres that the gradient $-\alpha = 0.999615$ dips below $1.0$.
+% This distance value depends entirely on our use of the holographic principle.
 
 
 
@@ -665,54 +574,6 @@ Note that the orbit path is slightly elliptical.
 A full code, which models the orbit of Mercury, is at:
 
 \url{https://github.com/sjhalayka/mercury_orbit_glut}
-
-
-
-
-\section{General relativity versus Newtonian gravitation}
-
-In Newtonian gravity, the isotropic emitter ensures that space is curved.
-This is not quite the same as what happens in general relativity.
-In general relativity, time is also curved.
-One way to try to model the curvature of time is to produce graviton overlap by using pseudorandom field line direction vectors.
-Preliminary results show that up close, gravitation becomes stronger than that predicted by Newtonian gravitation alone.
-
-Here $M$ is the emitter mass.
-It is important to note that the gravitational time dilation is like
-\begin{equation}
-x = \frac{d\tau}{dt} = \sqrt{1 - \frac{2GM}{c^2 R}},
-\end{equation}
-and that the Einstein-Schwarzschild partial derivative of gravitational time dilation $x$ with respect to distance $R$ is
-\begin{equation}
-\frac{\partial x}{\partial R}  = \frac{GM}{c^2 R^2 x}.
-\end{equation}
-Here we obtain Newton's partial derivative, which is numerically and dimensionally correct:
-\begin{equation}
-\frac{ c^2 \partial x}{\partial R} = \frac{GM}{R^2 x}.
-\end{equation}
-We see that for very large distances $R \gg (2GM/c^2)$, where $x \approx 1$, that Newton's partial derivative provides Newtonian gravitation, as desired.
-
-In Fig. 6 we show field line normals that radiate outward like in standard Newtonian gravity.
-In Fig. 7 we show field normals that are pseudorandomly-generated.
-Where $x \approx 1$, the field lines generated by both methods become indistinguishable.
-\begin{figure} 
-\centering
-  \includegraphics[width = 6 in]{normals.png}
-  \caption{
-$n = 10000$ field line starting positions on a unit 2-sphere, where each of the $n$ normals (e.g. field line directions) are equal to their respective positions.
-}
-\end{figure}
-\begin{figure} 
-\centering
-  \includegraphics[width = 6 in]{rand_normals.png}
-  \caption{
-$n = 10000$ field line starting positions on a unit 2-sphere, where each of the $n$ normals (e.g. field line directions) are pseudorandom (but pointing outward).
-}
-\end{figure}
-
-These matters will be the focus of a future tutorial.
-
-
 
 
 
