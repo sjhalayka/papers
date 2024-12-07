@@ -206,27 +206,55 @@ g = \frac{-\alpha}{r^2}.
 \end{equation}
 
 \begin{lstlisting}
-long long unsigned int get_intersecting_line_count(
-	const vector<vector_3>& unit_vectors,
-	const vector_3& sphere_location,
+bool circle_intersect(
+	vector_3 location, 
+	const vector_3 normal, 
+	const real_type circle_location, 
+	const real_type circle_radius)
+{
+	if (normal.dot(circle_location) <= 0)
+		return false;
+
+	vector_3 v = normal;
+
+	const real_type ratio = v.x / circle_location;
+
+	const vector_3 circle_origin(circle_location, 0, 0);
+
+	v.y = v.y / ratio;
+	v.z = v.z / ratio;
+	v.x = circle_location;
+
+	vector_3 v2;
+	v2.x = circle_origin.x - v.x;
+	v2.y = circle_origin.y - v.y;
+	v2.z = circle_origin.z - v.z;
+
+	if (v2.length() > circle_radius)
+		return false;
+
+	return true;
+}
+
+long long signed int get_intersecting_line_count_integer(
+	const size_t n,
+	const vector_3 sphere_location,
 	const real_type sphere_radius)
 {
-	long long unsigned int count = 0;
+	long long signed int count = 0;
 
-	// Get cross-section edge direction
-	vector_3 cross_section_edge_dir(sphere_location.x, sphere_radius, 0);
-	cross_section_edge_dir.normalize();
+	for (size_t i = 0; i < n; i++)
+	{
+		vector_3 pos = RandomUnitVector();
+		vector_3 normal = pos;
 
-	// Get receiver direction
-	vector_3 receiver_dir(sphere_location.x, 0, 0);
-	receiver_dir.normalize();
-
-	// The minimum threshold for intersection
-	const real_type min_dot = cross_section_edge_dir.dot(receiver_dir);
-
-	for (size_t i = 0; i < unit_vectors.size(); i++)
-		if (unit_vectors[i].dot(receiver_dir) >= min_dot)
-			count++; // Intersection occurred
+		if (circle_intersect(
+				pos, 
+				normal, 
+				sphere_location.x, 
+				sphere_radius))
+			count++;
+	}
 
 	return count;
 }
@@ -235,74 +263,87 @@ long long unsigned int get_intersecting_line_count(
 \begin{lstlisting}
 int main(int argc, char** argv)
 {
+	const real_type receiver_radius = 1.0;
+	real_type emitter_radius = 
+		sqrt((10000000 * G * hbar * log(2.0)) 
+			/ (k * c3 * pi));
+
+	const real_type emitter_area =
+		4.0 * pi * emitter_radius * emitter_radius;
+
 	// Field line count
-	const size_t n = 1000000000;
+	// re: holographic principle:
+	const real_type n =
+		(k * c3 * emitter_area)
+		/ (log(2.0) * 4.0 * G * hbar);
 
-	cout << "Allocating memory for field lines" << endl;
-	vector<vector_3> unit_vectors(n);
+	const real_type emitter_mass = c2 * emitter_radius / (2.0 * G);
 
-	for (size_t i = 0; i < n; i++)
-	{
-		unit_vectors[i] = pseudorandom_unit_vector();
+	// 2.39545e47 is the 't Hooft-Susskind constant:
+	// the number of field lines for a black hole of
+	// unit Schwarzschild radius
+	//
+	//const real_type G_ = 
+	//	(k * c3 * pi) 
+	//	/ (log(2.0) * hbar * 2.39545e47);
 
-		static const size_t output_mod = 10000;
-
-		if (i % output_mod == 0)
-			cout << "Getting pseudorandom locations: " 
-			<< static_cast<float>(i) / n << endl;
-	}
-
-	string filename = "newton.txt";
+	const string filename = "newton.txt";
 	ofstream out_file(filename.c_str());
 	out_file << setprecision(30);
 
-	const real_type start_distance = 10.0;
+	const real_type start_distance = (emitter_radius + receiver_radius);
 	const real_type end_distance = 100.0;
 	const size_t distance_res = 1000;
-
-	const real_type distance_step_size = 
-		(end_distance - start_distance) 
+		
+	const real_type distance_step_size =
+		(end_distance - start_distance)
 		/ (distance_res - 1);
 
 	for (size_t step_index = 0; step_index < distance_res; step_index++)
 	{
-		const real_type r = 
-			start_distance + 
-			step_index * distance_step_size;
+		const real_type r =
+			start_distance + step_index * distance_step_size;
 
 		const vector_3 receiver_pos(r, 0, 0);
-		const real_type receiver_radius = 1.0;
 
 		const real_type epsilon = 1.0;
 
 		vector_3 receiver_pos_plus = receiver_pos;
 		receiver_pos_plus.x += epsilon;
 
-		const long long signed int collision_count_plus = 
-			get_intersecting_line_count(
-				unit_vectors, 
-				receiver_pos_plus, 
+		const real_type collision_count_plus =
+			get_intersecting_line_count_integer(
+				n,
+				receiver_pos_plus,
 				receiver_radius);
-		
-		const long long signed int collision_count = 
-			get_intersecting_line_count(
-				unit_vectors, 
-				receiver_pos, 
+
+		const real_type collision_count =
+			get_intersecting_line_count_integer(
+				n,
+				receiver_pos,
 				receiver_radius);
-		
-		const real_type gradient = 
-			static_cast<real_type>
-			(collision_count_plus - collision_count) 
+
+		const real_type gradient =
+			(static_cast<real_type>(collision_count_plus) 
+			- static_cast<real_type>(collision_count))
 			/ epsilon;
-		
-		const real_type gradient_strength = 
-			-gradient 
+
+		const real_type gradient_strength =
+			-gradient
 			/ (receiver_radius * receiver_radius);
 
-		cout << "r: " << r << " gradient strength: " 
-		<< gradient_strength << endl;
+		const real_type newton_strength =
+			G * emitter_mass / pow(receiver_pos.x, 2.0);
 
-		out_file << r << " " << gradient_strength << endl;
+		const real_type newton_strength_ =
+			gradient_strength * receiver_pos.x * c * hbar * log(2)
+			/ (k * 2 * pi * emitter_mass);
+
+		cout << "r: " << r << " newton ratio: "
+			<< newton_strength / newton_strength_ << endl;
+
+		out_file << r << " " 
+			<< newton_strength / newton_strength_ << endl;
 	}
 
 	out_file.close();
@@ -348,20 +389,23 @@ g_N = \frac{n c \hbar \log 2}{k 4 \pi M R^2} = \frac{g R c \hbar \log 2}{k 2 \pi
 We will use $g_N = {G M}/{R^2}$, the simplest version of $g_N$, in the next section.
 
 \begin{lstlisting}
-real_type get_intersecting_line_count(
+real_type get_intersecting_line_count_real(
 	const real_type n,
-	const vector_3& sphere_location,
+	const vector_3 sphere_location,
 	const real_type sphere_radius)
 {
-	const real_type sphere_area = 
-		4 * pi * sphere_location.x * sphere_location.x;
+	const real_type big_area =
+		4 * pi
+		* sphere_location.x * sphere_location.x;
 
-	const real_type circle_area = 
-		pi * sphere_radius * sphere_radius;
-	
-	const real_type ratio = 
-		circle_area / sphere_area;
-	
+	const real_type small_area =
+		pi
+		* sphere_radius * sphere_radius;
+
+	const real_type ratio =
+		small_area
+		/ big_area;
+
 	return n * ratio;
 }
 \end{lstlisting}
@@ -369,15 +413,18 @@ real_type get_intersecting_line_count(
 \begin{lstlisting}
 int main(int argc, char** argv)
 {
-	const real_type emitter_radius = 1.0;
-	
-	const real_type emitter_area = 
+	const real_type receiver_radius = 1.0;
+	real_type emitter_radius = 
+		sqrt((10000000 * G * hbar * log(2.0)) 
+			/ (k * c3 * pi));
+
+	const real_type emitter_area =
 		4.0 * pi * emitter_radius * emitter_radius;
 
 	// Field line count
 	// re: holographic principle:
-	const real_type n = 
-		(k * c3 * emitter_area) 
+	const real_type n =
+		(k * c3 * emitter_area)
 		/ (log(2.0) * 4.0 * G * hbar);
 
 	const real_type emitter_mass = c2 * emitter_radius / (2.0 * G);
@@ -394,10 +441,10 @@ int main(int argc, char** argv)
 	ofstream out_file(filename.c_str());
 	out_file << setprecision(30);
 
-	const real_type start_distance = 10.0;
+	const real_type start_distance = (emitter_radius + receiver_radius);
 	const real_type end_distance = 100.0;
 	const size_t distance_res = 1000;
-
+		
 	const real_type distance_step_size =
 		(end_distance - start_distance)
 		/ (distance_res - 1);
@@ -408,7 +455,6 @@ int main(int argc, char** argv)
 			start_distance + step_index * distance_step_size;
 
 		const vector_3 receiver_pos(r, 0, 0);
-		const real_type receiver_radius = 1.0;
 
 		const real_type epsilon = 1.0;
 
@@ -416,41 +462,38 @@ int main(int argc, char** argv)
 		receiver_pos_plus.x += epsilon;
 
 		const real_type collision_count_plus =
-			get_intersecting_line_count(
+			get_intersecting_line_count_real(
 				n,
 				receiver_pos_plus,
 				receiver_radius);
 
 		const real_type collision_count =
-			get_intersecting_line_count(
+			get_intersecting_line_count_real(
 				n,
 				receiver_pos,
 				receiver_radius);
 
 		const real_type gradient =
-			(collision_count_plus - collision_count)
+			(static_cast<real_type>(collision_count_plus) 
+			- static_cast<real_type>(collision_count))
 			/ epsilon;
 
-		real_type gradient_strength =
+		const real_type gradient_strength =
 			-gradient
 			/ (receiver_radius * receiver_radius);
 
-		const real_type gradient_strength_ = 
-			n / (2.0 * pow(receiver_pos.x, 3.0));
-
-		const real_type newton_strength = 
-			n * c * hbar * log(2.0)
-			/ 
-			(k * pow(receiver_pos.x, 2.0) 
-				* emitter_mass * 4.0 * pi);
-
-		const real_type newton_strength_ =
+		const real_type newton_strength =
 			G * emitter_mass / pow(receiver_pos.x, 2.0);
 
-		cout << "r: " << r << " gradient strength: "
-			<< gradient_strength << endl;
+		const real_type newton_strength_ =
+			gradient_strength * receiver_pos.x * c * hbar * log(2)
+			/ (k * 2 * pi * emitter_mass);
 
-		out_file << r << " " << gradient_strength << endl;
+		cout << "r: " << r << " newton ratio: "
+			<< newton_strength / newton_strength_ << endl;
+
+		out_file << r << " " 
+			<< newton_strength / newton_strength_ << endl;
 	}
 
 	out_file.close();
