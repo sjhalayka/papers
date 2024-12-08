@@ -211,18 +211,18 @@ bool circle_intersect(
 	const real_type circle_location, 
 	const real_type circle_radius)
 {
-	if (normal.dot(circle_location) <= 0)
+	const vector_3 circle_origin(circle_location, 0, 0);
+
+	if (normal.dot(circle_origin) <= 0)
 		return false;
 
 	vector_3 v = location + normal;
 
-	const real_type ratio = v.x / circle_location;
-
-	const vector_3 circle_origin(circle_location, 0, 0);
+	const real_type ratio = v.x / circle_origin.x;
 
 	v.y = v.y / ratio;
 	v.z = v.z / ratio;
-	v.x = circle_location;
+	v.x = circle_origin.x;
 
 	vector_3 v2;
 	v2.x = circle_origin.x - v.x;
@@ -355,7 +355,7 @@ int main(int argc, char** argv)
 	ofstream out_file(filename.c_str());
 	out_file << setprecision(30);
 
-	const real_type start_distance = (emitter_radius + receiver_radius);
+	const real_type start_distance = 2*receiver_radius;
 	const real_type end_distance = 100.0;
 	const size_t distance_res = 1000;
 		
