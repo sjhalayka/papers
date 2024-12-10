@@ -12,7 +12,7 @@
 \usepackage{setspace}
 \usepackage{amsmath}
 \usepackage{url}
-\usepackage[margin=1.0in]{geometry}
+\usepackage[margin=0.8in]{geometry}
 \usepackage{listings}
 
 
@@ -220,6 +220,7 @@ bool circle_intersect(
 
 	const real_type ratio = v.x / circle_origin.x;
 
+	// Project vector onto plane
 	v.y = v.y / ratio;
 	v.z = v.z / ratio;
 	v.x = circle_origin.x;
@@ -247,12 +248,16 @@ long long signed int get_intersecting_line_count_integer(
 		vector_3 pos = RandomUnitVector();
 		vector_3 normal = pos;
 
+		// Does ray intersect with the cross-section
+		// of the receiving sphere?
 		if (circle_intersect(
 				pos, 
 				normal, 
 				sphere_location.x, 
 				sphere_radius))
+		{
 			count++;
+		}	
 	}
 
 	return count;
@@ -523,8 +528,7 @@ void proceed_symplectic_order_4(
 	real_type G, 
 	real_type dt)
 {
-	static const real_type cr2 = 
-		pow(2.0, 1.0 / 3.0);
+	static const real_type cr2 = pow(2.0, 1.0 / 3.0);
 
 	static const real_type c[4] =
 	{
