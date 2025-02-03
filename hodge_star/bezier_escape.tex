@@ -72,6 +72,10 @@ using namespace Eigen;
 using namespace std;
 
 
+// https://claude.ai/chat/3caf4077-28b5-497f-b704-1b0c336a104d
+// https://codereview.stackexchange.com/questions/295232/calculating-the-determinant-of-a-matrix-using-a-purely-analytical-method-that-in
+
+
 template<class T, size_t N>
 class Vector_nD
 {
@@ -113,7 +117,7 @@ public:
   {
     if (vectors.size() != (N - 1))
     {
-      // Invalid input
+      cout << "nD cross product requires (n - 1) input vectors" << endl;
       return Vector_nD<T, N>();
     }
 
@@ -129,7 +133,7 @@ public:
       base_indices[i] = i;
 
     // Skip k in our calculations - 
-    //this is equivalent to removing the k-th column
+    // this is equivalent to removing the k-th column
     // For each permutation of the remaining (N - 1) indices
     for (int k = 0; k < N; k++)
     {
@@ -154,15 +158,15 @@ public:
           else
             actual_col = col + 1;
 
-          product_oss << "v(" << i << ", " << actual_col << ") ";
+          product_oss << "v_{" << i << actual_col << "} ";
 
           product *= vectors[i][actual_col];
         }
 
         if (sign == 1)
-          cout << "result[" << k << "] += " << product_oss.str() << endl;
+          cout << "x_{" << k << "} += " << product_oss.str() << endl;
         else
-          cout << "result[" << k << "] -= " << product_oss.str() << endl;
+          cout << "x_{" << k << "} -= " << product_oss.str() << endl;
 
         result[k] += sign * product;
 
@@ -215,7 +219,7 @@ public:
 
 
 template <class T, typename size_t N>
-T determinant_nxn(const MatrixXd& m)
+T determinant_nxn(const MatrixX<T>& m)
 {
   if (m.cols() != m.rows())
   {
@@ -229,7 +233,8 @@ T determinant_nxn(const MatrixXd& m)
   for (size_t i = 0; i < N; i++)
     a_vector.components[i] = m(0, i);
 
-  // We will use these (N - 1) N-vectors later, in the cross product operation
+  // We will use these (N - 1) N-vectors later, 
+  // in the cross product operation
   vector<Vector_nD<T, N>> input_vectors;
 
   for (size_t i = 1; i < N; i++)
@@ -260,7 +265,7 @@ int main(int argc, char** argv)
 {
   srand(static_cast<unsigned int>(time(0)));
 
-  const size_t N = 3; // Anything larger than 12 takes eons to solve for
+  const size_t N = 4; // Anything larger than 12 takes eons to solve for
 
   MatrixX<double> m(N, N);
 
@@ -285,7 +290,7 @@ int main(int argc, char** argv)
 
 
 
-\section{Examples of Hodge star operator}
+\section{Examples of the Hodge star operator}
 
 For $n = 3$:
 \begin{eqnarray}
