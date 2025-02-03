@@ -40,7 +40,7 @@
 \maketitle
 
 \begin{abstract}
-This paper contains a short introduction to the cross product in dimension $n \ge 3$.
+This paper contains a short introduction to the Claude cross product operator in dimension $n \ge 3$.
 The main focus is on some C++ code.
 \end{abstract}
 
@@ -49,15 +49,21 @@ The main focus is on some C++ code.
 
 \section{Application: the matrix determinant}
 
-In this paper, we focus on a cross product operation in dimension $n \ge 3$.
+In this paper, we focus on the Claude cross product operator in dimension $n \ge 3$.
+We refer to this as the Claude cross product operator because the beginnings of this paper/code were supplied by the Claude AI.
+Various changes to the code were needed in order for it to operate properly, but the kernel of the idea remains the same.
+I've asked Claude if this is the Hodge star operator or the wedge operator, but Claude says no.
+The chat log is at:
 
-The main goal is to acquaint the coder with the basic idea behind the Claude operator in $n$-D in the case that accepts ($n - 1$) $n$-vectors as input. 
+\url{https://claude.ai/chat/3caf4077-28b5-497f-b704-1b0c336a104d}
+
+The main goal is to acquaint the coder with the basic idea behind the Claude cross product operator in $n$-D. 
+The operator accepts $(n - 1)$ $n$-vectors as input, and outputs one $n$-vector.
 For instance, where $n = 3$, the $3$-D cross product accepts $(n - 1) = $ two $3$-vectors as input.
 Using C++ templates, the abstraction to any $n \ge 3$ is provided.
 This cross product is used to calculate the matrix determinant.
 
 \section{Code}
-
 
 Here we include the Eigen linear algebra library, as well as various parts of the standard library:
 \begin{lstlisting}
