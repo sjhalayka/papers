@@ -63,6 +63,12 @@ For instance, where $n = 3$, the $3$-D cross product accepts $(n - 1) = $ two $3
 Using C++ templates, the abstraction to any $n \ge 3$ is provided.
 This cross product is used to calculate the matrix determinant.
 
+
+
+
+
+
+
 \section{Code}
 
 Here we include the Eigen linear algebra library, as well as various parts of the standard library:
@@ -309,14 +315,13 @@ int main(int argc, char** argv)
 
   return 0;
 }
-
-
 \end{lstlisting}
+Here we have shown the geometric way to calculate the matrix determinant.
+
 
 
 
 \section{Examples of the Claude cross product operator}
-
 For $n = 3$:
 \begin{eqnarray}
 x_{0} &=& v_{01} v_{12} - v_{02} v_{11},\\
@@ -355,7 +360,7 @@ x_{3} &=&
  + v_{02} v_{10} v_{21}
  - v_{02} v_{11} v_{20}.
 \end{eqnarray}
-
+For $n \ge 5$, the terms become too numerous to print here.
 
 %\begin{thebibliography}{9}
 
