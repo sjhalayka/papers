@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{Euclidean cross product in dimension $n \ge 3$ as applied to the matrix determinant}
+\title{Hodge star operator in Euclidean dimension $n \ge 3$ as applied to the matrix determinant}
 \author{S. Halayka\footnote{sjhalayka@gmail.com}}
 \date{\today\;\currenttime}
 
@@ -40,7 +40,7 @@
 \maketitle
 
 \begin{abstract}
-This paper contains a short introduction to the Claude cross product operator in dimension $n \ge 3$.
+This paper contains a short introduction to the Hodge star operator in dimension $n \ge 3$.
 The main focus is on some C++ code.
 \end{abstract}
 
@@ -49,19 +49,18 @@ The main focus is on some C++ code.
 
 \section{Application: the matrix determinant}
 
-In this paper, we focus on the Claude cross product operator in dimension $n \ge 3$.
-We refer to this as the Claude cross product operator because the beginnings of this paper/code were supplied by the Claude AI.
+In this paper, we focus on the Hodge star operator in dimension $n \ge 3$.
+The beginnings of this paper/code were supplied by the Claude AI.
 Various changes to the code were needed in order for it to operate properly, but the kernel of the idea remains the same.
-I've asked Claude if this is the Hodge star operator or the wedge operator, but Claude says no.
 The chat log is at:
 
 \url{https://claude.ai/chat/3caf4077-28b5-497f-b704-1b0c336a104d}
 
-The main goal is to acquaint the coder with the basic idea behind the Claude cross product operator in $n$-D. 
+The main goal is to acquaint the coder with the basic idea behind the Hodge star operator in $n$-D. 
 The operator accepts $(n - 1)$ $n$-vectors as input, and outputs one $n$-vector.
-For instance, where $n = 3$, the $3$-D cross product accepts $(n - 1) = $ two $3$-vectors as input.
+For instance, where $n = 3$, the $3$-D Hodge star operator accepts $(n - 1) = $ two $3$-vectors as input.
 Using C++ templates, the abstraction to any $n \ge 3$ is provided.
-This cross product is used to calculate the matrix determinant.
+This Hodge star operator is used to calculate the matrix determinant.
 
 
 
@@ -126,16 +125,16 @@ public:
 
 \end{lstlisting}
 
-Here we make a static cross product function that takes in $(n - 1)$ $n$-vectors.
+Here we make a static Hodge star operator function that takes in $(n - 1)$ $n$-vectors.
 This function returns one $n$-vector:
 \begin{lstlisting}
 
-  // Claude cross product operator
-  static Vector_nD cross_product(const vector<Vector_nD<T, N>>& vectors)
+  // Hodge star operator
+  static Vector_nD star(const vector<Vector_nD<T, N>>& vectors)
   {
     if (vectors.size() != (N - 1))
     {
-      cout << "nD cross product requires (n - 1) input vectors" << endl;
+      cout << "nD operation requires (n - 1) input vectors" << endl;
       return Vector_nD<T, N>();
     }
 
@@ -207,7 +206,7 @@ This function returns one $n$-vector:
 
     if (N == 3)
     {
-      // Demonstrate the traditional cross product too
+      // Demonstrate the traditional cross product
       double x = vectors[0][0];
       double y = vectors[0][1];
       double z = vectors[0][2];
@@ -242,7 +241,7 @@ Here we have the static dot product function:
 
 \end{lstlisting}
 
-Finally, we calculate the determinant of a square matrix using the cross and dot products as defined above:
+Finally, we calculate the determinant of a square matrix using the Hodge star operator and the dot product operator as defined above:
 \begin{lstlisting}
 
 template <class T, typename size_t N>
@@ -261,7 +260,7 @@ T determinant_nxn(const MatrixX<T>& m)
     a_vector.components[i] = m(0, i);
 
   // We will use these (N - 1) N-vectors later, 
-  // in the cross product operation
+  // in the Hodge star operation
   vector<Vector_nD<T, N>> input_vectors;
 
   for (size_t i = 1; i < N; i++)
@@ -274,8 +273,8 @@ T determinant_nxn(const MatrixX<T>& m)
     input_vectors.push_back(b_vector);
   }
 
-  // Compute the cross product using (N - 1) N-vectors
-  Vector_nD<T, N> result = Vector_nD<T, N>::cross_product(input_vectors);
+  // Compute the Hodge star operator using (N - 1) N-vectors
+  Vector_nD<T, N> result = Vector_nD<T, N>::star(input_vectors);
 
   // Compute the dot product
   T det = Vector_nD<T, N>::dot_product(a_vector, result);
@@ -316,18 +315,18 @@ int main(int argc, char** argv)
   return 0;
 }
 \end{lstlisting}
-Here we have shown the geometric way to calculate the matrix determinant, by using the hypervolume of an $(n - 1)$-D parallelogram, where $n \ge 3$.
-
+Here we have shown the geometric way to calculate the matrix determinant, by using the hypervolume of an $(n - 1)$-D parallelogram base, where $n \ge 3$. 
+See Fig. 1.
 \begin{figure} 
 \centering
   \includegraphics[width = 3 in]{parallelogram.png}
   \caption{
-A $2$-D parallelogram in $3$-D space.
+A $2$-D parallelogram base in $3$-D space.
 }
 \end{figure}
 
-\section{Examples of the Claude cross product operator}
-For $n = 3$ (see Fig 1):
+\section{Examples of the Hodge star operator}
+For $n = 3$:
 \begin{eqnarray}
 x_{0} &=& v_{01} v_{12} - v_{02} v_{11},\\
 x_{1} &=& v_{00} v_{12} - v_{02} v_{10},\\
