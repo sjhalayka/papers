@@ -318,10 +318,16 @@ int main(int argc, char** argv)
 \end{lstlisting}
 Here we have shown the geometric way to calculate the matrix determinant, by using the hypervolume of an $(n - 1)$-D parallelogram, where $n \ge 3$.
 
-
+\begin{figure} 
+\centering
+  \includegraphics[width = 3 in]{parallelogram.png}
+  \caption{
+A $2$-D parallelogram in $3$-D space.
+}
+\end{figure}
 
 \section{Examples of the Claude cross product operator}
-For $n = 3$:
+For $n = 3$ (see Fig 1):
 \begin{eqnarray}
 x_{0} &=& v_{01} v_{12} - v_{02} v_{11},\\
 x_{1} &=& v_{00} v_{12} - v_{02} v_{10},\\
@@ -360,6 +366,15 @@ x_{3} &=&
  - v_{02} v_{11} v_{20}.
 \end{eqnarray}
 For $n \ge 5$, the terms become too numerous to print here.
+
+
+
+
+
+
+
+
+
 
 %\begin{thebibliography}{9}
 
