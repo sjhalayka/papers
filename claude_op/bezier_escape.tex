@@ -93,7 +93,7 @@ class Vector_nD
 public:
   array<T, N> components;
 
-  // Helper function to get the sign of permutation
+  // Levi-Civita symbol -- get the sign of permutation
   static signed char permutation_sign(const array<int, (N - 1)>& perm)
   {
     bool sign = true;
