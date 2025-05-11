@@ -70,49 +70,74 @@ The gradient strength is:
 \begin{equation}
 g = -\gamma \pi = \frac{n}{2 R^3}.
 \end{equation}
-From this we can get the Newtonian acceleration $a$ for a flat rotation curve of speed $v$:
+The Newtonian acceleration $a_{\textit{Newton}}$ and velcocity $v_{\textit{Newton}}$ are:
 \begin{equation}
-\label{a_equation}
-a = \frac{v^2}{R} = \frac{g R c \hbar \log 2}{k 2 \pi M},
+a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{g G c \hbar \log 2}{2 R k \pi}},
 \end{equation}
 \begin{equation}
-v = \sqrt{\frac{g R^2 c \hbar \log 2}{k 2 \pi M}}.
+v_{\textit{Newton}} = \sqrt[4]{\frac{g G R c \hbar \log 2}{2 k \pi}}.
 \end{equation}
+
+
+From this we can get the Newtonian acceleration $a_{\textit{flat}}$ for a flat rotation curve of speed $v_{\textit{flat}}$:
+\begin{equation}
+a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{g R c \hbar \log 2}{2 k \pi M},
+\end{equation}
+\begin{equation}
+v_{\textit{flat}} = \sqrt{\frac{g R^2 c \hbar \log 2}{k 2 \pi M}}.
+\end{equation}
+
+The ratio of the acceleration is
+\begin{equation}
+\frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = R^{d}, 
+\end{equation}
+where $d = 3 - D$ stands for disk-like.
+\begin{equation}
+D = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R}.
+\end{equation}
+
+
 
 
 \begin{figure} 
 \centering
 \label{fig1}
-  \includegraphics[width = 4 in]{3.png}
+  \includegraphics[width = 3 in]{3.png}
   \caption{
 Where $D = 3$.
+The normals are isotropic.
 }
 \end{figure}
 
 \begin{figure} 
 \centering
 \label{fig2}
-  \includegraphics[width = 4 in]{2.1.png}
+  \includegraphics[width = 3 in]{2.1.png}
   \caption{
 Where $D = 2.1$.
+The normals are increasingly anisotropic.
+}
+\end{figure}
+
+\begin{figure} 
+\centering
+\label{fig3}
+  \includegraphics[width = 3 in]{2.001.png}
+  \caption{
+Where $D = 2.001$.
+The normals are anisotropic.
 }
 \end{figure}
 
 
-
-
-\section{Heuristic: field line intersection density gradient}
-
-For example, where $D = 2.001$, the ratio of the acceleration is
-\begin{equation}
-\frac{a_{D}}{a_{3}} = R^{d}, 
-\end{equation}
-where $d = 3 - D = 0.999$.
-Here $d$ stands for disk-like.
-
-The code for this section can be downloaded from:
-
-\url{https://github.com/sjhalayka/ellipsoid_emitter}
+\begin{figure} 
+\centering
+\label{fig4}
+  \includegraphics[width = 5 in]{AABB.png}
+  \caption{
+Where $D = 3$.
+}
+\end{figure}
 
 
 
