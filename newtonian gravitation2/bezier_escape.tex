@@ -1,0 +1,141 @@
+\documentclass[12pt]{article}
+
+\title{Real dimension in numerical Newtonian gravitation}
+\author{S. Halayka\footnote{sjhalayka@gmail.com}}
+\date{\today\;\currenttime}
+
+\usepackage{datetime}
+\usepackage{listings}
+\usepackage{cite}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{listings}
+
+
+\usepackage{xcolor}
+\lstset { %
+    language=C++,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+    showstringspaces=false,
+}
+
+
+%\doublespace
+
+%\usepackage[]{lineno}
+%\linenumbers
+
+
+\begin{document}
+
+
+
+ 
+\maketitle
+
+\begin{abstract}
+This paper contains a short introduction to Newtonian gravitation.
+The main focus is on some C++ code.
+\end{abstract}
+
+
+
+
+
+
+\section{Brute force: integer field line count}
+Regarding the holographic principle, where $n$ is the gravitational field line count, and $A_s$ is the Schwarzschild black hole event horizon area:
+\begin{equation}
+n = \frac{A_s k c^3}{ 4 G \hbar \log 2},
+\end{equation}
+the Schwarzschild radius is:
+\begin{equation}
+r_s = \sqrt{\frac{A_s}{4 \pi}} = \sqrt{\frac{n G \hbar \log 2}{k c^3 \pi}},
+\end{equation}
+and the mass is:
+\begin{equation}
+M = \frac{c^2 r_s}{2 G} = \sqrt{\frac{n c \hbar \log 2}{4 G k \pi}}. 
+\end{equation}
+
+Where $R$ is some far distance from the centre of the gravitating body (e.g, $R \gg r_s$), $\beta$ is the get intersecting line length function and $\epsilon$ is some small value (e.g $10^{-5}$), the gradient is:
+\begin{equation}
+\gamma = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
+\end{equation}
+The gradient strength is:
+\begin{equation}
+g = -\gamma \pi = \frac{n}{2 R^3}.
+\end{equation}
+From this we can get the Newtonian acceleration $a$ for a flat rotation curve of speed $v$:
+\begin{equation}
+\label{a_equation}
+a = \frac{v^2}{R} = \frac{g R c \hbar \log 2}{k 2 \pi M},
+\end{equation}
+\begin{equation}
+v = \sqrt{\frac{g R^2 c \hbar \log 2}{k 2 \pi M}}.
+\end{equation}
+
+The ratio of $a_{2.001} / a_{3}$ is equal to $R$.
+
+The code for this section can be downloaded from:
+
+\url{https://github.com/sjhalayka/ellipsoid_emitter}
+
+
+
+
+
+%\pagebreak
+
+
+
+
+
+
+
+\begin{thebibliography}{9}
+
+\bibitem{misner} Misner et al. Gravitation. (1970)
+
+\bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
+\bibitem{susskind} Susskind. The World as a Hologram. (1994)
+
+\bibitem{fiedler1} Fiedler. Fix Your Timestep! (2004)
+\bibitem{fiedler2} Fiedler. Integration Basics. (2004)
+
+
+
+
+%\bibitem{nasa} Williams. NASA Mercury Fact Sheet. (2024)
+
+
+
+\end{thebibliography}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
