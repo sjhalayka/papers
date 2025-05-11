@@ -48,7 +48,7 @@ The main focus is on some C++ code.
 
 
 
-\section{Brute force: integer field line count}
+\section{Brute force: field line intersection density}
 Regarding the holographic principle, where $n$ is the gravitational field line count, and $A_s$ is the Schwarzschild black hole event horizon area:
 \begin{equation}
 n = \frac{A_s k c^3}{ 4 G \hbar \log 2},
@@ -62,7 +62,7 @@ and the mass is:
 M = \frac{c^2 r_s}{2 G} = \sqrt{\frac{n c \hbar \log 2}{4 G k \pi}}. 
 \end{equation}
 
-Where $R$ is some far distance from the centre of the gravitating body (e.g, $R \gg r_s$), $\beta$ is the get intersecting line length function and $\epsilon$ is some small value (e.g $10^{-5}$), the gradient is:
+Where $R$ is some far distance from the centre of the gravitating body (e.g, $R \gg r_s$), $\beta$ is the get intersecting line length function, and $\epsilon$ is some small value (e.g $10^{-5}$), the gradient is:
 \begin{equation}
 \gamma = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
@@ -79,7 +79,11 @@ a = \frac{v^2}{R} = \frac{g R c \hbar \log 2}{k 2 \pi M},
 v = \sqrt{\frac{g R^2 c \hbar \log 2}{k 2 \pi M}}.
 \end{equation}
 
-For example, where $D = 2.001$, the ratio of $a_{D} / a_{3}$ is equal to $R^{d}$ where $d = 3 - D = 0.999$.
+For example, where $D = 2.001$, the ratio of the acceleration is
+\begin{equation}
+\frac{a_{D}}{a_{3}} = R^{d}, 
+\end{equation}
+where $d = 3 - D = 0.999$.
 Here $d$ stands for disk-like.
 
 The code for this section can be downloaded from:
@@ -105,8 +109,6 @@ The code for this section can be downloaded from:
 \bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
 \bibitem{susskind} Susskind. The World as a Hologram. (1994)
 
-\bibitem{fiedler1} Fiedler. Fix Your Timestep! (2004)
-\bibitem{fiedler2} Fiedler. Integration Basics. (2004)
 
 
 
