@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  10 MAY 2025 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  11 MAY 2025 10:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -352,20 +352,30 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+<3.png, id=1, 779.16093pt x 747.54282pt>
+File: 3.png Graphic file (type png)
+<use 3.png>
+Package pdftex.def Info: 3.png  used on input line 86.
+(pdftex.def)             Requested size: 289.07999pt x 277.33934pt.
+<2.1.png, id=3, 779.16093pt x 747.54282pt>
+File: 2.1.png Graphic file (type png)
+<use 2.1.png>
+Package pdftex.def Info: 2.1.png  used on input line 95.
+(pdftex.def)             Requested size: 289.07999pt x 277.33934pt.
 [1
 
-{C:/Users/cowco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
-(bezier_escape.aux)
+{C:/Users/cowco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2 <./3.png>
+ <./2.1.png>] [3] (bezier_escape.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6027 strings out of 474486
- 91971 string characters out of 5743756
- 1933542 words of memory out of 5000000
- 28243 multiletter control sequences out of 15000+600000
+ 6045 strings out of 474486
+ 92219 string characters out of 5743756
+ 1934542 words of memory out of 5000000
+ 28261 multiletter control sequences out of 15000+600000
  565426 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,11n,97p,1018b,301s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -385,9 +395,9 @@ fb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 onts/cm/cmsy10.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy8.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on bezier_escape.pdf (2 pages, 141870 bytes).
+Output written on bezier_escape.pdf (3 pages, 745970 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
+ 87 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
