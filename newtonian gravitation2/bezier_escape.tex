@@ -64,7 +64,7 @@ It was 't Hooft's idea to quantize the black hole's event horizon area into grav
 
 \section{Brute force: field line intersection density gradient}
 
-In this paper, we numerically solve for the Newtonian (e.g. Keplerian) and flat (e.g. constant velocity) gradients using an axis-aligned bounding box by obtaining the lengths of the intersecting line segments emitted by the gravitating body. See Fig.1. 
+In this paper, we numerically solve for the Newtonian (e.g. Keplerian) and flat (e.g. constant velocity) gradients using a unit axis-aligned bounding box by obtaining the lengths of the intersecting line segments emitted by the gravitating body. See Fig.1. 
 
 
 
@@ -74,7 +74,7 @@ In this paper, we numerically solve for the Newtonian (e.g. Keplerian) and flat 
   \includegraphics[width = 6 in]{AABB.png}
   \caption{
 Where $D = 3$.
-This figure shows an axis-aligned bounding box and an isotropic emitter, looking from above.
+This figure shows a unit axis-aligned bounding box and an isotropic emitter, looking from above.
 An example field line (red) and intersecting line segment (green) is given.
 The bounding box is filled with these intersecting line segments.
 It is the gradient of the density of these line segments that forms the gravitational acceleration.
@@ -107,7 +107,7 @@ The Newtonian acceleration $a_{\textit{Newton}}$ is:
 a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{g G c \hbar \log 2}{2 R^2 k \pi}}.
 \end{equation}
 
-The Newtonian acceleration $a_{\textit{flat}}$ for a flat rotation curve is:
+The acceleration $a_{\textit{flat}}$ for a flat rotation curve is:
 \begin{equation}
 a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{g R c \hbar \log 2}{2 k \pi M}.
 \end{equation}
@@ -303,8 +303,6 @@ int main(void)
 
 
 
-
-\pagebreak
 
 
 

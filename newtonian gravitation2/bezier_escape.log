@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  12 MAY 2025 16:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  12 MAY 2025 17:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -377,23 +377,23 @@ File: omlcmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 137.
 
-[3] [4] [5] [6]
-<3.png, id=41, 779.16093pt x 747.54282pt>
+[3] [4] [5]
+<3.png, id=38, 779.16093pt x 747.54282pt>
 File: 3.png Graphic file (type png)
 <use 3.png>
-Package pdftex.def Info: 3.png  used on input line 344.
+Package pdftex.def Info: 3.png  used on input line 342.
 (pdftex.def)             Requested size: 216.81pt x 208.01021pt.
-<2.1.png, id=42, 779.16093pt x 747.54282pt>
+<2.1.png, id=39, 779.16093pt x 747.54282pt>
 File: 2.1.png Graphic file (type png)
 <use 2.1.png>
-Package pdftex.def Info: 2.1.png  used on input line 354.
+Package pdftex.def Info: 2.1.png  used on input line 352.
 (pdftex.def)             Requested size: 216.81pt x 208.01021pt.
-<2.001.png, id=43, 779.16093pt x 747.54282pt>
+<2.001.png, id=40, 779.16093pt x 747.54282pt>
 File: 2.001.png Graphic file (type png)
 <use 2.001.png>
-Package pdftex.def Info: 2.001.png  used on input line 364.
+Package pdftex.def Info: 2.001.png  used on input line 362.
 (pdftex.def)             Requested size: 216.81pt x 208.01021pt.
- [7 <./3.png>] [8 <./2.1.png> <./2.001.png>] (bezier_escape.aux)
+ [6 <./3.png>] [7 <./2.1.png> <./2.001.png>] (bezier_escape.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -427,9 +427,9 @@ X/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/cowco/AppData/Local/Progra
 ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/cowco/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/cowco/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on bezier_escape.pdf (8 pages, 839506 bytes).
+Output written on bezier_escape.pdf (7 pages, 839113 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
+ 126 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
