@@ -70,21 +70,20 @@ The gradient strength is:
 \begin{equation}
 g = -\gamma \pi = \frac{n}{2 R^3}.
 \end{equation}
-The Newtonian acceleration $a_{\textit{Newton}}$ and velcocity $v_{\textit{Newton}}$ are:
+The Newtonian acceleration $a_{\textit{Newton}}$ and velocity $v_{\textit{Newton}}$ are:
 \begin{equation}
-a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{g G c \hbar \log 2}{2 R k \pi}},
+a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{g G c \hbar \log 2}{2 R^2 k \pi}},
 \end{equation}
 \begin{equation}
-v_{\textit{Newton}} = \sqrt[4]{\frac{g G R c \hbar \log 2}{2 k \pi}}.
+v_{\textit{Newton}} = \sqrt{a_{\textit{Newton}} R} =\sqrt[4]{\frac{g G R c \hbar \log 2}{2 k \pi}}.
 \end{equation}
-
 
 From this we can get the Newtonian acceleration $a_{\textit{flat}}$ for a flat rotation curve of speed $v_{\textit{flat}}$:
 \begin{equation}
 a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{g R c \hbar \log 2}{2 k \pi M},
 \end{equation}
 \begin{equation}
-v_{\textit{flat}} = \sqrt{\frac{g R^2 c \hbar \log 2}{k 2 \pi M}}.
+v_{\textit{flat}} = \sqrt{a_{\textit{flat}} R} = \sqrt{\frac{g R^2 c \hbar \log 2}{2 k \pi M}}.
 \end{equation}
 
 The ratio of the acceleration is
@@ -136,6 +135,8 @@ The normals are anisotropic.
   \includegraphics[width = 5 in]{AABB.png}
   \caption{
 Where $D = 3$.
+This figure shows an axis-aligned bounding box and an isotropic emitter, looking from above.
+The bounding box is filled with the intersecting line segments.
 }
 \end{figure}
 
