@@ -39,8 +39,7 @@
 \maketitle
 
 \begin{abstract}
-This paper contains a short introduction to Newtonian gravitation.
-The main focus is on some C++ code.
+Abstract...
 \end{abstract}
 
 
@@ -70,29 +69,23 @@ The gradient strength is:
 \begin{equation}
 g = -\gamma \pi = \frac{n}{2 R^3}.
 \end{equation}
-The Newtonian acceleration $a_{\textit{Newton}}$ and velocity $v_{\textit{Newton}}$ are:
+The Newtonian acceleration $a_{\textit{Newton}}$ is:
 \begin{equation}
-a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{g G c \hbar \log 2}{2 R^2 k \pi}},
-\end{equation}
-\begin{equation}
-v_{\textit{Newton}} = \sqrt{a_{\textit{Newton}} R} =\sqrt[4]{\frac{g G R c \hbar \log 2}{2 k \pi}}.
+a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{g G c \hbar \log 2}{2 R^2 k \pi}}.
 \end{equation}
 
-From this we can get the Newtonian acceleration $a_{\textit{flat}}$ for a flat rotation curve of speed $v_{\textit{flat}}$:
+The Newtonian acceleration $a_{\textit{flat}}$ for a flat rotation curve is:
 \begin{equation}
-a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{g R c \hbar \log 2}{2 k \pi M},
-\end{equation}
-\begin{equation}
-v_{\textit{flat}} = \sqrt{a_{\textit{flat}} R} = \sqrt{\frac{g R^2 c \hbar \log 2}{2 k \pi M}}.
+a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{g R c \hbar \log 2}{2 k \pi M}.
 \end{equation}
 
 The ratio of the acceleration is
 \begin{equation}
 \frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = R^{d}, 
 \end{equation}
-where $d = 3 - D$ stands for disk-like.
+where $d = 3 - D$ stands for disk-like, and the dimension of the gravitation field is:
 \begin{equation}
-D = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R}.
+D = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R} = 3 - \frac{\log \frac{v_{\textit{flat}}^2}{v_{\textit{Newton}}^2}}{\log R}.
 \end{equation}
 
 
@@ -142,7 +135,46 @@ The bounding box is filled with the intersecting line segments.
 
 
 
+\begin{lstlisting}
+#include <cmath>
+#include <iostream>
+using namespace std;
 
+const double G = 6.67430e-11;
+const double c = 299792458;
+const double c2 = c * c;
+const double c3 = c * c * c;
+const double pi = 4.0 * atan(1.0);
+const double h = 6.62607015e-34;
+const double hbar = h / (2.0 * pi);
+const double k = 1.380649e-23;
+
+int main(void)
+{
+	double M = 1e41;
+
+	double r_s = 2 * G * M / c2;
+	double A_s = 4 * pi * r_s * r_s;
+	double n = A_s * k * c3 / (4 * G * hbar * log(2.0));
+
+	double R = 3e20;
+	double g = n / (2 * R * R * R);
+
+	double a_Newton = sqrt((g * G * c * hbar * log(2.0))/(2 * R*R * k * pi));
+	double a_flat = pow(220000, 2.0) / R;
+
+	double v_Newton = sqrt(a_Newton * R);
+	double v_flat = 220000;
+
+	double D = 3.0 - log(a_flat / a_Newton) / log(R);
+	double D_ = 3.0 - log(pow(v_flat, 2.0) / pow(v_Newton, 2.0)) / log(R);
+
+	cout << D << endl;
+	cout << D_ << endl;
+
+	return 0;
+}
+\end{lstlisting}
 
 %\pagebreak
 
