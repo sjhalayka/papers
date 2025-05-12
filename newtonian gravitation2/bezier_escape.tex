@@ -48,15 +48,15 @@ C++ code is provided.
 
 \section{Entropy}
 Entropy is a measure of how much information is required to encode a particular macroscopic state.
-For example, where there are $W$ distinct microstates, the binary entropy $n$ is:
+For example, in terms of the set of 8-bit integers, where there are $W$ distinct microstates, the binary entropy $n$ is:
 \begin{equation}
 n = \frac{\log W}{\log 2}.
 \end{equation}
-For example, the number of distinct 8-bit integers is 256, and so the entropy is 8 and W is 256.
+The number of distinct 8-bit integers is 256, and so the binary entropy is 8 and W is 256.
 
-At low density (e.g. everyday densities on the Earth), this entropy is proportional to mass.
+At low density (e.g. everyday densities on the Earth), this binary entropy is proportional to mass.
 
-At the highest density (e.g. black hole densities), this entropy is proportional to mass squared.
+At the highest density (e.g. black hole densities), this binary entropy is proportional to mass squared.
 For instance, using binary entropy:
 \begin{equation}
 n = \frac{A_s k c^3}{ 4 G \hbar \log 2},
@@ -261,7 +261,7 @@ density0 /=
 
 Below is analytical code that calculates the dimension $D$ for the Galactic orbit of the Solar System.
 The output dimension is $D = 2.48352$.
-That is, the Galactic shape at $R$ is somewhat flattened.
+That is, the Galactic shape at $R$ is quite flattened.
 \begin{lstlisting}
 #include <cmath>
 #include <iostream>
