@@ -55,6 +55,10 @@ n = \frac{\log W}{\log 2}.
 The number of distinct 8-bit integers is 256, and so the binary entropy is 8 and W is 256.
 
 At low density (e.g. everyday densities on the Earth), this binary entropy is proportional to mass.
+According to Boltzmann:
+\begin{equation}
+n = \frac{k \log W}{\log 2}.
+\end{equation}
 
 At the highest density (e.g. black hole densities), this binary entropy is proportional to mass squared.
 For instance, using binary entropy:
@@ -261,7 +265,7 @@ density0 /=
 
 Below is analytical code that calculates the dimension $D$ for the Galactic orbit of the Solar System.
 The output dimension is $D = 2.48352$.
-That is, the Galactic shape at $R$ is quite flattened.
+That is, the Galactic gravitational field shape at $R$ is quite flattened, as observed.
 \begin{lstlisting}
 #include <cmath>
 #include <iostream>
@@ -347,7 +351,7 @@ int main(void)
   \includegraphics[width = 3 in]{3.png}
   \caption{
 Where $D = 3$.
-The normals are isotropic.
+The field lines are isotropic, spherical.
 }
 \end{figure}
 
@@ -357,7 +361,7 @@ The normals are isotropic.
   \includegraphics[width = 3 in]{2.1.png}
   \caption{
 Where $D = 2.1$.
-The normals are increasingly anisotropic.
+The field lines are increasingly anisotropic.
 }
 \end{figure}
 
@@ -367,7 +371,7 @@ The normals are increasingly anisotropic.
   \includegraphics[width = 3 in]{2.001.png}
   \caption{
 Where $D = 2.001$.
-The normals are anisotropic.
+The field lines are anisotropic, disk-like.
 }
 \end{figure}
 
