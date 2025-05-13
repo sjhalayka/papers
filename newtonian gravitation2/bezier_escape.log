@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  13 MAY 2025 11:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  13 MAY 2025 14:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -407,7 +407,7 @@ L3 programming layer <2024-01-04>
 Here is how much of TeX's memory you used:
  6641 strings out of 474486
  98095 string characters out of 5743756
- 1987542 words of memory out of 5000000
+ 1986542 words of memory out of 5000000
  28848 multiletter control sequences out of 15000+600000
  566959 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -432,7 +432,7 @@ X/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/cowco/AppData/Local/Progra
 ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/cowco/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/cowco/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on bezier_escape.pdf (8 pages, 845009 bytes).
+Output written on bezier_escape.pdf (8 pages, 845175 bytes).
 PDF statistics:
  129 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
