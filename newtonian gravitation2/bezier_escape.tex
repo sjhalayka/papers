@@ -48,20 +48,21 @@ C++ code is provided.
 
 \section{Entropy}
 Entropy is a measure of how much information is required to encode a particular macroscopic state.
-For example, in terms of the set of 8-bit integers (altogether $256$ distinct, equiprobable integers), where there are $W$ distinct microstates, the Shannon binary entropy $n$ is:
+Where there are $W$ distinct microstates, the Shannon binary entropy $n$ is:
 \begin{equation}
-n =  \frac{-\sum_{i}^{W} p_i \log p_i} {\log 2},
+n =  \frac{-\sum_{i = 1}^{W} p_i \log p_i} {\log 2},
 \end{equation}
 where $p_i$ is the probability of the $i$th microstate, and all probabilities add up to $1$:
 \begin{equation}
-\sum_{i}^{W} p_i = 1.
+\sum_{i = 1}^{W} p_i = 1.
 \end{equation}
 For equiprobable microstates, like in the case of the 8-bit integers, where $p_i = 1/W$:
 \begin{equation}
 n = \frac{\log W}{\log 2},
 \end{equation}
-the number of equiprobable, distinct 8-bit integers is 256, and so the binary entropy is $n = 8$ and $W= 256$.
-This is to say that if you understand the 8-bit integers, then you understand entropy in the case of equiprobable microstates.
+the number of equiprobable, distinct 8-bit integers is $2^8 = 256$, and so $n = 8$ and $W= 256$.
+This is to say that if you understand the concept of the 8-bit integers, then you also understand binary entropy in the case of equiprobable microstates.
+For the 16-bit integers, $n = 16$ and $W = 65536$, and so on and so forth.
 
 At low density (e.g. everyday densities on the Earth), this binary entropy is proportional to mass.
 The Boltzmann binary entropy is:
@@ -74,14 +75,70 @@ The Bekenstein-Hawking binary entropy is:
 \begin{equation}
 n = \frac{A_s k c^3}{ 4 G \hbar \log 2},
 \end{equation}
-It was 't Hooft's idea to quantize the black hole's event horizon area into gravitational field line emitters (e.g. dividing the entropy by $\log 2$) in his pioneering work on the holographic principle.
+
+The following is a code for calculating the entropy of a string of characters.
+Note that the calculation allows for non-equiprobable probabilities, and so it's a bit more general.
+\begin{lstlisting}
+#include <iostream>
+#include <map>
+#include <string>
+#include <sstream>
+#include <cmath>
+using namespace std;
+
+int main(void)
+{
+    string input_string = "Hello world";
+    size_t length = input_string.length();
+
+    ostringstream output_stream;
+    
+    double entropy = 0.0;
+    
+    if(length > 0)
+    {
+        map<char, size_t> input_map;
+
+        for(size_t i = 0; i < length; i++)
+            input_map[input_string[i]]++;
+        
+        for(map<char, size_t>::const_iterator ci = input_map.begin(); 
+			ci != input_map.end(); 
+			ci++)
+        {
+            double probability = ci->second / static_cast<double>(length);
+            
+            output_stream << 
+			"Character: \'" << 
+			ci->first << 
+			"\', Count: " << 
+			ci->second << 
+			", Probability: " <<
+			probability << 
+			endl;
+            
+            entropy += probability * log(probability);
+        }
+        
+        entropy = -entropy / log(2.0);
+    }
+
+    cout << output_stream.str() << endl;
+    cout << "Entropy: " << entropy << endl;
+    
+    return 0;
+}
+
+\end{lstlisting}
 
 
 
 
 \section{Brute force: field line intersection density gradient}
 
-In this paper, we numerically solve for the Newtonian (e.g. Keplerian) and flat (e.g. constant velocity) gradients (e.g. derivatives) using a unit axis-aligned bounding box by obtaining the lengths of the intersecting line segments emitted by the gravitating body. See Fig.1. 
+It was 't Hooft's idea to quantize the black hole's event horizon area into gravitational field line emitters (e.g. dividing the entropy by $\log 2$) in his pioneering work on the holographic principle.
+
+In this paper, we numerically solve for the Newtonian (e.g. Keplerian) and flat (e.g. constant velocity) gradients (e.g. derivatives) using a unit axis-aligned bounding box by obtaining the lengths of the intersecting field line segments emitted by the gravitating body. See Fig.1. 
 The following equations were found to be true through brute force trial and error.
 
 Regarding the holographic principle, the Schwarzschild black hole event horizon radius is:

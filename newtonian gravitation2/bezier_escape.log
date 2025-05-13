@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  13 MAY 2025 14:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  13 MAY 2025 17:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -352,52 +352,54 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-[1
-
-{C:/Users/cowco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-<AABB.png, id=17, 463.7325pt x 301.8778pt>
-File: AABB.png Graphic file (type png)
-<use AABB.png>
-Package pdftex.def Info: AABB.png  used on input line 126.
-(pdftex.def)             Requested size: 505.89pt x 329.32587pt.
-
-Overfull \hbox (7.22742pt too wide) in paragraph at lines 126--132
- [][] 
- []
-
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
-43.
-(C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/latex/base\omscmr.fd
-File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 143.
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 1
-47.
-
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 8
+2.
 (C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/latex/base\omlcmr.fd
 File: omlcmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 147.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 82.
 
-[2] [3 <./AABB.png>] [4] [5] [6]
-<3.png, id=41, 779.16093pt x 747.54282pt>
+[1
+
+{C:/Users/cowco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 9
+0.
+
+(C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/latex/base\omscmr.fd
+File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 90.
+
+[2]
+<AABB.png, id=21, 463.7325pt x 301.8778pt>
+File: AABB.png Graphic file (type png)
+<use AABB.png>
+Package pdftex.def Info: AABB.png  used on input line 183.
+(pdftex.def)             Requested size: 505.89pt x 329.32587pt.
+
+Overfull \hbox (7.22742pt too wide) in paragraph at lines 183--189
+ [][] 
+ []
+
+[3] [4 <./AABB.png>] [5] [6] [7]
+<3.png, id=45, 779.16093pt x 747.54282pt>
 File: 3.png Graphic file (type png)
 <use 3.png>
-Package pdftex.def Info: 3.png  used on input line 352.
+Package pdftex.def Info: 3.png  used on input line 409.
 (pdftex.def)             Requested size: 216.81pt x 208.01021pt.
-<2.1.png, id=42, 779.16093pt x 747.54282pt>
+<2.1.png, id=46, 779.16093pt x 747.54282pt>
 File: 2.1.png Graphic file (type png)
 <use 2.1.png>
-Package pdftex.def Info: 2.1.png  used on input line 362.
+Package pdftex.def Info: 2.1.png  used on input line 419.
 (pdftex.def)             Requested size: 216.81pt x 208.01021pt.
-<2.001.png, id=43, 779.16093pt x 747.54282pt>
+<2.001.png, id=47, 779.16093pt x 747.54282pt>
 File: 2.001.png Graphic file (type png)
 <use 2.001.png>
-Package pdftex.def Info: 2.001.png  used on input line 372.
+Package pdftex.def Info: 2.001.png  used on input line 429.
 (pdftex.def)             Requested size: 216.81pt x 208.01021pt.
- [7 <./3.png>] [8 <./2.1.png> <./2.001.png>]
+ [8 <./3.png>] [9 <./2.1.png> <./2.001.png>]
 (bezier_escape.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -405,13 +407,13 @@ L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6641 strings out of 474486
- 98095 string characters out of 5743756
+ 6676 strings out of 474486
+ 98535 string characters out of 5743756
  1986542 words of memory out of 5000000
- 28848 multiletter control sequences out of 15000+600000
+ 28883 multiletter control sequences out of 15000+600000
  566959 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,11n,97p,1018b,1696s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,11n,97p,1018b,1688s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 0700.pk> <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm1000.pk><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/
@@ -432,9 +434,9 @@ X/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/cowco/AppData/Local/Progra
 ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/cowco/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/cowco/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on bezier_escape.pdf (8 pages, 845175 bytes).
+Output written on bezier_escape.pdf (9 pages, 850161 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
+ 132 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
