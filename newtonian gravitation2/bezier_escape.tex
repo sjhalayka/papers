@@ -55,13 +55,13 @@ n = \frac{\log W}{\log 2}.
 The number of distinct 8-bit integers is 256, and so the binary entropy is 8 and W is 256.
 
 At low density (e.g. everyday densities on the Earth), this binary entropy is proportional to mass.
-According to Boltzmann:
+According to Boltzmann's law:
 \begin{equation}
 n = \frac{k \log W}{\log 2}.
 \end{equation}
 
 At the highest density (e.g. black hole densities), this binary entropy is proportional to mass squared.
-For instance, using binary entropy:
+For instance, the Bekenstein-Hawking binary entropy is:
 \begin{equation}
 n = \frac{A_s k c^3}{ 4 G \hbar \log 2},
 \end{equation}
@@ -132,7 +132,6 @@ D = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R} = 3 - 
 
 The following code shows how to calculate the field lines based on a disk-like emitter:
 \begin{lstlisting}
-
 bool intersect_AABB(
 	const vector_3 min_location, 
 	const vector_3 max_location, 
