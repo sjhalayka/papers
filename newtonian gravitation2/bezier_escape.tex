@@ -48,12 +48,20 @@ C++ code is provided.
 
 \section{Entropy}
 Entropy is a measure of how much information is required to encode a particular macroscopic state.
-For example, in terms of the set of 8-bit integers, where there are $W$ distinct microstates, the Shannon binary entropy $n$ is:
+For example, in terms of the set of 8-bit integers (altogether $256$ distinct, equiprobable integers), where there are $W$ distinct microstates, the Shannon binary entropy $n$ is:
 \begin{equation}
-n = \frac{\log W}{\log 2}.
+n =  \frac{-\sum_{i}^{W} p_i \log p_i} {\log 2},
 \end{equation}
-The number of distinct 8-bit integers is 256, and so the binary entropy is $n = 8$ and $W= 256$.
-This is to say that if you understand the 8-bit integers, then you understand entropy.
+where $p_i$ is the probability of the $i$th microstate, and all probabilities add up to $1$:
+\begin{equation}
+\sum_{i}^{W} p_i = 1.
+\end{equation}
+For equiprobable microstates, like in the case of the 8-bit integers, where $p_i = 1/W$:
+\begin{equation}
+n = \frac{\log W}{\log 2},
+\end{equation}
+the number of equiprobable, distinct 8-bit integers is 256, and so the binary entropy is $n = 8$ and $W= 256$.
+This is to say that if you understand the 8-bit integers, then you understand entropy in the case of equiprobable microstates.
 
 At low density (e.g. everyday densities on the Earth), this binary entropy is proportional to mass.
 The Boltzmann binary entropy is:
@@ -66,8 +74,7 @@ The Bekenstein-Hawking binary entropy is:
 \begin{equation}
 n = \frac{A_s k c^3}{ 4 G \hbar \log 2},
 \end{equation}
-
-It was 't Hooft's idea to quantize the black hole's event horizon area into gravitational field line emitters in his pioneering work on the holographic principle.
+It was 't Hooft's idea to quantize the black hole's event horizon area into gravitational field line emitters (e.g. dividing the entropy by $\log 2$) in his pioneering work on the holographic principle.
 
 
 
@@ -75,25 +82,6 @@ It was 't Hooft's idea to quantize the black hole's event horizon area into grav
 \section{Brute force: field line intersection density gradient}
 
 In this paper, we numerically solve for the Newtonian (e.g. Keplerian) and flat (e.g. constant velocity) gradients using a unit axis-aligned bounding box by obtaining the lengths of the intersecting line segments emitted by the gravitating body. See Fig.1. 
-
-
-
-\begin{figure} 
-\centering
-\label{fig1}
-  \includegraphics[width = 6 in]{AABB.png}
-  \caption{
-Where $D = 3$.
-This figure shows a unit axis-aligned bounding box and an isotropic emitter, looking from above.
-An example field line (red) and intersecting line segment (green) is given.
-The bounding box is filled with these intersecting line segments.
-It is the gradient of the density of these line segments that forms the gravitational acceleration.
-}
-\end{figure}
-
-
-
-
 
 Regarding the holographic principle, the Schwarzschild black hole event horizon radius is:
 \begin{equation}
@@ -122,7 +110,7 @@ The acceleration $a_{\textit{flat}}$ for a flat rotation curve is:
 a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{g R c \hbar \log 2}{2 k \pi M}.
 \end{equation}
 
-The ratio of the two accelerations is
+The ratio of the two accelerations is:
 \begin{equation}
 \frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = R^{d}, 
 \end{equation}
@@ -130,6 +118,18 @@ where $d = 3 - D$ stands for disk-like, and the dimension of the gravitation fie
 \begin{equation}
 D = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R} = 3 - \frac{\log \frac{v_{\textit{flat}}^2}{v_{\textit{Newton}}^2}}{\log R}.
 \end{equation}
+
+\begin{figure} 
+\centering
+\label{fig1}
+  \includegraphics[width = 7 in]{AABB.png}
+  \caption{
+This figure shows a unit axis-aligned bounding box and an isotropic emitter, looking from above.
+An example field line (red) and intersecting line segment (green) is given.
+The bounding box is filled with these intersecting line segments.
+It is the gradient of the density of these line segments that forms the gravitational acceleration.
+}
+\end{figure}
 
 The following code shows how to calculate the field lines based on a disk-like emitter:
 \begin{lstlisting}
@@ -350,7 +350,7 @@ int main(void)
 \label{fig2}
   \includegraphics[width = 3 in]{3.png}
   \caption{
-Where $D = 3$.
+Where $D = 3$, as viewed from the side.
 The field lines are isotropic, spherical.
 }
 \end{figure}
@@ -360,7 +360,7 @@ The field lines are isotropic, spherical.
 \label{fig3}
   \includegraphics[width = 3 in]{2.1.png}
   \caption{
-Where $D = 2.1$.
+Where $D = 2.1$, as viewed from the side.
 The field lines are increasingly anisotropic.
 }
 \end{figure}
@@ -370,7 +370,7 @@ The field lines are increasingly anisotropic.
 \label{fig4}
   \includegraphics[width = 3 in]{2.001.png}
   \caption{
-Where $D = 2.001$.
+Where $D = 2.001$, as viewed from the side.
 The field lines are anisotropic, disk-like.
 }
 \end{figure}
