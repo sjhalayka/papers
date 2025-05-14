@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{Real dimension in the Newtonian simulation of disk-like pressure-free systems}
+\title{Real dimension in the Newtonian simulation of disk-like zero pressure density systems}
 \author{S. Halayka\footnote{sjhalayka@gmail.com}}
 \date{\today\;\currenttime}
 
@@ -47,13 +47,13 @@ C++ code is provided.
 
 \section{Introduction}
 
-At first, we define entropy.
+At first, we define entropy in terms of the $n$-bit integers.
 
-Then we discuss the numerical solution of the equation for the Newtonian (e.g., Keplerian) orbit, and the Galactic flat rotation curve orbit.
+Then we discuss the numerical solution of the equations for the Newtonian (e.g., Keplerian) orbit, and the Galactic flat rotation curve orbit.
 
-Finally, we use an analytical approach to the solution of the equation for the Galactic flat rotation curve.
+Finally, we use an analytical approach to the solve the equations for the Galactic flat rotation curve orbit.
 
-We consider that the pressure density is near zero at the Galactic scale (e.g. pressure per kiloparsec), which simplifies the equations, and allows for anistropic gravitation.
+We consider that the pressure density is near zero at the Galactic scale (e.g. at interstellar distances, there is no pressure acting between the stars), which simplifies the equations, and allows for anistropic gravitation in the first place.
 
 
 
@@ -84,7 +84,7 @@ n = \frac{k \log W}{\log 2}.
 At the highest density (e.g. black hole densities), this binary entropy is proportional to mass squared.
 The Bekenstein-Hawking binary entropy is:
 \begin{equation}
-n = \frac{A_s k c^3}{ 4 G \hbar \log 2},
+n = \frac{A_s k c^3}{ 4 G \hbar \log 2}.
 \end{equation}
 
 The following is a code for calculating the entropy of a string of characters.
@@ -150,7 +150,6 @@ int main(void)
 It was 't Hooft's idea to quantize the black hole's event horizon area into gravitational field line emitters (e.g. dividing the entropy by $\log 2$) in his pioneering work on the holographic principle.
 
 In this paper, we numerically solve for the Newtonian (e.g. Keplerian) and flat (e.g. constant velocity) gradients (e.g. derivatives) using a unit axis-aligned bounding box by obtaining the lengths of the intersecting field line segments emitted by the gravitating body. See Fig.1. 
-The following equations were found to be true through brute force trial and error.
 
 Regarding the holographic principle, the Schwarzschild black hole event horizon radius is:
 \begin{equation}
@@ -165,16 +164,15 @@ Where $R$ is some far distance from the centre of the gravitating body (e.g, $R 
 \begin{equation}
 \gamma = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
-The gradient strength is:
+The following equation for the gradient strength was found to be true through trial and error:
 \begin{equation}
 g = -\gamma \pi = \frac{n}{2 R^3}.
 \end{equation}
-The Newtonian acceleration $a_{\textit{Newton}}$ is:
+Thus, the Newtonian acceleration $a_{\textit{Newton}}$ is:
 \begin{equation}
-a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{g G c \hbar \log 2}{2 R^2 k \pi}}.
+a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{g G c \hbar \log 2}{2 R^2 k \pi}},
 \end{equation}
-
-The acceleration $a_{\textit{flat}}$ for a flat rotation curve is:
+and the acceleration $a_{\textit{flat}}$ for a flat rotation curve is:
 \begin{equation}
 a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{g R c \hbar \log 2}{2 k \pi M}.
 \end{equation}
@@ -183,7 +181,7 @@ The ratio of the two accelerations is:
 \begin{equation}
 \frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = R^{d}, 
 \end{equation}
-where $d = 3 - D$ stands for disk-like, and the dimension of the gravitation field is:
+where $d = 3 - D$ stands for disk-like, and the fractal dimension of the gravitation field is:
 \begin{equation}
 D = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R} = 3 - \frac{\log \frac{v_{\textit{flat}}^2}{v_{\textit{Newton}}^2}}{\log R}.
 \end{equation}
