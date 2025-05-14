@@ -67,7 +67,7 @@ where $p_i$ is the probability of the $i$th microstate, and all probabilities ad
 \begin{equation}
 \sum_{i = 1}^{W} p_i = 1.
 \end{equation}
-For equiprobable microstates, like in the case of the 8-bit integers, where $p_i = 1/W$:
+For equiprobable microstates, like in the case of the 8-bit integers for instance, where $p_i = 1/W$:
 \begin{equation}
 n = \frac{\log W}{\log 2},
 \end{equation}
@@ -147,9 +147,9 @@ int main(void)
 
 \section{Brute force: field line intersection density gradient}
 
-It was 't Hooft's idea to quantize the black hole's event horizon area into gravitational field line emitters (e.g. dividing the entropy by $\log 2$) in his pioneering work on the holographic principle.
+It was Gerard 't Hooft's idea to quantize the black hole's event horizon area into gravitational field line emitters (e.g. dividing the entropy by $\log 2$) in his pioneering work on the holographic principle.
 
-In this paper, we numerically solve for the Newtonian (e.g. Keplerian) and flat (e.g. constant velocity) gradients (e.g. derivatives) using a unit axis-aligned bounding box by obtaining the lengths of the intersecting field line segments emitted by the gravitating body. See Fig.1. 
+In this paper, we numerically solve for the Newtonian (e.g. Keplerian) and flat (e.g. constant velocity) gradients (e.g. derivatives) using an axis-aligned bounding box by obtaining the lengths of the intersecting field line segments emitted by the gravitating body. See Fig.1. 
 
 Regarding the holographic principle, the Schwarzschild black hole event horizon radius is:
 \begin{equation}
@@ -181,7 +181,7 @@ The ratio of the two accelerations is:
 \begin{equation}
 \frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = R^{d}, 
 \end{equation}
-where $d = 3 - D$ stands for disk-like, and the fractal dimension of the gravitation field is:
+where $d = 3 - D$ stands for disk-like, and the fractal dimension of the gravitational field is:
 \begin{equation}
 D = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R} = 3 - \frac{\log \frac{v_{\textit{flat}}^2}{v_{\textit{Newton}}^2}}{\log R}.
 \end{equation}
@@ -191,14 +191,18 @@ D = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R} = 3 - 
 \label{fig1}
   \includegraphics[width = 7 in]{AABB.png}
   \caption{
-This figure shows a unit axis-aligned bounding box and an isotropic emitter, looking from slightly above.
+This figure shows an axis-aligned bounding box and an isotropic emitter, looking from slightly above.
 An example field line (red) and intersecting line segment (green) are given.
 The bounding box is filled with these intersecting line segments.
 It is the gradient of the density of these line segments that forms the gravitational acceleration.
 }
 \end{figure}
 
-The following code shows how to calculate the field lines based on a disk-like emitter:
+The whole code for this section can be obtained at:
+
+\url{https://github.com/sjhalayka/ellipsoid_emitter}
+
+The following code snippets show how the whole code calculates the gravitational field lines based on a disk-like emitter.
 \begin{lstlisting}
 bool intersect_AABB(
 	const vector_3 min_location, 
