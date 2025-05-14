@@ -89,7 +89,7 @@ n = \frac{A_s k c^3}{ 4 G \hbar \log 2}.
 \end{equation}
 
 The following is a code for calculating the entropy of a string of characters.
-Note that the calculation allows for non-equiprobable probabilities, and so it's a bit more general.
+Note that the calculation allows for non-equiprobabilities, and so it's a bit more general.
 \begin{lstlisting}
 #include <iostream>
 #include <map>
@@ -100,7 +100,12 @@ using namespace std;
 
 int main(void)
 {
+    // Non-equiprobable
     string input_string = "Hello world";
+
+    // Equiprobable
+    //string input_string = "abcdefgh";
+
     size_t length = input_string.length();
 
     ostringstream output_stream;

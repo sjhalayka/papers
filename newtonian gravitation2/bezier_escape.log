@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  14 MAY 2025 11:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  14 MAY 2025 11:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -373,31 +373,31 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 102.
 
 [2] [3]
-<AABB.png, id=26, 463.7325pt x 301.8778pt>
+<AABB.png, id=28, 463.7325pt x 301.8778pt>
 File: AABB.png Graphic file (type png)
 <use AABB.png>
-Package pdftex.def Info: AABB.png  used on input line 193.
+Package pdftex.def Info: AABB.png  used on input line 198.
 (pdftex.def)             Requested size: 505.89pt x 329.32587pt.
 
-Overfull \hbox (7.22742pt too wide) in paragraph at lines 193--199
+Overfull \hbox (7.22742pt too wide) in paragraph at lines 198--204
  [][] 
  []
 
 [4 <./AABB.png>] [5] [6] [7] [8]
-<3.png, id=49, 779.16093pt x 747.54282pt>
+<3.png, id=50, 779.16093pt x 747.54282pt>
 File: 3.png Graphic file (type png)
 <use 3.png>
-Package pdftex.def Info: 3.png  used on input line 423.
+Package pdftex.def Info: 3.png  used on input line 428.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
-<2.1.png, id=50, 779.16093pt x 747.54282pt>
+<2.1.png, id=51, 779.16093pt x 747.54282pt>
 File: 2.1.png Graphic file (type png)
 <use 2.1.png>
-Package pdftex.def Info: 2.1.png  used on input line 433.
+Package pdftex.def Info: 2.1.png  used on input line 438.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
-<2.001.png, id=51, 779.16093pt x 747.54282pt>
+<2.001.png, id=52, 779.16093pt x 747.54282pt>
 File: 2.001.png Graphic file (type png)
 <use 2.001.png>
-Package pdftex.def Info: 2.001.png  used on input line 443.
+Package pdftex.def Info: 2.001.png  used on input line 448.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
  [9 <./3.png> <./2.1.png> <./2.001.png>]
 (bezier_escape.aux)
@@ -405,43 +405,41 @@ Package pdftex.def Info: 2.001.png  used on input line 443.
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 6679 strings out of 474486
- 98565 string characters out of 5743756
- 1986542 words of memory out of 5000000
- 28885 multiletter control sequences out of 15000+600000
- 567128 words of font info for 67 fonts, out of 8000000 for 9000
+ 6681 strings out of 474486
+ 98588 string characters out of 5743756
+ 1987542 words of memory out of 5000000
+ 28886 multiletter control sequences out of 15000+600000
+ 567505 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,11n,97p,1018b,1692s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
-0700.pk> <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\tcrm1000.pk><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmbx10.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmbx12.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/cowco/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/cowco/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/cowco/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/co
-wco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/
-Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.
-pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr17.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmr6.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmr8.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/cowco/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/cowco/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/cowco/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/c
-owco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on bezier_escape.pdf (9 pages, 848728 bytes).
+ <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti
+1000.pk> <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\tcrm0700.pk> <C:\Users\cowco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\tcrm1000.pk><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmbx10.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/cowco/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/cowco/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/cowco/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/cowc
+o/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Us
+ers/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pf
+b><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmr12.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr17.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmr6.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/cowco/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/cowco/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/cowco/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/cowco/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/cow
+co/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/U
+sers/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.
+pfb>
+Output written on bezier_escape.pdf (9 pages, 850592 bytes).
 PDF statistics:
- 137 PDF objects out of 1000 (max. 8388607)
+ 142 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
