@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  13 MAY 2025 18:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  13 MAY 2025 18:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -372,8 +372,8 @@ File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101.
 
-[2]
-<AABB.png, id=21, 463.7325pt x 301.8778pt>
+[2] [3]
+<AABB.png, id=26, 463.7325pt x 301.8778pt>
 File: AABB.png Graphic file (type png)
 <use AABB.png>
 Package pdftex.def Info: AABB.png  used on input line 194.
@@ -383,7 +383,7 @@ Overfull \hbox (7.22742pt too wide) in paragraph at lines 194--200
  [][] 
  []
 
-[3] [4 <./AABB.png>] [5] [6]
+[4 <./AABB.png>] [5] [6]
 <3.png, id=41, 779.16093pt x 747.54282pt>
 File: 3.png Graphic file (type png)
 <use 3.png>
@@ -434,7 +434,7 @@ X/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/cowco/AppData/Local/Progra
 ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/cowco/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/cowco/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on bezier_escape.pdf (9 pages, 840796 bytes).
+Output written on bezier_escape.pdf (9 pages, 840916 bytes).
 PDF statistics:
  132 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
