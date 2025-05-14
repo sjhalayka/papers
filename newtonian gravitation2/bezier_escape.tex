@@ -48,6 +48,7 @@ C++ code is provided.
 \section{Introduction}
 
 At first, we define entropy in terms of the $n$-bit integers.
+For instance, consider a fair $W = 2^n$-sided die, where the probability of each face coming up eventually works out to be $p_i = 1/W$ (e.g. the faces are equiprobable).
 
 Then we discuss the numerical solution of the equations for the Newtonian (e.g., Keplerian) orbit, and the Galactic flat rotation curve orbit.
 
@@ -72,7 +73,7 @@ For equiprobable microstates, like in the case of the 8-bit integers for instanc
 n = \frac{\log W}{\log 2},
 \end{equation}
 the number of equiprobable, distinct 8-bit integers is $2^8 = 256$, and so $n = 8$ and $W= 256$.
-This is to say that if you understand the concept of the 8-bit integers, then you also understand binary entropy in the case of equiprobable microstates.
+This is to say that if you understand the concept of the 8-bit integers (e.g. 256-sided die), then you also understand binary entropy in the case of equiprobable microstates.
 For the 16-bit integers, $n = 16$ and $W = 65536$, and so on and so forth.
 
 At low density (e.g. everyday densities on the Earth), this binary entropy is proportional to mass.
@@ -334,7 +335,7 @@ density0 /=
 
 \section{Heuristic: field line intersection density gradient}
 
-Below is analytical code that calculates the dimension $D$ for the Galactic orbit of the Solar System.
+Below is an analytical code that calculates the dimension $D$ for the Galactic orbit of the Solar System.
 The output dimension is $D = 2.48352$.
 That is, the Galactic gravitational field shape at $R$ is quite flattened, as observed.
 \begin{lstlisting}
