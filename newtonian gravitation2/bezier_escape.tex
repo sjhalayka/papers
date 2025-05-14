@@ -48,7 +48,7 @@ C++ code is provided.
 \section{Introduction}
 
 At first, we define entropy in terms of the $n$-bit integers.
-For instance, consider a fair $W = 2^n$-sided die, where the probability of each face coming up eventually works out to be $p_i = 1/W$ (e.g. the faces are equiprobable).
+For instance, consider a fair $W = 2^n$-sided die, where the probability of each face coming up eventually works out to be $p_i = 1/W$ (e.g. the faces are equiprobable because the die is fair).
 
 Then we discuss the numerical solution of the equations for the Newtonian (e.g., Keplerian) orbit, and the Galactic flat rotation curve orbit.
 
@@ -68,12 +68,12 @@ where $p_i$ is the probability of the $i$th microstate, and all probabilities ad
 \begin{equation}
 \sum_{i = 1}^{W} p_i = 1.
 \end{equation}
-For equiprobable microstates, like in the case of the 8-bit integers for instance, where $p_i = 1/W$:
+For equiprobable microstates, like in the case of the 8-bit integers (e.g. fair 256-sided die) for instance, where $p_i = 1/W$:
 \begin{equation}
 n = \frac{\log W}{\log 2},
 \end{equation}
 the number of equiprobable, distinct 8-bit integers is $2^8 = 256$, and so $n = 8$ and $W= 256$.
-This is to say that if you understand the concept of the 8-bit integers (e.g. 256-sided die), then you also understand binary entropy in the case of equiprobable microstates.
+This is to say that if you understand the concept of the 8-bit integers (e.g. 256-sided dice), then you also understand binary entropy in the case of equiprobable microstates.
 For the 16-bit integers, $n = 16$ and $W = 65536$, and so on and so forth.
 
 At low density (e.g. everyday densities on the Earth), this binary entropy is proportional to mass.
