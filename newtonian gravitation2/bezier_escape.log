@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  14 MAY 2025 12:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  14 MAY 2025 13:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -387,17 +387,17 @@ Overfull \hbox (7.22742pt too wide) in paragraph at lines 197--203
 <3.png, id=50, 779.16093pt x 747.54282pt>
 File: 3.png Graphic file (type png)
 <use 3.png>
-Package pdftex.def Info: 3.png  used on input line 427.
+Package pdftex.def Info: 3.png  used on input line 432.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
 <2.1.png, id=51, 779.16093pt x 747.54282pt>
 File: 2.1.png Graphic file (type png)
 <use 2.1.png>
-Package pdftex.def Info: 2.1.png  used on input line 437.
+Package pdftex.def Info: 2.1.png  used on input line 442.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
 <2.001.png, id=52, 779.16093pt x 747.54282pt>
 File: 2.001.png Graphic file (type png)
 <use 2.001.png>
-Package pdftex.def Info: 2.001.png  used on input line 447.
+Package pdftex.def Info: 2.001.png  used on input line 452.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
  [9 <./3.png> <./2.1.png> <./2.001.png>]
 (bezier_escape.aux)
@@ -437,7 +437,7 @@ ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/cow
 co/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/U
 sers/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.
 pfb>
-Output written on bezier_escape.pdf (9 pages, 850064 bytes).
+Output written on bezier_escape.pdf (9 pages, 852282 bytes).
 PDF statistics:
  142 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
