@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  14 MAY 2025 18:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  15 MAY 2025 16:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -376,10 +376,10 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 <AABB.png, id=28, 463.7325pt x 301.8778pt>
 File: AABB.png Graphic file (type png)
 <use AABB.png>
-Package pdftex.def Info: AABB.png  used on input line 197.
+Package pdftex.def Info: AABB.png  used on input line 199.
 (pdftex.def)             Requested size: 505.89pt x 329.32587pt.
 
-Overfull \hbox (7.22742pt too wide) in paragraph at lines 197--203
+Overfull \hbox (7.22742pt too wide) in paragraph at lines 199--205
  [][] 
  []
 
@@ -387,17 +387,17 @@ Overfull \hbox (7.22742pt too wide) in paragraph at lines 197--203
 <3.png, id=50, 779.16093pt x 747.54282pt>
 File: 3.png Graphic file (type png)
 <use 3.png>
-Package pdftex.def Info: 3.png  used on input line 432.
+Package pdftex.def Info: 3.png  used on input line 434.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
 <2.1.png, id=51, 779.16093pt x 747.54282pt>
 File: 2.1.png Graphic file (type png)
 <use 2.1.png>
-Package pdftex.def Info: 2.1.png  used on input line 442.
+Package pdftex.def Info: 2.1.png  used on input line 444.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
 <2.001.png, id=52, 779.16093pt x 747.54282pt>
 File: 2.001.png Graphic file (type png)
 <use 2.001.png>
-Package pdftex.def Info: 2.001.png  used on input line 452.
+Package pdftex.def Info: 2.001.png  used on input line 454.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
  [9 <./3.png> <./2.1.png> <./2.001.png>]
 (bezier_escape.aux)
@@ -437,9 +437,9 @@ ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/cow
 co/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/U
 sers/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.
 pfb>
-Output written on bezier_escape.pdf (9 pages, 853105 bytes).
+Output written on bezier_escape.pdf (9 pages, 853771 bytes).
 PDF statistics:
- 142 PDF objects out of 1000 (max. 8388607)
+ 143 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

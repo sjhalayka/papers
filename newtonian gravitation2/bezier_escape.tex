@@ -39,7 +39,7 @@
 \maketitle
 
 \begin{abstract}
-Newtonian gravitation is given in terms of gravitational field lines.
+Solutions for Newtonian gravitation are given in terms of gravitational field lines.
 C++ code is provided.
 \end{abstract}
 
@@ -165,28 +165,30 @@ and the mass is:
 M = \frac{c^2 r_s}{2 G} = \sqrt{\frac{n c \hbar \log 2}{4 G k \pi}}. 
 \end{equation}
 
+In this section, $D = (2, 3]$ stands for dimension, and $d = 3 - D = [0, 1)$ stands for disk-like.
+
 Where $R$ is some far distance from the centre of the gravitating body (e.g, $R \gg r_s$), $\beta$ is the get intersecting line length density function, and $\epsilon$ is some small value (e.g $10^{-5}$), the gradient is:
 \begin{equation}
 \gamma = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
 The following equation for the gradient strength was found to be true through trial and error:
 \begin{equation}
-g = -\gamma \pi = \frac{n}{2 R^3}.
+g = -\gamma \pi = \frac{n}{2 R^D}.
 \end{equation}
 Thus, the Newtonian acceleration $a_{\textit{Newton}}$ is:
 \begin{equation}
-a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{g G c \hbar \log 2}{2 R^2 k \pi}},
+a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{g R^{(1 - d)} c \hbar \log 2}{2 k \pi M}} = \frac{GM}{R^2},
 \end{equation}
 and the acceleration $a_{\textit{flat}}$ for a flat rotation curve is:
 \begin{equation}
-a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{g R c \hbar \log 2}{2 k \pi M}.
+a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R}.
 \end{equation}
 
 The ratio of the two accelerations is:
 \begin{equation}
 \frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = R^{d}, 
 \end{equation}
-where $d = 3 - D$ stands for disk-like, and the fractal dimension of the gravitational field is:
+and the fractal dimension of the gravitational field is:
 \begin{equation}
 D = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R} = 3 - \frac{\log \frac{v_{\textit{flat}}^2}{v_{\textit{Newton}}^2}}{\log R}.
 \end{equation}
@@ -339,37 +341,37 @@ density0 /=
 
 \section{Heuristic: field line intersection density gradient}
 
-Below is an analytical code that calculates the dimension $D$ for the Galactic orbit of the Solar System.
-The output dimension is $D = 2.48352$.
-That is, the Galactic gravitational field shape at $R$ is quite flattened, as observed.
+Below is an analytical code that calculates the dimension $D$ for the Galactic orbit of the Solar System at a speed of $v = 220000$ metres per second.
+The output dimension is $D = 2.98352$.
+That is, the Galactic gravitational field shape at $R$ is slightly flattened, as observed.
 \begin{lstlisting}
 #include <cmath>
 #include <iostream>
 using namespace std;
 
-const double G = 6.67430e-11; // Newton's constant
-const double c = 299792458; // Speed of light in vacuum
+const double G = 6.67430e-11;
+const double c = 299792458;
 const double c2 = c * c;
 const double c3 = c * c * c;
 const double pi = 4.0 * atan(1.0);
-const double h = 6.62607015e-34; // Planck's constant
+const double h = 6.62607015e-34;
 const double hbar = h / (2.0 * pi);
-const double k = 1.380649e-23; // Boltzmann's constant
+const double k = 1.380649e-23;
 
 int main(void)
 {
-	double M = 1e41; // Galactic core mass
+	double M = 1e41;
 
-	double r_s = 2 * G * M / c2; // Schwarzschild radius
-	double A_s = 4 * pi * r_s * r_s; // Event horizon area
+	double r_s = 2 * G * M / c2;
+	double A_s = 4 * pi * r_s * r_s;
+	double n = A_s * k * c3 / (4 * G * hbar * log(2.0));
 
-	// Number of gravitational field lines
-	double n = A_s * k * c3 / (4 * G * hbar * log(2.0)); 
-
-	double R = 3e20; // Solar System orbit radius
+	double R = 3e20;
 	double g = n / (2 * R * R * R);
 
-	double a_Newton = sqrt((g * G * c * hbar * log(2.0))/(2 * R*R * k * pi));
+	double a_Newton = sqrt((g * G * c * hbar * log(2.0))/(2 * R * k * pi));
+	// double a_Newton_ = G * M / (R * R);
+
 	double a_flat = pow(220000, 2.0) / R;
 
 	double v_Newton = sqrt(a_Newton * R);
