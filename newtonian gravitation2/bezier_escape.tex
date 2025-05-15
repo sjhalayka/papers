@@ -67,11 +67,11 @@ where $p_i$ is the probability of the $i$th microstate, and all probabilities ad
 \begin{equation}
 \sum_{i = 1}^{W} p_i = 1.
 \end{equation}
-For equiprobable microstates, like in the case of the 8-bit integers for instance, where $p_i = 1/W$:
+For equiprobable microstates, like in the case of the 8-bit integers for instance, where $p_i = 1/W$, the equation for $n$ greatly simplifies:
 \begin{equation}
-n = \frac{\log W}{\log 2},
+n = \frac{\log W}{\log 2}.
 \end{equation}
-the number of equiprobable, distinct 8-bit integers is $2^8 = 256$, and so $n = 8$ and $W= 256$.
+The number of equiprobable, distinct 8-bit integers is $2^8 = 256$, and so $n = 8$ and $W= 256$.
 This is to say that if you understand the concept of the 8-bit integers, then you also understand binary entropy in the case of equiprobable microstates.
 For the 16-bit integers, $n = 16$ and $W = 65536$, and so on and so forth.
 
@@ -165,7 +165,7 @@ and the mass is:
 M = \frac{c^2 r_s}{2 G} = \sqrt{\frac{n c \hbar \log 2}{4 G k \pi}}. 
 \end{equation}
 
-Where $R$ is some far distance from the centre of the gravitating body (e.g, $R \gg r_s$), $\beta$ is the get intersecting line length density function, and $\epsilon$ is some small value (e.g $10^{-5}$), the gradient (e.g. derivative) is:
+Where $R$ is some far distance from the centre of the gravitating body (e.g, $R \gg r_s$), $\beta$ is the get intersecting line length density function, and $\epsilon$ is some small value (e.g $10^{-5}$), the gradient is:
 \begin{equation}
 \gamma = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
@@ -392,6 +392,7 @@ int main(void)
 
 How many bits $n$ does it take to encode $W$ equiprobable microstates?
 The answer is: $n = \frac{\log W}{\log 2}$.
+For instance, consider a fair $W = 2^n$-sided die, where all sides are equiprobable, and so $p_i = 1/W$.
 
 Both the brute force and heuristic methods for solving the equations are now known for the Newtonian (e.g., Keplerian) orbit, and the Galactic flat rotation curve orbit.
 
@@ -409,8 +410,7 @@ The dimension of the gravitational field is now seen to be fractal.
 \bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
 \bibitem{susskind} Susskind. The World as a Hologram. (1994)
 
-
-
+\bibitem{Mandelbrot} Mandelbrot. How Long Is the Coast of Britain? Statistical Self-Similarity and Fractional Dimension. (1967)
 
 
 %\bibitem{nasa} Williams. NASA Mercury Fact Sheet. (2024)
