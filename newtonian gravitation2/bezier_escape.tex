@@ -154,7 +154,17 @@ int main(void)
 
 It was Gerard 't Hooft's idea to quantize the black hole's event horizon area into gravitational field line emitters (e.g. dividing the entropy by $\log 2$) in his pioneering work on the holographic principle.
 
-Here, we numerically solve for the Newtonian (e.g. Keplerian) and flat (e.g. constant velocity) gradients (e.g. derivatives) using an axis-aligned bounding box by obtaining the lengths of the intersecting field line segments emitted by the gravitating body. See Fig.1. 
+In this paper we numerically solve for the Newtonian (e.g. Keplerian) and flat (e.g. constant velocity) gradients (e.g. derivatives) using an axis-aligned bounding box by obtaining the lengths of the intersecting field line segments emitted by the gravitating body. See Fig.1. 
+
+Here, 
+\begin{equation}
+D = (2, 3]
+\end{equation}
+stands for dimension, and 
+\begin{equation}
+d = 3 - D = [0, 1)
+\end{equation}
+stands for disk-like.
 
 Regarding the holographic principle, the Schwarzschild black hole event horizon radius is:
 \begin{equation}
@@ -164,8 +174,6 @@ and the mass is:
 \begin{equation}
 M = \frac{c^2 r_s}{2 G} = \sqrt{\frac{n c \hbar \log 2}{4 G k \pi}}. 
 \end{equation}
-
-In this section, $D = (2, 3]$ stands for dimension, and $d = 3 - D = [0, 1)$ stands for disk-like.
 
 Where $R$ is some far distance from the centre of the gravitating body (e.g, $R \gg r_s$), $\beta$ is the get intersecting line length density function, and $\epsilon$ is some small value (e.g $10^{-5}$), the gradient is:
 \begin{equation}
@@ -177,7 +185,7 @@ g = -\gamma \pi = \frac{n}{2 R^D}.
 \end{equation}
 Thus, the Newtonian acceleration $a_{\textit{Newton}}$ is:
 \begin{equation}
-a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{g R^{(1 - d)} c \hbar \log 2}{2 k \pi M}} = \frac{GM}{R^2},
+a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \frac{GM}{R^2} = \frac{g R^{(1 - d)} c \hbar \log 2}{2 k \pi M},
 \end{equation}
 and the acceleration $a_{\textit{flat}}$ for a flat rotation curve is:
 \begin{equation}
@@ -369,19 +377,17 @@ int main(void)
 	double R = 3e20;
 	double g = n / (2 * R * R * R);
 
-	double a_Newton = sqrt((g * G * c * hbar * log(2.0))/(2 * R * k * pi));
-	// double a_Newton_ = G * M / (R * R);
+	double a_Newton = g * R * c * hbar * log(2.0) / (k * pi * 2.0 * M);
+	//double a_Newton2 = G * M / (R * R);
 
 	double a_flat = pow(220000, 2.0) / R;
 
 	double v_Newton = sqrt(a_Newton * R);
 	double v_flat = 220000;
 
-	double D = 3.0 - log(a_flat / a_Newton) / log(R);
-	double D_ = 3.0 - log(pow(v_flat, 2.0) / pow(v_Newton, 2.0)) / log(R);
+	double D_final = 3.0 - log(a_flat / a_Newton) / log(R);
 
-	cout << D << endl;
-	cout << D_ << endl;
+	cout << D_final << endl;
 
 	return 0;
 }
