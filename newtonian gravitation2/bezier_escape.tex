@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{Fractal dimension in the Newtonian simulation of disk-like zero pressure density systems}
+\title{Fractal dimension in the simulation of the non-relativistic gravitation of disk-like zero pressure density systems}
 \author{S. Halayka\footnote{sjhalayka@gmail.com}}
 \date{\today\;\currenttime}
 
@@ -182,10 +182,9 @@ g = -\gamma \pi = \frac{n}{2 R^D}.
 \end{equation}
 Thus, the Newtonian acceleration $a_{\textit{Newton}}$, where $D = 3$, is:
 \begin{equation}
-a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{n G c \hbar \log 2}{4 k \pi R^4}},
-%\frac{GM}{R^2} = \frac{g R^{(1 - d)} c \hbar \log 2}{2 k \pi M},
+a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{n G c \hbar \log 2}{4 k \pi R^4}} = \frac{GM}{R^2},
 \end{equation}
-and the acceleration $a_{\textit{flat}}$ for a flat rotation curve, where $D < 3$, is:
+and the acceleration $a_{\textit{flat}}$ for a flat rotation curve, where $D < 3$, and $v_{\textit{flat}}$ is known via observation of the relativistic Doppler effect, is:
 \begin{equation}
 a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R}.
 \end{equation}
@@ -391,13 +390,22 @@ int main(void)
 How many bits $n$ does it take to encode $W$ equiprobable microstates?
 The answer is: $n = \frac{\log W}{\log 2}$.
 For instance, consider a fair $W = 2^n$-sided die, where all sides are equiprobable, and so $p_i = 1/W$.
+%In effect, a black hole represents a gigantic integer.%
 
 Both the brute force and heuristic methods for solving the equations are now known for the Newtonian (e.g., Keplerian) orbit, and the Galactic flat rotation curve orbit.
 
 The dimension of the gravitational field is now seen to be fractal.
 
-
-
+For the sake of reference, attached below is a visualization that highlights the difference between Newtonian (e.g. Keplerian) orbit and flat rotation curve orbit, in terms of the relativistic Doppler effect:
+\begin{figure} 
+\centering
+\label{fig2}
+  \includegraphics[width = 7 in]{doppler.png}
+  \caption{
+Visualization of the relativistic Doppler effect for $10^5$ stars.
+The Newtonian (e.g. Keplerian) orbit is on the left, and the flat rotation curve orbit is on the right.
+}
+\end{figure}
 
 
 
