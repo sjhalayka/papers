@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  16 MAY 2025 15:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  16 MAY 2025 17:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -388,11 +388,11 @@ Overfull \hbox (7.22742pt too wide) in paragraph at lines 204--210
  []
 
 [4 <./AABB.png>] [5] [6] [7]
-<doppler.png, id=47, 1444.64719pt x 666.99188pt>
+<doppler.png, id=47, 1444.64719pt x 642.14906pt>
 File: doppler.png Graphic file (type png)
 <use doppler.png>
 Package pdftex.def Info: doppler.png  used on input line 403.
-(pdftex.def)             Requested size: 505.89pt x 233.5626pt.
+(pdftex.def)             Requested size: 505.89pt x 224.86331pt.
 
 Overfull \hbox (7.22742pt too wide) in paragraph at lines 403--407
  [][] 
@@ -454,7 +454,7 @@ ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/cow
 co/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/U
 sers/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.
 pfb>
-Output written on bezier_escape.pdf (9 pages, 1015111 bytes).
+Output written on bezier_escape.pdf (9 pages, 1460429 bytes).
 PDF statistics:
  145 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
