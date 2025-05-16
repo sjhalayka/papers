@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  16 MAY 2025 10:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  16 MAY 2025 12:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -373,33 +373,33 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101.
 
 [2] [3]
-<AABB.png, id=27, 463.7325pt x 301.8778pt>
+<AABB.png, id=28, 463.7325pt x 301.8778pt>
 File: AABB.png Graphic file (type png)
 <use AABB.png>
-Package pdftex.def Info: AABB.png  used on input line 208.
+Package pdftex.def Info: AABB.png  used on input line 205.
 (pdftex.def)             Requested size: 505.89pt x 329.32587pt.
 
-Overfull \hbox (7.22742pt too wide) in paragraph at lines 208--214
+Overfull \hbox (7.22742pt too wide) in paragraph at lines 205--211
  [][] 
  []
 
-[4] [5 <./AABB.png>] [6] [7] [8] [9]
-<3.png, id=53, 779.16093pt x 747.54282pt>
+[4 <./AABB.png>] [5] [6] [7] [8]
+<3.png, id=50, 779.16093pt x 747.54282pt>
 File: 3.png Graphic file (type png)
 <use 3.png>
-Package pdftex.def Info: 3.png  used on input line 445.
+Package pdftex.def Info: 3.png  used on input line 430.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
-<2.1.png, id=54, 779.16093pt x 747.54282pt>
+<2.1.png, id=51, 779.16093pt x 747.54282pt>
 File: 2.1.png Graphic file (type png)
 <use 2.1.png>
-Package pdftex.def Info: 2.1.png  used on input line 455.
+Package pdftex.def Info: 2.1.png  used on input line 440.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
-<2.001.png, id=55, 779.16093pt x 747.54282pt>
+<2.001.png, id=52, 779.16093pt x 747.54282pt>
 File: 2.001.png Graphic file (type png)
 <use 2.001.png>
-Package pdftex.def Info: 2.001.png  used on input line 465.
+Package pdftex.def Info: 2.001.png  used on input line 450.
 (pdftex.def)             Requested size: 144.54pt x 138.66966pt.
- [10 <./3.png> <./2.1.png> <./2.001.png>]
+ [9 <./3.png> <./2.1.png> <./2.001.png>]
 (bezier_escape.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -413,7 +413,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Here is how much of TeX's memory you used:
  6678 strings out of 474486
  98586 string characters out of 5743756
- 1979542 words of memory out of 5000000
+ 1993542 words of memory out of 5000000
  28883 multiletter control sequences out of 15000+600000
  567505 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -441,9 +441,9 @@ ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/cow
 co/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/U
 sers/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.
 pfb>
-Output written on bezier_escape.pdf (10 pages, 854498 bytes).
+Output written on bezier_escape.pdf (9 pages, 854043 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
+ 143 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -39,7 +39,7 @@
 \maketitle
 
 \begin{abstract}
-Solutions for Newtonian gravitation are given in terms of gravitational field lines.
+Solutions for Newtonian (e.g. Keplerian) and Galactic flat rotation curve gravitation are given in terms of gravitational field lines.
 C++ code is provided.
 \end{abstract}
 
@@ -125,12 +125,9 @@ int main(void)
             double probability = ci->second / static_cast<double>(length);
             
             output_stream << 
-			"Character: \'" << 
-			ci->first << 
-			"\', Count: " << 
-			ci->second << 
-			", Probability: " <<
-			probability << 
+			"Character: \'" << ci->first << 
+			"\', Count: " << ci->second << 
+			", Probability: " << probability << 
 			endl;
             
             entropy += probability * log(probability);
@@ -183,12 +180,12 @@ The following equation for the gradient strength was found to be true through tr
 \begin{equation}
 g = -\gamma \pi = \frac{n}{2 R^D}.
 \end{equation}
-Thus, the Newtonian acceleration $a_{\textit{Newton}}$ is:
+Thus, the Newtonian acceleration $a_{\textit{Newton}}$, where $D = 3$, is:
 \begin{equation}
 a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{n G c \hbar \log 2}{4 k \pi R^4}},
 %\frac{GM}{R^2} = \frac{g R^{(1 - d)} c \hbar \log 2}{2 k \pi M},
 \end{equation}
-and the acceleration $a_{\textit{flat}}$ for a flat rotation curve is:
+and the acceleration $a_{\textit{flat}}$ for a flat rotation curve, where $D < 3$, is:
 \begin{equation}
 a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R}.
 \end{equation}
@@ -236,29 +233,17 @@ bool intersect_AABB(
 	double tymax = (max_location.y - ray_origin.y) / ray_dir.y;
 
 	if (tymin > tymax) swap(tymin, tymax);
-
-	if ((tmin > tymax) || (tymin > tmax))
-		return false;
-
-	if (tymin > tmin)
-		tmin = tymin;
-
-	if (tymax < tmax)
-		tmax = tymax;
+	if ((tmin > tymax) || (tymin > tmax)) return false;
+	if (tymin > tmin) tmin = tymin;
+	if (tymax < tmax) tmax = tymax;
 
 	double tzmin = (min_location.z - ray_origin.z) / ray_dir.z;
 	double tzmax = (max_location.z - ray_origin.z) / ray_dir.z;
 
 	if (tzmin > tzmax) swap(tzmin, tzmax);
-
-	if ((tmin > tzmax) || (tzmin > tmax))
-		return false;
-
-	if (tzmin > tmin)
-		tmin = tzmin;
-
-	if (tzmax < tmax)
-		tmax = tzmax;
+	if ((tmin > tzmax) || (tzmin > tmax)) return false;
+	if (tzmin > tmin) tmin = tzmin;
+	if (tzmax < tmax) tmax = tzmax;
 
 	return true;
 }
