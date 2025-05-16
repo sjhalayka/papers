@@ -185,7 +185,8 @@ g = -\gamma \pi = \frac{n}{2 R^D}.
 \end{equation}
 Thus, the Newtonian acceleration $a_{\textit{Newton}}$ is:
 \begin{equation}
-a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \frac{GM}{R^2} = \frac{g R^{(1 - d)} c \hbar \log 2}{2 k \pi M},
+a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{n G c \hbar \log 2}{4 k \pi R^4}},
+%\frac{GM}{R^2} = \frac{g R^{(1 - d)} c \hbar \log 2}{2 k \pi M},
 \end{equation}
 and the acceleration $a_{\textit{flat}}$ for a flat rotation curve is:
 \begin{equation}
@@ -375,10 +376,14 @@ int main(void)
 	double n = A_s * k * c3 / (4 * G * hbar * log(2.0));
 
 	double R = 3e20;
-	double g = n / (2 * R * R * R);
 
-	double a_Newton = g * R * c * hbar * log(2.0) / (k * pi * 2.0 * M);
-	//double a_Newton2 = G * M / (R * R);
+//	double g = n / (2 * R * R * R);
+
+	double a_Newton = 
+		sqrt((n * G * c * hbar * log(2.0)) / 
+		(4 * k * pi * R * R * R * R));
+
+//	double a_Newton2 = G * M / (R * R);
 
 	double a_flat = pow(220000, 2.0) / R;
 
