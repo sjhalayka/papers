@@ -51,9 +51,11 @@ At first, we define entropy in terms of the $n$-bit integers.
 
 Then we discuss the brute force numerical solution of the equations for the Newtonian (e.g., Keplerian) orbit, and the Galactic flat rotation curve orbit.
 
-Finally, we use a heuristic, analytical approach to the solve the equations for the Galactic flat rotation curve orbit.
+Next, we use a heuristic, analytical approach to the solve the equations for the Galactic flat rotation curve orbit.
 
-We consider that the pressure density is near zero at the Galactic scale (e.g. at interstellar distances, there is no pressure acting between the stars), which simplifies the equations, and allows for anistropic gravitation in the first place.
+Finally, we visualize the difference between the Newtonian (e.g., Keplerian) orbit and the Galactic flat rotation curve orbit, in terms of the relativistic Doppler effect.
+
+In this paper, we consider that the pressure density is near zero at the Galactic scale (e.g. at interstellar distances, there is no pressure acting between the stars), which simplifies the equations, and allows for anistropic gravitation in the first place.
 
 
 
@@ -332,6 +334,42 @@ density0 /=
 ...
 \end{lstlisting}
 
+See Figs 2, 3, and 4 for visualization of the gravitational field where $D = 3$, $D = 2.1$, and $D = 2.001$.
+
+\begin{figure} 
+\centering
+\label{fig2}
+  \includegraphics[width = 3 in]{3.png}
+  \caption{
+Where $D = 3$, as viewed from the side.
+The field lines are isotropic, spherical.
+}
+\end{figure}
+
+\begin{figure} 
+\centering
+\label{fig3}
+  \includegraphics[width = 3 in]{2.1.png}
+  \caption{
+Where $D = 2.1$, as viewed from the side.
+The field lines are increasingly anisotropic.
+}
+\end{figure}
+
+\begin{figure} 
+\centering
+\label{fig4}
+  \includegraphics[width = 3 in]{2.001.png}
+  \caption{
+Where $D = 2.001$, as viewed from the side.
+The field lines are anisotropic, disk-like.
+}
+\end{figure}
+
+
+
+
+
 \section{Heuristic: field line intersection density gradient}
 
 Below is an analytical code that calculates the dimension $D$ for the Galactic orbit of the Solar System at a speed of $v = 220000$ metres per second.
@@ -384,19 +422,8 @@ int main(void)
 
 
 
-
-\section{Review}
-
-How many bits $n$ does it take to encode $W$ equiprobable microstates?
-The answer is: $n = \frac{\log W}{\log 2}$.
-For instance, consider a fair $W = 2^n$-sided die, where all sides are equiprobable, and so $p_i = 1/W$.
-%In effect, a black hole represents a gigantic integer.%
-
-Both the brute force and heuristic methods for solving the equations are now known for the Newtonian (e.g., Keplerian) orbit, and the Galactic flat rotation curve orbit.
-
-The dimension of the gravitational field is now seen to be fractal.
-
-For the sake of reference, attached here is a visualization that highlights the difference between Newtonian (e.g. Keplerian) orbit and flat rotation curve orbit, in terms of the relativistic Doppler effect:
+\section{Application: visualizing the relativistic Doppler effect}
+For the sake of reference, attached here is a visualization that highlights the difference between Newtonian (e.g. Keplerian) orbit and flat rotation curve orbit, in terms of the relativistic Doppler effect.
 \begin{figure} 
 \centering
 \label{fig2}
@@ -406,6 +433,21 @@ Visualization of the relativistic Doppler effect for $10^6$ stars.
 The Newtonian (e.g. Keplerian) orbit is on the left, and the flat rotation curve orbit is on the right.
 }
 \end{figure}
+
+
+
+
+\section{Review}
+
+How many bits $n$ does it take to encode $W$ equiprobable microstates?
+The answer is: $n = \frac{\log W}{\log 2}$.
+For instance, consider a fair $W = 2^n$-sided die, where all sides are equiprobable, and so $p_i = 1/W$.
+
+Both the brute force and heuristic methods for solving the equations are now known for the Newtonian (e.g., Keplerian) orbit, and the Galactic flat rotation curve orbit.
+
+The dimension of the gravitational field is now seen to be fractal.
+
+The relativistic Doppler effect is used to calculate the orbit speed of stars.
 
 
 
@@ -427,40 +469,7 @@ The Newtonian (e.g. Keplerian) orbit is on the left, and the flat rotation curve
 
 
 
-\pagebreak
 
-
-
-
-\begin{figure} 
-\centering
-\label{fig2}
-  \includegraphics[width = 2 in]{3.png}
-  \caption{
-Where $D = 3$, as viewed from the side.
-The field lines are isotropic, spherical.
-}
-\end{figure}
-
-\begin{figure} 
-\centering
-\label{fig3}
-  \includegraphics[width = 2 in]{2.1.png}
-  \caption{
-Where $D = 2.1$, as viewed from the side.
-The field lines are increasingly anisotropic.
-}
-\end{figure}
-
-\begin{figure} 
-\centering
-\label{fig4}
-  \includegraphics[width = 2 in]{2.001.png}
-  \caption{
-Where $D = 2.001$, as viewed from the side.
-The field lines are anisotropic, disk-like.
-}
-\end{figure}
 
 
 
