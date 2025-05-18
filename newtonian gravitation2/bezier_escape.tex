@@ -39,7 +39,7 @@
 \maketitle
 
 \begin{abstract}
-Solutions for Newtonian (e.g. Keplerian) and Galactic flat rotation curve gravitation are given in terms of gravitational field lines.
+Solutions for Newtonian (e.g. Keplerian) and Galactic flat rotation curve (e.g. Rubinesque) gravitation are given in terms of gravitational field lines.
 C++ code is provided.
 \end{abstract}
 
@@ -49,11 +49,11 @@ C++ code is provided.
 
 At first, we define entropy in terms of the $n$-bit integers.
 
-Then we discuss the brute force numerical solution of the equations for the Newtonian (e.g., Keplerian) orbit, and the Galactic flat rotation curve orbit.
+Then we discuss the brute force numerical solution of the equations for the Newtonian orbit, and the Galactic flat rotation curve orbit.
 
 Next, we use a heuristic, analytical approach to the solve the equations for the Galactic flat rotation curve orbit.
 
-Finally, we visualize the difference between the Newtonian (e.g., Keplerian) orbit and the Galactic flat rotation curve orbit, in terms of the relativistic Doppler effect.
+Finally, we visualize the difference between the Newtonian orbit and the Galactic flat rotation curve orbit, in terms of the relativistic Doppler effect.
 
 In this paper, we consider that the pressure density is near zero at the Galactic scale (e.g. at interstellar distances, there is no pressure acting between the stars), which simplifies the equations, and allows for anistropic gravitation in the first place.
 
@@ -153,7 +153,7 @@ int main(void)
 
 It was Gerard 't Hooft's idea to quantize the black hole's event horizon area into gravitational field line emitters (e.g. dividing the entropy by $\log 2$) in his pioneering work on the holographic principle.
 
-In this paper we numerically solve for the Newtonian (e.g. Keplerian) and flat (e.g. constant velocity) gradients (e.g. derivatives) using an axis-aligned bounding box by obtaining the lengths of the intersecting field line segments emitted by the gravitating body. See Fig.1. 
+In this paper we numerically solve for the Newtonian and flat (e.g. constant velocity) gradients (e.g. derivatives) using an axis-aligned bounding box by obtaining the lengths of the intersecting field line segments emitted by the gravitating body. See Fig.1. 
 
 Here, 
 \begin{equation}
@@ -423,7 +423,7 @@ int main(void)
 
 
 \section{Application: visualizing the relativistic Doppler effect}
-For the sake of reference, attached here is a visualization that highlights the difference between Newtonian (e.g. Keplerian) orbit and flat rotation curve orbit, in terms of the relativistic Doppler effect.
+For the sake of reference, attached here is a visualization that highlights the difference between Newtonian orbit and flat rotation curve orbit, in terms of the relativistic Doppler effect.
 
 The whole code for this section can be found at:
 
@@ -435,7 +435,7 @@ The whole code for this section can be found at:
   \includegraphics[width = 7 in]{doppler.png}
   \caption{
 Visualization of the relativistic Doppler effect for $10^6$ stars.
-The Newtonian (e.g. Keplerian) orbit is on the left, and the flat rotation curve orbit is on the right.
+The Newtonian orbit is on the left, and the flat rotation curve orbit is on the right.
 }
 \end{figure}
 
@@ -448,7 +448,7 @@ How many bits $n$ does it take to encode $W$ equiprobable microstates?
 The answer is: $n = \frac{\log W}{\log 2}$.
 For instance, consider a fair $W = 2^n$-sided die, where all sides are equiprobable, and so $p_i = 1/W$.
 
-Both the brute force and heuristic methods for solving the equations are now known for the Newtonian (e.g., Keplerian) orbit, and the Galactic flat rotation curve orbit.
+Both the brute force and heuristic methods for solving the equations are now known for the Newtonian orbit, and the Galactic flat rotation curve orbit.
 
 The dimension of the gravitational field is now seen to be fractal.
 
