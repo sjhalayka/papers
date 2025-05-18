@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  16 MAY 2025 18:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  18 MAY 2025 08:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -403,18 +403,18 @@ File: 2.001.png Graphic file (type png)
 <use 2.001.png>
 Package pdftex.def Info: 2.001.png  used on input line 362.
 (pdftex.def)             Requested size: 216.81pt x 208.01021pt.
- [7 <./3.png>] [8 <./2.1.png> <./2.001.png>]
-<doppler.png, id=56, 1444.64719pt x 642.14906pt>
+ [7 <./3.png>] [8 <./2.1.png> <./2.001.png>] [9]
+<doppler.png, id=59, 1444.64719pt x 642.14906pt>
 File: doppler.png Graphic file (type png)
 <use doppler.png>
-Package pdftex.def Info: doppler.png  used on input line 430.
+Package pdftex.def Info: doppler.png  used on input line 435.
 (pdftex.def)             Requested size: 505.89pt x 224.86331pt.
 
-Overfull \hbox (7.22742pt too wide) in paragraph at lines 430--434
+Overfull \hbox (7.22742pt too wide) in paragraph at lines 435--439
  [][] 
  []
 
-[9] [10 <./doppler.png>] (bezier_escape.aux)
+[10 <./doppler.png>] (bezier_escape.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -455,7 +455,7 @@ ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/cow
 co/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/U
 sers/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.
 pfb>
-Output written on bezier_escape.pdf (10 pages, 1462827 bytes).
+Output written on bezier_escape.pdf (10 pages, 1435440 bytes).
 PDF statistics:
  148 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
