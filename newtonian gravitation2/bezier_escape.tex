@@ -401,21 +401,19 @@ int main(void)
 
 	double a_Newton = 
 		sqrt(
-		(n * G * c * hbar * log(2.0)) / 
+		(n * G * c * hbar * log(2.0)) /
 		(4 * k * pi * R * R * R * R));
 
 	double v_Newton = sqrt(a_Newton * R);
 	double v_flat = 220000;
 
-	double D_final = 3.0 - 
+	double D = 3.0 - 
 		log(v_flat*v_flat / 
 		(v_Newton*v_Newton)) / log(R);
 
-	double d = 3.0 - D_final;
-
 	double a_flat_ =
 		n * c * hbar * log(2.0) /
-		(4 * k * pi * pow(R, D_final - 1.0) * M);
+		(4 * k * pi * pow(R, D - 1.0) * M);
 
 	double a_flat = pow(220000, 2.0) / R;
 
