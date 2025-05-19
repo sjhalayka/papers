@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{Fractal dimension in the simulation of the non-relativistic gravitation of disk-like zero pressure density systems}
+\title{Rubinesque gravitation from scratch, for C++ programmers}
 \author{S. Halayka\footnote{sjhalayka@gmail.com}}
 \date{\today\;\currenttime}
 
@@ -39,15 +39,17 @@
 \maketitle
 
 \begin{abstract}
+
+In this paper, we investigate the fractal dimension in the simulation of the non-relativistic gravitation of disk-like zero pressure density systems.
 Solutions for Newtonian (e.g. Keplerian) and Galactic flat rotation curve (e.g. Rubinesque) gravitation are given in terms of gravitational field lines.
-C++ code is provided.
+Full C++ code is provided.
 \end{abstract}
 
 
 
 \section{Introduction}
 
-At first, we define entropy in terms of the $n$-bit integers.
+At first, we define entropy in terms of the $n$-bit integers, and then in terms of the black holes.
 
 Then we discuss the brute force numerical solution of the equations for the Newtonian orbit, and the Galactic flat rotation curve orbit.
 
@@ -84,9 +86,9 @@ n = \frac{k \log W}{\log 2}.
 \end{equation}
 
 At the highest density (e.g. black hole densities), this binary entropy is proportional to mass squared.
-The Bekenstein-Hawking binary entropy is:
+The Bekenstein-Hawking binary entropy is related to the black hole event horizon area $A$:
 \begin{equation}
-n = \frac{A_s k c^3}{ 4 G \hbar \log 2}.
+n = \frac{A k c^3}{ 4 G \hbar \log 2}.
 \end{equation}
 
 The following is a code for calculating the entropy of a string of characters.
@@ -167,7 +169,7 @@ stands for disk-like.
 
 Regarding the holographic principle, the Schwarzschild black hole event horizon radius is:
 \begin{equation}
-r_s = \sqrt{\frac{A_s}{4 \pi}} = \sqrt{\frac{n G \hbar \log 2}{k c^3 \pi}},
+r_s = \sqrt{\frac{A}{4 \pi}} = \sqrt{\frac{n G \hbar \log 2}{k c^3 \pi}},
 \end{equation}
 and the mass is:
 \begin{equation}
@@ -193,7 +195,7 @@ a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{n c \hbar \log 2}{4 k 
 
 The ratio of the two accelerations is:
 \begin{equation}
-\frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = R^{d}, 
+\frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = \frac{v_{\textit{flat}}^2}{v_{\textit{Newton}}^2} = R^{d}, 
 \end{equation}
 and the fractal dimension of the gravitational field at $R$ is:
 \begin{equation}
@@ -408,8 +410,8 @@ int main(void)
 	double v_flat = 220000;
 
 	double D = 3.0 - 
-		log(v_flat*v_flat / 
-		(v_Newton*v_Newton)) / log(R);
+		log(v_flat*v_flat / (v_Newton*v_Newton)) / 
+		log(R);
 
 	double a_flat_ =
 		n * c * hbar * log(2.0) /
@@ -459,6 +461,14 @@ The relativistic Doppler effect is used to calculate the orbit speed of stars.
 
 
 
+
+
+\pagebreak
+
+
+
+
+
 \begin{thebibliography}{9}
 
 \bibitem{misner} Misner et al. Gravitation. (1970)
@@ -467,6 +477,8 @@ The relativistic Doppler effect is used to calculate the orbit speed of stars.
 \bibitem{susskind} Susskind. The World as a Hologram. (1994)
 
 \bibitem{Mandelbrot} Mandelbrot. How Long Is the Coast of Britain? Statistical Self-Similarity and Fractional Dimension. (1967)
+
+\bibitem{rubin} Rubin. A century of galaxy spectroscopy. (1995) 
 
 
 %\bibitem{nasa} Williams. NASA Mercury Fact Sheet. (2024)
