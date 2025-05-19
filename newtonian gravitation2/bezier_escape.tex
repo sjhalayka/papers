@@ -188,14 +188,14 @@ a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{n G c \hbar 
 \end{equation}
 and the acceleration $a_{\textit{flat}}$ for a flat rotation curve, where $D < 3$, and $v_{\textit{flat}}$ is known via observation of the relativistic Doppler effect, is:
 \begin{equation}
-a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{n c \hbar \log 2}{4 k \pi R^1 R^{(1 - d)} M}.
+a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{n c \hbar \log 2}{4 k \pi R^{(D - 1)} M}.
 \end{equation}
 
 The ratio of the two accelerations is:
 \begin{equation}
 \frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = R^{d}, 
 \end{equation}
-and the fractal dimension of the gravitational field is:
+and the fractal dimension of the gravitational field at $R$ is:
 \begin{equation}
 D = 3 - \frac{\log R^d}{\log R}. % = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R} = 3 - \frac{\log \frac{v_{\textit{flat}}^2}{v_{\textit{Newton}}^2}}{\log R}.
 \end{equation}
@@ -399,22 +399,27 @@ int main(void)
 
 	double R = 3e20;
 
-//	double g = n / (2 * R * R * R);
-
 	double a_Newton = 
-		sqrt((n * G * c * hbar * log(2.0)) / 
+		sqrt(
+		(n * G * c * hbar * log(2.0)) / 
 		(4 * k * pi * R * R * R * R));
-
-//	double a_Newton2 = G * M / (R * R);
-
-	double a_flat = pow(220000, 2.0) / R;
 
 	double v_Newton = sqrt(a_Newton * R);
 	double v_flat = 220000;
 
-	double D_final = 3.0 - log(a_flat / a_Newton) / log(R);
+	double D_final = 3.0 - 
+		log(v_flat*v_flat / 
+		(v_Newton*v_Newton)) / log(R);
 
-	cout << D_final << endl;
+	double d = 3.0 - D_final;
+
+	double a_flat_ =
+		n * c * hbar * log(2.0) /
+		(4 * k * pi * pow(R, D_final - 1.0) * M);
+
+	double a_flat = pow(220000, 2.0) / R;
+
+	cout << a_flat_ << " " << a_flat << endl;
 
 	return 0;
 }
