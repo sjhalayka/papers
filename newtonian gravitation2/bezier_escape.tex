@@ -40,8 +40,8 @@
 
 \begin{abstract}
 
-In this paper, we investigate the fractal dimension in the simulation of the non-relativistic gravitation of disk-like zero pressure density systems.
-Solutions for Newtonian (e.g. Keplerian) and Galactic flat rotation curve (e.g. Rubinesque) gravitation are given in terms of gravitational field lines.
+In this paper, we investigate the fractal dimension of the gravitational field in the simulation of the non-relativistic gravitation of disk-like zero pressure density systems.
+Solutions for Newtonian (e.g. Keplerian) and Galactic flat rotation curve (e.g. Rubinesque) gravitation are given in terms of the gravitational field lines from the holographic principle.
 Full C++ code is provided.
 \end{abstract}
 
@@ -49,9 +49,12 @@ Full C++ code is provided.
 
 \section{Introduction}
 
+Up to here, we have posited that there is dark matter, in order to explain the Galactic flat rotation curve.
+In this paper we posit that the gravitational field can be made to be anisotropic, which strengthens the effect of gravitation.
+
 At first, we define entropy in terms of the $n$-bit integers, and then in terms of the black holes.
 
-Then we discuss the brute force numerical solution of the equations for the Newtonian orbit, and the Galactic flat rotation curve orbit.
+Then we discuss the brute force numerical solution of the equations for the Newtonian orbit and the Galactic flat rotation curve orbit.
 
 Next, we use a heuristic, analytical approach to the solve the equations for the Galactic flat rotation curve orbit.
 
@@ -201,6 +204,16 @@ and the fractal dimension of the gravitational field at $R$ is:
 \begin{equation}
 D = 3 - \frac{\log R^d}{\log R}. % = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R} = 3 - \frac{\log \frac{v_{\textit{flat}}^2}{v_{\textit{Newton}}^2}}{\log R}.
 \end{equation}
+It should be noted that the inherent strength of the interaction does not run with the reduction of dimension in Rubinesque gravity.
+This is to be explored in a future tutorial on relativistic gravitation, where the gravitational field is non-linear.
+For instance, one possible formula is:
+\begin{equation}
+\frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = R^{d} c^{d}.
+\end{equation}
+
+
+
+
 
 \begin{figure} 
 \centering
@@ -214,17 +227,22 @@ It is the gradient of the density of these line segments that forms the gravitat
 }
 \end{figure}
 
+
+
+
+
 The whole code for this section can be obtained at:
 
 \url{https://github.com/sjhalayka/ellipsoid_emitter}
 
+
+
+
 The following code snippets show how the whole code calculates the gravitational field lines based on a disk-like emitter.
 \begin{lstlisting}
 bool intersect_AABB(
-	const vector_3 min_location, 
-	const vector_3 max_location, 
-	const vector_3 ray_origin, 
-	const vector_3 ray_dir, 
+	const vector_3 min_location, const vector_3 max_location, 
+	const vector_3 ray_origin, const vector_3 ray_dir,
 	double &tmin, double &tmax)
 {
 	 tmin = (min_location.x - ray_origin.x) / ray_dir.x;
@@ -341,7 +359,7 @@ See Figs 2, 3, and 4 for visualization of the gravitational field where $D = 3$,
 \begin{figure} 
 \centering
 \label{fig2}
-  \includegraphics[width = 3 in]{3.png}
+  \includegraphics[width = 1.5 in]{3.png}
   \caption{
 Where $D = 3$, as viewed from the side.
 The field lines are isotropic, spherical.
@@ -351,7 +369,7 @@ The field lines are isotropic, spherical.
 \begin{figure} 
 \centering
 \label{fig3}
-  \includegraphics[width = 3 in]{2.1.png}
+  \includegraphics[width = 1.5 in]{2.1.png}
   \caption{
 Where $D = 2.1$, as viewed from the side.
 The field lines are increasingly anisotropic.
@@ -361,7 +379,7 @@ The field lines are increasingly anisotropic.
 \begin{figure} 
 \centering
 \label{fig4}
-  \includegraphics[width = 3 in]{2.001.png}
+  \includegraphics[width = 1.5 in]{2.001.png}
   \caption{
 Where $D = 2.001$, as viewed from the side.
 The field lines are anisotropic, disk-like.
@@ -453,9 +471,9 @@ How many bits $n$ does it take to encode $W$ equiprobable microstates?
 The answer is: $n = \frac{\log W}{\log 2}$.
 For instance, consider a fair $W = 2^n$-sided die, where all sides are equiprobable, and so $p_i = 1/W$.
 
-Both the brute force and heuristic methods for solving the equations are now known for the Newtonian orbit, and the Galactic flat rotation curve orbit.
+Both the brute force and heuristic methods for solving the equations for the Newtonian orbit and the Galactic flat rotation curve orbit have been given.
 
-The dimension of the gravitational field is now seen to be fractal.
+The dimension of the gravitational field has been shown to be fractal.
 
 The relativistic Doppler effect is used to calculate the orbit speed of stars.
 
