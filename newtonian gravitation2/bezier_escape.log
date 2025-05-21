@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  20 MAY 2025 18:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  20 MAY 2025 20:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -356,30 +356,30 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 
 {C:/Users/cowco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 1
-00.
+01.
 
 (C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/latex/base\omlcmr.fd
 File: omlcmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 100.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 101.
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
-08.
+09.
 
 (C:\Users\cowco\AppData\Local\Programs\MiKTeX\tex/latex/base\omscmr.fd
 File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 108.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 109.
 
 [2] [3]
 <AABB.png, id=26, 463.7325pt x 301.8778pt>
 File: AABB.png Graphic file (type png)
 <use AABB.png>
-Package pdftex.def Info: AABB.png  used on input line 223.
+Package pdftex.def Info: AABB.png  used on input line 224.
 (pdftex.def)             Requested size: 505.89pt x 329.32587pt.
 
-Overfull \hbox (7.22742pt too wide) in paragraph at lines 223--229
+Overfull \hbox (7.22742pt too wide) in paragraph at lines 224--230
  [][] 
  []
 
@@ -387,26 +387,26 @@ Overfull \hbox (7.22742pt too wide) in paragraph at lines 223--229
 <3.png, id=43, 779.16093pt x 747.54282pt>
 File: 3.png Graphic file (type png)
 <use 3.png>
-Package pdftex.def Info: 3.png  used on input line 364.
+Package pdftex.def Info: 3.png  used on input line 365.
 (pdftex.def)             Requested size: 108.405pt x 104.0051pt.
 <2.1.png, id=44, 779.16093pt x 747.54282pt>
 File: 2.1.png Graphic file (type png)
 <use 2.1.png>
-Package pdftex.def Info: 2.1.png  used on input line 374.
+Package pdftex.def Info: 2.1.png  used on input line 375.
 (pdftex.def)             Requested size: 108.405pt x 104.0051pt.
 <2.001.png, id=45, 779.16093pt x 747.54282pt>
 File: 2.001.png Graphic file (type png)
 <use 2.001.png>
-Package pdftex.def Info: 2.001.png  used on input line 384.
+Package pdftex.def Info: 2.001.png  used on input line 385.
 (pdftex.def)             Requested size: 108.405pt x 104.0051pt.
  [7] [8 <./3.png> <./2.1.png> <./2.001.png>] [9]
 <doppler.png, id=59, 1444.64719pt x 642.14906pt>
 File: doppler.png Graphic file (type png)
 <use doppler.png>
-Package pdftex.def Info: doppler.png  used on input line 460.
+Package pdftex.def Info: doppler.png  used on input line 461.
 (pdftex.def)             Requested size: 505.89pt x 224.86331pt.
 
-Overfull \hbox (7.22742pt too wide) in paragraph at lines 460--469
+Overfull \hbox (7.22742pt too wide) in paragraph at lines 461--470
  [][] 
  []
 
@@ -447,7 +447,7 @@ a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/cow
 co/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/U
 sers/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.
 pfb>
-Output written on bezier_escape.pdf (11 pages, 1701652 bytes).
+Output written on bezier_escape.pdf (11 pages, 1701690 bytes).
 PDF statistics:
  150 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
