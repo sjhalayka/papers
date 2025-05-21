@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{Rubinian gravitation from scratch, for C++ programmers}
+\title{Fractional dimension in Rubinian gravitation from scratch, for C++ programmers}
 \author{S. Halayka\footnote{sjhalayka@gmail.com}}
 \date{\today\;\currenttime}
 
@@ -40,7 +40,7 @@
 
 \begin{abstract}
 
-In this paper, we investigate the fractal dimension of the gravitational field in the simulation of the non-relativistic gravitation of disk-like zero-pressure density systems.
+In this paper, we investigate the fractional dimension of the gravitational field in the simulation of the non-relativistic gravitation of disk-like zero-pressure density systems.
 Solutions for Newtonian (e.g. Keplerian) and Galactic flat rotation curve (e.g. Rubinian) gravitation are given in terms of the gravitational field lines from the holographic principle.
 Full C++ code is provided.
 \end{abstract}
@@ -52,7 +52,8 @@ Full C++ code is provided.
 Up to here, we have posited that there is dark matter, in order to explain the Galactic flat rotation curve.
 In this paper we show that the gravitational field can be made to be anisotropic, which strengthens the effect of gravitation.
 
-At first, we define entropy in terms of the $n$-bit integers, and then in terms of the black holes.
+At first, we define entropy in terms of the $n$-bit integers, and then in terms of the black holes. 
+In the end, they're pretty much identical -- a black hole is mathematics manifested in its purest form.
 
 Then we discuss the brute force numerical solution of the equations for the Newtonian orbit and the Galactic flat rotation curve orbit.
 
@@ -202,13 +203,14 @@ The ratio of the two accelerations is:
 \begin{equation}
 \frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = \frac{v_{\textit{flat}}^2}{v_{\textit{Newton}}^2} = R^{d}, 
 \end{equation}
-and the fractal dimension of the gravitational field at $R$ is:
+and the fractional dimension of the gravitational field at $R$ is:
 \begin{equation}
 D = 3 - \frac{\log R^d}{\log R}. % = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R} = 3 - \frac{\log \frac{v_{\textit{flat}}^2}{v_{\textit{Newton}}^2}}{\log R}.
 \end{equation}
+
 It should be noted that the inherent strength of the gravitational interaction does not increase with the reduction of dimension in Rubinian gravity.
-This is to be explored in a future tutorial on relativistic gravitation, where the gravitational field is non-linear, and the gravitational field itself also counts as mass-energy.
-For instance, one candidate equation pair is:
+This is to be explored in a future tutorial on relativistic gravitation, where the gravitational field is non-linear, and so the gravitational field itself also counts as mass-energy (e.g. a source of gravitational lensing in Bullet Cluster (1E 0657-56), for example).
+For instance, one candidate equation pair is simply:
 \begin{equation}
 \frac{a_{\textit{flat}}}{a_{\textit{Newton}}} = R^{d} c^{d},
 \end{equation}
@@ -482,7 +484,7 @@ For instance, consider a fair $W = 2^n$-sided die, where all sides are equiproba
 
 Both the brute force and heuristic methods for solving the equations for the Newtonian orbit and the Galactic flat rotation curve orbit have been given.
 
-The dimension of the gravitational field has been shown to be fractal.
+The dimension of the gravitational field has been shown to be fractional.
 
 The relativistic Doppler effect is used to calculate the orbit speed of stars.
 
