@@ -58,7 +58,7 @@ Then we discuss the brute force numerical solution of the equations for the Newt
 
 Next, we use a heuristic, analytical approach to the solve the equations for the Galactic flat rotation curve orbit.
 
-Finally, we visualize the difference between the Newtonian orbit and the Galactic flat rotation curve orbit, in terms of the relativistic Doppler effect.
+Finally, we visualize the difference between the Newtonian orbit and the flat rotation curve orbit, in terms of the relativistic Doppler effect.
 
 In this paper, we consider that the pressure density is near zero at the Galactic scale (e.g. at interstellar distances, there is no pressure acting between the stars), which simplifies the equations, and allows for anistropic gravitation in the first place.
 
@@ -93,7 +93,7 @@ The Bekenstein-Hawking binary entropy is related to the black hole event horizon
 \begin{equation}
 n = \frac{A k c^3}{ 4 G \hbar \log 2}.
 \end{equation}
-Thus, $n$ is the gravitational field line count.
+
 
 The following is a code for calculating the entropy of a string of characters.
 Note that the calculation allows for non-equiprobabilities, and so it's a bit more general.
@@ -158,6 +158,7 @@ int main(void)
 \section{Brute force: field line intersection density gradient}
 
 It was Gerard 't Hooft's idea to quantize the black hole's event horizon area into gravitational field line emitters (e.g. dividing the entropy by $\log 2$) in his pioneering work on the holographic principle.
+From here on we take $n$ to be the gravitational field line count.
 
 In this paper we numerically solve for the Newtonian and flat (e.g. constant velocity) gradients (e.g. derivatives) using an axis-aligned bounding box by obtaining the lengths of the intersecting field line segments emitted by the gravitating body. See Fig.1. 
 
@@ -205,7 +206,7 @@ and the fractal dimension of the gravitational field at $R$ is:
 \begin{equation}
 D = 3 - \frac{\log R^d}{\log R}. % = 3 - \frac{\log \frac{a_{\textit{flat}}}{a_{\textit{Newton}}}}{\log R} = 3 - \frac{\log \frac{v_{\textit{flat}}^2}{v_{\textit{Newton}}^2}}{\log R}.
 \end{equation}
-It should be noted that the inherent strength of the interaction does not run with the reduction of dimension in Rubinian gravity.
+It should be noted that the inherent strength of the gravitational interaction does not increase with the reduction of dimension in Rubinian gravity.
 This is to be explored in a future tutorial on relativistic gravitation, where the gravitational field is non-linear.
 For instance, one candidate equation pair is:
 \begin{equation}
@@ -493,6 +494,7 @@ The relativistic Doppler effect is used to calculate the orbit speed of stars.
 
 \begin{thebibliography}{9}
 
+\bibitem{Einstein} Einstein. On the electrodynamics of moving bodies. (1905)
 \bibitem{misner} Misner et al. Gravitation. (1970)
 
 \bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
