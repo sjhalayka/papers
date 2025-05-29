@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{Fractional dimension in Rubinian gravitation from scratch, for C++ programmers}
+\title{An approximation of fractional dimension in Rubinian gravitation, for C++ programmers}
 \author{S. Halayka\footnote{sjhalayka@gmail.com}}
 \date{\today\;\currenttime}
 
@@ -39,8 +39,7 @@
 \maketitle
 
 \begin{abstract}
-
-In this paper, we investigate the fractional dimension of the gravitational field in the simulation of the non-relativistic gravitation of disk-like zero-pressure density systems.
+In this paper, we investigate the fractional dimension of the gravitational field in the simulation of the non-relativistic gravitation of disk-like zero-pressure density systems (e.g. galaxies).
 Solutions for Newtonian (e.g. Keplerian) and Galactic flat rotation curve (e.g. Rubinian) gravitation are given in terms of the gravitational field lines from the holographic principle.
 Full C++ code is provided.
 \end{abstract}
@@ -50,12 +49,12 @@ Full C++ code is provided.
 \section{Introduction}
 
 Up to here, we have posited that there is dark matter, in order to explain the Galactic flat rotation curve.
-In this paper we show that the gravitational field can be made to be anisotropic, which strengthens the effect of gravitation.
+In this paper we show that the gravitational field can be made to be anisotropic, which strengthens the effect of the gravitational acceleration.
 
 At first, we define entropy in terms of the $n$-bit integers, and then in terms of the black holes. 
 In the end, they're pretty much identical -- a black hole is mathematics manifested in its purest form.
 
-Then we discuss the brute force numerical solution of the equations for the Newtonian orbit and the Galactic flat rotation curve orbit.
+Then we discuss the brute force numerical solution of the equations for the Newtonian orbit and the flat rotation curve orbit.
 
 Next, we use a heuristic, analytical approach to the solve the equations for the Galactic flat rotation curve orbit.
 
@@ -186,11 +185,12 @@ Where $R$ is some far distance from the centre of the gravitating body (e.g, $R 
 \begin{equation}
 \gamma = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
-The following equation for the gradient strength was found to be true through trial and error:
+The following equation for the gradient strength was found to be suitable:
 \begin{equation}
 g = -\gamma \pi \approx \frac{n}{2 R^D}.
 \end{equation}
-Thus, the Newtonian acceleration $a_{\textit{Newton}}$, where $D = 3$, is:
+See Fig. 2.
+Thus, the approximation of the Newtonian acceleration $a_{\textit{Newton}}$, where $D = 3$, is:
 \begin{equation}
 a_{\textit{Newton}} = \frac{v_{\textit{Newton}}^2}{R} = \sqrt{\frac{n G c \hbar \log 2}{4 k \pi R^4}} = \frac{GM}{R^2},
 \end{equation}
@@ -198,6 +198,12 @@ and the acceleration $a_{\textit{flat}}$ for a flat rotation curve, where $D < 3
 \begin{equation}
 a_{\textit{flat}} = \frac{v_{\textit{flat}}^2}{R} = \frac{n c \hbar \log 2}{4 k \pi R^{(D - 1)} M}.
 \end{equation}
+
+
+
+
+
+
 
 The ratio of the two accelerations is:
 \begin{equation}
@@ -233,7 +239,16 @@ It is the gradient of the density of these line segments that forms the gravitat
 }
 \end{figure}
 
-
+\begin{figure} 
+\centering
+\label{fig2}
+  \includegraphics[width = 7 in]{g_versus_g_.png}
+  \caption{
+Image showing the actual, numerical solution "g.txt" (purple) versus the approximation "g\_.txt" (green).
+Of course, better, more complex approximations exist (e..g. a cumulative distribution function, $\tanh$).
+Note that the approximation is perfect where $D \approx 2.001$ and where $D = 3.0$.
+}
+\end{figure}
 
 
 
@@ -360,11 +375,11 @@ density0 /=
 ...
 \end{lstlisting}
 
-See Figs 2, 3, and 4 for visualization of the gravitational field where $D = 3$, $D = 2.1$, and $D = 2.001$.
+See Figs. 3, 4, and 5 for visualization of the gravitational field where $D = 3$, $D = 2.1$, and $D = 2.001$.
 
 \begin{figure} 
 \centering
-\label{fig2}
+\label{fig3}
   \includegraphics[width = 1.5 in]{3.png}
   \caption{
 Where $D = 3$, as viewed from the side.
@@ -374,7 +389,7 @@ The field lines are isotropic, spherical.
 
 \begin{figure} 
 \centering
-\label{fig3}
+\label{fig4}
   \includegraphics[width = 1.5 in]{2.1.png}
   \caption{
 Where $D = 2.1$, as viewed from the side.
@@ -384,7 +399,7 @@ The field lines are increasingly anisotropic.
 
 \begin{figure} 
 \centering
-\label{fig4}
+\label{fig5}
   \includegraphics[width = 1.5 in]{2.001.png}
   \caption{
 Where $D = 2.001$, as viewed from the side.
@@ -460,7 +475,7 @@ The whole code for this section can be found at:
 
 \begin{figure} 
 \centering
-\label{fig5}
+\label{fig6}
   \includegraphics[width = 7 in]{doppler.png}
   \caption{
 Visualization of the relativistic Doppler effect for $10^6$ stars.
