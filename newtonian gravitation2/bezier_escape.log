@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  30 MAY 2025 08:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  30 MAY 2025 08:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -377,7 +377,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 File: AABB.png Graphic file (type png)
 <use AABB.png>
 Package pdftex.def Info: AABB.png  used on input line 475.
-(pdftex.def)             Requested size: 542.025pt x 352.87315pt.
+(pdftex.def)             Requested size: 361.34999pt x 235.23341pt.
 <g_versus_g_.png, id=46, 1444.64719pt x 812.28468pt>
 File: g_versus_g_.png Graphic file (type png)
 <use g_versus_g_.png>
@@ -387,28 +387,32 @@ Package pdftex.def Info: g_versus_g_.png  used on input line 487.
 File: 3.png Graphic file (type png)
 <use 3.png>
 Package pdftex.def Info: 3.png  used on input line 501.
-(pdftex.def)             Requested size: 216.81pt x 208.01021pt.
+(pdftex.def)             Requested size: 108.405pt x 104.0051pt.
 <2.1.png, id=48, 779.16093pt x 747.54282pt>
 File: 2.1.png Graphic file (type png)
 <use 2.1.png>
 Package pdftex.def Info: 2.1.png  used on input line 510.
-(pdftex.def)             Requested size: 216.81pt x 208.01021pt.
+(pdftex.def)             Requested size: 108.405pt x 104.0051pt.
 <2.001.png, id=49, 779.16093pt x 747.54282pt>
 File: 2.001.png Graphic file (type png)
 <use 2.001.png>
 Package pdftex.def Info: 2.001.png  used on input line 519.
-(pdftex.def)             Requested size: 216.81pt x 208.01021pt.
+(pdftex.def)             Requested size: 108.405pt x 104.0051pt.
 <doppler.png, id=50, 1444.64719pt x 642.14906pt>
 File: doppler.png Graphic file (type png)
 <use doppler.png>
 Package pdftex.def Info: doppler.png  used on input line 530.
 (pdftex.def)             Requested size: 505.89pt x 224.86331pt.
- [8 <./AABB.png>] [9 <./g_versus_g_.png> <./3.png>]
-[10 <./2.1.png> <./2.001.png>] [11 <./doppler.png>] (bezier_escape.aux)
+ [8 <./AABB.png> <./g_versus_g_.png>] [9 <./3.png> <./2.1.png> <./2.001.png>] [
+10 <./doppler.png>] (bezier_escape.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  6698 strings out of 474486
@@ -441,9 +445,9 @@ a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/cow
 co/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/U
 sers/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.
 pfb>
-Output written on bezier_escape.pdf (11 pages, 1760934 bytes).
+Output written on bezier_escape.pdf (10 pages, 1760355 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
+ 149 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
