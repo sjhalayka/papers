@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  30 MAY 2025 13:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.9)  31 MAY 2025 10:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -403,12 +403,16 @@ File: doppler.png Graphic file (type png)
 <use doppler.png>
 Package pdftex.def Info: doppler.png  used on input line 530.
 (pdftex.def)             Requested size: 505.89pt x 224.86331pt.
- [8 <./AABB.png> <./g_versus_g_.png>] [9 <./3.png> <./2.1.png> <./2.001.png>] [
-10 <./doppler.png>] (bezier_escape.aux)
+ [8 <./AABB.png>] [9 <./g_versus_g_.png> <./3.png> <./2.1.png>] [10 <./2.001.pn
+g> <./doppler.png>] (bezier_escape.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  6698 strings out of 474486
@@ -441,7 +445,7 @@ a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/cow
 co/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/U
 sers/cowco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.
 pfb>
-Output written on bezier_escape.pdf (10 pages, 1760351 bytes).
+Output written on bezier_escape.pdf (10 pages, 1760457 bytes).
 PDF statistics:
  149 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
