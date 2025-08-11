@@ -1,0 +1,2 @@
+pdflatex bezier_escape.tex
+
