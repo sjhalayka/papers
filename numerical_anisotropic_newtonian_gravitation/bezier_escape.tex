@@ -47,21 +47,40 @@ The main focus is on some C++ code.
 
 \section{Introduction}
 
+
+Regarding the holographic principle, the number of gravitational field lines for a black hole is related to the event horizon area $A$:
+\begin{equation}
+n = \frac{A k c^3}{ 4 G \hbar \log 2}.
+\end{equation}
+For a Schwarzschild black hole in particular, the event horizon radius $r_s$ is
+\begin{equation}
+r_s = \sqrt{\frac{A}{4 \pi}} = \sqrt{\frac{n G \hbar \log 2}{k c^3 \pi}},
+\end{equation}
+and the mass of the Schwarzschild black hole is
+\begin{equation}
+M = \frac{c^2 r_s}{2 G} = \sqrt{\frac{n c \hbar \log 2}{4 G k \pi}}.
+\end{equation}
+
+Where the $\beta$ function is the integer field line collision count:
 \begin{equation}
 \alpha = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
-
 \begin{equation}
 g = \frac{-\alpha}{r^2}. 
 \end{equation}
 
+The Newtonian gravitational variables are:
 \begin{equation}
-a_N = \sqrt{\frac{n G c \hbar \log 2}{4 k \pi R^4}},
+a_N = \frac{G M}{R^2} = \sqrt{\frac{n G c \hbar \log 2}{4 k \pi R^4}},
 \end{equation}
 \begin{equation}
 v_N = \sqrt{a_N R}.
 \end{equation}
+\begin{equation}
+g_N = \frac{a_N k 2 \pi M}{R c \hbar \log 2}. 
+\end{equation}
 
+The flat rotation curve variables are:
 \begin{equation}
 v_{\textrm{flat}} = x v_N
 \end{equation}
@@ -69,9 +88,7 @@ where $x = 2$ for example.
 \begin{equation}
 a_{\textrm{flat}} = \frac{v_{\textrm{flat}}^2}{R} = \frac{g R c \hbar \log 2}{k 2 \pi M}.
 \end{equation}
-\begin{equation}
-g_N = \frac{a_N k 2 \pi M}{R c \hbar \log 2}. 
-\end{equation}
+
 
 
 
