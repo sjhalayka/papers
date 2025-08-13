@@ -73,6 +73,99 @@ Where the $\beta$ function is the integer field line collision count:
 g = \frac{-\alpha}{r^2}. 
 \end{equation}
 
+
+
+\begin{lstlisting}
+vector_3 random_unit_vector(void)
+{
+	const real_type z = dis(generator) * 2.0 - 1.0;
+	const real_type a = dis(generator) * 2.0 * pi;
+
+	const real_type r = sqrt(1.0f - z * z);
+	const real_type x = r * cos(a);
+	const real_type y = r * sin(a);
+
+	return vector_3(x, y, z).normalize();
+}
+
+vector_3 slerp(vector_3 s0, vector_3 s1, const real_type t)
+{
+	vector_3 s0_norm = s0;
+	s0_norm.normalize();
+
+	vector_3 s1_norm = s1;
+	s1_norm.normalize();
+
+	const real_type cos_angle = s0_norm.dot(s1_norm);
+	const real_type angle = acos(cos_angle);
+
+	const real_type p0_factor = sin((1 - t) * angle) / sin(angle);
+	const real_type p1_factor = sin(t * angle) / sin(angle);
+
+	return s0 * p0_factor + s1 * p1_factor;
+}
+
+bool circle_intersect(
+	const vector_3 normal,
+	const real_type circle_location,
+	const real_type circle_radius)
+{
+	vector_3 outline_dir(
+		circle_location, 
+		circle_radius, 
+		0);
+
+	outline_dir.normalize();
+
+	static const vector_3 v(1, 0, 0);
+
+	const real_type d = outline_dir.dot(v);
+
+	if (d <= 0)
+		return false;
+
+	const real_type d_ = normal.dot(v);
+
+	if (d_ <= d)
+		return false;
+
+	return true;
+}
+\end{lstlisting}
+
+
+\begin{lstlisting}
+long long signed int get_intersecting_line_count_integer(
+	const long long signed int n,
+	const vector_3 sphere_location,
+	const real_type sphere_radius,
+	const real_type D)
+{
+	const real_type disk_like = 3.0 - D;
+
+	long long signed int count = 0;
+
+	generator.seed(static_cast<unsigned>(0));
+
+	for (long long signed int j = 0; j < n; j++)
+	{
+		const vector_3 p = random_unit_vector();
+
+		vector_3 p_disk = p;
+		p_disk.y = 0;
+		p_disk.normalize();
+
+		const vector_3 normal = slerp(p, p_disk, disk_like);
+
+		if (circle_intersect(normal, sphere_location.x, sphere_radius))
+			count++;
+	}
+
+	return count;
+}
+\end{lstlisting}
+
+
 The Newtonian gravitational variables are:
 \begin{equation}
 a_N = \frac{G M}{R^2} = \sqrt{\frac{n G c \hbar \log 2}{4 k \pi R^4}},
