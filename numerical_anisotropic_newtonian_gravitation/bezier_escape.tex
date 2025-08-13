@@ -40,19 +40,23 @@
 
 \begin{abstract}
 This paper contains a short introduction to anisotropic Newtonian gravitation.
-The main focus is on some C++ code.
 \end{abstract}
 
 
 
 \section{Introduction}
 
+First see \cite{halayka} for a short tutorial for C++ programmers on Newtonian gravitation.
 
-Regarding the holographic principle, the number of gravitational field lines for a black hole is related to the event horizon area $A$:
+This paper introduces a Monte Carlo method for generating anisotropic gravitational fields.
+
+\section{Brute force: field line intersection density gradient}
+
+Regarding the holographic principle \cite{hooft, susskind}, the number of gravitational field lines for a black hole is related to the event horizon area $A$:
 \begin{equation}
 n = \frac{A k c^3}{ 4 G \hbar \log 2}.
 \end{equation}
-For a Schwarzschild black hole in particular, the event horizon radius $r_s$ is
+For a Schwarzschild black hole in particular \cite{misner}, the event horizon radius $r_s$ is
 \begin{equation}
 r_s = \sqrt{\frac{A}{4 \pi}} = \sqrt{\frac{n G \hbar \log 2}{k c^3 \pi}},
 \end{equation}
@@ -107,8 +111,6 @@ To find $D$, look for where $g_{\textrm{ratio}} \geq a_{\textrm{ratio}}$, starti
 
 
 
-
-\pagebreak
 
 
 \begin{figure} 
@@ -173,15 +175,14 @@ This is exactly what Vera Rubin discovered in the disks of the galaxies that she
 
 
 
+\begin{thebibliography}{9}
 
-%\begin{thebibliography}{9}
+\bibitem{halayka} Halayka. Newtonian gravitation from scratch, for C++ programmers. (2024)
+\bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
+\bibitem{susskind} Susskind. The World as a Hologram. (1994)
+\bibitem{misner} Misner et al. Gravitation. (1970)
 
-%\bibitem{misner} Misner et al. Gravitation. (1970)
-
-%\bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
-%\bibitem{susskind} Susskind. The World as a Hologram. (1994)
-
-%\end{thebibliography}
+\end{thebibliography}
 
 
 
