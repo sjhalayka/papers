@@ -12,7 +12,7 @@
 \usepackage{setspace}
 \usepackage{amsmath}
 \usepackage{url}
-\usepackage[margin=0.8in]{geometry}
+\usepackage[margin=0.5in]{geometry}
 \usepackage{listings}
 
 
@@ -46,7 +46,7 @@ This paper contains a short introduction to anisotropic Newtonian gravitation.
 
 \section{Introduction}
 
-First see \cite{halayka} for a short tutorial for C++ programmers on Newtonian gravitation.
+First see \cite{halayka} for a short tutorial for C++ programmers on isotropic Newtonian gravitation.
 
 This paper introduces a Monte Carlo method for generating anisotropic gravitational fields.
 
@@ -65,14 +65,21 @@ and the mass of the Schwarzschild black hole is
 M = \frac{c^2 r_s}{2 G} = \sqrt{\frac{n c \hbar \log 2}{4 G k \pi}}.
 \end{equation}
 
-Where the $\beta$ function is the integer field line collision count:
+Where the $\beta$ function is the integer field line collision count, $R$ is the distance from the black hole centre, and $\epsilon$ is some small number:
 \begin{equation}
 \alpha = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
+The gradient strength, where $r$ is the receiver radius, is:
 \begin{equation}
 g = \frac{-\alpha}{r^2}. 
 \end{equation}
 
+
+Below is a bunch of code.
+
+The full code can be found at 
+
+\url{https://github.com/sjhalayka/numerical_newtonian_gravity}
 
 
 \begin{lstlisting}
