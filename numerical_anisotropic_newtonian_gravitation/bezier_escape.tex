@@ -12,7 +12,7 @@
 \usepackage{setspace}
 \usepackage{amsmath}
 \usepackage{url}
-\usepackage[margin=0.5in]{geometry}
+\usepackage[margin=0.75in]{geometry}
 \usepackage{listings}
 
 
@@ -47,8 +47,15 @@ This paper contains a short introduction to anisotropic Newtonian gravitation.
 \section{Introduction}
 
 First see \cite{halayka} for a short tutorial for C++ programmers on isotropic Newtonian gravitation.
+In \cite{halayka} we build an isotropic gravitational field through the use of pseudorandomly generated field lines.
 
-This paper introduces a Monte Carlo method for generating anisotropic gravitational fields.
+Here we introduce a method for generating anisotropic gravitational fields through the use of spherical linear interpolation.
+
+Anisotropic gravitational fields provide extra acceleration, which is useful for modeling the flat rotation curves in galactic dynamics.
+
+
+
+
 
 \section{Brute force: field line intersection density gradient}
 
@@ -174,43 +181,58 @@ long long signed int get_intersecting_line_count_integer(
 \end{lstlisting}
 
 
-The Newtonian gravitational variables are:
+The Newtonian gravitational variables are acceleration:
 \begin{equation}
 a_N = \frac{G M}{R^2} = \sqrt{\frac{n G c \hbar \log 2}{4 k \pi R^4}},
 \end{equation}
+circular orbit speed:
 \begin{equation}
-v_N = \sqrt{a_N R}.
+v_N = \sqrt{a_N R},
 \end{equation}
+and gradient strength:
 \begin{equation}
 g_N = \frac{a_N k 2 \pi M}{R c \hbar \log 2}. 
 \end{equation}
 
 The flat rotation curve variables are:
 \begin{equation}
-v_{\textrm{flat}} = x v_N
+v_{\textrm{flat}} = x v_N,
 \end{equation}
 where $x = 2$ for example.
 \begin{equation}
 a_{\textrm{flat}} = \frac{v_{\textrm{flat}}^2}{R} = \frac{g R c \hbar \log 2}{k 2 \pi M}.
 \end{equation}
 
-
-
-
+Since
 \begin{equation}
-a_{\textrm{flat}} \propto g.
+a_{\textrm{flat}} \propto g
+\end{equation}
+and
+\begin{equation}
+a_{\textrm{ratio}} = \frac{a_{\textrm{flat}}}{a_N},
 \end{equation}
 \begin{equation}
-a_{\textrm{ratio}} = \frac{a_{\textrm{flat}}}{a_N}. 
+g_{\textrm{ratio}} = \frac{g}{g_N},
 \end{equation}
-\begin{equation}
-g_{\textrm{ratio}} = \frac{g}{g_N}. 
-\end{equation}
-
-To find $D$, look for where $g_{\textrm{ratio}} \geq a_{\textrm{ratio}}$, starting from $D = 3$, marching toward $D = 2$.
+to then find $D$, look for where $g_{\textrm{ratio}} \geq a_{\textrm{ratio}}$, starting from $D = 3$, marching toward $D = 2$.
 
 
 
+
+
+
+\begin{thebibliography}{9}
+
+\bibitem{halayka} Halayka. Newtonian gravitation from scratch, for C++ programmers. (2024)
+\bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
+\bibitem{susskind} Susskind. The World as a Hologram. (1994)
+\bibitem{misner} Misner et al. Gravitation. (1970)
+
+\end{thebibliography}
+
+
+
+\pagebreak
 
 
 
@@ -271,21 +293,6 @@ On the right, the wavelength is dependent only on angle, which means that there 
 This is exactly what Vera Rubin discovered in the disks of the galaxies that she observed, and so dark matter was posited.
 }
 \end{figure}
-
-
-
-
-
-\begin{thebibliography}{9}
-
-\bibitem{halayka} Halayka. Newtonian gravitation from scratch, for C++ programmers. (2024)
-\bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
-\bibitem{susskind} Susskind. The World as a Hologram. (1994)
-\bibitem{misner} Misner et al. Gravitation. (1970)
-
-\end{thebibliography}
-
-
 
 
 
