@@ -231,10 +231,10 @@ int main(void)
 	double M = 1e41;
 	double R = 3e20;
 
-	double a_Newton = G * M / (R*R);
+	double a_Newton = G * M / (R * R);
 
 	double v_flat = 220000;
-	double a_flat = pow(v_flat, 2.0) / R;
+	double a_flat = (v_flat * v_flat) / R;
 
 	// ... 2.17551
 	cout << a_flat / a_Newton << endl;
@@ -282,7 +282,7 @@ The field lines are increasingly anisotropic.
 \label{fig3}
   \includegraphics[width = 1.5 in]{2.001.png}
   \caption{
-Where $D = 2.001$, as viewed from the side.
+Where $D = 2$, as viewed from the side.
 The field lines are anisotropic, disk-like.
 }
 \end{figure}
