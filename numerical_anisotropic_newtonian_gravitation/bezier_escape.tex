@@ -94,18 +94,18 @@ The full code can be found at
 // Pseudorandom unit vector using Mersenne Twister
 vector_3 random_unit_vector(void)
 {
-	const real_type z = dis(generator) * 2.0 - 1.0;
-	const real_type a = dis(generator) * 2.0 * pi;
+	const double z = dis(generator) * 2.0 - 1.0;
+	const double a = dis(generator) * 2.0 * pi;
 
-	const real_type r = sqrt(1.0f - z * z);
-	const real_type x = r * cos(a);
-	const real_type y = r * sin(a);
+	const double r = sqrt(1.0f - z * z);
+	const double x = r * cos(a);
+	const double y = r * sin(a);
 
 	return vector_3(x, y, z).normalize();
 }
 
 // Spherical linear interpolation
-vector_3 slerp(vector_3 s0, vector_3 s1, const real_type t)
+vector_3 slerp(vector_3 s0, vector_3 s1, const double t)
 {
 	vector_3 s0_norm = s0;
 	s0_norm.normalize();
@@ -113,11 +113,11 @@ vector_3 slerp(vector_3 s0, vector_3 s1, const real_type t)
 	vector_3 s1_norm = s1;
 	s1_norm.normalize();
 
-	const real_type cos_angle = s0_norm.dot(s1_norm);
-	const real_type angle = acos(cos_angle);
+	const double cos_angle = s0_norm.dot(s1_norm);
+	const double angle = acos(cos_angle);
 
-	const real_type p0_factor = sin((1 - t) * angle) / sin(angle);
-	const real_type p1_factor = sin(t * angle) / sin(angle);
+	const double p0_factor = sin((1 - t) * angle) / sin(angle);
+	const double p1_factor = sin(t * angle) / sin(angle);
 
 	return s0 * p0_factor + s1 * p1_factor;
 }
@@ -125,8 +125,8 @@ vector_3 slerp(vector_3 s0, vector_3 s1, const real_type t)
 // Ray-circle intersection function
 bool circle_intersect(
 	const vector_3 normal,
-	const real_type circle_location,
-	const real_type circle_radius)
+	const double circle_location,
+	const double circle_radius)
 {
 	vector_3 outline_dir(
 		circle_location, 
@@ -137,12 +137,12 @@ bool circle_intersect(
 
 	static const vector_3 v(1, 0, 0);
 
-	const real_type d = outline_dir.dot(v);
+	const double d = outline_dir.dot(v);
 
 	if (d <= 0)
 		return false;
 
-	const real_type d_ = normal.dot(v);
+	const double d_ = normal.dot(v);
 
 	if (d_ <= d)
 		return false;
@@ -156,10 +156,10 @@ bool circle_intersect(
 long long signed int get_intersecting_line_count_integer(
 	const long long signed int n,
 	const vector_3 sphere_location,
-	const real_type sphere_radius,
-	const real_type D)
+	const double sphere_radius,
+	const double D)
 {
-	const real_type disk_like = 3.0 - D;
+	const double disk_like = 3.0 - D;
 
 	long long signed int count = 0;
 
