@@ -287,9 +287,6 @@ long long signed int get_intersecting_line_count_integer(
 
 	for (long long signed int j = 0; j < n; j++)
 	{
-		if (j % 100000000 == 0)
-			cout << float(j) / float(n) << endl;
-
 		const vector_3 p = random_unit_vector();
 
 		vector_3 p_bidirectional = p;
