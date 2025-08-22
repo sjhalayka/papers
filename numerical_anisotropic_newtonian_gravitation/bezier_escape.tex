@@ -277,10 +277,10 @@ Work on an analytical method is underway.
 long long signed int get_intersecting_line_count_integer(
 	const long long signed int n,
 	const vector_3 sphere_location,
-	const real_type sphere_radius,
-	const real_type D)
+	const double sphere_radius,
+	const double D)
 {
-	const real_type filament_like = (3.0 - D) * 0.5;
+	const double filament_like = (3.0 - D) * 0.5;
 	long long signed int count = 0;
 
 	generator.seed(static_cast<unsigned>(0));
