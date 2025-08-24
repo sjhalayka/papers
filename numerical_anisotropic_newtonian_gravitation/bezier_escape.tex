@@ -303,7 +303,55 @@ long long signed int get_intersecting_line_count_integer(
 }
 \end{lstlisting}
 This method directly goes from spherical to filament-like.
-There is another, indirect method, in which one first becomes disk-like, and then filament-like.
+There is another, indirect method, in which one first becomes disk-like, and then filament-like:
+\begin{lstlisting}
+long long signed int get_intersecting_line_count_integer(
+	const long long signed int n,
+	const vector_3 sphere_location,
+	const real_type sphere_radius,
+	const real_type D)
+{
+	const real_type filament_like = (3.0 - (D + 1));
+	const real_type disk_like = 3.0 - D;
+	bool disk = true;
+
+	if (D < 2)
+		disk = false;
+
+	long long signed int count = 0;
+
+	generator.seed(static_cast<unsigned>(0));
+
+	for (long long signed int j = 0; j < n; j++)
+	{
+		const vector_3 p = random_unit_vector();
+
+		vector_3 p_disk = p;
+		p_disk.y = 0;
+		p_disk.normalize();
+
+		vector_3 p_bidirectional = p;
+		p_bidirectional.y = 0; p_bidirectional.z = 0;
+		p_bidirectional.normalize();
+
+		vector_3 normal;
+		
+		if(disk)
+			normal = slerp(p, p_disk, disk_like);
+		else
+			normal = slerp(p_disk, p_bidirectional, filament_like);
+
+		if (circle_intersect(normal, sphere_location.x, sphere_radius))
+			count++;
+	}
+
+	return count;
+}
+\end{lstlisting}
+
+
+
+
 
 
 
