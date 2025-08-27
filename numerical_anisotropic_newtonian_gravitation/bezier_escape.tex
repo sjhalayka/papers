@@ -218,7 +218,6 @@ g_{\textrm{ratio}} = \frac{g}{g_N},
 \end{equation}
 to then find $D$, look for where $g_{\textrm{ratio}} \geq a_{\textrm{ratio}}$, starting from $D = 3$, marching toward $D = 2$.
 The Galaxy becomes more and more disk-like as distance from the core increases.
-
 For instance, for the Galactic orbit of the Solar System at $R = $ 3e20 metres, where the mass is $M = $ 1e41 kilograms, and the circular orbit speed is $v = 220000$ metres per second, the ratio is only $2.17551$:
 \begin{lstlisting}
 #include <cmath>
@@ -269,6 +268,8 @@ int main(void)
 \end{lstlisting}
 Of course, solving for the Galactic flat rotation curve using brute force is not feasible due to current processor speed limitations.
 Work on an analytical method is underway.
+
+In the meantime, for more sensible answers, make sure to try decreasing $\epsilon$ by several orders of magnitude, while increasing $n$ by several orders of magnitude at the same time.
 
 
 \section{Appendix I -- 1-D Filaments}
