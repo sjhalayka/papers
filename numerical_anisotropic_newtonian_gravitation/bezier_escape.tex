@@ -187,38 +187,28 @@ The Newtonian gravitational variables are acceleration:
 \begin{equation}
 a_N = \frac{G M}{R^2} = \sqrt{\frac{n G c \hbar \log 2}{4 k \pi R^4}},
 \end{equation}
-circular orbit speed:
+and circular orbit speed:
 \begin{equation}
-v_N = \sqrt{a_N R},
+v_N = \sqrt{a_N R}.
 \end{equation}
-and gradient strength:
-\begin{equation}
-g_N = \frac{a_N k 2 \pi M}{R c \hbar \log 2}. 
-\end{equation}
+%and gradient strength:
+%\begin{equation}
+%g_N = \frac{a_N k 2 \pi M}{R c \hbar \log 2}. 
+%\end{equation}
 
 The flat rotation curve variables are:
 \begin{equation}
-v_{\textrm{flat}} = x v_N,
-\end{equation}
-where $x = 2$ for example.
-\begin{equation}
-a_{\textrm{flat}} = \frac{v_{\textrm{flat}}^2}{R} = \frac{g R c \hbar \log 2}{k 2 \pi M}.
-\end{equation}
-
-Since
-\begin{equation}
-a_{\textrm{flat}} \propto g
-\end{equation}
-and
-\begin{equation}
-a_{\textrm{ratio}} = \frac{a_{\textrm{flat}}}{a_N},
+v_{\textrm{target}} = {\textrm {some constant}}, %x v_N,
 \end{equation}
 \begin{equation}
-g_{\textrm{ratio}} = \frac{g}{g_N},
+a_{\textrm{flat}} = \frac{g R c \hbar \log 2}{k 2 \pi M},
 \end{equation}
-to then find $D$, look for where $g_{\textrm{ratio}} \geq a_{\textrm{ratio}}$, starting from $D = 3$, marching toward $D = 2$.
+\begin{equation}
+v_{\textrm{flat}} = \sqrt{a_{\textrm{flat}} R}.
+\end{equation}
+To find $D$, look for where $v_{\textrm{flat}} \geq v_{\textrm{target}}$, starting from $D = 3$, marching toward $D = 2$.
 The Galaxy becomes more and more disk-like as distance from the core increases.
-For instance, for the Galactic orbit of the Solar System at $R = $ 3e20 metres, where the mass is $M = $ 1e41 kilograms, and the circular orbit speed is $v = 220000$ metres per second, the ratio is only $2.17551$:
+For instance, for the Galactic orbit of the Solar System at $R = $ 3e20 metres, where the mass is $M = $ 1e41 kilograms, and the circular orbit speed is $v = 220000$ metres per second, the ratio is only $1.47496$:
 \begin{lstlisting}
 #include <cmath>
 #include <iostream>
@@ -242,14 +232,15 @@ int main(void)
 	double R = 3e20;
 
 	double a_Newton = G * M / (R * R);
+	double v_Newton = sqrt(a_Newton * R);
 
 	double v_flat = 220000;
 	double a_flat = (v_flat * v_flat) / R;
 
-	// ... 2.17551
-	cout << a_flat / a_Newton << endl;
+	// ... 1.47496
+	cout << v_flat / v_Newton << endl;
 
-	double emitter_radius = 2 * G * M / c2;
+	double emitter_radius = 2*G*M/c2;
 
 	const double emitter_area =
 		4.0 * pi * emitter_radius * emitter_radius;
