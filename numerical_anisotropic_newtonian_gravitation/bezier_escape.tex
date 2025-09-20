@@ -77,18 +77,17 @@ Where the $\beta$ function is the integer field line collision count, $R$ is the
 \begin{equation}
 \alpha = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
-The gradient strength, where $r$ is the receiver radius, is:
+The gradient strength is:
 \begin{equation}
-g = \frac{-\alpha}{r^2}. 
+g = -\alpha. 
 \end{equation}
-
+The receiver is taken to be a unit circle.
 
 Below is a small bunch of code to define the $\beta$ function using C++.
 
 The full code can be found at 
 
 \url{https://github.com/sjhalayka/numerical_newtonian_gravity}
-
 
 \begin{lstlisting}
 // Pseudorandom unit vector using Mersenne Twister
