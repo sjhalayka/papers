@@ -149,21 +149,26 @@ vector_3 random_cosine_weighted_hemisphere(const vector_3& normal)
 	real_type u1 = dis(generator);
 	real_type u2 = dis(generator);
 
-	// Malley's method (cosine-weighted hemisphere sampling)
-	// Sample uniformly on a disk, then project up to hemisphere
+	// Malley's method
+	// (cosine-weighted hemisphere sampling)
+	// Sample uniformly on a disk, 
+	// then project up to hemisphere
 	real_type r = sqrt(u1);
 	real_type theta = 2.0 * pi * u2;
 
 	// Point on unit disk
 	real_type x = r * cos(theta);
 	real_type y = r * sin(theta);
-	real_type z = sqrt(1.0 - u1); // Height above disk (gives cos weighting)
+
+	// Height above disk
+	real_type z = sqrt(1.0 - u1); 
 
 	// Create orthonormal basis around normal
 	vector_3 n = normal;
 	n.normalize();
 
-	// Choose an arbitrary vector not parallel to normal
+	// Choose an arbitrary vector
+	// not parallel to normal
 	vector_3 arbitrary;
 	if (fabs(n.x) > 0.9)
 		arbitrary = vector_3(0, 1, 0);
@@ -177,11 +182,17 @@ vector_3 random_cosine_weighted_hemisphere(const vector_3& normal)
 	vector_3 bitangent = n.cross(tangent);
 	bitangent.normalize();
 
-	// Transform from local coordinates to world coordinates
+	// Transform from local coordinates
+	// to world coordinates
 	vector_3 result;
-	result.x = tangent.x * x + bitangent.x * y + n.x * z;
-	result.y = tangent.y * x + bitangent.y * y + n.y * z;
-	result.z = tangent.z * x + bitangent.z * y + n.z * z;
+	result.x = tangent.x * x + 
+		bitangent.x * y + n.x * z;
+
+	result.y = tangent.y * x + 
+		bitangent.y * y + n.y * z;
+
+	result.z = tangent.z * x + 
+		bitangent.z * y + n.z * z;
 
 	return result.normalize();
 }
@@ -287,9 +298,13 @@ real_type get_intersecting_line_density(
 		vector_3 surface_normal = location;
 		surface_normal.normalize();
 
-		vector_3 normal = random_cosine_weighted_hemisphere(surface_normal);
+		vector_3 normal = 
+			random_cosine_weighted_hemisphere(
+				surface_normal);
 
-		std::optional<real_type> i_hit = intersect(location, normal, receiver_distance, receiver_radius);
+		std::optional<real_type> i_hit = intersect(
+			location, normal, 
+			receiver_distance, receiver_radius);
 
 		if (i_hit)
 			count += *i_hit / (2.0 * receiver_radius);
@@ -297,7 +312,6 @@ real_type get_intersecting_line_density(
 
 	return count;
 }
-
 \end{lstlisting}
 
 
