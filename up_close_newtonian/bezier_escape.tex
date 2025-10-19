@@ -39,7 +39,7 @@
 \maketitle
 
 \begin{abstract}
-Abstract.
+This paper contains a short introduction to isotropic Schwarzschild gravitation.
 \end{abstract}
 
 
@@ -51,7 +51,7 @@ First see \cite{halayka} for a short tutorial for C++ programmers on isotropic N
 In \cite{halayka} we build an isotropic gravitational field through the use of pseudorandomly generated field lines.
 In \cite{halayka} we use a sphere as the receiver.
 
-In this paper, we find a match between the numerical gravitation and the gravitational time dilation from general relativity \cite{hooft, susskind, misner}.
+In this paper, we find a match between the numerical gravitation and the gravitational time dilation from Schwarzschild's general relativity \cite{hooft, susskind, misner}.
 Here, we use an axis-aligned bounding box (AABB) as the receiver.
 
 In this paper we use Planck units, where $c = G = \hbar = k = 1$, which simplifies the equations.
@@ -94,7 +94,7 @@ We can also get a general relativistic acceleration $a_S$, where $r_e < R$:
 t = \sqrt{1 - \frac{r_e}{R}},
 \end{equation}
 \begin{equation}
-a_S = \frac{2 M_e}{t \pi R^2}.
+a_S = \frac{r_e}{t \pi R^2}.
 \end{equation}
 
 \begin{lstlisting}
