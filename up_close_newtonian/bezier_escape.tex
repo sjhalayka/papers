@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{On numerical gravitation}
+\title{On numerical quantum Schwarzschild gravity}
 \author{S. Halayka\footnote{sjhalayka@gmail.com}}
 \date{\today\;\currenttime}
 
@@ -314,8 +314,13 @@ real_type get_intersecting_line_density(
 }
 \end{lstlisting}
 
+Experimentation with the receiver size is necessary to understand the intricacies of the code.
+For instance, where $r_{r} = r_{e} \times 0.01$, it can be found that gravitation is repulsive at close range.
+Also, where $r_{r} = r_{e}$, it can be found that gravitation is attractive at close range.
 
+The full code can be found at:
 
+\url{https://github.com/sjhalayka/non-newtonian_falloff}
 
 
 
