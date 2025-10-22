@@ -233,7 +233,10 @@ std::optional<real_type> intersect(
 
 	return std::nullopt;
 }
+\end{lstlisting}
 
+The following code uses the Newtonian gravitation, where the random unit vector points in the same direction as the accompanying normal:
+\begin{lstlisting}
 // Beta function, for Newtonian gravitation
 real_type get_intersecting_line_density(
 	const long long unsigned int n,
@@ -272,6 +275,10 @@ real_type get_intersecting_line_density(
 	return count;
 }
 
+\end{lstlisting}
+
+The following code uses the Schwarzschild gravitation, where the random unit vector generally points in a different direction than the normal, using cosine weighting:
+\begin{lstlisting}
 // Beta function, for Schwarzschild gravitation
 real_type get_intersecting_line_density(
 	const long long unsigned int n,
