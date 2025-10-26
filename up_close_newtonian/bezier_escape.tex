@@ -14,6 +14,7 @@
 \usepackage{url}
 \usepackage[margin=0.8in]{geometry}
 \usepackage{listings}
+\usepackage{derivative}
 
 
 \usepackage{xcolor}
@@ -60,21 +61,21 @@ Note that a length of 1 means 1 Planck length, not 1 metre.
 
 \section{Method}
 
-Where $r_{e}$ is the emitter's Schwarzschild radius, $r_{r}$ is the receiver AABB radius (e.g. half of the AABB side length), $\beta$ is the get intersecting line density function, and $1\mathrm{e}12$ and $0.01$ are arbitrary constants:
+Where $r_{e}$ is the emitter's Schwarzschild radius, $r_{r}$ is the receiver AABB radius (e.g. half of the AABB side length), $\beta$ is the get intersecting line density function, and $1\mathrm{e}11$ and $0.01$ are arbitrary constants:
 \begin{equation}
-r_{e} = \sqrt{\frac{1\mathrm{e}12 \log(2)}{\pi}}
+r_{e} = \sqrt{\frac{1\mathrm{e}11 \log(2)}{\pi}},
 \end{equation}
 \begin{equation}
-r_{r} = r_{e} \times 0.01
+r_{r} = r_{e} \times 0.01,
 \end{equation}
 \begin{equation}
-A_{e} = 4 \pi r_{e}^2
+A_{e} = 4 \pi r_{e}^2,
 \end{equation}
 \begin{equation}
-n_{e} = \frac{A_{e}}{4 \log(2)} = 1\mathrm{e}12
+n_{e} = \frac{A_{e}}{4 \log(2)} = 1\mathrm{e}11,
 \end{equation}
 \begin{equation}
-M_{e} = \frac{r_{e}}{2}
+M_{e} = \frac{r_{e}}{2}.
 \end{equation}
 
 Where $R$ is the distance from the emitter's centre:
@@ -93,6 +94,9 @@ We can also get a general relativistic acceleration $a_S$, where $r_e < R$:
 \begin{equation}
 t = \sqrt{1 - \frac{r_e}{R}},
 \end{equation}
+%\begin{equation}
+%\pdv{t}{R} = \frac{r_e}{2 t R^2},
+%\end{equation}
 \begin{equation}
 a_S \approx \frac{r_e}{t \pi R^2}.
 \end{equation}
