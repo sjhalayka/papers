@@ -94,9 +94,9 @@ We can also get a general relativistic acceleration $a_S$, where $r_e < R$:
 \begin{equation}
 t = \sqrt{1 - \frac{r_e}{R}},
 \end{equation}
-%\begin{equation}
-%\pdv{t}{R} = \frac{r_e}{2 t R^2},
-%\end{equation}
+\begin{equation}
+\pdv{t}{R} = \frac{r_e}{2 t R^2},
+\end{equation}
 \begin{equation}
 a_S \approx \frac{r_e}{t \pi R^2}.
 \end{equation}
@@ -149,45 +149,32 @@ real_type intersect_AABB(
 
 vector_3 random_cosine_weighted_hemisphere(const vector_3& normal)
 {
-	// Generate two random numbers
 	real_type u1 = dis(generator);
 	real_type u2 = dis(generator);
 
-	// Malley's method
-	// (cosine-weighted hemisphere sampling)
-	// Sample uniformly on a disk, 
-	// then project up to hemisphere
 	real_type r = sqrt(u1);
 	real_type theta = 2.0 * pi * u2;
 
-	// Point on unit disk
 	real_type x = r * cos(theta);
 	real_type y = r * sin(theta);
 
-	// Height above disk
 	real_type z = sqrt(1.0 - u1); 
 
-	// Create orthonormal basis around normal
 	vector_3 n = normal;
 	n.normalize();
 
-	// Choose an arbitrary vector
-	// not parallel to normal
 	vector_3 arbitrary;
 	if (fabs(n.x) > 0.9)
 		arbitrary = vector_3(0, 1, 0);
 	else
 		arbitrary = vector_3(1, 0, 0);
 
-	// Create tangent and bitangent
 	vector_3 tangent = n.cross(arbitrary);
 	tangent.normalize();
 
 	vector_3 bitangent = n.cross(tangent);
 	bitangent.normalize();
 
-	// Transform from local coordinates
-	// to world coordinates
 	vector_3 result;
 	result.x = tangent.x * x + 
 		bitangent.x * y + n.x * z;
@@ -254,9 +241,6 @@ real_type get_intersecting_line_density(
 
 	for (long long unsigned int i = 0; i < n; i++)
 	{
-		if (i % 100000000 == 0)
-			cout << float(i) / float(n) << endl;
-
 		const vector_3 p = random_unit_vector();
 
 		vector_3 normal = p;
@@ -296,10 +280,6 @@ real_type get_intersecting_line_density(
 
 	for (long long unsigned int i = 0; i < n; i++)
 	{
-		if (i % 100000000 == 0)
-			cout << float(i) / float(n) << endl;
-
-		// Random hemisphere outward
 		vector_3 location = random_unit_vector();
 
 		location.x *= emitter_radius;
