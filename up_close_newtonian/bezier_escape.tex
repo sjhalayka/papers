@@ -86,7 +86,7 @@ The gradient strength is:
 \begin{equation}
 g = \frac{-\alpha}{r_{r}^2} \approx \frac{n_e}{2 R^3}.
 \end{equation}
-From this we can get the Newtonian acceleration $a_N$:
+From this we can get the Newtonian acceleration $a_N$, where $r_e \ll R$:
 \begin{equation}
 a_N =\frac{g R \log 2}{8 M_{e}} =  \sqrt{\frac{n_e \log 2}{4 \pi R^4}} = \frac{M_{e}}{R^2}.
 \end{equation}
@@ -104,9 +104,9 @@ t = \sqrt{1 - \frac{r_e}{R}},
 \begin{equation}
 a_S \approx \pdv{t}{R} \frac{2}{\pi} = \frac{r_e}{\pi t R^2}.
 \end{equation}
-At far proximity, where $t \approx 1$, the metric produced is Newtonian -- curved space, practically flat time.
+At far proximity, where $t \approx 1$ and $\pdv{t}{R} \approx 0$, the metric produced is Newtonian -- curved space, practically flat time.
 
-In general relativity, acceleration is also dependent on the kinematic time dilation of the gravitated body -- inner process resists gravitation.
+In general relativity, acceleration is also dependent on the kinematic time dilation of the gravitated body -- internal process forms a resistance to gravitation.
 Where the speed is $v \approx c$, like that for neutrinos, the gravitational attraction is twice of that predicted by Newtonian gravity.
 
 \begin{lstlisting}
@@ -312,7 +312,7 @@ real_type get_intersecting_line_density(
 	return count;
 }
 \end{lstlisting}
-It's worth noting that gravitation, if cosine weighted, is a diffuse process similar to electromagnetic lighting in path tracing from computer graphics.
+It's worth noting that gravitation, if cosine weighted, is a diffuse process similar to electromagnetic lighting in importance sampling in path tracing from computer graphics.
 
 Experimentation with the receiver size is necessary to understand the intricacies of the code.
 For instance, where $r_{r} = r_{e} \times 0.01$, it can be found that gravitation is repulsive at close range.
@@ -368,7 +368,9 @@ It is the gradient of the density of these line segments that forms the gravitat
 \begin{figure} 
 \centering
   \includegraphics[width = 5 in]{path_tracing.png}
-  \caption{ Newton's rainbow, using backward path tracing in the Vulkan graphics API.
+  \caption{
+Backward path tracing in the Vulkan graphics API.
+The scene has a white barrel light that is dispersed by a prism into a spectrum of colours.
 }
 \end{figure}
 
