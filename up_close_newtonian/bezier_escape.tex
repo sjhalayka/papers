@@ -82,7 +82,7 @@ Where $R$ is the distance from the emitter's centre, the derivative is:
 Here $\beta$ is the get intersecting line density function.
 The gradient strength is:
 \begin{equation}
-g = \frac{-\alpha}{r_{r}^2} \approx \frac{n_e}{2 R^3}.
+g = \frac{-\alpha}{r_{r}^2}.% \approx \frac{n_e}{2 R^3}.
 \end{equation}
 From this we can get the Newtonian acceleration $a_N$, where $r_e \ll R$:
 \begin{equation}
@@ -107,30 +107,32 @@ At far proximity, where $r_e \ll R$, and $t \approx 1$, the metric produced is N
 In general relativity, acceleration is also dependent on the kinematic time dilation of the gravitated body -- internal process forms a resistance to gravitation.
 Where the speed is $v \approx c$, like that for neutrinos, the gravitational attraction is twice of that predicted by Newtonian gravity.
 
+\section{C++ code}
+Some helper functions are:
 \begin{lstlisting}
-real_type intersect_AABB(
+double intersect_AABB(
 	const vector_3 min_location, 
 	const vector_3 max_location, 
 	const vector_3 ray_origin, 
 	const vector_3 ray_dir, 
-	real_type& tmin, 
-	real_type& tmax)
+	double& tmin, 
+	double& tmax)
 {
 	tmin = (min_location.x - ray_origin.x) / ray_dir.x;
 	tmax = (max_location.x - ray_origin.x) / ray_dir.x;
 
 	if (tmin > tmax) swap(tmin, tmax);
 
-	real_type tymin = (min_location.y - ray_origin.y) / ray_dir.y;
-	real_type tymax = (max_location.y - ray_origin.y) / ray_dir.y;
+	double tymin = (min_location.y - ray_origin.y) / ray_dir.y;
+	double tymax = (max_location.y - ray_origin.y) / ray_dir.y;
 
 	if (tymin > tymax) swap(tymin, tymax);
 	if ((tmin > tymax) || (tymin > tmax)) return 0;
 	if (tymin > tmin) tmin = tymin;
 	if (tymax < tmax) tmax = tymax;
 
-	real_type tzmin = (min_location.z - ray_origin.z) / ray_dir.z;
-	real_type tzmax = (max_location.z - ray_origin.z) / ray_dir.z;
+	double tzmin = (min_location.z - ray_origin.z) / ray_dir.z;
+	double tzmax = (max_location.z - ray_origin.z) / ray_dir.z;
 
 	if (tzmin > tzmax) swap(tzmin, tzmax);
 	if ((tmin > tzmax) || (tzmin > tmax)) return 0;
@@ -148,23 +150,23 @@ real_type intersect_AABB(
 	ray_hit_end.y += ray_dir.y * tmax;
 	ray_hit_end.z += ray_dir.z * tmax;
 
-	real_type l = (ray_hit_end - ray_hit_start).length();
+	double l = (ray_hit_end - ray_hit_start).length();
 
 	return l;
 }
 
 vector_3 random_cosine_weighted_hemisphere(const vector_3& normal)
 {
-	real_type u1 = dis(generator);
-	real_type u2 = dis(generator);
+	double u1 = dis(generator);
+	double u2 = dis(generator);
 
-	real_type r = sqrt(u1);
-	real_type theta = 2.0 * pi * u2;
+	double r = sqrt(u1);
+	double theta = 2.0 * pi * u2;
 
-	real_type x = r * cos(theta);
-	real_type y = r * sin(theta);
+	double x = r * cos(theta);
+	double y = r * sin(theta);
 
-	real_type z = sqrt(1.0 - u1); 
+	double z = sqrt(1.0 - u1); 
 
 	vector_3 n = normal;
 	n.normalize();
@@ -194,11 +196,11 @@ vector_3 random_cosine_weighted_hemisphere(const vector_3& normal)
 	return result.normalize();
 }
 
-std::optional<real_type> intersect(
+std::optional<double> intersect(
 	const vector_3 location,
 	const vector_3 normal,
-	const real_type receiver_distance,
-	const real_type receiver_radius)
+	const double receiver_distance,
+	const double receiver_radius)
 {
 	const vector_3 circle_origin(receiver_distance, 0, 0);
 
@@ -215,9 +217,9 @@ std::optional<real_type> intersect(
 		receiver_radius, 
 		receiver_radius);
 
-	real_type tmin = 0, tmax = 0;
+	double tmin = 0, tmax = 0;
 
-	real_type AABB_hit = intersect_AABB(
+	double AABB_hit = intersect_AABB(
 		min_location, 
 		max_location, 
 		location, 
@@ -235,13 +237,13 @@ std::optional<real_type> intersect(
 The following code uses the Newtonian gravitation, where the random unit vector points in the same direction as the accompanying normal:
 \begin{lstlisting}
 // Beta function, for Newtonian gravitation
-real_type get_intersecting_line_density(
+double get_intersecting_line_density(
 	const long long unsigned int n,
-	const real_type emitter_radius,
-	const real_type receiver_distance,
-	const real_type receiver_radius)
+	const double emitter_radius,
+	const double receiver_distance,
+	const double receiver_radius)
 {
-	real_type count = 0;
+	double count = 0;
 
 	generator.seed(static_cast<unsigned>(0));
 
@@ -256,7 +258,7 @@ real_type get_intersecting_line_density(
 		location.y *= emitter_radius;
 		location.z *= emitter_radius;
 
-		std::optional<real_type> i_hit = intersect(
+		std::optional<double> i_hit = intersect(
 			location, 
 			normal, 
 			receiver_distance, 
@@ -268,19 +270,18 @@ real_type get_intersecting_line_density(
 
 	return count;
 }
-
 \end{lstlisting}
 
 The following code uses the Schwarzschild gravitation, where the random unit vector generally points in a different direction than the normal, using cosine weighting:
 \begin{lstlisting}
 // Beta function, for Schwarzschild gravitation
-real_type get_intersecting_line_density(
+double get_intersecting_line_density(
 	const long long unsigned int n,
-	const real_type emitter_radius,
-	const real_type receiver_distance,
-	const real_type receiver_radius)
+	const double emitter_radius,
+	const double receiver_distance,
+	const double receiver_radius)
 {
-	real_type count = 0;
+	double count = 0;
 
 	generator.seed(static_cast<unsigned>(0));
 
@@ -299,7 +300,7 @@ real_type get_intersecting_line_density(
 			random_cosine_weighted_hemisphere(
 				surface_normal);
 
-		std::optional<real_type> i_hit = intersect(
+		std::optional<double> i_hit = intersect(
 			location, normal, 
 			receiver_distance, receiver_radius);
 
@@ -314,6 +315,7 @@ real_type get_intersecting_line_density(
 
 \section{Conclusion}
 It's worth noting that gravitation, if cosine weighted, is a diffuse process similar to electromagnetic lighting in importance sampling in path tracing from computer graphics.
+%Is gravitation electromagnetic?
 
 Experimentation with the receiver size is necessary to understand the intricacies of the code.
 For instance, where $r_{r} = r_{e} \times 0.01$, it can be found that gravitation is repulsive at close range.
