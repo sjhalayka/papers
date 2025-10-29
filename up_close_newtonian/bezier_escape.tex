@@ -61,7 +61,7 @@ Note that a length of 1 means 1 Planck length, not 1 metre.
 
 \section{Method}
 
-Where $r_{e}$ is the emitter's Schwarzschild radius, $r_{r}$ is the receiver AABB radius (e.g. half of the AABB side length), $\beta$ is the get intersecting line density function, and $1\mathrm{e}11$ and $0.01$ are arbitrary constants:
+Where $r_{e}$ is the emitter's Schwarzschild radius, $r_{r}$ is the receiver AABB radius (e.g. half of the AABB side length), and $1\mathrm{e}11$ and $0.01$ are arbitrary constants:
 \begin{equation}
 r_{e} = \sqrt{\frac{1\mathrm{e}11 \log(2)}{\pi}},
 \end{equation}
@@ -69,19 +69,17 @@ r_{e} = \sqrt{\frac{1\mathrm{e}11 \log(2)}{\pi}},
 r_{r} = r_{e} \times 0.01,
 \end{equation}
 \begin{equation}
-A_{e} = 4 \pi r_{e}^2,
+A_{e} = 4 \pi r_{e}^2.
 \end{equation}
+The entropy (e.g. field line count) is:
 \begin{equation}
-n_{e} = \frac{A_{e}}{4 \log(2)} = 1\mathrm{e}11,
+n_{e} = \frac{A_{e}}{4 \log(2)} = 1\mathrm{e}11.
 \end{equation}
-\begin{equation}
-M_{e} = \frac{r_{e}}{2}.
-\end{equation}
-
-Where $R$ is the distance from the emitter's centre:
+Where $R$ is the distance from the emitter's centre, the derivative is:
 \begin{equation}
 \alpha = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
+Here $\beta$ is the get intersecting line density function.
 The gradient strength is:
 \begin{equation}
 g = \frac{-\alpha}{r_{r}^2} \approx \frac{n_e}{2 R^3}.
