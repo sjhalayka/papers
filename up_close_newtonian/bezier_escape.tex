@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{On numerical quantum Schwarzschild gravity}
+\title{On unwanted repulsive acceleration in the Schwarzschild gravitational theories consisting of field lines, for C++ programmers}
 \author{S. Halayka\footnote{sjhalayka@gmail.com}}
 \date{\today\;\currenttime}
 
@@ -318,13 +318,14 @@ double get_intersecting_line_density(
 It's worth noting that gravitation, if cosine weighted, is a diffuse process similar to electromagnetic lighting in importance sampling in path tracing from computer graphics.
 
 Experimentation with the receiver size is necessary to understand the intricacies of the code.
-For instance, where $r_{r} = r_{e} \times 0.01$, it can be found that gravitation is repulsive at close range.
-Perhaps converting the model from using field lines to using gravitons will solve this problem.
+For instance, where $r_{r} = r_{e} \times 0.01$, it is found that gravitation can be repulsive at close range.
+
 Note that while Quantum Graphity \cite{qg} uses gravitons, it is practically the same as using field lines, and so there is repulsion in some cases as well.
-We will likely have to use the cosine-weighted random vectors for generating the gravitons.
+
+We will likely have to resort to the cosine weighted random vectors for generating the gravitons -- to get rid of field lines, and repulsive gravity, altogether.
 This is the work of a future paper.
 
-The full codes can be found at:
+The full codes for this paper can be found at:
 
 \url{https://github.com/sjhalayka/schwarzschild_falloff_field_lines}
 
