@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{On unwanted repulsive acceleration in the Schwarzschild gravitational theories consisting of quantized field lines, for C++ programmers}
+\title{On the quantum Schwarzschild gravitational theories consisting of field lines, for C++ programmers}
 \author{S. Halayka\footnote{sjhalayka@gmail.com}}
 \date{\today\;\currenttime}
 
@@ -41,6 +41,8 @@
 
 \begin{abstract}
 This paper contains a short introduction to isotropic Schwarzschild gravitation.
+It is found that with non-normal messenger particle emission comes increased gravitational strength -- matching that from the Schwarzschild solution.
+It is also found that there can be repulsive gravitation, at least for small receivers close to the Planck scale.
 \end{abstract}
 
 
@@ -320,17 +322,17 @@ It's worth noting that gravitation, if cosine weighted, is a diffuse process sim
 Experimentation with the receiver size is necessary to understand the intricacies of the code.
 For instance, where $r_{r} = r_{e} \times 0.01$, it is found that gravitation can be repulsive at close range.
 
-Note that while Quantum Graphity \cite{qg} uses gravitons, it is practically the same as using field lines, and so there is repulsion in some cases as well.
-
-We will likely have to resort to the cosine weighted random vectors for generating the gravitons -- to get rid of field lines, and repulsive gravity, altogether.
-This is the work of a future paper.
-
-The full codes for this paper can be found at:
+The full code for this paper can be found at:
 
 \url{https://github.com/sjhalayka/schwarzschild_falloff_field_lines}
 
+Note that while Quantum Graphity \cite{qg} uses gravitons, it is practically the same as using field lines, and so there is repulsion in some cases as well. 
+The code for Quantum Graphity is at:
+
 \url{https://github.com/sjhalayka/quantum_graphity}
 
+It should be noted that repulsive gravitation plagues all non-normal (e.g. cosine weighted random normal) theories.
+It should also be noted that getting rid of the field lines altogether, by replacing them with randomly emitted gravitons, does not solve the problem of repulsive gravitation.
 
 
 
