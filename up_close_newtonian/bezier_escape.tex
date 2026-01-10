@@ -15,7 +15,7 @@
 \usepackage[margin=0.8in]{geometry}
 \usepackage{listings}
 \usepackage{derivative}
-
+\usepackage[]{lineno}
 
 \usepackage{xcolor}
 \lstset { %
@@ -33,7 +33,7 @@
 
 
 \begin{document}
-
+\linenumbers
 
 
  
@@ -54,11 +54,10 @@ First see \cite{halayka} for a short tutorial for C++ programmers on isotropic N
 In \cite{halayka} we build an isotropic gravitational field through the use of pseudorandomly generated field lines.
 In \cite{halayka} we use a sphere as the receiver.
 
-In this paper, we find a match between the numerical gravitation and the gravitational time dilation from Schwarzschild's general relativity \cite{hooft, susskind, misner}.
+In this paper, we find a match between the numerical gravitation and the gravitational time dilation from Schwarzschild's general relativity \cite{hooft}.
 Here, we use an axis-aligned bounding box (AABB) as the receiver.
 
-In this paper we use Planck units, where $c = G = \hbar = k = 1$, which simplifies the equations.
-Note that a length of 1 means 1 Planck length, not 1 metre.
+In this paper we use the natural Planck units, where $c = G = \hbar = k = 1$.
 
 
 \section{Method}
@@ -91,9 +90,10 @@ From this we can get the Newtonian acceleration $a_N$, where $r_e \ll R$:
 \begin{equation}
 a_N =\frac{g R \log 2}{8 M_{e}} =  \sqrt{\frac{n_e \log 2}{4 \pi R^4}} = \frac{M_{e}}{R^2}.
 \end{equation}
-We can also get a general relativistic acceleration $a_S$, where $r_e < R$:
+We can also get a general relativistic acceleration $a_S$, where $r_e < R$.
+In this case, the same gradient-based expression is applied, but is not restricted by the weak-field condition:
 \begin{equation}
-a_S = \frac{g R \log 2}{8 M_{e}},
+a_S = \frac{g R \log 2}{8 M_{e}}.
 \end{equation}
 At close proximity, where $r_e \approx R$, the metric produced is related to the Schwarzschild metric -- curved space, curved time:
 \begin{equation}
@@ -110,170 +110,12 @@ At far proximity, where $r_e \ll R$, $t \approx 1$, and $\pdv{t}{R} \approx 0$, 
 In general relativity, acceleration is also dependent on the kinematic time dilation of the gravitated body -- internal process forms a resistance to gravitation.
 Where the speed is $v \approx c$, like that for neutrinos, the gravitational attraction is twice of that predicted by Newtonian gravity because of a lack of said resistance.
 
+
+
+
+
+
 \section{C++ code}
-Some helper functions are:
-\begin{lstlisting}
-double intersect_AABB(
-	const vector_3 min_location, 
-	const vector_3 max_location, 
-	const vector_3 ray_origin, 
-	const vector_3 ray_dir, 
-	double& tmin, 
-	double& tmax)
-{
-	tmin = (min_location.x - ray_origin.x) / ray_dir.x;
-	tmax = (max_location.x - ray_origin.x) / ray_dir.x;
-
-	if (tmin > tmax) swap(tmin, tmax);
-
-	double tymin = (min_location.y - ray_origin.y) / ray_dir.y;
-	double tymax = (max_location.y - ray_origin.y) / ray_dir.y;
-
-	if (tymin > tymax) swap(tymin, tymax);
-	if ((tmin > tymax) || (tymin > tmax)) return 0;
-	if (tymin > tmin) tmin = tymin;
-	if (tymax < tmax) tmax = tymax;
-
-	double tzmin = (min_location.z - ray_origin.z) / ray_dir.z;
-	double tzmax = (max_location.z - ray_origin.z) / ray_dir.z;
-
-	if (tzmin > tzmax) swap(tzmin, tzmax);
-	if ((tmin > tzmax) || (tzmin > tmax)) return 0;
-	if (tzmin > tmin) tmin = tzmin;
-	if (tzmax < tmax) tmax = tzmax;
-	if (tmin < 0 || tmax < 0) return 0;
-
-	vector_3 ray_hit_start = ray_origin;
-	ray_hit_start.x += ray_dir.x * tmin;
-	ray_hit_start.y += ray_dir.y * tmin;
-	ray_hit_start.z += ray_dir.z * tmin;
-
-	vector_3 ray_hit_end = ray_origin;
-	ray_hit_end.x += ray_dir.x * tmax;
-	ray_hit_end.y += ray_dir.y * tmax;
-	ray_hit_end.z += ray_dir.z * tmax;
-
-	double l = (ray_hit_end - ray_hit_start).length();
-
-	return l;
-}
-
-vector_3 random_cosine_weighted_hemisphere(const vector_3& normal)
-{
-	double u1 = dis(generator);
-	double u2 = dis(generator);
-
-	double r = sqrt(u1);
-	double theta = 2.0 * pi * u2;
-
-	double x = r * cos(theta);
-	double y = r * sin(theta);
-
-	double z = sqrt(1.0 - u1); 
-
-	vector_3 n = normal;
-	n.normalize();
-
-	vector_3 arbitrary;
-	if (fabs(n.x) > 0.9)
-		arbitrary = vector_3(0, 1, 0);
-	else
-		arbitrary = vector_3(1, 0, 0);
-
-	vector_3 tangent = n.cross(arbitrary);
-	tangent.normalize();
-
-	vector_3 bitangent = n.cross(tangent);
-	bitangent.normalize();
-
-	vector_3 result;
-	result.x = tangent.x * x + 
-		bitangent.x * y + n.x * z;
-
-	result.y = tangent.y * x + 
-		bitangent.y * y + n.y * z;
-
-	result.z = tangent.z * x + 
-		bitangent.z * y + n.z * z;
-
-	return result.normalize();
-}
-
-std::optional<double> intersect(
-	const vector_3 location,
-	const vector_3 normal,
-	const double receiver_distance,
-	const double receiver_radius)
-{
-	const vector_3 circle_origin(receiver_distance, 0, 0);
-
-	if (normal.dot(circle_origin) <= 0)
-		return std::nullopt;
-
-	vector_3 min_location(
-		-receiver_radius + receiver_distance, 
-		-receiver_radius, 
-		-receiver_radius);
-
-	vector_3 max_location(
-		receiver_radius + receiver_distance, 
-		receiver_radius, 
-		receiver_radius);
-
-	double tmin = 0, tmax = 0;
-
-	double AABB_hit = intersect_AABB(
-		min_location, 
-		max_location, 
-		location, 
-		normal, 
-		tmin, 
-		tmax);
-
-	if (AABB_hit > 0)
-		return AABB_hit;
-
-	return std::nullopt;
-}
-\end{lstlisting}
-
-The following code uses the Newtonian gravitation, where the random unit vector points in the same direction as the accompanying normal:
-\begin{lstlisting}
-// Beta function, for Newtonian gravitation
-double get_intersecting_line_density(
-	const long long unsigned int n,
-	const double emitter_radius,
-	const double receiver_distance,
-	const double receiver_radius)
-{
-	double count = 0;
-
-	generator.seed(static_cast<unsigned>(0));
-
-	for (long long unsigned int i = 0; i < n; i++)
-	{
-		const vector_3 p = random_unit_vector();
-
-		vector_3 normal = p;
-		vector_3 location = normal;
-
-		location.x *= emitter_radius;
-		location.y *= emitter_radius;
-		location.z *= emitter_radius;
-
-		std::optional<double> i_hit = intersect(
-			location, 
-			normal, 
-			receiver_distance, 
-			receiver_radius);
-
-		if (i_hit)
-			count += *i_hit;
-	}
-
-	return count;
-}
-\end{lstlisting}
 
 The following code uses the Schwarzschild gravitation, where the random unit vector generally points in a different direction than the normal, using cosine weighting:
 \begin{lstlisting}
@@ -314,6 +156,87 @@ double get_intersecting_line_density(
 	return count;
 }
 \end{lstlisting}
+The cosine weighting is given by:
+\begin{lstlisting}
+vector_3 random_cosine_weighted_hemisphere(const vector_3& normal)
+{
+	double u1 = dis(generator);
+	double u2 = dis(generator);
+
+	double r = sqrt(u1);
+	double theta = 2.0 * pi * u2;
+
+	double x = r * cos(theta);
+	double y = r * sin(theta);
+
+	double z = sqrt(1.0 - u1); 
+
+	vector_3 n = normal;
+	n.normalize();
+
+	vector_3 arbitrary;
+	if (fabs(n.x) > 0.9)
+		arbitrary = vector_3(0, 1, 0);
+	else
+		arbitrary = vector_3(1, 0, 0);
+
+	vector_3 tangent = n.cross(arbitrary);
+	tangent.normalize();
+
+	vector_3 bitangent = n.cross(tangent);
+	bitangent.normalize();
+
+	vector_3 result;
+	result.x = tangent.x * x + 
+		bitangent.x * y + n.x * z;
+
+	result.y = tangent.y * x + 
+		bitangent.y * y + n.y * z;
+
+	result.z = tangent.z * x + 
+		bitangent.z * y + n.z * z;
+
+	return result.normalize();
+}
+\end{lstlisting}
+
+To contrast, the following code uses the Newtonian gravitation, where the random unit vector points in the same direction as the accompanying normal:
+\begin{lstlisting}
+// Beta function, for Newtonian gravitation
+double get_intersecting_line_density(
+	const long long unsigned int n,
+	const double emitter_radius,
+	const double receiver_distance,
+	const double receiver_radius)
+{
+	double count = 0;
+
+	generator.seed(static_cast<unsigned>(0));
+
+	for (long long unsigned int i = 0; i < n; i++)
+	{
+		const vector_3 p = random_unit_vector();
+
+		vector_3 normal = p;
+		vector_3 location = normal;
+
+		location.x *= emitter_radius;
+		location.y *= emitter_radius;
+		location.z *= emitter_radius;
+
+		std::optional<double> i_hit = intersect(
+			location, 
+			normal, 
+			receiver_distance, 
+			receiver_radius);
+
+		if (i_hit)
+			count += *i_hit;
+	}
+
+	return count;
+}
+\end{lstlisting}
 
 
 \section{Conclusion}
@@ -325,11 +248,6 @@ For instance, where $r_{r} = r_{e} \times 0.01$, it is found that gravitation ca
 The full code for this paper can be found at:
 
 \url{https://github.com/sjhalayka/schwarzschild_falloff_field_lines}
-
-Note that while Quantum Graphity \cite{qg} uses gravitons, it is practically the same as using field lines, and so there is repulsion in some cases as well. 
-The code for Quantum Graphity is at:
-
-\url{https://github.com/sjhalayka/quantum_graphity}
 
 It should be noted that repulsive gravitation plagues all non-normal (e.g. cosine weighted) theories.
 It should also be noted that getting rid of the field lines altogether, by replacing them with randomly emitted gravitons, does not solve the problem of repulsive gravitation.
@@ -346,25 +264,18 @@ The C++  code is freely available, providing a way to reproduce the data.
 
 
 
-\pagebreak
-
-
 
 \begin{thebibliography}{9}
-
-
 \bibitem{halayka} Halayka. Newtonian gravitation from scratch, for C++ programmers. (2024)
 \bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
-\bibitem{susskind} Susskind. The World as a Hologram. (1994)
-\bibitem{misner} Misner et al. Gravitation. (1970)
-\bibitem{qg} Konopka et al. Quantum Graphity: a model of emergent locality (2008)
-
 \end{thebibliography}
 
 
 
 
 
+
+\pagebreak
 
 
 
@@ -380,7 +291,7 @@ The bounding box is filled with these green intersecting line segments.
 It is the gradient of the density of these line segments that forms the gravitational acceleration.
 Note that the field line is normal to the surface.
 }
-\end{figure}`
+\end{figure}
 
 
 \begin{figure} 
@@ -392,7 +303,7 @@ Axis-aligned bounding box A and box B are separated by the value epsilon $\epsil
 Box B contains more field lines than box A, resulting in repulsive gravitation.
 Note that the field lines are not normal to the surface.
 }
-\end{figure}`
+\end{figure}
 
 
 \begin{figure} 
