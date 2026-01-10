@@ -85,7 +85,7 @@ Where $R$ is the distance from the emitter's centre, the derivative is:
 Here $\beta$ is the get intersecting line density function.
 The gradient strength is:
 \begin{equation}
-g = \frac{-\alpha}{r_{r}^2}.% \approx \frac{n_e}{2 R^3}.
+g = \frac{-\alpha}{2 r_{r}^3}.
 \end{equation}
 From this we can get the Newtonian acceleration $a_N$, where $r_e \ll R$:
 \begin{equation}
@@ -268,7 +268,7 @@ double get_intersecting_line_density(
 			receiver_radius);
 
 		if (i_hit)
-			count += *i_hit / (2.0 * receiver_radius);
+			count += *i_hit;
 	}
 
 	return count;
@@ -308,7 +308,7 @@ double get_intersecting_line_density(
 			receiver_distance, receiver_radius);
 
 		if (i_hit)
-			count += *i_hit / (2.0 * receiver_radius);
+			count += *i_hit;
 	}
 
 	return count;
