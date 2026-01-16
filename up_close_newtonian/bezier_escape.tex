@@ -33,7 +33,7 @@
 
 
 \begin{document}
-\linenumbers
+%\linenumbers
 
 
  
@@ -54,8 +54,11 @@ First see \cite{halayka} for a short tutorial for C++ programmers on isotropic N
 In \cite{halayka} we build an isotropic gravitational field through the use of pseudorandomly generated field lines.
 In \cite{halayka} we use a sphere as the receiver.
 
-In this paper, we find a match between the numerical gravitation and the gravitational time dilation from Schwarzschild's general relativity \cite{hooft}.
+In this paper, we find a match between the numerical gravitation and the gravitational time dilation from Schwarzschild's general relativity \cite{hooft, susskind, misner}.
 Here, we use an axis-aligned bounding box (AABB) as the receiver.
+
+See Fig. 1 for an example of Newtonian gravitation, where the field lines are normal to the surface of the emitter.
+See Fig. 2 for an example of Schwarzschild gravitation, where the field lines are not necessarily normal to the surface of the emitter.
 
 In this paper we use the natural Planck units, where $c = G = \hbar = k = 1$.
 
@@ -117,130 +120,99 @@ Where the speed is $v \approx c$, like that for neutrinos, the gravitational att
 
 \section{C++ code}
 
-The following code uses the Schwarzschild gravitation, where the random unit vector generally points in a different direction than the normal, using cosine weighting:
+The following code uses the Newtonian or Schwarzschild gravitation:
 \begin{lstlisting}
-// Beta function, for Schwarzschild gravitation
 double get_intersecting_line_density(
 	const long long unsigned int n,
 	const double emitter_radius,
 	const double receiver_distance,
+	const double receiver_distance_plus,
 	const double receiver_radius)
 {
 	double count = 0;
+	double count_plus = 0;
 
 	generator.seed(static_cast<unsigned>(0));
 
 	for (long long unsigned int i = 0; i < n; i++)
 	{
-		vector_3 location = random_unit_vector();
+		if (i % 10000000 == 0)
+			cout << double(i) / double(n) << endl;
+
+		glm::dvec3 location = random_unit_vector();
 
 		location.x *= emitter_radius;
 		location.y *= emitter_radius;
 		location.z *= emitter_radius;
 
-		vector_3 surface_normal = location;
-		surface_normal.normalize();
+		glm::dvec3 surface_normal = 
+			glm::normalize(location);
 
-		vector_3 normal = 
-			random_cosine_weighted_hemisphere(
-				surface_normal);
+		// A) Newtonian gravitation
+		//glm::dvec3 normal = 
+		//	surface_normal;
 
-		std::optional<double> i_hit = intersect(
-			location, normal, 
+		// B) Schwarzschild gravitation
+		//glm::dvec3 normal = 
+		//	random_cosine_weighted_hemisphere(surface_normal);
+
+		// C) Schwarzschild gravitation using a useful trick
+		//glm::dvec3 normal = 
+		//	glm::normalize(
+		//		surface_normal + random_unit_vector());
+
+		// D) Emulate Quantum Graphity to get 
+		// Schwarszschild gravitation
+		glm::dvec3 normal = 
+			glm::normalize(
+				location - 
+				random_unit_vector() * emitter_radius);
+
+		if (dot(normal, surface_normal) < 0)
+			normal = -normal;
+
+		count += intersect(
+			location, normal,
 			receiver_distance, receiver_radius);
 
-		if (i_hit)
-			count += *i_hit;
+		count_plus += intersect(
+			location, normal,
+			receiver_distance_plus, receiver_radius);
 	}
 
-	return count;
+	return count_plus - count;
 }
 \end{lstlisting}
+
 The cosine weighting is given by:
 \begin{lstlisting}
 vector_3 random_cosine_weighted_hemisphere(const vector_3& normal)
 {
-	double u1 = dis(generator);
-	double u2 = dis(generator);
+	glm::dvec2 r = glm::vec2(dis(generator), dis(generator));
 
-	double r = sqrt(u1);
-	double theta = 2.0 * pi * u2;
+	glm::dvec3 uu = 
+		glm::normalize(
+			glm::cross(normal, glm::dvec3(0.0, 1.0, 1.0)));
 
-	double x = r * cos(theta);
-	double y = r * sin(theta);
+	glm::dvec3 vv = glm::cross(uu, normal);
 
-	double z = sqrt(1.0 - u1); 
+	double ra = sqrt(r.y);
+	double rx = ra * cos(2.0 * pi * r.x);
+	double ry = ra * sin(2.0 * pi * r.x);
+	double rz = sqrt(1.0 - r.y);
+	glm::dvec3 rr = glm::dvec3(rx * uu + ry * vv + rz * normal);
 
-	vector_3 n = normal;
-	n.normalize();
-
-	vector_3 arbitrary;
-	if (fabs(n.x) > 0.9)
-		arbitrary = vector_3(0, 1, 0);
-	else
-		arbitrary = vector_3(1, 0, 0);
-
-	vector_3 tangent = n.cross(arbitrary);
-	tangent.normalize();
-
-	vector_3 bitangent = n.cross(tangent);
-	bitangent.normalize();
-
-	vector_3 result;
-	result.x = tangent.x * x + 
-		bitangent.x * y + n.x * z;
-
-	result.y = tangent.y * x + 
-		bitangent.y * y + n.y * z;
-
-	result.z = tangent.z * x + 
-		bitangent.z * y + n.z * z;
-
-	return result.normalize();
+	return glm::normalize(rr);
 }
 \end{lstlisting}
 
-To contrast, the following code uses the Newtonian gravitation, where the random unit vector points in the same direction as the accompanying normal:
-\begin{lstlisting}
-// Beta function, for Newtonian gravitation
-double get_intersecting_line_density(
-	const long long unsigned int n,
-	const double emitter_radius,
-	const double receiver_distance,
-	const double receiver_radius)
-{
-	double count = 0;
 
-	generator.seed(static_cast<unsigned>(0));
 
-	for (long long unsigned int i = 0; i < n; i++)
-	{
-		const vector_3 p = random_unit_vector();
-
-		vector_3 normal = p;
-		vector_3 location = normal;
-
-		location.x *= emitter_radius;
-		location.y *= emitter_radius;
-		location.z *= emitter_radius;
-
-		std::optional<double> i_hit = intersect(
-			location, 
-			normal, 
-			receiver_distance, 
-			receiver_radius);
-
-		if (i_hit)
-			count += *i_hit;
-	}
-
-	return count;
-}
-\end{lstlisting}
 
 
 \section{Conclusion}
 It's worth noting that gravitation, if cosine weighted, is a diffuse process similar to electromagnetic lighting in path tracing from computer graphics.
+For instance, see Fig. 3 for an image produced using path tracing.
 
 Experimentation with the receiver size is necessary to understand the intricacies of the code.
 For instance, where $r_{r} = r_{e} \times 0.01$, it is found that gravitation can be repulsive.
@@ -248,6 +220,8 @@ For instance, where $r_{r} = r_{e} \times 0.01$, it is found that gravitation ca
 The full code for this paper can be found at:
 
 \url{https://github.com/sjhalayka/schwarzschild_falloff_field_lines}
+
+Note that while Quantum Graphity \cite{qg} uses gravitons, it is practically the same as using field lines, and so there is repulsion in some cases as well. 
 
 It should be noted that repulsive gravitation plagues all non-normal (e.g. cosine weighted) theories.
 It should also be noted that getting rid of the field lines altogether, by replacing them with randomly emitted gravitons, does not solve the problem of repulsive gravitation.
@@ -262,12 +236,16 @@ There are no conflicts of interest to report.
 
 The C++  code is freely available, providing a way to reproduce the data.
 
+\pagebreak
 
 
 
 \begin{thebibliography}{9}
 \bibitem{halayka} Halayka. Newtonian gravitation from scratch, for C++ programmers. (2024)
 \bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
+\bibitem{susskind} Susskind. The World as a Hologram. (1994)
+\bibitem{misner} Misner et al. Gravitation. (1970)
+\bibitem{qg} Konopka et al. Quantum Graphity: a model of emergent locality (2008)
 \end{thebibliography}
 
 
@@ -308,6 +286,7 @@ Note that the field lines are not normal to the surface.
 
 \begin{figure} 
 \centering
+\label{fig3}
   \includegraphics[width = 5 in]{path_tracing.png}
   \caption{
 Backward path tracing in the Vulkan graphics API.
