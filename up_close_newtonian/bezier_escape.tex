@@ -122,87 +122,97 @@ Where the speed is $v \approx c$, like that for neutrinos, the gravitational att
 
 The following code uses the Newtonian or Schwarzschild gravitation:
 \begin{lstlisting}
-double get_intersecting_line_density(
-	const long long unsigned int n,
-	const double emitter_radius,
-	const double receiver_distance,
-	const double receiver_distance_plus,
-	const double receiver_radius)
+void worker_thread(
+	long long unsigned int start_idx,
+	long long unsigned int end_idx,
+	unsigned int thread_seed,
+	const real_type emitter_radius,
+	const real_type receiver_distance,
+	const real_type receiver_distance_plus,
+	const real_type receiver_radius,
+	real_type& result_count,
+	real_type& result_count_plus)
 {
-	double count = 0;
-	double count_plus = 0;
+	// Thread-local random number generator
+	std::mt19937 local_gen(thread_seed);
+	std::uniform_real_distribution<real_type> local_dis(0.0, 1.0);
 
-	generator.seed(static_cast<unsigned>(0));
+	real_type local_count = 0;
+	real_type local_count_plus = 0;
 
-	for (long long unsigned int i = 0; i < n; i++)
+	// Update progress every N iterations to reduce atomic overhead
+	const long long unsigned int progress_update_interval = 10000;
+	long long unsigned int local_progress = 0;
+
+	for (long long unsigned int i = start_idx; i < end_idx; i++)
 	{
-		if (i % 10000000 == 0)
-			cout << double(i) / double(n) << endl;
-
-		glm::dvec3 location = random_unit_vector();
+		vector_3 location = random_unit_vector(local_gen, local_dis);
 
 		location.x *= emitter_radius;
 		location.y *= emitter_radius;
 		location.z *= emitter_radius;
 
-		glm::dvec3 surface_normal = 
-			glm::normalize(location);
+		vector_3 surface_normal = location;
+		surface_normal.normalize();
+
 
 		// A) Newtonian gravitation
-		//glm::dvec3 normal = 
+		//vector_3 normal =
 		//	surface_normal;
 
 		// B) Schwarzschild gravitation
-		//glm::dvec3 normal = 
-		//	random_cosine_weighted_hemisphere(surface_normal);
+		vector_3 normal = 
+			random_cosine_weighted_hemisphere(
+				surface_normal, local_gen, local_dis);
 
 		// C) Schwarzschild gravitation using a useful trick
-		//glm::dvec3 normal = 
-		//	glm::normalize(
-		//		surface_normal + random_unit_vector());
+		//vector_3 normal = 
+		//	(surface_normal + 
+		//		random_unit_vector(
+		//			local_gen, local_dis)).normalize();
 
-		// D) Emulate Quantum Graphity to get 
-		// Schwarszschild gravitation
-		glm::dvec3 normal = 
-			glm::normalize(
-				location - 
-				random_unit_vector() * emitter_radius);
+		// D) Emulate Quantum Graphity
+		//vector_3 normal = location;
 
-		if (dot(normal, surface_normal) < 0)
-			normal = -normal;
+		//vector_3 r = random_unit_vector(local_gen, local_dis);
+		//r.x *= emitter_radius;
+		//r.y *= emitter_radius;
+		//r.z *= emitter_radius;
 
-		count += intersect(
+		//normal = (location - r).normalize();
+
+		//if (normal.dot(surface_normal) < 0)
+		//	normal = -normal;
+
+
+		local_count += intersect(
 			location, normal,
 			receiver_distance, receiver_radius);
 
-		count_plus += intersect(
+		local_count_plus += intersect(
 			location, normal,
 			receiver_distance_plus, receiver_radius);
+
+		// Update global progress periodically
+		local_progress++;
+		if (local_progress >= progress_update_interval)
+		{
+			global_progress.fetch_add(
+				local_progress, std::memory_order_relaxed);
+	
+			local_progress = 0;
+		}
 	}
 
-	return count_plus - count;
-}
-\end{lstlisting}
+	// Add any remaining progress
+	if (local_progress > 0)
+	{
+		global_progress.fetch_add(
+			local_progress, std::memory_order_relaxed);
+	}
 
-The cosine weighting is given by:
-\begin{lstlisting}
-vector_3 random_cosine_weighted_hemisphere(const vector_3& normal)
-{
-	glm::dvec2 r = glm::vec2(dis(generator), dis(generator));
-
-	glm::dvec3 uu = 
-		glm::normalize(
-			glm::cross(normal, glm::dvec3(0.0, 1.0, 1.0)));
-
-	glm::dvec3 vv = glm::cross(uu, normal);
-
-	double ra = sqrt(r.y);
-	double rx = ra * cos(2.0 * pi * r.x);
-	double ry = ra * sin(2.0 * pi * r.x);
-	double rz = sqrt(1.0 - r.y);
-	glm::dvec3 rr = glm::dvec3(rx * uu + ry * vv + rz * normal);
-
-	return glm::normalize(rr);
+	result_count = local_count;
+	result_count_plus = local_count_plus;
 }
 \end{lstlisting}
 
