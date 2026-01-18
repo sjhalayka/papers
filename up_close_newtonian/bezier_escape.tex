@@ -165,24 +165,12 @@ void worker_thread(
 			random_cosine_weighted_hemisphere(
 				surface_normal, local_gen, local_dis);
 
-		// C) Schwarzschild gravitation using a useful trick
-		//vector_3 normal = 
-		//	(surface_normal + 
-		//		random_unit_vector(
-		//			local_gen, local_dis)).normalize();
-
-		// D) Emulate Quantum Graphity
-		//vector_3 normal = location;
-
+		// C) Emulate Quantum Graphity
 		//vector_3 r = random_unit_vector(local_gen, local_dis);
 		//r.x *= emitter_radius;
 		//r.y *= emitter_radius;
 		//r.z *= emitter_radius;
-
-		//normal = (location - r).normalize();
-
-		//if (normal.dot(surface_normal) < 0)
-		//	normal = -normal;
+		//vector_3 normal = (location - r).normalize();
 
 
 		local_count += intersect(
@@ -215,9 +203,13 @@ void worker_thread(
 	result_count_plus = local_count_plus;
 }
 \end{lstlisting}
+Here we see that there are at least 3 different ways of looking at the same Schwarzschild solution.
+That is, solution B) uses a cosine weighted approximation method.
+Solution C) uses a quantum, exact method
 
 
 
+.
 
 
 \section{Conclusion}
