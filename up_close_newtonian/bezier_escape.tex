@@ -50,9 +50,9 @@ It is also found that there can be repulsive gravitation.
 
 \section{Introduction}
 
-First see \cite{halayka} for a short tutorial for C++ programmers on isotropic Newtonian gravitation.
-In \cite{halayka} we build an isotropic gravitational field through the use of pseudorandomly generated field lines.
-In \cite{halayka} we use a sphere as the receiver.
+In \cite{halayka}, we presented a short tutorial for C++ programmers on isotropic Newtonian gravitation.
+In \cite{halayka} we built an isotropic gravitational field through the use of pseudorandomly generated field lines.
+In \cite{halayka} we used a sphere as the receiver.
 
 In this paper, we find a match between the numerical gravitation and the gravitational time dilation from Schwarzschild's general relativity \cite{hooft, susskind, misner}.
 Here, we use an axis-aligned bounding box (AABB) as the receiver.
@@ -110,10 +110,6 @@ a_S \approx \pdv{t}{R} \frac{2}{\pi} = \frac{r_e}{\pi t R^2}.
 \end{equation}
 At far proximity, where $r_e \ll R$, $t \approx 1$, and $\pdv{t}{R} \approx 0$, the metric produced is Newtonian -- curved space, practically flat time.
 
-In general relativity, acceleration is also dependent on the kinematic time dilation of the gravitated body -- internal process forms a resistance to gravitation.
-Where the speed is $v \approx c$, like that for neutrinos, the gravitational attraction is twice of that predicted by Newtonian gravity because of a lack of said resistance.
-
-
 
 
 
@@ -147,7 +143,6 @@ void worker_thread(
 	for (long long unsigned int i = start_idx; i < end_idx; i++)
 	{
 		vector_3 location = random_unit_vector(local_gen, local_dis);
-
 		location.x *= emitter_radius;
 		location.y *= emitter_radius;
 		location.z *= emitter_radius;
@@ -160,17 +155,17 @@ void worker_thread(
 		//vector_3 normal =
 		//	surface_normal;
 
-		// B) Schwarzschild gravitation
-		vector_3 normal = 
-			random_cosine_weighted_hemisphere(
-				surface_normal, local_gen, local_dis);
+		// B) Schwarzschild gravitation, classical
+		//vector_3 normal = 
+		//	random_cosine_weighted_hemisphere(
+		//		surface_normal, local_gen, local_dis);
 
-		// C) Emulate Quantum Graphity
-		//vector_3 r = random_unit_vector(local_gen, local_dis);
-		//r.x *= emitter_radius;
-		//r.y *= emitter_radius;
-		//r.z *= emitter_radius;
-		//vector_3 normal = (location - r).normalize();
+		// C) Schwarzschild gravitation, quantum
+		vector_3 r = random_unit_vector(local_gen, local_dis);
+		r.x *= emitter_radius;
+		r.y *= emitter_radius;
+		r.z *= emitter_radius;
+		vector_3 normal = (location - r).normalize();
 
 
 		local_count += intersect(
@@ -207,14 +202,9 @@ Here we see that there are at least 2 different ways of looking at the same Schw
 That is, solution B) uses a cosine weighted approximation method.
 Solution C) uses a quantum, exact method.
 
+Note that the code is highly parallelizable, and so it takes advantage of C++ standard multi-threading.
 
-
-.
-
-
-\section{Conclusion}
-It's worth noting that gravitation, if cosine weighted, is a diffuse process similar to electromagnetic lighting in path tracing from computer graphics.
-For instance, see Fig. 3 for an image produced using path tracing.
+See Fig. 3 for a plot showing the strength of gravitation with regard to Schwarszschildian versus Newtonian gravitation.
 
 Experimentation with the receiver size is necessary to understand the intricacies of the code.
 For instance, where $r_{r} = r_{e} \times 0.01$, it is found that gravitation can be repulsive.
@@ -223,10 +213,10 @@ The full code for this paper can be found at:
 
 \url{https://github.com/sjhalayka/schwarzschild_falloff_field_lines}
 
-Note that while Quantum Graphity \cite{qg} uses gravitons, it is practically the same as using field lines, and so there is repulsion in some cases as well. 
-
 It should be noted that repulsive gravitation plagues all non-normal (e.g. cosine weighted) theories.
 It should also be noted that getting rid of the field lines altogether, by replacing them with randomly emitted gravitons, does not solve the problem of repulsive gravitation.
+
+
 
 
 
@@ -289,12 +279,14 @@ Note that the field lines are not normal to the surface.
 \begin{figure} 
 \centering
 \label{fig3}
-  \includegraphics[width = 5 in]{path_tracing.png}
+  \includegraphics[width =6 in]{plot.png}
   \caption{
-Backward path tracing in the Vulkan graphics API.
-The scene has a white barrel light that is dispersed by a prism into a spectrum of colours.
-There is some fog.}
+Plot showing the strength of gravitation with regard to Schwarszschildian versus Newtonian gravitation.
+}
 \end{figure}
+
+
+
 
 
 \end{document}
