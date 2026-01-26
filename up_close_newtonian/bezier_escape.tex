@@ -54,7 +54,7 @@ In \cite{halayka}, we presented a short tutorial for C++ programmers on isotropi
 In \cite{halayka} we built an isotropic gravitational field through the use of pseudorandomly generated field lines.
 In \cite{halayka} we used a sphere as the receiver.
 
-In this paper, we find a match between the numerical gravitation and the gravitational time dilation from Schwarzschild's general relativity \cite{hooft, susskind, misner}.
+In this paper, we find a match between the numerical gravitation and the gravitational time dilation from Schwarzschild's general relativity \cite{hooft, misner}.
 Here, we use an axis-aligned bounding box (AABB) as the receiver.
 
 See Fig. 1 for an example of Newtonian gravitation, where the field lines are normal to the surface of the emitter.
@@ -215,7 +215,7 @@ The full code for this paper can be found at:
 
 It should be noted that repulsive gravitation plagues all non-normal (e.g. cosine weighted) theories.
 It should also be noted that getting rid of the field lines altogether, by replacing them with randomly emitted gravitons, does not solve the problem of repulsive gravitation.
-
+See Fig. 4 for a plot of the onset of repulsive gravitation mean distance based on field line count $n$.
 
 
 
@@ -228,16 +228,14 @@ There are no conflicts of interest to report.
 
 The C++  code is freely available, providing a way to reproduce the data.
 
-\pagebreak
+
 
 
 
 \begin{thebibliography}{9}
 \bibitem{halayka} Halayka. Newtonian gravitation from scratch, for C++ programmers. (2024)
 \bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
-\bibitem{susskind} Susskind. The World as a Hologram. (1994)
 \bibitem{misner} Misner et al. Gravitation. (1970)
-\bibitem{qg} Konopka et al. Quantum Graphity: a model of emergent locality (2008)
 \end{thebibliography}
 
 
@@ -285,6 +283,17 @@ A plot showing the strength of the Schwarzschildian and Newtonian gravitation.
 }
 \end{figure}
 
+
+\begin{figure} 
+\centering
+\label{fig4}
+  \includegraphics[width =6 in]{plot2.png}
+  \caption{
+A plot showing the onset of repulsive gravitation mean distance based on field line count.
+The plot forms an approximately straight line.
+The standard deviations also form an approximately straight line.
+}
+\end{figure}
 
 
 
