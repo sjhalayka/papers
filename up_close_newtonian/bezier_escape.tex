@@ -117,6 +117,9 @@ At far proximity, where $r_e \ll R$, $t \approx 1$, and $\pdv{t}{R} \approx 0$, 
 \section{C++ code}
 
 The following code uses the Newtonian or Schwarzschild gravitation:
+
+\url{https://github.com/sjhalayka/schwarzschild_falloff_field_lines}
+
 \begin{lstlisting}
 void worker_thread(
 	long long unsigned int start_idx,
@@ -207,17 +210,11 @@ Note that the code is highly parallelizable, and so it takes advantage of C++ st
 See Fig. 3 for a plot showing the strength of the Schwarzschildian and Newtonian gravitation.
 
 Experimentation with the receiver size is necessary to understand the intricacies of the code.
-For instance, where $r_{r} = r_{e} \times 0.01$, it is found that gravitation can be repulsive.
-
-The full code for this paper can be found at:
-
-\url{https://github.com/sjhalayka/schwarzschild_falloff_field_lines}
-
+For instance, where $r_{r} = r_{e} \times 0.01$, it is found that gravitation can be repulsive at far distance.
 It should be noted that repulsive gravitation plagues all non-normal (e.g. cosine weighted) theories.
 It should also be noted that getting rid of the field lines altogether, by replacing them with randomly emitted gravitons, does not solve the problem of repulsive gravitation.
-See Fig. 4 for a plot of the onset of repulsive gravitation mean distance $d$ based on field line count $n$, where $d \approx {n}/{18580} + 7347$.
-%Extrapolating to larger scales, the predicted onset of repulsive gravitation for Earth is $3.32\mathrm{e}{-23}$ metres.
-
+See Fig. 4 for a plot of the onset of repulsive gravitation mean distance $d$ based on field line count $n$, where $d \approx 0.01845 \times n^{0.723}$.
+For instance, the mean onset distance for Earth is $1.03$ astronomical units (AU).
 
 \section{Conflict of interest}
 
@@ -288,9 +285,8 @@ A plot showing the strength of the Schwarzschildian and Newtonian gravitation.
 \label{fig4}
   \includegraphics[width =6 in]{plot2.png}
   \caption{
-A plot of the onset of repulsive gravitation mean distance $d$ based on field line count $n$, where $d \approx {n}/{18580} + 7347$.
-That is, the plot forms an approximately straight line.
-Although not explicitly shown here, the standard deviations also form an approximately straight line.
+A plot of the onset of repulsive gravitation mean distance $d$ based on field line count $n$, where $d \approx 0.01845 \times n^{0.723}$.
+That is, the result forms a power law.
 }
 \end{figure}
 
