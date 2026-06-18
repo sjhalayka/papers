@@ -1,0 +1,157 @@
+\documentclass[12pt]{article}
+
+\title{On the viral proliferation of the black body process}
+\author{S. Halayka\footnote{sjhalayka@gmail.com}}
+
+
+\date{\today\;\currenttime}
+
+\usepackage{datetime}
+\usepackage{listings}
+\usepackage{cite}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{listings}
+\usepackage{derivative}
+\usepackage[]{lineno}
+
+\usepackage{xcolor}
+
+
+
+%\doublespace
+
+
+
+
+\begin{document}
+%\linenumbers
+
+
+ 
+\maketitle
+
+\begin{abstract}
+This paper contains a short introduction to gravitation, and how we currently think about time dilation. A unique perspective regarding the proliferation of the black body process is given.
+\end{abstract}
+
+\section{Introduction}
+
+In this paper we generally use Planck units, where $\hbar$, $c$, $G$, and $k_B$ are all equal to 1.
+
+First we discuss Planck's law, the black body spectrum, and spectrography.
+Next we discuss the deflection of starlight by the Sun's gravitation.
+Finally, we piece all of these concepts together when considering the proliferation of the black body process.
+
+
+
+
+\section{Planck's law and spectrography}
+
+A black body is an idealized physical object that absorbs all incident electromagnetic radiation, regardless of frequency or angle of incidence, and re-emits radiation in a characteristic spectrum that depends only on its temperature. Although no perfect black body exists in nature, many objects approximate this behavior closely enough that the model is extraordinarily useful: stars, heated cavities, and the cosmic microwave background are all well described, to a good approximation, as black body emitters.
+
+The spectral radiance of a black body at temperature $T$ is given by Planck's law. Expressed as a function of wavelength $\lambda$:
+\begin{equation}
+B_\lambda(\lambda, T) = \frac{4 \pi}{\lambda^5} \cdot \frac{1}{\exp\!\left(\dfrac{2 \pi}{\lambda T}\right) - 1}.
+\end{equation}
+
+See Fig. 1, where the spectral radiance for several example temperatures is drawn.
+
+Planck's law \cite{planck} was introduced by Max Planck in 1900 and is widely regarded as the historical origin of quantum theory, since its derivation required the (then-radical) assumption that electromagnetic energy is exchanged in discrete quanta rather than continuously.
+
+A perfect black body spectrum is gap-free: it represents pure thermal emission with no internal structure imprinted on the outgoing radiation. Real bodies, by contrast, almost always show deviations from the ideal Planck curve, in the form of absorption or emission lines that reveal the internal composition and process(es) of the emitter. It is precisely this contrast -- between the perfect Planck spectrum and the line-rich spectra of real objects -- that motivates the discussion given in this paper.
+
+\begin{figure} 
+\centering
+\label{fig1}
+  \includegraphics[width = 5 in]{wavelength.png}
+  \caption{
+A plot of spectral radiance (y axis) based on wavelength (x axis), for several example temperatures.
+}
+\end{figure}
+
+A spectrograph shows which of the electromagnetic wavelengths that are emitted (or not emitted) by a body for any given temperature. The gaps in the spectrum show that there are internal processes at those wavelengths -- like how the atmospheric content of the Sun blocks some light, resulting in the gaps in the spectrum that we observe. A sample spectrograph, with gaps, can be seen in Fig. 2.
+
+\begin{figure} 
+\centering
+\label{fig2}
+  \includegraphics[width = 5 in]{gaps.png}
+  \caption{
+A sample spectrograph of the visible wavelengths, with gaps.
+}
+\end{figure}
+
+
+
+
+
+\section{Einstein's deflection of starlight at the limb of the Sun}
+
+When light from a distant star passes close to the Sun on its way to Earth, the path of that light is bent by the Sun's gravitational field \cite{misner}. The angle of deflection $\alpha$, for a light ray that just grazes the limb of the Sun, is given by
+\begin{equation}
+\alpha = \frac{4 M_\odot}{R_\odot},
+\end{equation}
+where $M_\odot$ is the mass of the Sun, and $R_\odot$ is the radius of the Sun. Inserting the standard values yields $\alpha \approx 1.75$ arcseconds, twice the Newtonian amount -- the strength of gravitation doubles where the receiver's internal process is practically none. Consider neutrinos and photons, which have little to no internal process at all, their path bent twice as much as that predicted by Newton's gravity. This is to say that internal process forms a resistance to gravitation.
+See Fig. 3 for the depiction of the deflection of starlight by the Sun's gravitation.
+
+\begin{figure} 
+\centering
+\label{fig3}
+  \includegraphics[width = 3 in]{deflection.png}
+  \caption{
+The Sun's gravitation bending the path of starlight.
+}
+\end{figure}
+
+
+
+
+
+
+
+
+\section{The fundamental viral process}
+
+What we observe (or at least what we calculate out on paper) at levels of extreme time dilation is that a body becomes extremely external (exogenous), without internal (endogenous) process. The body becomes more and more like a black body as kinematic and/or gravitational time dilation kicks in. For example, at extreme gravitational time dilation, you have a black hole, which is a black body emitting Hawking radiation \cite{schutz, hooft, jacobson, verlinde}. At (almost) extreme kinematic time dilation, there is no internal process, such as in the case of a light clock.
+
+What good is this knowledge? It serves to show that time dilation is about internal process interruption. What kind of hijacking process is responsible for this? The black body process. 
+The black body process is contagious; viral. 
+
+Process interruption is a concept taken from computer science \cite{intel}. It seems to be not just an analogy, but rather the reality.
+
+It is this unification of the kinematic and gravitational time dilation which leads to the beginnings of a theory of quantum gravity.
+
+
+
+
+\begin{thebibliography}{9}
+
+\bibitem{planck} Planck. On an improvement of Wien’s equation for the spectrum. (1900)
+%\bibitem{herzberg} Herzberg. Spectroscopic studies of molecular structure -- Nobel lecture. (1971)
+
+\bibitem{misner} Misner et al. Gravitation. (1970)
+\bibitem{schutz} Schutz. A first course in general relativity. (2009)
+
+\bibitem{hooft} `t Hooft. Dimensional reduction in quantum gravity. (1993)
+
+\bibitem{jacobson} Jacobson. Thermodynamics of spacetime: the Einstein equation of state. (1995)
+\bibitem{verlinde} Verlinde. On the origin of gravity and the laws of Newton. (2010)
+
+\bibitem{intel} Intel. Intel 64 and IA-32 architectures software developer’s manual -- volume 1: basic architecture. (2026)
+
+
+\end{thebibliography}
+
+
+
+
+
+
+
+\end{document}
+
+
