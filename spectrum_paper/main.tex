@@ -129,7 +129,7 @@ The rotation parameter for a Kerr black hole is:
 \begin{equation}
 a = \frac{J}{M},
 \end{equation}
-where $J$ is angular momentum, and $M$ is the black hole mass.
+where $J$ is the black hole angular momentum, and $M$ is the black hole mass.
 The Kerr horizons, $r_+$ and $r_-$, are at radii:
 \begin{equation}
 r_{\pm} = M \pm \sqrt{M^2 - a^2}.
@@ -138,12 +138,25 @@ The black hole temperature at infinity $T_\infty$ is:
 \begin{equation}
 T_\infty = \frac{1}{4 \pi} \cdot \frac{    r_{+} - r_-  }{   r_+^2 + a^2    } = \frac{1}{4 \pi} \cdot \frac{\sqrt{M^2 - a^2}}{M r_+}.
 \end{equation}
+The gravitational time dilation, based on the distance $r$, the rotation parameter $a$, and the angle $\theta$ are:
+\begin{equation}
+\frac{d\tau_g}{dt} = \sqrt{ \frac{r^2 - 2Mr + a^2 \cos^2 \theta   }{ r^2 +  a^2 \cos^2 \theta } }.
+\end{equation}
 
 At (almost) extreme kinematic time dilation, there is no internal process, such as in the case of a light clock.
-
-The exogeneity $e_x$ is related to the time rate $d\tau / dt$ by:
+The kinematic time dilation, based on speed $v$ is:
 \begin{equation}
-e_x \geq 1 - \frac{d\tau}{dt},
+\frac{d\tau_k}{dt} = \sqrt{1 - v^2}.
+\end{equation}
+
+The combined time dilations is:
+\begin{equation}
+d\tau^\prime = \frac{d\tau_g}{dt} \cdot \frac{d\tau_k}{dt}.
+\end{equation}
+
+The exogeneity $e_x$ is related to the time rate $d\tau^\prime / dt$ by:
+\begin{equation}
+e_x \geq 1 - \frac{d\tau^\prime}{dt},
 \end{equation}
 and the endogeneity $e_n$ is:
 \begin{equation}
