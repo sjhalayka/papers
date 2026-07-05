@@ -64,7 +64,7 @@ This single fact is responsible for the factors of $2\pi$ that appear in the bla
 
 \subsection{Outline}
 
-First we discuss Planck's law, the black body spectrum, and spectrography, deriving each of the standard results (Planck's law, the Rayleigh--Jeans and Wien limits, Wien's displacement law, and the Stefan--Boltzmann law) explicitly. Next we discuss the deflection of starlight by the Sun's gravitation, obtaining the famous factor of two over the Newtonian value from the Schwarzschild geodesic equation. We then derive the horizon structure, Hawking temperature, and time dilation of the Kerr black hole. Finally, we piece all of these concepts together when considering the proliferation of the black body process, which we phrase as a quantitative statement about the proper-time rate $\eta$ and the exogeneity $e_x$ that we define below.
+First we discuss Planck's law, the black body spectrum, and spectrography, deriving each of the standard results (Planck's law, the Rayleigh--Jeans and Wien limits, Wien's displacement law, and the Stefan--Boltzmann law) explicitly. Next we discuss the deflection of starlight by the Sun's gravitation, obtaining the famous factor of two over the Newtonian value from the Schwarzschild geodesic equation. We then derive the horizon structure, Hawking temperature, and time dilation of the Kerr black hole. Finally, we piece all of these concepts together when considering the proliferation of the black body process, which we phrase as a quantitative statement about the proper-time rate $d\tau_g$ and the exogeneity $e_x$ that we define below.
 
 
 
@@ -252,6 +252,9 @@ By the symmetry of the orbit the outgoing asymptote is displaced by the same amo
 \end{equation}
 and for a ray grazing the limb, $b \to R_\odot$, this is exactly Eq.~\eqref{eq:deflection}.
 
+
+
+
 \subsection{The Newtonian value and the factor of two}
 
 It is instructive to compare with the prediction of Newtonian gravity applied to a corpuscle moving at the speed of light. Treating the photon as a fast test particle on a hyperbolic orbit and computing the transverse impulse, one finds the Newtonian deflection
@@ -288,13 +291,14 @@ What we observe (or at least what we calculate out on paper) at levels of extrem
 
 \subsection{The Kerr black hole}
 
+
 For example, at extreme gravitational time dilation, you have a black hole, which is a black body emitting Hawking radiation \cite{schutz, hooft, jacobson, verlinde}. The rotating (Kerr) black hole is described, in Boyer--Lindquist coordinates, by the metric
 \begin{equation}
 ds^2 = -\left(1 - \frac{2Mr}{\Sigma}\right)dt^2 - \frac{4 M a r \sin^2\theta}{\Sigma}\,dt\,d\phi + \frac{\Sigma}{\Delta}\,dr^2 + \Sigma\,d\theta^2 + \left(r^2 + a^2 + \frac{2Ma^2 r\sin^2\theta}{\Sigma}\right)\sin^2\theta\,d\phi^2,
 \end{equation}
 where
 \begin{equation}
-\Sigma \equiv r^2 + a^2\cos^2\theta, \qquad \Delta \equiv r^2 - 2Mr + a^2,
+\Sigma \equiv r^2 + a^2\cos^2\theta, \qquad \Delta \equiv r^2 - 2Mr + a^2, \qquad A \equiv (r^2 + a^2)^2 - a^2 \Delta \sin^2 \theta,
 \end{equation}
 and the rotation parameter (the angular momentum per unit mass) is
 \begin{equation}
@@ -317,11 +321,26 @@ T_\infty = \frac{1}{4\pi}\cdot\frac{r_+ - r_-}{r_+^2 + a^2} = \frac{1}{4\pi}\cdo
 \end{equation}
 where the second equality uses $r_+ - r_- = 2\sqrt{M^2-a^2}$ together with the identity \eqref{eq:identity}. Two limits are worth noting. For a non-rotating (Schwarzschild) hole, $a = 0$ gives $r_+ = 2M$ and the familiar $T_\infty = 1/(8\pi M)$, so that temperature falls as mass rises. For the extremal hole, $a \to M$ gives $T_\infty \to 0$: the maximally rotating black hole is cold, its emission shut off even as its horizon persists. The black hole is thus literally a black body, with a temperature fixed entirely by the external (exogenous) parameters $M$ and $a$ and no internal structure whatsoever --- the cleanest possible illustration of the theme of this paper.
 
-\paragraph{Gravitational time dilation.} A static observer at fixed $(r,\theta)$ measures proper time at a rate, relative to the coordinate time $t$ of an observer at infinity, given by $d\tau_g/dt = \sqrt{-g_{tt}}$. Reading $g_{tt}$ off the metric,
+
+
+
+
+
+\paragraph{Gravitational time dilation.} 
+
+A moving observer measures a time rate of
 \begin{equation}\label{eq:grav-dilation}
-\frac{d\tau_g}{dt} = \sqrt{-g_{tt}} = \sqrt{\,1 - \frac{2Mr}{\Sigma}\,} = \sqrt{\frac{r^2 - 2Mr + a^2\cos^2\theta}{r^2 + a^2\cos^2\theta}}.
+\frac{d\tau_g}{dt} = \sqrt{\frac{\Sigma\Delta}{A}
+- \frac{\Sigma}{\Delta}\left(v^r\right)^2
+- \Sigma\left(v^\theta\right)^2
+- \frac{A\sin^2\theta}{\Sigma}\left(v^\phi - \frac{2Mar}{A} \right)^2},
 \end{equation}
+where the velocity components are given in spherical coordinates.
 This factor lies in $[0,1]$ outside the ergosphere and vanishes on the static limit surface $r^2 - 2Mr + a^2\cos^2\theta = 0$, where the clock of the static observer freezes relative to infinity --- the endpoint of gravitational time dilation.
+
+
+
+
 
 \subsection{Kinematic time dilation}
 
@@ -339,18 +358,21 @@ The two effects compose multiplicatively, since they act on independent factors 
 \end{equation}
 Because each factor is bounded in $[0,1]$, so is their product; $\eta = 1$ corresponds to a static, slow clock far from any mass, and $\eta = 0$ corresponds to extreme dilation of either kind --- at a horizon, on the static limit, or at the speed of light.
 
+
+
+
 \subsection{The exogeneity--endogeneity functional}
 
 We now formalize the central construction. The combined dilation $\eta$ measures how much of a body's coordinate-time evolution survives as proper time; its complement measures how much has been arrested by dilation. We define the exogeneity and endogeneity accordingly.
 
 \begin{definition}[Exogeneity and endogeneity]
-For a body with combined proper-time rate $\eta \in [0,1]$, the \emph{exogeneity} $e_x$ is any quantity satisfying
+For a body with the proper-time rate $\eta \in [0,1]$, the \emph{exogeneity} $e_x$ is any quantity satisfying
 \begin{equation}\label{eq:exogeneity}
 e_x \geq 1 - \eta,
 \end{equation}
 and the \emph{endogeneity} is its complement
 \begin{equation}\label{eq:endogeneity}
-e_n = 1 - e_x .
+e_n = 1 - e_x.
 \end{equation}
 \end{definition}
 
@@ -360,7 +382,7 @@ The inequality \eqref{eq:exogeneity} expresses that the externally driven (exoge
 For any $\eta \in [0,1]$ the exogeneity obeys $1 - \eta \le e_x \le 1$, and correspondingly $0 \le e_n \le \eta$.
 \end{proposition}
 \begin{proof}
-The lower bound on $e_x$ is the definition \eqref{eq:exogeneity}. The upper bound follows from interpreting $e_x$ as a share, $e_x \le 1$, equivalently $e_n = 1 - e_x \ge 0$. Combining $e_n = 1 - e_x \le 1 - (1-\eta) = \eta$ gives the stated bound on the endogeneity.
+The lower bound on $e_x$ is the definition \eqref{eq:exogeneity}. The upper bound follows from interpreting $e_x$ as a share, $e_x \le 1$, equivalently $e_n = 1 - e_x \ge 0$. Combining $e_n = 1 - e_x \le 1 - (1 - \eta) = \eta$ gives the stated bound on the endogeneity.
 \end{proof}
 
 \begin{proposition}[Black-body limit]\label{prop:bb-limit}
@@ -380,7 +402,7 @@ The opposite regime, $\eta \to 1$ (a slow clock in flat space), leaves $e_x$ onl
 
 \subsection{Process interruption and viral proliferation}
 
-What good is this knowledge? It serves to show that time dilation is about internal process interruption. As $\eta$ decreases --- as a process goes faster, or sinks deeper into a gravitational well --- Proposition~\ref{prop:bb-limit} guarantees that the endogenous share $e_n \le \eta$ is squeezed toward zero, and whatever internal structure the body possessed (its absorption lines, its $\tau > 0$ in Eq.~\eqref{eq:equivalent-width}) is erased in favor of structureless, exogenously determined thermal emission. What kind of hijacking process is responsible for this? The black body process. The black body process is contagious; viral, in the sense that any body brought into a regime of extreme dilation --- by acceleration, by infall, or by proximity to a horizon --- is converted into a black body, and a black hole grown by accretion converts each infalling body in turn.
+What good is this knowledge? It serves to show that time dilation is about internal process interruption. As $d\tau/dt$ decreases --- as a process goes faster, or sinks deeper into a gravitational well --- Proposition~\ref{prop:bb-limit} guarantees that the endogenous share $e_n \le \eta$ is squeezed toward zero, and whatever internal structure the body possessed (its absorption lines, its $\tau > 0$ in Eq.~\eqref{eq:equivalent-width}) is erased in favor of structureless, exogenously determined thermal emission. What kind of hijacking process is responsible for this? The black body process. The black body process is contagious; viral, in the sense that any body brought into a regime of extreme dilation --- by acceleration, by infall, or by proximity to a horizon --- is converted into a black body, and a black hole grown by accretion converts each infalling body in turn.
 
 Process interruption is a concept taken from computer science \cite{intel}, where an external signal suspends the locally running computation and transfers control to a global handler. It seems to be not just an analogy, but rather the reality: the dilation factor $\eta$ plays the role of the fraction of local instructions that complete before the interrupt, and $e_x = 1 - e_n \ge 1 - \eta$ the fraction of control surrendered to the global, exogenous process.
 
@@ -388,7 +410,7 @@ It is this unification of the kinematic and gravitational time dilation --- both
 
 \section{Conclusion}
 
-We have given an explicit, self-contained derivation of the physics underlying a single conceptual claim. Planck's law was obtained from mode counting and Bose--Einstein statistics, and its corollaries --- the Rayleigh--Jeans and Wien limits, Wien's displacement law, and the Stefan--Boltzmann law --- were derived in the Planck-unit conventions used throughout. The deflection of starlight was computed from the Schwarzschild null geodesics, reproducing the observed $1.75''$ and exhibiting the factor of two over the Newtonian value as a consequence of spatial curvature. The Kerr horizons, Hawking temperature, and gravitational time dilation were read off the Kerr metric, and combined with the special-relativistic kinematic factor into a single bounded proper-time rate $\eta$. Finally, the exogeneity--endogeneity framework was stated as precise definitions with proved bounds, and the central claim --- that extreme time dilation drives a body toward a pure black body by interrupting its internal process --- was established as a limit theorem (Proposition~\ref{prop:bb-limit}) within that framework. The result is a quantitative restatement of the thesis that the black body process is viral.
+We have given an explicit, self-contained derivation of the physics underlying a single conceptual claim. Planck's law was obtained from mode counting and Bose--Einstein statistics, and its corollaries --- the Rayleigh--Jeans and Wien limits, Wien's displacement law, and the Stefan--Boltzmann law --- were derived in the Planck-unit conventions used throughout. The deflection of starlight was computed from the Schwarzschild null geodesics, reproducing the observed $1.75''$ and exhibiting the factor of two over the Newtonian value as a consequence of spatial curvature. The Kerr horizons, Hawking temperature, and gravitational time dilation were read off the Kerr metric, and combined with the special-relativistic kinematic factor into a single bounded proper-time rate $d\tau_g$. Finally, the exogeneity--endogeneity framework was stated as precise definitions with proved bounds, and the central claim --- that extreme time dilation drives a body toward a pure black body by interrupting its internal process --- was established as a limit theorem (Proposition~\ref{prop:bb-limit}) within that framework. The result is a quantitative restatement of the thesis that the black body process is viral.
 
 \appendix
 
