@@ -25,6 +25,9 @@
 \usepackage[]{lineno}
 
 \usepackage{xcolor}
+\usepackage{amsmath, amssymb}
+\usepackage{bm}
+
 
 
 \newtheorem{proposition}{Proposition}
@@ -446,6 +449,77 @@ For completeness we sketch the Newtonian calculation that the relativistic resul
 \Delta p_\perp = \int_{-\infty}^{\infty} \frac{M\,b}{(x^2 + b^2)^{3/2}}\,dx = \frac{Mb}{b^2}\left[\frac{x}{\sqrt{x^2+b^2}}\right]_{-\infty}^{\infty} = \frac{2M}{b}.
 \end{equation}
 Since the particle's longitudinal momentum is $p \approx 1$, the deflection angle is $\alpha_{\mathrm{N}} \approx \Delta p_\perp / p = 2M/b$, exactly half of the general-relativistic value $4M/b$ derived in the main text.
+
+
+
+
+\section{Setup}
+
+The spherical coordinates $(r,\theta,\phi)$ relate to Cartesian coordinates
+$(x,y,z)$ through
+\begin{equation}
+x = r\sin\theta\cos\phi,\qquad
+y = r\sin\theta\sin\phi,\qquad
+z = r\cos\theta,
+\end{equation}
+where $r\ge 0$ is the radius, $\theta\in[0,\pi]$ is the polar angle measured
+from the $z$-axis, and $\phi\in(-\pi,\pi]$ is the azimuthal angle.
+
+Given the Cartesian \emph{velocity} $(\dot x,\dot y,\dot z)$, where a dot
+denotes $d/dt$, we want the corresponding spherical velocities
+$(\dot r,\dot\theta,\dot\phi)$. These are related by the chain rule through the
+Jacobian of the coordinate map.
+
+\subsection{The forward Jacobian}
+
+Differentiating the coordinate map with respect to $(r,\theta,\phi)$ gives the
+Jacobian $J = \partial(x,y,z)/\partial(r,\theta,\phi)$, so that
+\begin{equation}
+\begin{pmatrix} \dot x \\[2pt] \dot y \\[2pt] \dot z \end{pmatrix}
+=
+J
+\begin{pmatrix} \dot r \\[2pt] \dot\theta \\[2pt] \dot\phi \end{pmatrix},
+\qquad
+J =
+\begin{pmatrix}
+\sin\theta\cos\phi & r\cos\theta\cos\phi & -r\sin\theta\sin\phi \\[4pt]
+\sin\theta\sin\phi & r\cos\theta\sin\phi & \phantom{-}r\sin\theta\cos\phi \\[4pt]
+\cos\theta         & -r\sin\theta        & 0
+\end{pmatrix}.
+\end{equation}
+Its determinant is
+\begin{equation}
+\det J = r^{2}\sin\theta,
+\end{equation}
+which is nonzero away from the origin ($r=0$) and the polar axis
+($\sin\theta = 0$); at those points the spherical coordinates are singular and
+the inversion below breaks down.
+
+\subsection{Inverting: Cartesian $\to$ spherical velocities}
+
+Because the columns of $J$ are the (unnormalized) coordinate basis vectors and
+the normalized versions $\hat{\bm r},\hat{\bm\theta},\hat{\bm\phi}$ are
+orthonormal, the inverse is obtained by projecting the Cartesian velocity onto
+each unit vector. The result, in matrix form $(\dot r,\dot\theta,\dot\phi)^{\mathsf T}
+= J^{-1}(\dot x,\dot y,\dot z)^{\mathsf T}$ with
+\begin{equation}
+J^{-1} =
+\begin{pmatrix}
+\sin\theta\cos\phi & \sin\theta\sin\phi & \cos\theta \\[4pt]
+\dfrac{\cos\theta\cos\phi}{r} & \dfrac{\cos\theta\sin\phi}{r} & -\dfrac{\sin\theta}{r} \\[8pt]
+-\dfrac{\sin\phi}{r\sin\theta} & \dfrac{\cos\phi}{r\sin\theta} & 0
+\end{pmatrix}.
+\end{equation}
+ 
+
+
+
+
+
+
+
+
+
 
 \pagebreak
 
