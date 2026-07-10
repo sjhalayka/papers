@@ -337,11 +337,11 @@ where the second equality uses $r_+ - r_- = 2\sqrt{M^2-a^2}$ together with the i
 A moving observer measures a combined (kinematic and/or gravitational) time rate of
 \begin{equation}\label{eq:sigma}
 \eta = \frac{d\tau}{dt} = \sqrt{\frac{\Sigma\Delta}{A}
-- \frac{\Sigma}{\Delta}\left(v^r\right)^2
-- \Sigma\left(v^\theta\right)^2
-- \frac{A\sin^2\theta}{\Sigma}\left(v^\phi - \frac{2Mar}{A} \right)^2},
+- \frac{\Sigma}{\Delta}\left(\dot v^r\right)^2
+- \Sigma\left(\dot v^\theta\right)^2
+- \frac{A\sin^2\theta}{\Sigma}\left(\dot v^\phi - \frac{2Mar}{A} \right)^2},
 \end{equation}
-where the velocity components are given in spherical coordinates (e.g. $v^r = dr/dt$, $v^\theta = d\theta/dt$, $v^\phi = d\phi/dt$).
+where the velocity components are given in spherical coordinates (e.g. $\dot v^r = dr/dt$, $\dot v^\theta = d\theta/dt$, $\dot v^\phi = d\phi/dt$).
 This factor lies in $[0,1]$ outside the ergosphere and vanishes on the static limit surface $r^2 - 2Mr + a^2\cos^2\theta = 0$, where the clock of the static observer freezes relative to infinity --- the endpoint of gravitational time dilation.
 
 
@@ -453,7 +453,7 @@ Since the particle's longitudinal momentum is $p \approx 1$, the deflection angl
 
 
 
-\section{Velocities}
+\section{Converting velocities}
 
 The spherical coordinates $(r,\theta,\phi)$ relate to Cartesian coordinates
 $(x,y,z)$ through
@@ -470,7 +470,7 @@ denotes $d/dt$, we want the corresponding spherical velocities
 $(\dot r,\dot\theta,\dot\phi)$. These are related by the chain rule through the
 Jacobian of the coordinate map.
 
-\subsection{The forward Jacobian}
+\subsection{Spherical $\to$ Cartesian}
 
 Differentiating the coordinate map with respect to $(r,\theta,\phi)$ gives the
 Jacobian $J = \partial(x,y,z)/\partial(r,\theta,\phi)$, so that
@@ -487,22 +487,16 @@ J =
 \cos\theta         & -r\sin\theta        & 0
 \end{pmatrix}.
 \end{equation}
-Its determinant is
-\begin{equation}
-\det J = r^{2}\sin\theta,
-\end{equation}
-which is nonzero away from the origin ($r=0$) and the polar axis
-($\sin\theta = 0$); at those points the spherical coordinates are singular and
-the inversion below breaks down.
 
-\subsection{Inverting: Cartesian $\to$ spherical velocities}
+\subsection{Inverting: Cartesian $\to$ spherical}
 
-Because the columns of $J$ are the (unnormalized) coordinate basis vectors and
-the normalized versions $\hat{\bm r},\hat{\bm\theta},\hat{\bm\phi}$ are
-orthonormal, the inverse is obtained by projecting the Cartesian velocity onto
-each unit vector. The result, in matrix form $(\dot r,\dot\theta,\dot\phi)^{\mathsf T}
-= J^{-1}(\dot x,\dot y,\dot z)^{\mathsf T}$ with
+The inverse result is
 \begin{equation}
+\begin{pmatrix} \dot r \\[2pt] \dot \theta \\[2pt] \dot \phi \end{pmatrix}
+=
+J^{-1}
+\begin{pmatrix} \dot x \\[2pt] \dot y \\[2pt] \dot z \end{pmatrix},
+\qquad
 J^{-1} =
 \begin{pmatrix}
 \sin\theta\cos\phi & \sin\theta\sin\phi & \cos\theta \\[4pt]
@@ -516,12 +510,6 @@ J^{-1} =
 
 
 
-
-
-
-
-
-\pagebreak
 
 
 
