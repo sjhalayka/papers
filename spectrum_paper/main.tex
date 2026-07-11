@@ -348,22 +348,6 @@ This factor lies in $[0,1]$ outside the ergosphere and vanishes on the static li
 
 
 
-%\subsection{Kinematic time dilation}
-
-%At (almost) extreme kinematic time dilation, there is no internal process, such as in the case of a light clock whose bouncing photon is swept almost entirely into translational motion. For an object moving with speed $v$ (with $c = 1$), the special-relativistic time rate is the reciprocal of the Lorentz factor,
-%\begin{equation}\label{eq:kin-dilation}
-%\frac{d\tau_k}{dt} = \sqrt{1 - v^2} = \frac{1}{\gamma},
-%\end{equation}
-%which again lies in $[0,1]$ and tends to $0$ as $v \to 1$.
-
-%\subsection{The combined dilation}
-
-%The two effects compose multiplicatively, since they act on independent factors of the metric and the boost. The combined proper-time rate is
-%\begin{equation}\label{eq:sigma}
-%\eta \equiv \frac{d\tau_g}{dt}\cdot\frac{d\tau_k}{dt} \in [0,1].
-%\end{equation}
-%Because each factor is bounded in $[0,1]$, so is their product; $\eta = 1$ corresponds to a static clock far from any mass, and $\eta = 0$ corresponds to extreme dilation of either kind --- at a horizon, on the static limit, or at the speed of light.
-
 
 
 
@@ -465,9 +449,9 @@ z = r\cos\theta,
 where $r\ge 0$ is the radius, $\theta\in[0,\pi]$ is the polar angle measured
 from the $z$-axis, and $\phi\in(-\pi,\pi]$ is the azimuthal angle.
 
-Given the Cartesian \emph{velocity} $(\dot x,\dot y,\dot z)$, where a dot
+Given the Cartesian \emph{velocity} $(\dot v_x,\dot v_y,\dot v_z)$, where a dot
 denotes $d/dt$, we want the corresponding spherical velocities
-$(\dot r,\dot\theta,\dot\phi)$. These are related by the chain rule through the
+$(\dot v_r,\dot v_\theta,\dot v_\phi)$. These are related by the chain rule through the
 Jacobian of the coordinate map.
 
 \subsection{Spherical $\to$ Cartesian}
@@ -475,10 +459,10 @@ Jacobian of the coordinate map.
 Differentiating the coordinate map with respect to $(r,\theta,\phi)$ gives the
 Jacobian $J = \partial(x,y,z)/\partial(r,\theta,\phi)$, so that
 \begin{equation}
-\begin{pmatrix} \dot x \\[2pt] \dot y \\[2pt] \dot z \end{pmatrix}
+\begin{pmatrix} \dot v^x \\[2pt] \dot v^y \\[2pt] \dot v^z \end{pmatrix}
 =
 J
-\begin{pmatrix} \dot r \\[2pt] \dot\theta \\[2pt] \dot\phi \end{pmatrix},
+\begin{pmatrix} \dot v^r \\[2pt] \dot v^\theta \\[2pt] \dot v^\phi \end{pmatrix},
 \qquad
 J =
 \begin{pmatrix}
@@ -492,10 +476,10 @@ J =
 
 The inverse result is
 \begin{equation}
-\begin{pmatrix} \dot r \\[2pt] \dot \theta \\[2pt] \dot \phi \end{pmatrix}
+\begin{pmatrix} \dot v^r \\[2pt] \dot v^\theta \\[2pt] \dot v^\phi \end{pmatrix}
 =
 J^{-1}
-\begin{pmatrix} \dot x \\[2pt] \dot y \\[2pt] \dot z \end{pmatrix},
+\begin{pmatrix} \dot v^x \\[2pt] \dot v^y \\[2pt] \dot v^z \end{pmatrix},
 \qquad
 J^{-1} =
 \begin{pmatrix}
