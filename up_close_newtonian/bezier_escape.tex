@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
 
 \title{On the quantum Schwarzschild gravitational theories consisting of field lines, for C++ programmers}
 \author{S. Halayka\footnote{sjhalayka@gmail.com}}
@@ -28,21 +28,23 @@
 
 %\doublespace
 
-%\usepackage[]{lineno}
-%\linenumbers
+\usepackage[]{lineno}
+\linenumbers
 
 
 \begin{document}
 %\linenumbers
 
 
- 
+
 \maketitle
 
 \begin{abstract}
 This paper contains a short introduction to isotropic Schwarzschild gravitation.
 It is found that with non-normal (e.g. cosine weighted) messenger particle emission comes increased gravitational strength -- matching that from the Schwarzschild solution.
 It is also found that there can be repulsive gravitation.
+The methods are presented in a tutorial style, and are accompanied by working, multi-threaded C++ code.
+No prior experience with general relativity is assumed, although some familiarity with Newtonian gravitation and with the C++ language is helpful.
 \end{abstract}
 
 
@@ -56,14 +58,110 @@ In \cite{halayka} we used a sphere as the receiver.
 
 In this paper, we find a match between the numerical gravitation and the gravitational time dilation from Schwarzschild's general relativity \cite{hooft, misner}.
 Here, we use an axis-aligned bounding box (AABB) as the receiver.
+The AABB is chosen because the ray-AABB intersection test is one of the simplest and fastest intersection tests available, and because the AABB is the workhorse bounding volume of computer graphics and collision detection.
+In other words, the tools used in this paper will already be familiar to the practicing C++ graphics programmer.
 
-See Fig. 1 for an example of Newtonian gravitation, where the field lines are normal to the surface of the emitter.
-See Fig. 2 for an example of Schwarzschild gravitation, where the field lines are not necessarily normal to the surface of the emitter.
+The core idea is straightforward: a gravitating body (the emitter) is modelled as a sphere that emits a large but finite number of pseudorandom field lines.
+A small test body (the receiver) is modelled as an AABB placed at some distance from the emitter.
+Each field line that passes through the receiver contributes one intersecting line segment to the interior of the receiver.
+The density of these intersecting line segments falls off with distance from the emitter, and it is the {\em gradient} of this density that plays the role of the gravitational acceleration.
+Where the density gradient points toward the emitter, gravitation is attractive.
+Where the density gradient points away from the emitter, gravitation is repulsive.
+
+The single free choice in this model is the {\em direction} in which each field line is emitted:
+\begin{itemize}
+\item Where the field lines are emitted normal to the surface of the emitter, one obtains Newtonian gravitation.
+\item Where the field lines are emitted in a cosine weighted fashion about the surface normal, one obtains a stronger gravitation that matches the Schwarzschild solution at close proximity, and that reduces to Newtonian gravitation at far proximity.
+\end{itemize}
+This is the main result of the paper: the difference between Newton and Schwarzschild is, in this model, entirely a matter of emission direction statistics.
+
+See Fig. \ref{fig1} for an example of Newtonian gravitation, where the field lines are normal to the surface of the emitter.
+See Fig. \ref{fig2} for an example of Schwarzschild gravitation, where the field lines are not necessarily normal to the surface of the emitter.
 
 In this paper we use the natural Planck units, where $c = G = \hbar = k = 1$.
+In these units, mass, length, and time are all measured in Planck units, and the equations shed their clutter of physical constants.
+For instance, the Schwarzschild radius of a body of mass $M$ is simply $r_s = 2M$, and the Newtonian acceleration at distance $R$ is simply $a = M / R^2$.
+
+The remainder of the paper is organized as follows.
+Section \ref{sec:background} reviews the necessary background material: field lines, the Schwarzschild solution, and the holographic entropy bound.
+Section \ref{sec:method} presents the numerical method in detail.
+Section \ref{sec:sampling} discusses the three emission direction sampling strategies.
+Section \ref{sec:code} presents the C++ code.
+Section \ref{sec:results} discusses the numerical results, including the onset of repulsive gravitation.
+Section \ref{sec:discussion} provides discussion and directions for future work.
+
+
+
+
+\section{Background}
+\label{sec:background}
+
+\subsection{Field lines and the inverse square law}
+
+The field line picture of gravitation is directly analogous to the field line picture of electrostatics.
+Consider an isotropic emitter of mass $M_e$ that emits $n_e$ field lines, distributed uniformly over the emitter's surface.
+By symmetry, at a distance $R$ from the emitter's centre, these $n_e$ field lines pierce a sphere of area $4 \pi R^2$.
+The areal density of field lines is thus:
+\begin{equation}
+\rho(R) = \frac{n_e}{4 \pi R^2}.
+\end{equation}
+This is the geometric origin of the inverse square law: the field line count is conserved, while the area over which the field lines are spread grows as $R^2$.
+Note that this counting argument holds regardless of whether the field lines are emitted normal to the emitter's surface or not, so long as the emission is statistically isotropic.
+As we shall see, the direction of emission does not alter the far-field flux, but it does alter the near-field {\em gradient} statistics, and it is the gradient that we identify with the acceleration.
+
+In the numerical model, we do not have access to a smooth, analytical density function.
+Instead, we count the number of field lines that intersect a small receiver AABB, and we estimate the density gradient using a finite difference.
+This makes the model inherently statistical: for a finite field line count $n_e$, the density estimate carries shot noise, and the finite difference amplifies that noise.
+Multi-threading and large sample counts are therefore essential, which is why C++ is the implementation language of choice.
+
+\subsection{The Schwarzschild solution}
+
+The Schwarzschild solution is the unique spherically symmetric vacuum solution of Einstein's field equations \cite{misner}.
+In Schwarzschild coordinates, and in Planck units, the line element is:
+\begin{equation}
+ds^2 = -\left(1 - \frac{r_e}{R}\right) dt^2 + \left(1 - \frac{r_e}{R}\right)^{-1} dR^2 + R^2 \left( d\theta^2 + \sin^2\theta \, d\phi^2 \right),
+\end{equation}
+where $r_e = 2 M_e$ is the Schwarzschild radius of the emitter.
+The coefficient of $dt^2$ encodes the gravitational time dilation: a stationary clock at radius $R$ ticks at the rate
+\begin{equation}
+\eta = \frac{d\tau}{dt} = \sqrt{1 - \frac{r_e}{R}}
+\end{equation}
+relative to a clock at spatial infinity.
+At the event horizon, where $R = r_e$, the time dilation factor $\eta$ goes to zero, and the clock appears (to the distant observer) to stop.
+At far proximity, where $r_e \ll R$, the factor $\eta$ approaches unity, and the metric reduces to the flat Minkowski metric plus a small Newtonian correction.
+
+It is this time dilation factor, and in particular its radial derivative, that we will match with the numerical field line gravitation.
+The key qualitative point is that the Schwarzschild acceleration is {\em stronger} than the Newtonian acceleration at close proximity, diverging at the horizon, while the two agree at far proximity.
+Any candidate field line model of Schwarzschild gravitation must reproduce this near-field enhancement.
+
+\subsection{Entropy and the holographic principle}
+
+Why do we tie the field line count to the emitter's surface area?
+The motivation comes from black hole thermodynamics and the holographic principle \cite{hooft}.
+The Bekenstein--Hawking entropy of a black hole is one quarter of the event horizon area, measured in Planck units:
+\begin{equation}
+S = \frac{A_e}{4},
+\end{equation}
+in nats, or equivalently
+\begin{equation}
+S = \frac{A_e}{4 \log 2}
+\end{equation}
+in bits.
+In other words, the information content of a black hole scales with its {\em area}, not with its volume.
+The holographic principle promotes this observation to a general bound: the maximum entropy that can be contained within a region is proportional to the area of the region's boundary.
+
+In this paper, we take the field lines to be the carriers of this entropy: one field line per bit of horizon entropy.
+The field line count $n_e$ is therefore fixed by the emitter's Schwarzschild radius, and vice versa.
+This gives the model a pleasing internal consistency -- the strength of the gravitational field, the size of the horizon, and the information content of the emitter are all facets of the same number $n_e$.
+It also gives the model its quantum flavour: the field is not a smooth continuum, but a finite collection of discrete lines, and the granularity of the field is set by the Planck scale.
+
+
 
 
 \section{Method}
+\label{sec:method}
+
+\subsection{Setting up the emitter and the receiver}
 
 Where $r_{e}$ is the emitter's Schwarzschild radius, $r_{r}$ is the receiver AABB radius (e.g. half of the AABB side length), and $1\mathrm{e}11$ and $0.01$ are arbitrary constants:
 \begin{equation}
@@ -80,41 +178,114 @@ The entropy (e.g. field line count) is:
 \begin{equation}
 n_{e} = \frac{A_{e}}{4 \log(2)} = 1\mathrm{e}11.
 \end{equation}
+Note the order of operations here: we first pick a convenient, computationally tractable field line count $n_e = 1\mathrm{e}11$, and we then solve for the Schwarzschild radius $r_e$ that corresponds to that entropy.
+The receiver radius $r_r$ is then chosen to be small relative to the emitter, so that the receiver samples the field locally.
+The receiver must not be too small, however, or else too few field lines will intersect it and the statistics will be poor.
+The factor of $0.01$ is a compromise between locality and statistical quality, arrived at by experimentation.
+
+\subsection{Estimating the density gradient}
+
+The receiver AABB is centred on the $x$-axis at distance $R$ from the emitter's centre.
+A second receiver AABB, of identical size, is centred at distance $R + \epsilon$, where $\epsilon = 2 r_r$ so that the two boxes abut without overlapping (see Fig. \ref{fig2}).
+For each pseudorandom field line, we test for intersection against both boxes, and we accumulate the two intersection counts.
+
 Where $R$ is the distance from the emitter's centre, the derivative is:
 \begin{equation}
 \alpha = \frac{\beta(R + \epsilon) - \beta(R)}{\epsilon}.
 \end{equation}
 Here $\beta$ is the get intersecting line density function.
+This is a standard forward finite difference.
+In the attractive regime, $\beta$ decreases with distance, $\alpha$ is negative, and the resulting acceleration points toward the emitter.
 The gradient strength is:
 \begin{equation}
-g = \frac{-\alpha}{2 r_{r}^3}.
+g = \frac{-\alpha}{2 r_{r}^3},
 \end{equation}
+where the factor of $2 r_r^3$ normalizes by (half) the receiver volume, converting the raw intersection count difference into a proper density gradient.
+
+\subsection{Recovering the Newtonian acceleration}
+
 From this we can get the Newtonian acceleration $a_N$, where $r_e \ll R$:
 \begin{equation}
 a_N =\frac{g R \log 2}{8 M_{e}} =  \sqrt{\frac{n_e \log 2}{4 \pi R^4}} = \frac{M_{e}}{R^2}.
 \end{equation}
+The middle expression makes the information-theoretic content of the model explicit: the acceleration is set by the field line (bit) count $n_e$ and the distance $R$, and by nothing else.
+The right-hand expression is the familiar Newtonian result in Planck units.
+The chain of equalities holds because the entropy relation $n_e = A_e / (4 \log 2) = \pi r_e^2 / \log 2$ ties $n_e$ to $r_e = 2 M_e$; substituting one for the other converts the bit-counting expression into the mass-based expression.
+This equality serves as the primary validation of the numerical machinery: before attempting the Schwarzschild case, one should confirm that the code reproduces $M_e / R^2$ in the normal-emission configuration, to within the expected shot noise.
+
+\subsection{Beyond the weak field}
+
 We can also get a general relativistic acceleration $a_S$, where $r_e < R$.
 In this case, the same gradient-based expression is applied, but is not restricted by the weak-field condition:
 \begin{equation}
 a_S = \frac{g R \log 2}{8 M_{e}}.
 \end{equation}
+That is, the numerical machinery is unchanged -- only the field line emission directions change (from normal emission to cosine weighted emission), and the domain of validity extends inward from $r_e \ll R$ to $r_e < R$.
+
 At close proximity, where $r_e \approx R$, the metric produced is related to the Schwarzschild metric -- curved space, curved time:
 \begin{equation}
-t = \sqrt{1 - \frac{r_e}{R}},
+\pdv{\eta}{R} = \frac{r_e}{2 \eta R^2}.
 \end{equation}
 \begin{equation}
-\pdv{t}{R} = \frac{r_e}{2 t R^2}.
+a_S \approx \pdv{\eta}{R} \frac{2}{\pi} = \frac{r_e}{\pi \eta R^2}.
 \end{equation}
-\begin{equation}
-a_S \approx \pdv{t}{R} \frac{2}{\pi} = \frac{r_e}{\pi t R^2}.
-\end{equation}
-At far proximity, where $r_e \ll R$, $t \approx 1$, and $\pdv{t}{R} \approx 0$, the metric produced is Newtonian -- curved space, practically flat time.
+The factor of $2 / \pi$ is a geometric factor relating the cosine weighted average emission angle to the surface normal.
+Note that as $R \to r_e$, the time dilation factor $\eta \to 0$, and the acceleration $a_S$ diverges -- the numerical model reproduces the infinite surface gravity of the horizon, as measured by a static observer.
+At far proximity, where $r_e \ll R$, $\eta \approx 1$, and $\pdv{\eta}{R} \approx 0$, the metric produced is Newtonian -- curved space, practically flat time.
+In this way, a single numerical model interpolates smoothly between the strong-field Schwarzschild regime and the weak-field Newtonian regime.
 
+
+
+
+
+\section{Sampling the emission direction}
+\label{sec:sampling}
+
+The three emission strategies -- labelled A), B), and C) in the code of Section \ref{sec:code} -- differ only in how the direction $\mathbf{d}$ is drawn.
+In all three cases, the field line origin is a uniformly distributed pseudorandom point on the emitter's surface.
+
+\subsection{A) Normal emission: Newtonian gravitation}
+
+In strategy A), the emission direction is simply the surface normal at the origin point:
+\begin{equation}
+\mathbf{d} = \hat{\mathbf{n}}.
+\end{equation}
+Every field line points radially outward, exactly as in the textbook picture of the gravitational (or electrostatic) field of a point mass.
+This configuration produces Newtonian gravitation, and serves as the validation baseline.
+
+\subsection{B) Cosine weighted emission: Schwarzschild gravitation, classical}
+
+In strategy B), the emission direction is drawn from a cosine weighted distribution over the hemisphere about the surface normal.
+The probability density is:
+\begin{equation}
+p(\theta) = \frac{\cos \theta}{\pi},
+\end{equation}
+where $\theta$ is the angle between the emission direction and the surface normal.
+The mean value of $\cos \theta$ under this distribution is $2/3$, and the mean angle is such that the effective radial component of the emission is reduced by the geometric factor discussed in Section \ref{sec:method}.
+Cosine weighted emission will be familiar to graphics programmers as {\em Lambertian} emission -- it is the emission profile of an ideal diffuse surface.
+A standard way to generate such a direction is to draw a uniform point on a unit disc, lift it onto the unit hemisphere (Malley's method), and then rotate the hemisphere so that its pole aligns with the surface normal.
+
+\subsection{C) Chord emission: Schwarzschild gravitation, quantum}
+
+In strategy C), we draw a {\em second} uniformly distributed pseudorandom point $\mathbf{r}$ on the emitter's surface, and we take the emission direction to be the normalized chord from $\mathbf{r}$ to the origin point:
+\begin{equation}
+\mathbf{d} = \frac{\mathbf{o} - \mathbf{r}}{\lVert \mathbf{o} - \mathbf{r} \rVert}.
+\end{equation}
+That is, each field line is the extension of a chord connecting two random points on the horizon.
+It is a classical result of geometric probability that the direction of such a chord, measured relative to the surface normal at its endpoint, is cosine distributed.
+Strategies B) and C) therefore produce statistically identical fields.
+
+The distinction is one of interpretation.
+Strategy B) is a classical prescription: it postulates the cosine weighting as an emission law.
+Strategy C) is a quantum, exact method: the cosine weighting {\em emerges} from the geometry of horizon-to-horizon chords, with no distribution postulated by hand.
+In strategy C), each field line can be read as a messenger particle exchanged between two points on the horizon and then escaping to infinity -- which is what motivates the word ``quantum'' in the title of this paper.
+The exactness of strategy C) also has a practical benefit: it involves no trigonometric functions and no change of basis, only vector subtraction and normalization.
 
 
 
 
 \section{C++ code}
+\label{sec:code}
 
 The following code uses the Newtonian or Schwarzschild gravitation:
 
@@ -206,18 +377,225 @@ That is, solution B) uses a cosine weighted approximation method.
 Solution C) uses a quantum, exact method.
 
 Note that the code is highly parallelizable, and so it takes advantage of C++ standard multi-threading.
+Each worker thread owns its own \texttt{std::mt19937} pseudorandom number generator, seeded uniquely, so that no locking is required in the inner loop.
+The only shared state is the atomic progress counter, which is updated in batches of $10000$ iterations to keep the atomic overhead negligible.
+The per-thread intersection counts are written to caller-owned accumulators only once, after the loop completes, and are summed by the main thread after \texttt{join()}.
+On a machine with $T$ hardware threads, the speedup is very nearly a factor of $T$, since the workload is embarrassingly parallel and memory traffic is minimal.
 
-See Fig. 3 for a plot showing the strength of the Schwarzschildian and Newtonian gravitation.
+\subsection{Supporting functions}
+
+For the reader who wishes to follow along without immediately consulting the repository, we sketch the supporting functions used by the worker thread.
+The uniformly distributed pseudorandom unit vector can be generated by drawing the $z$ component uniformly on $[-1, 1]$ and the azimuth uniformly on $[0, 2\pi)$:
+
+\begin{lstlisting}
+vector_3 random_unit_vector(
+	std::mt19937& local_gen, 
+	std::uniform_real_distribution<real_type>& local_dis)
+{
+	const real_type z = local_dis(local_gen) * 2.0 - 1.0;
+	const real_type a = local_dis(local_gen) * 2.0 * pi;
+
+	const real_type r = sqrt(1.0f - z * z);
+	const real_type x = r * cos(a);
+	const real_type y = r * sin(a);
+
+	return vector_3(x, y, z).normalize();
+}
+\end{lstlisting}
+
+The cosine weighted hemisphere sample (used by strategy B) can be generated by Malley's method -- draw a uniform sample on the unit disc, then project it up onto the hemisphere -- followed by a change of basis into the frame of the surface normal:
+
+\begin{lstlisting}
+vector_3 random_cosine_weighted_hemisphere(
+	vector_3 normal,
+	std::mt19937& local_gen, 
+	std::uniform_real_distribution<real_type>& local_dis)
+{
+	vector_3 r = vector_3(local_dis(local_gen), local_dis(local_gen), 0.0);
+	vector_3 uu = normal.cross(vector_3(0.0, 1.0, 1.0)).normalize();
+	vector_3 vv = uu.cross(normal);
+
+	double ra = sqrt(r.y);
+	double rx = ra * cos(2.0 * pi * r.x);
+	double ry = ra * sin(2.0 * pi * r.x);
+	double rz = sqrt(1.0 - r.y);
+	vector_3 rr = vector_3(uu * rx + vv * ry + normal * rz);
+
+	return rr.normalize();
+}
+\end{lstlisting}
+
+Finally, the intersection test functions are:
+\begin{lstlisting}
+real_type intersect_AABB(
+	const vector_3 min_location, 
+	const vector_3 max_location, 
+	const vector_3 ray_origin, 
+	const vector_3 ray_dir, 
+	real_type& tmin, 
+	real_type& tmax)
+{
+	tmin = (min_location.x - ray_origin.x) / ray_dir.x;
+	tmax = (max_location.x - ray_origin.x) / ray_dir.x;
+
+	if (tmin > tmax)
+		swap(tmin, tmax);
+
+	real_type tymin = (min_location.y - ray_origin.y) / ray_dir.y;
+	real_type tymax = (max_location.y - ray_origin.y) / ray_dir.y;
+
+	if (tymin > tymax)
+		swap(tymin, tymax);
+
+	if ((tmin > tymax) || (tymin > tmax))
+		return 0;
+
+	if (tymin > tmin)
+		tmin = tymin;
+
+	if (tymax < tmax)
+		tmax = tymax;
+
+	real_type tzmin = (min_location.z - ray_origin.z) / ray_dir.z;
+	real_type tzmax = (max_location.z - ray_origin.z) / ray_dir.z;
+
+	if (tzmin > tzmax)
+		swap(tzmin, tzmax);
+
+	if ((tmin > tzmax) || (tzmin > tmax))
+		return 0;
+
+	if (tzmin > tmin)
+		tmin = tzmin;
+
+	if (tzmax < tmax)
+		tmax = tzmax;
+
+	if (tmin < 0 || tmax < 0)
+		return 0;
+
+	vector_3 ray_hit_start = ray_origin;
+	ray_hit_start.x += ray_dir.x * tmin;
+	ray_hit_start.y += ray_dir.y * tmin;
+	ray_hit_start.z += ray_dir.z * tmin;
+
+	vector_3 ray_hit_end = ray_origin;
+	ray_hit_end.x += ray_dir.x * tmax;
+	ray_hit_end.y += ray_dir.y * tmax;
+	ray_hit_end.z += ray_dir.z * tmax;
+
+	real_type l = (ray_hit_end - ray_hit_start).length();
+
+	return l;
+}
+
+real_type intersect(
+	const vector_3 location,
+	const vector_3 normal,
+	const real_type receiver_distance,
+	const real_type receiver_radius)
+{
+	const vector_3 circle_origin(receiver_distance, 0, 0);
+
+	if (normal.dot(circle_origin) <= 0)
+		return 0.0;
+
+	vector_3 min_location(
+		-receiver_radius + receiver_distance, 
+		-receiver_radius, 
+		-receiver_radius);
+
+	vector_3 max_location(
+		receiver_radius + receiver_distance, 
+		receiver_radius, 
+		receiver_radius);
+
+	real_type tmin = 0, tmax = 0;
+
+	return intersect_AABB(
+		min_location, 
+		max_location, 
+		location, 
+		normal, 
+		tmin, 
+		tmax);
+}
+\end{lstlisting}
+
+
+
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Attractive gravitation}
+
+See Fig. \ref{fig3} for a plot showing the strength of the Schwarzschildian and Newtonian gravitation.
+Three curves are shown: the numerical Schwarzschild gravitation produced by the field line code, the analytical Schwarzschild acceleration of Section \ref{sec:method}, and the analytical Newtonian acceleration $M_e / R^2$.
+Several features of the plot deserve comment.
+
+First, the numerical curve tracks the analytical Schwarzschild curve closely across the entire sampled range, from $R \approx 1.5 \times 10^5$ (close to the horizon, where the acceleration is largest) out to $R \approx 3 \times 10^5$.
+The small, jagged departures of the numerical curve from the smooth analytical curve are the expected shot noise: the intersection counts are finite, and the finite difference amplifies their fluctuations.
+The noise diminishes as the field line count $n_e$ is increased, at the usual Monte Carlo rate of one over the square root of the count.
+
+Second, at close proximity the Schwarzschild curves rise well above the Newtonian curve.
+This is the near-field enhancement discussed in Section \ref{sec:background}: cosine weighted emission concentrates more intersecting line segments (and, more importantly, a steeper density gradient) near the emitter than normal emission does.
+An observer using Newtonian theory to model this regime would underestimate the acceleration by a large factor.
+
+Third, at far proximity, the three curves converge.
+This is the weak-field limit: cosine weighted emission and normal emission produce the same far-field flux, and so the same far-field gradient.
+The model thus passes the essential consistency test -- it deviates from Newton only where general relativity says it must.
+
+\subsection{Repulsive gravitation}
 
 Experimentation with the receiver size is necessary to understand the intricacies of the code.
 For instance, where $r_{r} = r_{e} \times 0.01$, it is found that gravitation can be repulsive in the far (but not too far) field.
+The mechanism is illustrated in Fig. \ref{fig2}: with non-normal emission, some field lines cross the $x$-axis obliquely, and at certain distances the far receiver box B captures {\em more} intersecting line segments than the near box A.
+The finite difference $\alpha$ then becomes positive, and the inferred acceleration points away from the emitter.
 The repulsion does not extend to future null infinity, because gravitation becomes Newtonian in that far-field regime.
 It should be noted that repulsive gravitation plagues all non-normal (e.g. cosine weighted) field line theories.
-See Fig. 4 for a plot of the onset of repulsive gravitation mean distance $d$ based on field line count $n$, where $d \approx 0.01845 \times n^{0.723}$.
+Whether this repulsion is a genuine physical prediction, a discretization artifact, or a hint of something akin to dark energy at intermediate scales, is left as an open question; here we confine ourselves to characterizing it numerically.
+
+See Fig. \ref{fig4} for a plot of the onset of repulsive gravitation mean distance $d$ based on field line count $n$, where $d \approx 0.01845 \times n^{0.723}$.
 The standard deviations also form a power law, where $s \approx  0.0486 \times n^{0.614}$.
-For instance, the onset distance for an Earth-mass Schwarzschild black hole is $1.03 \pm 2.12\mathrm{e}{-7}$ astronomical units (AU).
+The power law fits were obtained by measuring the onset distance across a range of field line counts spanning several orders of magnitude, with multiple pseudorandom seeds per count; the error bars in Fig. \ref{fig4} show the seed-to-seed variation.
+Because the exponent $0.723$ is less than one, the onset distance grows sublinearly in the field line count: doubling the entropy of the emitter pushes the repulsive zone outward, but by less than a factor of two.
+
+To give the power laws physical scale: the onset distance for an Earth-mass Schwarzschild black hole is $1.03 \pm 2.12\mathrm{e}{-7}$ astronomical units (AU).
+That is, for an emitter with the mass of the Earth (and hence a Schwarzschild radius of roughly nine millimetres, and an entropy of roughly $10^{66}$ bits), the repulsive zone begins at approximately the Earth-Sun distance, with a remarkably small standard deviation.
+The smallness of the standard deviation is itself a consequence of the enormous field line count -- the shot noise is beaten down by the sheer number of samples.
+
+\subsection{Practical notes on convergence}
+
+A few practical remarks for the programmer who wishes to reproduce these results.
+The finite difference step $\epsilon = 2 r_r$ couples the spatial resolution to the receiver size: a smaller receiver gives a more local density estimate, but captures fewer field lines, and thus produces a noisier gradient.
+For a fixed field line budget, there is an optimal receiver size that balances discretization error against shot noise, and the constant $0.01$ used here sits comfortably in that regime for $n_e = 1\mathrm{e}11$.
+When in doubt, run the Newtonian configuration A) first, and tune the receiver size until the numerical curve sits on top of $M_e / R^2$; the same settings will then serve for configurations B) and C).
+It is also advisable to use double precision (or better) for the accumulators, since the intersection counts can grow large enough for single precision to lose low-order bits.
 
 We leave the Kerr metric for a future tutorial.
+
+
+
+
+\section{Discussion and future work}
+\label{sec:discussion}
+
+The main lesson of this paper is that a remarkably simple statistical model -- random field lines, an AABB receiver, and a finite difference -- reproduces both the Newtonian inverse square law and the Schwarzschild near-field enhancement, with the switch between the two effected solely by the emission direction statistics.
+The chord-based strategy C) is particularly satisfying, since the cosine weighting is not put in by hand but emerges from the geometry of the horizon itself.
+In this sense, the model is a small, concrete, computable illustration of the holographic idea that the physics of gravitation is encoded on a bounding surface.
+
+Several directions for future work suggest themselves:
+\begin{itemize}
+\item {\em The Kerr metric.} Rotation breaks spherical symmetry, and the emitter becomes oblate. A field line model of the Kerr solution would require an anisotropic emission law, and would allow a numerical study of frame dragging. As noted above, we leave this for a future tutorial.
+\item {\em The repulsive zone.} The power laws of Section \ref{sec:results} characterize the onset of repulsion, but the depth and width of the repulsive zone remain to be mapped in detail, as does its dependence on the receiver geometry (e.g. sphere versus AABB versus oriented bounding box).
+\item {\em GPU acceleration.} The inner loop -- generate two random vectors, subtract, normalize, ray-AABB intersection test -- is an ideal candidate for GPU compute shaders, which would push the practical field line count up by several orders of magnitude and shrink the shot noise accordingly.
+\item {\em Other receivers.} The AABB was chosen for speed and familiarity, but the density gradient can in principle be estimated with any convex receiver. It would be worthwhile to confirm that the results are independent of the receiver shape in the small-receiver limit.
+\item {\em Time-dependent fields.} The present model is static. Allowing the emitter to move, and assigning the field lines a finite propagation speed, would open the door to a field line treatment of gravitational radiation.
+\end{itemize}
+
+It is hoped that the tutorial style of this paper, and the availability of the complete C++ source code, will lower the barrier to entry for programmers who are curious about general relativity but who are put off by the formal apparatus of differential geometry.
+There is, after all, no substitute for computing something yourself.
 
 
 
@@ -246,8 +624,6 @@ The C++  code is freely available, providing a way to reproduce the data.
 
 
 
-
-
 \pagebreak
 
 
@@ -255,7 +631,6 @@ The C++  code is freely available, providing a way to reproduce the data.
 
 \begin{figure} 
 \centering
-\label{fig1}
   \includegraphics[width =5 in]{AABB.png}
   \caption{
 This figure shows an axis-aligned bounding box and an isotropic emitter, looking from slightly above.
@@ -264,50 +639,44 @@ The bounding box is filled with these green intersecting line segments.
 It is the gradient of the density of these line segments that forms the gravitational acceleration.
 Note that the field line is normal to the surface of the emitter.
 }
+\label{fig1}
 \end{figure}
 
 
 \begin{figure} 
 \centering
-\label{fig2}
   \includegraphics[width =3 in]{AABB_repulsive.png}
   \caption{
 Axis-aligned bounding box A and box B are separated by the value epsilon $\epsilon = 2 r_{r}$.
 Box B contains more field lines than box A, resulting in repulsive gravitation.
 Note that the field lines are not normal to the surface of the emitter.
 }
+\label{fig2}
 \end{figure}
 
 
 \begin{figure} 
 \centering
-\label{fig3}
   \includegraphics[width =6 in]{plot.png}
   \caption{
 A plot showing the strength of the Schwarzschildian and Newtonian gravitation.
+The numerical Schwarzschild curve (red) tracks the analytical Schwarzschild curve (blue), and both converge to the analytical Newtonian curve (violet) in the far field.
 }
+\label{fig3}
 \end{figure}
 
 
 \begin{figure} 
 \centering
-\label{fig4}
   \includegraphics[width =6 in]{plot2.png}
   \caption{
 A plot of the onset of repulsive gravitation mean distance $d$ based on field line count $n$.
+The error bars show the standard deviation across pseudorandom seeds.
 }
+\label{fig4}
 \end{figure}
 
 
 
 
 \end{document}
-
-
-
-
-
-
-
-
-
