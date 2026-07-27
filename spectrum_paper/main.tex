@@ -442,7 +442,7 @@ Since the particle's longitudinal momentum is $p \approx 1$, the deflection angl
 Given the Cartesian \emph{velocity} $(\dot v^x,\dot v^y,\dot v^z)$, where a dot
 denotes $d/dt$, we want the corresponding spherical velocity
 $(\dot v^r,\dot v^\theta,\dot v^\phi)$.
-Here, $\theta_{bh}, \phi_{bh}, r_{bh}$ describe the observer's position with respect to the black hole.
+Here, $\theta_{bh}, \phi_{bh}, r_{bh}$ describe the observer's position with respect to the black hole:
 \begin{equation}
 \begin{pmatrix} \dot v^r \\[2pt] \dot v^\theta \\[2pt] \dot v^\phi \end{pmatrix}
 =
@@ -450,13 +450,19 @@ J
 \begin{pmatrix} \dot v^x \\[2pt] \dot v^y \\[2pt] \dot v^z \end{pmatrix},
 \qquad
 J =
+%\begin{pmatrix}
+%\dfrac{\partial s}{\partial x} & \dfrac{\partial s}{\partial y} & \dfrac{\partial s}{\partial z} \\
+%\dfrac{\partial t}{\partial x} & \dfrac{\partial t}{\partial y} & \dfrac{\partial t}{\partial z} \\
+%\dfrac{\partial u}{\partial x} & \dfrac{\partial u}{\partial y} & \dfrac{\partial u}{\partial z}
+%\end{pmatrix} =
 \begin{pmatrix}
 \sin\theta_{bh}\cos\phi_{bh} & \sin\theta_{bh}\sin\phi_{bh} & \cos\theta_{bh} \\[4pt]
 \dfrac{\cos\theta_{bh}\cos\phi_{bh}}{r_{bh}} & \dfrac{\cos\theta_{bh}\sin\phi_{bh}}{r_{bh}} & -\dfrac{\sin\theta_{bh}}{r_{bh}} \\[8pt]
 -\dfrac{\sin\phi_{bh}}{r_{bh}\sin\theta_{bh}} & \dfrac{\cos\phi_{bh}}{r_{bh}\sin\theta_{bh}} & 0
-\end{pmatrix}.
+\end{pmatrix},
 \end{equation}
- This produces the velocity needed for Eq.~\eqref{eq:sigma}.
+where $J$ is the Jacobian matrix that does the conversion.
+This produces the velocity needed for Eq.~\eqref{eq:sigma}.
 
 Note that the Cartesian speed $s = \sqrt{\dot v^x \dot v^x + \dot v^y \dot v^y + \dot v^z \dot v^z}$ must be less than the speed of light in vacuum (e.g. $s < 1$) for a massive body.
 
