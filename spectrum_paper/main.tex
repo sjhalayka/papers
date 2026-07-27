@@ -267,9 +267,10 @@ It is instructive to compare with the prediction of Newtonian gravity applied to
 \begin{equation}
 \alpha_{\mathrm{N}} = \frac{2M}{b},
 \end{equation}
-exactly half of the relativistic result. The missing factor of two is supplied entirely by the curvature of \emph{space} --- the spatial part of the Schwarzschild metric, encoded in the $(1-2M/r)^{-1}$ in $g_{rr}$ --- which Newtonian gravity, having a flat spatial geometry, cannot account for. Inserting the standard values into Eq.~\eqref{eq:deflection} yields
+exactly half of the relativistic result. 
+Inserting the standard values into Eq.~\eqref{eq:deflection} yields
 \begin{equation}
-\alpha = \frac{4 G M_\odot}{c^2 R_\odot} \approx 8.49\times 10^{-6}\ \mathrm{rad} \approx 1.75\ \text{arcseconds},
+\alpha = \frac{4 G M_\odot}{c^2 R_\odot} \approx 8.49\times 10^{-6}\ \mathrm{radians} \approx 1.75\ \text{arcseconds},
 \end{equation}
 twice the Newtonian amount. In the interpretation developed in this paper, the doubling is read as the signature of a receiver --- the photon --- whose internal process is practically none: neutrinos and photons, having little to no internal process at all (respectively), have their paths bent twice (or almost as twice) as much as Newton's gravity predicts. In this reading, internal process forms a resistance to gravitation. See Fig.~\ref{fig3} for the depiction of the deflection of starlight by the Sun's gravitation.
 
@@ -400,7 +401,7 @@ It is this unification of the kinematic and gravitational time dilation --- both
 
 \section{Conclusion}
 
-We have given an explicit, self-contained derivation of the physics underlying a single conceptual claim. Planck's law was obtained from mode counting and Bose--Einstein statistics, and its corollaries --- the Rayleigh--Jeans and Wien limits, Wien's displacement law, and the Stefan--Boltzmann law --- were derived in the Planck-unit conventions used throughout. The deflection of starlight was computed from the Schwarzschild null geodesics, reproducing the observed $1.75''$ and exhibiting the factor of two over the Newtonian value as a consequence of spatial curvature. The Kerr horizons, Hawking temperature, and time dilation were read off the Kerr metric. Finally, the exogeneity--endogeneity framework was stated as precise definitions with proved bounds, and the central claim --- that extreme time dilation drives a body toward a pure black body by interrupting its internal process --- was established as a limit theorem (Proposition~\ref{prop:bb-limit}) within that framework. The result is a quantitative restatement of the thesis that the black body process is viral.
+We have given an explicit, self-contained derivation of the physics underlying a single conceptual claim. Planck's law was obtained from mode counting and Bose--Einstein statistics, and its corollaries --- the Rayleigh--Jeans and Wien limits, Wien's displacement law, and the Stefan--Boltzmann law --- were derived in the Planck-unit conventions used throughout. The deflection of starlight was computed from the Schwarzschild null geodesics, reproducing the observed $1.75''$ and exhibiting the factor of two over the Newtonian value. The Kerr horizons, Hawking temperature, and time dilation were read off the Kerr metric. Finally, the exogeneity--endogeneity framework was stated as precise definitions with proved bounds, and the central claim --- that extreme time dilation drives a body toward a pure black body by interrupting its internal process --- was established as a limit theorem (Proposition~\ref{prop:bb-limit}) within that framework. The result is a quantitative restatement of the thesis that the black body process is viral.
 
 
 \section{Disclosure}
@@ -437,61 +438,27 @@ Since the particle's longitudinal momentum is $p \approx 1$, the deflection angl
 
 
 
-\section{Converting velocities}
-
-The spherical coordinates $(r,\theta,\phi)$ relate to Cartesian coordinates
-$(x,y,z)$ through
-\begin{equation}
-x = r\sin\theta\cos\phi,\qquad
-y = r\sin\theta\sin\phi,\qquad
-z = r\cos\theta,
-\end{equation}
-where $r\ge 0$ is the radius, $\theta\in[0,\pi]$ is the polar angle measured
-from the $z$-axis, and $\phi\in(-\pi,\pi]$ is the azimuthal angle.
-
+\section{Converting from Cartesian to spherical velocity}
 Given the Cartesian \emph{velocity} $(\dot v^x,\dot v^y,\dot v^z)$, where a dot
 denotes $d/dt$, we want the corresponding spherical velocity
-$(\dot v^r,\dot v^\theta,\dot v^\phi)$. These are related by the chain rule through the
-Jacobian of the coordinate map.
-
-\subsection{Spherical $\to$ Cartesian}
-
-Differentiating the coordinate map with respect to $(r,\theta,\phi)$ gives the
-Jacobian $J = \partial(x,y,z)/\partial(r,\theta,\phi)$, so that
-\begin{equation}
-\begin{pmatrix} \dot v^x \\[2pt] \dot v^y \\[2pt] \dot v^z \end{pmatrix}
-=
-J
-\begin{pmatrix} \dot v^r \\[2pt] \dot v^\theta \\[2pt] \dot v^\phi \end{pmatrix},
-\qquad
-J =
-\begin{pmatrix}
-\sin\theta\cos\phi & r\cos\theta\cos\phi & -r\sin\theta\sin\phi \\[4pt]
-\sin\theta\sin\phi & r\cos\theta\sin\phi & \phantom{-}r\sin\theta\cos\phi \\[4pt]
-\cos\theta         & -r\sin\theta        & 0
-\end{pmatrix}.
-\end{equation}
-
-\subsection{Inverting: Cartesian $\to$ spherical}
-
-The inverse result is
+$(\dot v^r,\dot v^\theta,\dot v^\phi)$.
+Here, $\theta_{bh}, \phi_{bh}, r_{bh}$ describe the observer's position with respect to the black hole.
 \begin{equation}
 \begin{pmatrix} \dot v^r \\[2pt] \dot v^\theta \\[2pt] \dot v^\phi \end{pmatrix}
 =
-J^{-1}
+J
 \begin{pmatrix} \dot v^x \\[2pt] \dot v^y \\[2pt] \dot v^z \end{pmatrix},
 \qquad
-J^{-1} =
+J =
 \begin{pmatrix}
-\sin\theta\cos\phi & \sin\theta\sin\phi & \cos\theta \\[4pt]
-\dfrac{\cos\theta\cos\phi}{r} & \dfrac{\cos\theta\sin\phi}{r} & -\dfrac{\sin\theta}{r} \\[8pt]
--\dfrac{\sin\phi}{r\sin\theta} & \dfrac{\cos\phi}{r\sin\theta} & 0
+\sin\theta_{bh}\cos\phi_{bh} & \sin\theta_{bh}\sin\phi_{bh} & \cos\theta_{bh} \\[4pt]
+\dfrac{\cos\theta_{bh}\cos\phi_{bh}}{r_{bh}} & \dfrac{\cos\theta_{bh}\sin\phi_{bh}}{r_{bh}} & -\dfrac{\sin\theta_{bh}}{r_{bh}} \\[8pt]
+-\dfrac{\sin\phi_{bh}}{r_{bh}\sin\theta_{bh}} & \dfrac{\cos\phi_{bh}}{r_{bh}\sin\theta_{bh}} & 0
 \end{pmatrix}.
 \end{equation}
- 
+ This produces the velocity needed for Eq.~\eqref{eq:sigma}.
 
-
-
+Note that the Cartesian speed $s = \sqrt{\dot v^x \dot v^x + \dot v^y \dot v^y + \dot v^z \dot v^z}$ must be less than the speed of light in vacuum (e.g. $s < 1$) for a massive body.
 
 
 
